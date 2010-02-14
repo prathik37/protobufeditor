@@ -1,8 +1,8 @@
-#summary RecordEditor is a data file Editor.
+#summary is a data file Editor.
 
 = Introduction =
 
-The RecordEditor [http://record-editor.sourceforge.net/] is Data Oriented editor. Its main focus is Fixed Width (Text Binary), CSV files and to a lessor extent XML files.
+The RecordEditor is Data Oriented editor. Its main focus is Fixed Width (Text Binary), CSV files and to a lessor extent XML files.
 
 But it can be called with any data that implements the appropriate Record-Editor Interfaces.
 
@@ -18,3 +18,5 @@ The RecordEditor can edit
 As well as editing files it also
   * compares files
   * Copies files from one format to another (i.e. Cobol to/from Csv)
+
+The project is hosted at sourceforge [http://record-editor.sourceforge.net/]
