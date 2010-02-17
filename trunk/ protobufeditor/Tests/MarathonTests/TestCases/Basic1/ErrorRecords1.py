@@ -1,0 +1,70 @@
+useFixture(default)
+
+def test():
+	java_recorded_version = '1.6.0_17'
+	if window('Protocol Buffer Editor'):
+		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		click('Edit1')
+		select('JTreeTable', 'cell:Tree,3(null)')
+		click('New1')
+
+		if window('Record Selection'):
+			select('OptionPane.comboBox', 'Store')
+			click('OK')
+		close()
+
+		select('Table', '1234', 'Data,0')
+		select('Table', 'cell:Text,0(1234)')
+		click('New1')
+
+		if window('Record Selection'):
+			click('OK')
+		close()
+
+		select('Table', '5432', 'Data,0')
+		select('Table', 'cell:Text,0(5432)')
+		click('BasicInternalFrameTitlePane$NoFocusButton2')
+		select_menu('Window>>protoStoreSales3.bin>>Record: ')
+		click('New1')
+
+		if window('Record Selection'):
+			select('OptionPane.comboBox', 'summary')
+			click('OK')
+		close()
+
+		select('Table', '11', 'Data,0')
+		select('Table', '22', 'Data,1')
+		select('Table', 'cell:Data,0(11)')
+		select_menu('View>>Show invalid Records')
+##		select('Table1', 'cell:Data,0(11)')
+		select('Table', 'cell:Data,0(1234)')
+		select_menu('Window>>protoStoreSales3.bin>>Error Records')
+		assert_p('Table', 'Content', '[[store, 1, , 1234, 1234], [name, 2, , , ]]')
+		click('Right')
+		select('Table', 'cell:Data,0(5432)')
+		assert_p('Table', 'Content', '[[department, 1, , 5432, 5432], [name, 2, , , ]]')
+		click('Right')
+		select('Table', 'cell:Data,0(11)')
+		assert_p('Table', 'Content', '[[quantity, 1, , 11, 11], [price, 2, , 22, 22], [count, 3, , 0, 0]]')
+		select_menu('Window>>protoStoreSales3.bin>>Error Records')
+		click('BasicInternalFrameTitlePane$NoFocusButton2')
+		select_menu('Window>>protoStoreSales3.bin>>Record: 1')
+		click('BasicInternalFrameTitlePane$NoFocusButton2')
+		select_menu('Window>>protoStoreSales3.bin>>Record: ')
+		click('BasicInternalFrameTitlePane$NoFocusButton2')
+		click('Save1')
+		click('OptionPane.label')
+		assert_p('OptionPane.label', 'Text', 'File saved, but there where records in error that did not make it on to the file')
+		click('OK')
+		select('Table', 'cell:Data,0(1234)')
+		assert_p('Table', 'Text', 'cell:Data,0(1234)')
+		click('Right')
+		select('Table', 'cell:Data,0(5432)')
+		assert_p('Table', 'Content', '[[department, 1, , 5432, 5432], [name, 2, , , ]]')
+		click('Right')
+		select('Table', 'cell:Data,0(11)')
+		assert_p('Table', 'Content', '[[quantity, 1, , 11, 11], [price, 2, , 22, 22], [count, 3, , 0, 0]]')
+		click('BasicInternalFrameTitlePane$NoFocusButton2')
+		select_menu('Window>>protoStoreSales3.bin>>Tree View')
+		click('BasicInternalFrameTitlePane$NoFocusButton2')
+	close()
