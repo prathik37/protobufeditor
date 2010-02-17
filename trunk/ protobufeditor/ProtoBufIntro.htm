@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN">
+<HTML><HEAD>
+<TITLE>Proto Buffers Message Editor Introduction</TITLE>
+<!-- Begin Header Records  ========================================== -->
+<!-- /home/bm/Work/RecordEditor/Instalation/ProtoBuf/DocSrc/ProtoBufI -->
+<!-- ntro.dcf converted by B2H R4.7 (390) (LINUX) on 13 Jan 2010 at   -->
+<!-- 05:38:34                                                         -->
+<META HTTP-EQUIV="updated" CONTENT="Wed, 13 Jan 2010 05:37:32">
+<META HTTP-EQUIV="review" CONTENT="Thu, 13 Jan 2011 05:37:32">
+<META HTTP-EQUIV="expires" CONTENT="Fri, 13 Jan 2012 05:37:32">
+</HEAD><BODY>
+<!-- End Header Records  ============================================ -->
+<A NAME="Top_Of_Page"></A>
+<P>
+<P>
+<P>
+<P>
+<P>
+<P>
+<P>
+<P>
+<P>
+<P>
+<a name="Toc"/>
+<P><B><A NAME="ToC_1" HREF="#Header_1" >Proto Buffers Message Editor Introduction</A></B><BR>
+<MENU>
+<LI><A NAME="ToC_2" HREF="#Header_2" >Getting Started</A>
+<LI><A NAME="ToC_3" HREF="#Header_3" >Main Edit Screen (Tree View)</A>
+<LI><A NAME="ToC_4" HREF="#Header_4" >Main Edit Screen (Table View)</A>
+<LI><A NAME="ToC_5" HREF="#Header_5" >Other Functions</A>
+</MENU>
+<P><B><A NAME="ToC_6" HREF="#Header_6" >Upgrading the Editor</A></B><BR>
+<P>
+<HR><H1><A NAME="Header_1" HREF="#ToC_1" >Proto Buffers Message Editor Introduction</A></H1>
+<P>The <B>Proto Buffer Editor</B> is built using <a href="http://record-editor.sourceforge.net" TARGET="_top">RecordEditor</a> to do the actual
+editting. Using the <a href="http://record-editor.sourceforge.net" TARGET="_top">RecordEditor</a> brings a lot of functionality to the editor, the downside
+is the <a href="http://record-editor.sourceforge.net" TARGET="_top">RecordEditor</a> was written for Flat Files. The flat view of the world shows through
+in some function (filter and compare functions). Also some functions might not work (well !)
+with Protocol Buffers because it is using the default <a href="http://record-editor.sourceforge.net" TARGET="_top">RecordEditor</a> implementation, please report
+any problems you come across.
+<P>
+<P>
+<HR><H2><A NAME="Header_2" HREF="#ToC_2" >Getting Started</A></H2>
+<P>
+<P>On starting the edittor, the following screen is displayed&#58;
+<P>
+<img SRC="Diagram/ProtoBuf_open.png">
+<P>
+<P>Fields are
+<P>
+<TABLE CELLPADDING="3">
+ <TR VALIGN="TOP"><TD><P><B>File
+ </B></TD><TD><P>Protocol Buffers Message file to be editted
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>File Structure
+ </B></TD><TD><P>How the message('s) are stored. Current options are
+ <UL COMPACT>
+  <LI><B>ProtoBuffer Message</B> A single mesaage in the file (written using the writeTo method
+  <LI><B>ProtoBuffer Delimited Messages</B> Multiple Protocol Messages (written using the writeDelimitedTo method).
+ </UL>
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Type of Definition
+ </B></TD><TD><P>Wethertyhe definition is a Standard .proto definition file or the
+proto has been "compiled" to the
+protocol buffers message (using command <B><I>protoc msg.proto  --descriptor_set_out=msg.protocomp</I></B>).
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Proto Definition
+ </B></TD><TD><P>Protocol buffers definition file.
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Proto File
+ </B></TD><TD><P>The actual proto file (from the definition).
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Primary Message
+ </B></TD><TD><P>Primary (or main) top level message.
+</TD></TR></TABLE>
+<P>
+<HR><H2><A NAME="Header_3" HREF="#ToC_3" >Main Edit Screen (Tree View)</A></H2>
+<P>If the main message in the file has child messages, the file will be displayed
+in a tree view&#58;
+<P>
+<img SRC="Diagram/ProtoBuf_Editor.png">
+<P>If you click on the buttons on the far left (circled in red), The line
+will be displayed on the single record screen. You can use the arrows at the bottom
+of the screen to navigate between records.
+<P>
+<img SRC="Diagram/ProtoBuf_Record.png">
+<P>
+<HR><H2><A NAME="Header_4" HREF="#ToC_4" >Main Edit Screen (Table View)</A></H2>
+<P>If the main message has no child messages, it is displayed in a table.
+You can click on the buttons to left of a row to view the record in a single.
+<P>
+<img SRC="Diagram/ProtoBuf_Table.png">
+<P>
+<HR><H2><A NAME="Header_5" HREF="#ToC_5" >Other Functions</A></H2>
+<P>Other functions available in the editor include
+<P>
+<TABLE CELLPADDING="3">
+ <TR VALIGN="TOP"><TD><P><B>Compare </B></TD><TD><P>The package can compare to Protocol Buffer messages and show tou which fields
+are different. This available via the <B>Compare with Disk</B> and <B>Compare Menu</B>
+on the <B>File</B> Menu.
+<P>
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Filter  </B></TD><TD><P>The filter Function creates a seperate view of the file containing only
+selected Fields / Records. It is available on the <B>View</B> Menu and the option button.
+<P>
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Sort   </B></TD><TD><P>You can sort the top level messages (on the <B>Data</B> top level menu plus
+the right click menu).
+<P>
+ </TD></TR><TR VALIGN="TOP"><TD><P><B>Start up Option</B></TD><TD><P>Some options can be updated on the <B>Edit &gt;&gt;&gt;&gt;&gt; Edit Startup options</B>
+</TD></TR></TABLE>
+<P>
+<P>Much of the <a href="gRecordEdit.htm">RecordEditor Manual<a> is relavant to the <B>Protocol Buffer Editor</B>
+<P>
+<HR><H1><A NAME="Header_6" HREF="#ToC_6" >Upgrading the Editor</A></H1>
+<P>In the ProtoBuffer lib directory, there is a file <B>FullEditorFiles.txt</B>. This contains
+jars allocated to the editor at startup (RecordEditor.jar and JRecord.jar are also allocated).
+You can change the files in this text file to point to replacement jars if need be.
+<P><B>FullEditorFiles.txt</B> is a tab delimited Text file with jars as the second field.
+The value &lt;lib&gt; is expanded to ProtoBufferEditor lib directory.
+<P>
+<A NAME="Bot_Of_Page"></A>
+</BODY></HTML>
