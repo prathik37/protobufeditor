@@ -20,12 +20,17 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
 import net.sf.JRecord.IO.AbstractLineIOProvider;
+import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ArrayDetails;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
 import net.sf.RecordEditor.edit.EditRec;
 import net.sf.RecordEditor.edit.OpenFile;
+import net.sf.RecordEditor.edit.display.BaseDisplay;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
+import net.sf.RecordEditor.edit.display.array.ArrayInterface;
+import net.sf.RecordEditor.edit.display.array.ArrayRender;
+import net.sf.RecordEditor.edit.display.array.ArrayTableEditor;
 import net.sf.RecordEditor.editProperties.EditOptions;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.common.Parameters;
@@ -80,6 +85,7 @@ public class ProtoBufEditor extends EditRec {
 
         ProtoIOProvider.register();
         EditOptions.setDefaultDetails(options, models);
+        //BaseDisplay.registerTableEditor(ArrayDetails.class, new ArrayRender(), new ArrayTableEditor());
         
         OpenFile open = new OpenFile(pInFile, pInitialRow, pIoProvider,
                 null, null, Parameters.getApplicationDirectory() + Consts.RECENT_FILES,
@@ -109,7 +115,8 @@ public class ProtoBufEditor extends EditRec {
 					public void actionPerformed(ActionEvent e) {
 						CompareProtoLayout.newMenu();			
 					}
-				}
+				},
+				false
 		);
         
         super.getViewMenu().addSeparator();

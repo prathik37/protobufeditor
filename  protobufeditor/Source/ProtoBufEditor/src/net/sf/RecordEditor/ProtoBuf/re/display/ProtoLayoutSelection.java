@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -37,8 +38,8 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	
 	private static final String SEPERATOR = ",,";
 	
-	private static final String PROTO_COMPILE = "protoc ";
-	private static final String PROTO_COMPILE_OUTPUT = " --descriptor_set_out=";
+	private static final String PROTO_COMPILE = "protoc";
+	private static final String PROTO_COMPILE_OUTPUT = "--descriptor_set_out=";
 	
 	
 
@@ -78,7 +79,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 
 	@Override
-	public void addLayoutSelection(BasePanel pnl, JPanel goPanel,
+	public void addLayoutSelection(BasePanel pnl, JTextField file, JPanel goPanel,
 			JButton layoutCreate1, JButton layoutCreate2) {
 		addLayoutSelection(pnl, goPanel, layoutCreate1, layoutCreate2, null);
 	}
@@ -268,19 +269,27 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
    	
     	if (pos > 0) {
     		lastPart = layoutName.substring(pos + 1);
-    		dir = " --proto_path=" + layoutName.substring(0, pos);
+    		dir = "--proto_path=" + layoutName.substring(0, pos);
     	}
     	
     	compiledFile = Parameters.getPropertiesDirectory() 
 		+ File.separator + "TempWork" + File.separator
 		+ lastPart + "comp";
     	
-    	cmd = PROTO_COMPILE + layoutName
-    		+ dir
-			+ PROTO_COMPILE_OUTPUT 
-			+ compiledFile;
+    	cmd = PROTO_COMPILE 
+    		+" " + dir
+			+ " " + PROTO_COMPILE_OUTPUT 
+			+ " " +compiledFile
+			+ " " + layoutName +""
+			;
+    	String[] cmdAndArgs = {
+    			  PROTO_COMPILE 
+    			, layoutName
+        		, dir
+    			, PROTO_COMPILE_OUTPUT + compiledFile
+     	};
     	
-    	System.out.println(cmd);
+    	//System.out.println(cmd);
  
     	try {
     		File file = new File(compiledFile);
@@ -289,8 +298,8 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     		}
     	} catch (Exception e) {
 		}
-    	
-    	Process child = Runtime.getRuntime().exec(cmd);
+    	   	
+    	Process child = Runtime.getRuntime().exec(cmdAndArgs);
 
 		InputStream in = child.getErrorStream();
 		
@@ -302,10 +311,10 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 		s = oBuf.toString();
 		
 		if (s != null && !"".equals(s)) {
-			Common.logMsg(AbsSSLogger.WARNING, "Messages Compiling proto file \n" +s, null);
+			Common.logMsg(AbsSSLogger.WARNING, "Messages Compiling proto file \n\n"
+					+cmd + "\n\n"+s, null);
 		}
 		
-
    		File file = new File(compiledFile);
    		if (! file.exists()) {
    			message.setText("Error Compiling proto file:\n" + s);

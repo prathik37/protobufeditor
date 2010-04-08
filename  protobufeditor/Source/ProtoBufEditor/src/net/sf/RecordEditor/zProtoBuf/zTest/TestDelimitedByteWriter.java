@@ -86,7 +86,8 @@ public class TestDelimitedByteWriter extends TestCase {
     	DynamicMessage.Builder newMessage;
     	Descriptor type = fd.findMessageTypeByName("Store");
     	for (AbstractMessage msg : msgs) {
-    		newMessage = DynamicMessage.newBuilder(type).mergeDelimitedFrom(in);
+    		newMessage = DynamicMessage.newBuilder(type);
+    		newMessage.mergeDelimitedFrom(in);
     		i += 1;
     		
     		l = new ProtoLine(layout, newMessage);

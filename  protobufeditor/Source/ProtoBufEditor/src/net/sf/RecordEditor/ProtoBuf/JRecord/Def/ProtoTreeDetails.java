@@ -197,6 +197,7 @@ extends TreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoChildDef
 	/* (non-Javadoc)
 	 * @see net.sf.JRecord.Details.TreeDetails#removeChildren(net.sf.JRecord.Details.AbstractChildDetails)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean removeChildren(AbstractChildDetails childDef) {
 		boolean ret = false;
