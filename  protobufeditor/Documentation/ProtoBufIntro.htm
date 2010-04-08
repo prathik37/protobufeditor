@@ -3,11 +3,11 @@
 <TITLE>Proto Buffers Message Editor Introduction</TITLE>
 <!-- Begin Header Records  ========================================== -->
 <!-- /home/bm/Work/RecordEditor/Instalation/ProtoBuf/DocSrc/ProtoBufI -->
-<!-- ntro.dcf converted by B2H R4.7 (390) (LINUX) on 13 Jan 2010 at   -->
-<!-- 05:38:34                                                         -->
-<META HTTP-EQUIV="updated" CONTENT="Wed, 13 Jan 2010 05:37:32">
-<META HTTP-EQUIV="review" CONTENT="Thu, 13 Jan 2011 05:37:32">
-<META HTTP-EQUIV="expires" CONTENT="Fri, 13 Jan 2012 05:37:32">
+<!-- ntro.dcf converted by B2H R4.7 (390) (LINUX) on 4 Apr 2010 at    -->
+<!-- 01:39:56                                                         -->
+<META HTTP-EQUIV="updated" CONTENT="Sun, 04 Apr 2010 01:39:18">
+<META HTTP-EQUIV="review" CONTENT="Mon, 04 Apr 2011 01:39:18">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 04 Apr 2012 01:39:18">
 </HEAD><BODY>
 <!-- End Header Records  ============================================ -->
 <A NAME="Top_Of_Page"></A>
@@ -27,9 +27,10 @@
 <LI><A NAME="ToC_2" HREF="#Header_2" >Getting Started</A>
 <LI><A NAME="ToC_3" HREF="#Header_3" >Main Edit Screen (Tree View)</A>
 <LI><A NAME="ToC_4" HREF="#Header_4" >Main Edit Screen (Table View)</A>
-<LI><A NAME="ToC_5" HREF="#Header_5" >Other Functions</A>
+<LI><A NAME="ToC_5" HREF="#Header_5" >Compare Function</A>
+<LI><A NAME="ToC_6" HREF="#Header_6" >Other Functions</A>
 </MENU>
-<P><B><A NAME="ToC_6" HREF="#Header_6" >Upgrading the Editor</A></B><BR>
+<P><B><A NAME="ToC_7" HREF="#Header_7" >Upgrading the Editor</A></B><BR>
 <P>
 <HR><H1><A NAME="Header_1" HREF="#ToC_1" >Proto Buffers Message Editor Introduction</A></H1>
 <P>The <B>Proto Buffer Editor</B> is built using <a href="http://record-editor.sourceforge.net" TARGET="_top">RecordEditor</a> to do the actual
@@ -39,6 +40,9 @@ in some function (filter and compare functions). Also some functions might not w
 with Protocol Buffers because it is using the default <a href="http://record-editor.sourceforge.net" TARGET="_top">RecordEditor</a> implementation, please report
 any problems you come across.
 <P>
+<P>This package uses Pack200 on jars to reduce the installer size. The installer
+should unpack the files as part of the install process. If this fails, you can use
+java's unpack200 utility to manually unpack the jars in the lib directory.
 <P>
 <HR><H2><A NAME="Header_2" HREF="#ToC_2" >Getting Started</A></H2>
 <P>
@@ -58,9 +62,16 @@ any problems you come across.
   <LI><B>ProtoBuffer Delimited Messages</B> Multiple Protocol Messages (written using the writeDelimitedTo method).
  </UL>
  </TD></TR><TR VALIGN="TOP"><TD><P><B>Type of Definition
- </B></TD><TD><P>Wethertyhe definition is a Standard .proto definition file or the
+ </B></TD><TD><P>Wether the definition is a Standard .proto definition file or the
 proto has been "compiled" to the
 protocol buffers message (using command <B><I>protoc msg.proto  --descriptor_set_out=msg.protocomp</I></B>).
+If you have trouble processing a .proto file, I would suggest "manually compiling". The actual options are
+<UL COMPACT>
+ <LI><B>Proto Definition</B> Standard proto file. The Editor will "compile" the
+proto file to a temporary directory using the protoc command.
+ <LI><B>Compiled Proto</B> A pre compiled proto file (using command <B><I>protoc msg.proto  --descriptor_set_out=msg.protocomp</I></B>).
+</UL>
+proto file and using
  </TD></TR><TR VALIGN="TOP"><TD><P><B>Proto Definition
  </B></TD><TD><P>Protocol buffers definition file.
  </TD></TR><TR VALIGN="TOP"><TD><P><B>Proto File
@@ -86,15 +97,33 @@ You can click on the buttons to left of a row to view the record in a single.
 <P>
 <img SRC="Diagram/ProtoBuf_Table.png">
 <P>
-<HR><H2><A NAME="Header_5" HREF="#ToC_5" >Other Functions</A></H2>
+<HR><H2><A NAME="Header_5" HREF="#ToC_5" >Compare Function</A></H2>
+<P>Included in the package is a Compare Function. It is available
+as a
+<OL COMPACT TYPE=1>
+<LI>standalone Program,
+<LI>On the the File menu in the editor
+<LI>When editing you can compare the data in the editor with whats on the Disk.
+</OL>
+<P>The\Compare does a field to field compare, This means both messages in the same format and
+those in different formats can be compared. The compare function also allows fields to be excluded from the compare.
+<P>
+<img SRC="Diagram/PBcompare.png">
+<P>
+<P><B>Note: </B>If you are making a change to a program that will affect only a couple of fields
+You can
+<UL COMPACT>
+ <LI>Run the old and new programs with a large amount of data
+ <LI>Run the compare and exclude the changed fields. This will suggest only the required fields
+have been affected,
+</UL>
+<P>
+<P>
+<HR><H2><A NAME="Header_6" HREF="#ToC_6" >Other Functions</A></H2>
 <P>Other functions available in the editor include
 <P>
 <TABLE CELLPADDING="3">
- <TR VALIGN="TOP"><TD><P><B>Compare </B></TD><TD><P>The package can compare to Protocol Buffer messages and show tou which fields
-are different. This available via the <B>Compare with Disk</B> and <B>Compare Menu</B>
-on the <B>File</B> Menu.
-<P>
- </TD></TR><TR VALIGN="TOP"><TD><P><B>Filter  </B></TD><TD><P>The filter Function creates a seperate view of the file containing only
+ <TR VALIGN="TOP"><TD><P><B>Filter  </B></TD><TD><P>The filter Function creates a separate view of the file containing only
 selected Fields / Records. It is available on the <B>View</B> Menu and the option button.
 <P>
  </TD></TR><TR VALIGN="TOP"><TD><P><B>Sort   </B></TD><TD><P>You can sort the top level messages (on the <B>Data</B> top level menu plus
@@ -103,9 +132,9 @@ the right click menu).
  </TD></TR><TR VALIGN="TOP"><TD><P><B>Start up Option</B></TD><TD><P>Some options can be updated on the <B>Edit &gt;&gt;&gt;&gt;&gt; Edit Startup options</B>
 </TD></TR></TABLE>
 <P>
-<P>Much of the <a href="gRecordEdit.htm">RecordEditor Manual<a> is relavant to the <B>Protocol Buffer Editor</B>
+<P>Much of the <a href="gRecordEdit.htm">RecordEditor Manual<a> is relevant to the <B>Protocol Buffer Editor</B>
 <P>
-<HR><H1><A NAME="Header_6" HREF="#ToC_6" >Upgrading the Editor</A></H1>
+<HR><H1><A NAME="Header_7" HREF="#ToC_7" >Upgrading the Editor</A></H1>
 <P>In the ProtoBuffer lib directory, there is a file <B>FullEditorFiles.txt</B>. This contains
 jars allocated to the editor at startup (RecordEditor.jar and JRecord.jar are also allocated).
 You can change the files in this text file to point to replacement jars if need be.
