@@ -1,15 +1,10 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
-import java.math.BigInteger;
-
-
-import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
-import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 
-import net.sf.JRecord.Common.Conversion;
 import net.sf.JRecord.Common.FieldDetail;
 import net.sf.JRecord.Common.RecordException;
 import net.sf.JRecord.Details.AbstractFieldValue;
@@ -22,6 +17,8 @@ import net.sf.JRecord.Details.FieldValue;
 import net.sf.JRecord.Details.LineProvider;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.utils.common.Common;
+
+
 /**
  * implementation of LineInterface for ProtoBuffer lines.
  * 
@@ -68,6 +65,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		bld = builder;
 
 		if (layout.hasChildren()) {
+			treeDtls = new ProtoTreeDetails(this, childDefinition);
 			getTreeDetails().setParentLine(parent, index);
 		}
 	}
@@ -158,7 +156,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		if (field == null) {
 			return null;
 		}
-		return getField(field.getProtoField());
+		return getField(field.getProtoField(), field);
 	}
 
 	@Override
@@ -173,6 +171,9 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	@Override
 	public String getFieldText(int recordIdx, int fieldIdx) {
+		if (recordIdx != layoutIdx || fieldIdx >= layout.getRecord(layoutIdx).getFieldCount()) {
+			return null;
+		}
 		Object o = getField(layout.getField(recordIdx, fieldIdx));
 		String ret = null;
 		if (o != null) {
@@ -208,12 +209,24 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		ProtoRecordDef recordDef = layout.getRecord(layoutIdx);
 		Message.Builder build = getBuilder();
 		FieldDescriptor protoFieldDesc;
+		Object val;
 		
 		for (int i = 0; i < recordDef.getFieldCount(); i++) {
 			protoFieldDesc = recordDef.getField(i).getProtoField();
 		
-			if (build.hasField(protoFieldDesc)) {
-				b.append(build.getField(protoFieldDesc)).append('\t');
+			if (protoFieldDesc.isRepeated()) {
+				String sep = "{";
+				for (int j =0; j < build.getRepeatedFieldCount(protoFieldDesc); j++) {
+					b.append(sep).append(build.getRepeatedField(protoFieldDesc, j));
+					sep = ", ";
+				}
+				b.append("}\t");
+			} else if (build.hasField(protoFieldDesc)) {
+				val = build.getField(protoFieldDesc);
+				if (protoFieldDesc.getType() == Type.ENUM) {
+					val = ProtoHelper.getAdjustedFieldValue(val, protoFieldDesc);
+				} 
+				b.append(val).append('\t');
 			} else {
 				b.append('\t');
 			}
@@ -246,6 +259,14 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.Details.AbstractLine#setData(byte[])
+	 */
+	@Override
+	public void setData(byte[] newVal) {
+		
+	}
+
 	@Override
 	public void setField(String fieldName, Object value) throws RecordException {
 
@@ -255,7 +276,9 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	@Override
 	public void setField(int recordIdx, int fieldIdx, Object val)
 			throws RecordException {
-		setField(layout.getField(recordIdx, fieldIdx), val);
+		if (recordIdx == layoutIdx || fieldIdx < layout.getRecord(layoutIdx).getFieldCount()) {
+			setField(layout.getField(recordIdx, fieldIdx), val);
+		}
 	}
 
 	@Override
@@ -289,56 +312,26 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		}
 	}
 
-	private Object getField(FieldDescriptor field) {
-//		System.out.println();
-//		System.out.print(" --->> " + (field == null));
-//		System.out.print(" ---> " +  getBuilder().getDescriptorForType().getFullName());
-//		System.out.print(" ---> " + layoutIdx + "  >> " +  layout.getRecord(this.layoutIdx).getProtoDesc().getFullName());
-		Object value =  getBuilder().getField(field);
-		Object ret = value;
-//		System.out.print(" ->" +  getBuilder().getDescriptorForType().getFullName() + " ~ ");
-//		System.out.print(field.getFullName() + " : " + field.getType() + " :: >" + value.toString() + "<  " );
-//		System.out.println( value.getClass().getName() + " (( ");
-	    switch (field.getType()) {
-           case INT32:
-           case INT64:
-           case SINT32:
-           case SINT64:
-           case SFIXED32:
-           case SFIXED64:
-           case FLOAT:
-           case DOUBLE:
-           case BOOL:
-           case STRING:  
-        	  break;
+	private Object getField(FieldDescriptor field, ProtoFieldDef reField) {
 
-           case UINT32:
-           case FIXED32:
-               ret = unsignedToLong(((Integer) value).intValue());
-               break;
+		if (field.isRepeated()) {
+			return new ArrayDetails(this, field);
+		}
+		if (getBuilder().hasField(field)) {
+			Object value = getBuilder().getField(field);
+			if (field.getType() == Type.ENUM && field.isOptional()) {
+				System.out.println("--- Enum    value: " + value + " " + getBuilder().hasField(field));
+				System.out.println("--- Adjusted value: " + ProtoHelper.getAdjustedFieldValue(value, field));
+			}
+			return ProtoHelper.getAdjustedFieldValue(value, field);
+		}
 
-           case UINT64:
-           case FIXED64:
-               ret = unsignedToNumber(((Long) value).longValue());
-               break;
+		if (field.getType() == Type.ENUM && field.isOptional()) {
+			System.out.println("--- Enum value: Not-Present, returning NULL_OBJECT "
+					+ getBuilder().hasField(field));
+		}
 
-           case BYTES: {
-        	   byte[] bytes = (byte[]) value;
-               ret = Conversion.getDecimal(bytes , 0, bytes.length);
-               break;
-           }
-
-           case ENUM: {
-               ret = ((EnumValueDescriptor) value).getName();
-               break;
-           }
-
-           case MESSAGE:
-           case GROUP:
-               ret = null;
-               break;
-        }
-	    return ret;
+		return Common.NULL_OBJECT;
 	}
 
 
@@ -346,145 +339,21 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 
 	private void setField(FieldDescriptor field, Object newValue) {
-		Object value = newValue;
 
-		long l;
-		if (newValue == null && field.isOptional()) {
-			getBuilder().setField(field, value);
+		if ((newValue == null || newValue == Common.NULL_OBJECT)  && field.isOptional()) {
+			getBuilder().clearField(field);
 		} else {
-			switch (field.getType()) {
-			case INT32:
-			case SINT32:
-			case SFIXED32:
-				if (! (newValue instanceof Integer)) {
-					value = Integer.valueOf(getNumber(newValue).intValue());
-				}
-				break;
-
-			case INT64:
-			case SINT64:
-			case SFIXED64:
-				if (! (newValue instanceof Long)) {
-					value = Long.valueOf(getNumber(newValue).longValue());
-				}
-				break;
-
-			case UINT32:
-			case FIXED32:
-				l = getNumber(newValue).longValue();
-				if (l < 0) {
-					throw new RuntimeException("must be >= 0");
-				}
-				value = Integer.valueOf((int) l);
-				break;
-
-			case UINT64:
-			case FIXED64:
-				l = getNumber(newValue).longValue();
-				if (l < 0) {
-					throw new RuntimeException("must be >= 0");
-				}
-				value = Long.valueOf(l);
-				break;
-
-			case FLOAT:
-				if (! (newValue instanceof Float)) {
-					value = Float.valueOf(getNumber(newValue).floatValue());
-				}
-				break;
-
-			case DOUBLE:
-				if (! (newValue instanceof Double)) {
-					value = Double.valueOf(getNumber(newValue).doubleValue());
-				}
-				break;
-
-			case BOOL:
-				if (! (newValue instanceof Boolean)) {
-					value = Boolean.FALSE;
-					if (newValue != null) {
-						String s = newValue.toString().toLowerCase();
-						if ("yes".equals(s) || "true".equals(s) || "y".equals(s)) {
-							value = Boolean.TRUE;
-						}
-					}
-				}
-				break;
-
-			case STRING:
-				if (newValue == null) {
-					value ="";
-				} else if (! (newValue instanceof String)) {
-					value = newValue.toString();
-				}
-				break;
-
-			case BYTES:
-				byte[] b; 
-				if (newValue == null) {
-					b = ConstClass.EMPTY_BYTE_ARRAY;
-				} else {
-					String s = newValue.toString();
-					b = new byte[s.length() / 2];
-					for (int i = 0; i < b.length; i++) {
-						b[i] = Byte.parseByte(s.substring(i * 2, i * 2 + 1));
-					}
-				}
-				value = b;
-
-				break;
-
-			case ENUM: {
-				if (newValue == null) {
-					throw new RuntimeException("An enum must have a value");
-				}
-				Descriptors.EnumDescriptor enumType = field.getEnumType();
-
-				boolean isNum = false;
-				int number = 0;
-				if (newValue instanceof Number) {
-					isNum =true;
-					number = ((Number) newValue).intValue();
-				} else {
-					try {
-						number = Integer.parseInt(newValue.toString());
-					} catch (Exception e) {
-					}
-				}
-				if (isNum) {
-					value = enumType.findValueByNumber(number);
-					if (value == null) {
-						throw new RuntimeException("Enum type \""
-								+ enumType.getFullName()
-								+ "\" has no value with number "
-								+ number + ".");
-					}
-				} else {
-					String id = newValue.toString();
-					value = enumType.findValueByName(id);
-					if (value == null) {
-						throw new RuntimeException("Enum type \""
-								+ enumType.getFullName()
-								+ "\" has no value named \""
-								+ id + "\".");
-					}
-				}
-
-				break;
+			if (newValue != null) {
+				System.out.println("setField: " + newValue + " " 
+						+ newValue.getClass().getName()  +" " + field.getName());
 			}
-
-			case MESSAGE:
-			case GROUP:
-				throw new RuntimeException("Can't get here.");
-			}
-			bld = getBuilder().setField(field, value);
-
-			updateParent();
+			ProtoHelper.setField(getBuilder(), field, newValue);
 		}
+		updateParent();
 	}
 
 
-	private void updateParent() {
+	protected void updateParent() {
 
 		if (treeDtls != null && treeDtls.getParentLine() != null) {
 			FieldDescriptor parentFld = treeDtls.getChildDefinitionInParent().getFieldDefinition();
@@ -525,42 +394,6 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		}
 	}
 
-
-
-
-	private Number getNumber(Object val) {
-		if (val instanceof Number) {
-			return (Number) val;
-		} else if (val == null) {
-			return Integer.valueOf(0);
-		} else {
-			return new BigInteger(val.toString());
-		}
-	}
-    /**
-     * Convert an unsigned 32-bit integer to a string.
-     */
-    private static Long unsignedToLong(int value) {
-        if (value >= 0) {
-            return Long.valueOf(value);
-        } else {
-            return Long.valueOf((value) & 0x00000000FFFFFFFFL);
-        }
-    }
-
-    /**
-     * Convert an unsigned 64-bit integer to a string.
-     */
-    private static Number unsignedToNumber(long value) {
-        if (value >= 0) {
-            return Long.valueOf(value);
-        } else { 
-            // Pull off the most-significant bit so that BigInteger doesn't
-            // think
-            // the number is negative, then set it again using setBit().
-            return BigInteger.valueOf(value & 0x7FFFFFFFFFFFFFFFL).setBit(63);
-        }
-    }
 
 
 	@Override

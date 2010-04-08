@@ -30,6 +30,7 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		List<FieldDescriptor> protoFields = protoDesc.getFields();
 		int i;
 		int count = 0;
+		int type;
 
 		for (FieldDescriptor fd : protoFields) {
 			if (! isChild(fd)) {
@@ -41,7 +42,13 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		i = 0;
 		for (FieldDescriptor fd : protoFields) {
 			if (! isChild(fd)) {
-				fields[i++] = new ProtoFieldDef(i, Consts.PROTO_TYPE, "",0, "",fd);
+				type = Type.ftProtoField;
+				if (fd.isRepeated()) {
+					type = Type.ftArrayField;
+				} else if (fd.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
+					type = Type.ftComboItemField;
+				}
+				fields[i++] = new ProtoFieldDef(i, type, "",0, "",fd);
 			}
 		}
 		fieldCount = count;

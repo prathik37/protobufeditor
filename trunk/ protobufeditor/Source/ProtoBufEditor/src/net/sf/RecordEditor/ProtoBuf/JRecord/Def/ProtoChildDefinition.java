@@ -81,4 +81,8 @@ public class ProtoChildDefinition implements AbstractChildDetails<ProtoRecordDef
 	public String toString() {
 		return fieldDefinition.getName();
 	}
+
+	public boolean isMap() {
+		return false;
+	}
 }

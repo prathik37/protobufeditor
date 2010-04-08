@@ -1,6 +1,5 @@
 package net.sf.RecordEditor.zProtoBuf.zTest;
 
-import ams.AmsLocation.Locations;
 import net.sf.JRecord.Common.Conversion;
 import net.sf.JRecord.Common.FieldDetail;
 import net.sf.JRecord.Details.AbstractLine;
@@ -11,6 +10,7 @@ import net.sf.JRecord.External.CopybookLoader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
+import net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations;
 import net.sf.RecordEditor.edit.file.FilePosition;
 import net.sf.RecordEditor.edit.file.FileView;
 import net.sf.RecordEditor.utils.filter.Compare;

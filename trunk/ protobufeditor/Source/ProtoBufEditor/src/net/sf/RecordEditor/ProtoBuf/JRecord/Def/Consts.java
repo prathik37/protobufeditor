@@ -1,7 +1,7 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 public interface Consts {
-	public static final int PROTO_TYPE = -1;
+	//public static final int PROTO_TYPE = Type.ftProtoField;
 	public static int IO_BUFFER_SIZE = 256 * 128 ;
 	
 	public static String RECENT_FILES = "ProtoFiles.txt";
