@@ -29,6 +29,8 @@ def test():
 		assert_p('Table', 'Content', '[[Loc_Nbr, 2, , 5052, 5052], [Loc_Name, 4, , Eastwood, Eastwood], [Loc_Addr_Ln1, 5, , Marayong Offsite Reserve, Marayong Offsite Reserve]]')
 ###		zzzz
 		select_menu('Edit>>Show / Hide Fields')
+		select('Table', 'cell:Show,0(false)')
+
 		select('Table', 'cell:Show,8(false)')
 		select('Table', 'cell:Show,9(false)')
 		select('Table', 'cell:Show,9(true)')
@@ -89,6 +91,7 @@ def test():
 		select('Table', 'cell:Data,3(2760)')
 		select_menu('Edit>>Show / Hide Fields')
 ##		select('Table1', 'cell:Data,3(2760)')
+		select('Table', 'true', 'Show,0')
 		select('Table', 'cell:Field,4(Loc_Addr_Ln1)')
 		assert_p('Table', 'Content', '[[Brand_Id, true], [Loc_Nbr, true], [Loc_Type, false], [Loc_Name, true], [Loc_Addr_Ln1, true], [Loc_Addr_Ln2, false], [Loc_Addr_Ln3, false], [Loc_Postcode, true], [Loc_State, true], [Loc_Actv_Ind, true]]')
 		select('Table', 'true', 'Show,2')
@@ -99,6 +102,7 @@ def test():
 		select_menu('Window>>Ams_LocDownload_20041228.bin>>Record: ')
 		select('Table', 'cell:Data,4(St. Mary\'s)')
 		assert_p('Table', 'Content', '[[Brand_Id, 1, , TAR, TAR], [Loc_Nbr, 2, , 5060, 5060], [Loc_Type, 3, , ST, ST], [Loc_Name, 4, , St Marys, St Marys], [Loc_Addr_Ln1, 5, , St. Mary\'s, St. Mary\'s], [Loc_Addr_Ln2, 6, , Charles Hackett Drive, Charles Hackett Drive], [Loc_Addr_Ln3, 7, , St Mary\'s, St Mary\'s], [Loc_Postcode, 8, , 2760, 2760], [Loc_State, 9, , NSW, NSW], [Loc_Actv_Ind, 10, , A, A]]')
+
 		select('Table', 'cell:Data,4(St. Mary\'s)')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 	close()

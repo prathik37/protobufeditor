@@ -18,6 +18,13 @@ import net.sf.JRecord.Numeric.Convert;
 import net.sf.RecordEditor.ProtoBuf.re.Test.TestConst;
 
 
+//
+//   Program to write a Test File.
+//   It uses a version of cb2xml used in the RecordEditor
+//   to Read a Cobol File (the file also comes in the RecordEditor).
+//   
+
+
 public class WriteSales5 {
 
 	private static final int KEYCODE_IDX = 3;

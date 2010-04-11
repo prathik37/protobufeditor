@@ -139,7 +139,7 @@ extends TreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoChildDef
 				//DynamicMessage.newBuilder(layout.getRecord(childDef.recordIndex).getProtoDesc());
 				ret = new ProtoLine(
 						line, childDef, location, childDef.recordIndex, 
-						DynamicMessage.newBuilder(layout.getRecord(childDef.recordIndex).getProtoDesc())
+						ProtoHelper.getBuilder(layout.getRecord(childDef.recordIndex).getProtoDesc())
 //						layout.getRecord(childDef.recordIndex).getProtoDesc().toProto().toBuilder()
 				);
 				//		layout, layout.getRecord(childDef.recordIndex).getProtoDesc().toProto().toBuilder());

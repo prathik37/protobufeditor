@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 
 import net.sf.JRecord.IO.AbstractLineIOProvider;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ArrayDetails;
@@ -27,6 +29,7 @@ import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
 import net.sf.RecordEditor.edit.EditRec;
 import net.sf.RecordEditor.edit.OpenFile;
 import net.sf.RecordEditor.edit.display.BaseDisplay;
+import net.sf.RecordEditor.edit.display.Action.HightlightMissingFields;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
 import net.sf.RecordEditor.edit.display.array.ArrayInterface;
 import net.sf.RecordEditor.edit.display.array.ArrayRender;
@@ -93,6 +96,7 @@ public class ProtoBufEditor extends EditRec {
 
         super.getEditMenu().addSeparator();
         super.getEditMenu().add(addAction(new VisibilityAction()));
+        super.getEditMenu().add(new HightlightMissingFields() );
 
         this.setOpenFileWindow(open, 
 //        		new AbstractAction("File Copy Menu") {

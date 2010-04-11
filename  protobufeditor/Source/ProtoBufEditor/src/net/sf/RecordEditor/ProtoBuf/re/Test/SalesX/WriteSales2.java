@@ -16,12 +16,19 @@ import net.sf.JRecord.IO.CobolIoProvider;
 import net.sf.JRecord.Numeric.Convert;
 
 
+//
+//   Program to write a Test File.
+//   It uses a version of cb2xml used in the RecordEditor
+//   to Read a Cobol File (the file also comes in the RecordEditor).
+//   
+
+
 
 public class WriteSales2 {
 
     private String installDir     =  "/home/bm/Programs/JRecord/SampleFiles/";
     private String salesFile      = installDir + "DTAR020_Sorted.bin";
-    private String salesFileOut   = "/home/bm/Work/Temp/" + "protoStoreSales.bin";
+    private String salesFileOut   = "/home/bm/Work/Temp/ProtoBuffers/" + "protoStoreSales.bin";
     private String copybookName   = "/home/bm/Programs/JRecord/CopyBook/Cobol/" + "DTAR020.cbl";
     
     FileOutputStream out;

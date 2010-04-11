@@ -97,7 +97,7 @@ public class Util {
     
     
     public static ProtoLayoutDef getLayout() throws IOException, DescriptorValidationException{
-    	FileInputStream in = new FileInputStream("/home/bm/Documents/StoreSales.protocomp");
+    	FileInputStream in = new FileInputStream("/home/bm/Work/ProtoBuffers/StoreSales.protocomp");
     	FileDescriptorSet dp = FileDescriptorSet.parseFrom(in);
 		FileDescriptor fd = FileDescriptor.buildFrom(dp.getFile(0), new FileDescriptor[] {});
 		List<Descriptor> msgTypes = fd.getMessageTypes();

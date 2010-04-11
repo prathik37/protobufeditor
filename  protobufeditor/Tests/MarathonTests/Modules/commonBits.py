@@ -59,6 +59,14 @@ def usingEditStart():
 	return true
 
 	
+def stdCopybookDir():
+	if windows():
+		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\CopyBook\\'
+	else:
+		return '/home/' + Linux() + '/RecordEdit/ProtoBuf/CopyBook/'
+
+
+	
 def xmlCopybookDir():
 	if windows():
 		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\CopyBook\\'

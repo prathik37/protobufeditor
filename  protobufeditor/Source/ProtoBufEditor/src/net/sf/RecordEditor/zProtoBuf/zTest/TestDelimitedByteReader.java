@@ -15,7 +15,7 @@ import com.google.protobuf.Descriptors.DescriptorValidationException;
 import junit.framework.TestCase;
 
 public class TestDelimitedByteReader extends TestCase {
-    private String salesFileOut   = "/home/bm/Work/Temp/" + "zrProtoStoreSales.bin";
+    private String salesFileOut   = "/home/bm/Work/Temp/ProtoBuffers/" + "zrProtoStoreSales.bin";
     
     private List<AbstractMessage> msgs;
     

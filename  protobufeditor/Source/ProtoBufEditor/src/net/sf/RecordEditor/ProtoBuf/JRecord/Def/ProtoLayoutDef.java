@@ -345,7 +345,7 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	 */
 	@SuppressWarnings("unchecked")
 	public final AbstractMessage.Builder getPrimaryMsgBuilder() {
-		return DynamicMessage.newBuilder(records[primaryMessageIdx].getProtoDesc()); 
+		return ProtoHelper.getBuilder(records[primaryMessageIdx].getProtoDesc()); 
 	}
 
 

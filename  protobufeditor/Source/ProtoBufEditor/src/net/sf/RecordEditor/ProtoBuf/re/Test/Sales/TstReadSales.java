@@ -25,8 +25,8 @@ public class TstReadSales {
 		//DynamicMessage msg = new DynamicMessage();
 		
 		//DynamicMessage
-		FileInputStream in = new FileInputStream("/home/bm/Documents/sales.protocomp");
-		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/protoSales.bin");
+		FileInputStream in = new FileInputStream("/home/bm/Work/ProtoBuffers/sales.protocomp");
+		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoBuffers/protoSales.bin");
 
 		//DescriptorProtos.
 		FileDescriptorSet dp = FileDescriptorSet.parseFrom(in);
@@ -47,7 +47,7 @@ public class TstReadSales {
 		DynamicMessage.Builder bld;
 		DynamicMessage msg ;
 		
-		Writer w = new FileWriter("/home/bm/Work/Temp/sales.xml");
+		Writer w = new FileWriter("/home/bm/Work/Temp/ProtoBuffers/sales.xml");
 		
 
         int i = 0;

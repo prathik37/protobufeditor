@@ -2,13 +2,19 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.List;
 
 import net.sf.JRecord.Common.Conversion;
 import net.sf.JRecord.CsvParser.BasicParser;
 import net.sf.JRecord.CsvParser.StandardParser;
+import net.sf.RecordEditor.utils.common.Common;
 
+import com.google.protobuf.AbstractMessage;
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
+import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor.Type;
@@ -16,6 +22,8 @@ import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 
 public class ProtoHelper {
 	public static byte[] EMPTY_BYTE_ARRAY = {};
+	
+	
 	public static Object getAdjustedFieldValue(Object value, FieldDescriptor field) {
 		Object ret = value;
 		
@@ -43,7 +51,10 @@ public class ProtoHelper {
                break;
 
            case BYTES: {
-        	   byte[] bytes = (byte[]) value;
+        	   //byte[] bytes = (byte[]) value;
+        	   ByteString bs = (ByteString) value;
+        	   byte[] bytes = new byte[bs.size()];
+        	   bs.copyTo(bytes, 0);
                ret = Conversion.getDecimal(bytes , 0, bytes.length);
                break;
            }
@@ -210,7 +221,7 @@ public class ProtoHelper {
 			break;
 
 		case STRING:
-			if (newValue == null) {
+			if (Common.isEmpty(newValue)) {
 				value ="";
 			} else if (! (newValue instanceof String)) {
 				value = newValue.toString();
@@ -219,16 +230,20 @@ public class ProtoHelper {
 
 		case BYTES:
 			byte[] b; 
-			if (newValue == null) {
+			if (Common.isEmpty(newValue)) {
 				b = ConstClass.EMPTY_BYTE_ARRAY;
 			} else {
 				String s = newValue.toString();
+				
+				//System.out.println(" >>> ");
 				b = new byte[s.length() / 2];
 				for (int i = 0; i < b.length; i++) {
-					b[i] = Byte.parseByte(s.substring(i * 2, i * 2 + 1));
+					b[i] = Byte.parseByte(s.substring(i * 2, i * 2 + 2), 16);
+					//System.out.print(" " + b[i] + " " + s.substring(i * 2, i * 2 + 2));
 				}
+				//System.out.println();
 			}
-			value = b;
+			value = ByteString.copyFrom(b);
 
 			break;
 
@@ -369,7 +384,7 @@ public class ProtoHelper {
 	
 			break;
 		}
-
+ 
 		case MESSAGE:
 		case GROUP:
 		}
@@ -377,4 +392,29 @@ public class ProtoHelper {
 		return value;
 	}
 
+	/**
+	 * Get initialized builder for a descriptor
+	 * @param desc record description
+	 * @return requested builder
+	 */
+	public static AbstractMessage.Builder getBuilder(Descriptor desc) {
+		DynamicMessage.Builder ret = DynamicMessage.newBuilder(desc);
+		
+		initBuilder(ret, desc);
+		
+		return ret;
+	}
+	
+	public static void initBuilder(Message.Builder bld, Descriptor desc) {
+		Object o;
+		List<FieldDescriptor> fields = desc.getFields();
+		for (FieldDescriptor field : fields) {
+			if (field.isRequired() && ! field.isRepeated()) {
+				o = getDefaultValue(field);
+				if (o != null) {
+					bld.setField(field, o);
+				}
+			}
+		}
+	}
 }
