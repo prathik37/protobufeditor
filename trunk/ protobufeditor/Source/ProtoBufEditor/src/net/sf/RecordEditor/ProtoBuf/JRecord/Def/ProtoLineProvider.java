@@ -1,7 +1,5 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
-import com.google.protobuf.DynamicMessage;
-
 import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.Details.LineProvider;
 
@@ -31,8 +29,10 @@ public class ProtoLineProvider implements LineProvider<ProtoLayoutDef> {
 	@Override
 	public AbstractLine<ProtoLayoutDef> getLine(ProtoLayoutDef recordDescription) {
 		int recordId = recordDescription.getPrimaryMessageIndex();
-		return new ProtoLine(recordDescription, recordId, 
-				DynamicMessage.newBuilder(recordDescription.getRecord(recordId).getProtoDesc()));
+		ProtoLine line = new ProtoLine(recordDescription, recordId, 
+				ProtoHelper.getBuilder(recordDescription.getRecord(recordId).getProtoDesc()));
+		
+		return line;
 	}
 //
 //	public static void register() {

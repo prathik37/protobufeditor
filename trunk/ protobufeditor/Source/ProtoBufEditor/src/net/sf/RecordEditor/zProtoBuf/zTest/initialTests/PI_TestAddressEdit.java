@@ -31,7 +31,7 @@ public class PI_TestAddressEdit {
 		
 		//DynamicMessage
 		FileInputStream in = new FileInputStream("/home/bm/Download/protobuf-2.2.0/examples/addressbook.protocomp");
-		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoTest_Address1.bin");
+		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoBuffers/ProtoTest_Address1.bin");
 
 		//DescriptorProtos.
 		FileDescriptorSet dp = FileDescriptorSet.parseFrom(in);

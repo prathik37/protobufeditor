@@ -10,6 +10,8 @@ def test():
 		select_menu('Expand Tree')
 		select('JTreeTable', 'cell:Tree,2(null)')
 		assert_p('JTreeTable', 'Content', '[[, , 20, Store: 20], [, , 59, Store: 59], [, , , ], [, , , ], [, , , ], [, , 166, Store: 166], [, , 184, Store: 184]]')
+##		assert_p('JTreeTable', 'Content', '[[, , 20, Store: 20], [, , 59, Store: 59], [, , , ], [, , , ], [, , , ], [, , 166, Store: 166], [, , 184, Store: 184]]')
+#3		zzzz
 		select('JTreeTable', 'cell:Tree,2(null)')
 		rightclick('JTreeTable', 'Tree,2')
 		select_menu('Expand Tree')

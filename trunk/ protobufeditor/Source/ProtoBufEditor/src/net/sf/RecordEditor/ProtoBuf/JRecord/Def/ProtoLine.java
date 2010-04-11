@@ -41,6 +41,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	
 	public ProtoLine(ProtoLine parent, ProtoChildDefinition childDefinition, int layoutIndex, Message msg) {
 		this(parent, childDefinition, -1,  layoutIndex,  msg);
+		//System.out.println("--## 1");
 	}
 	
 	public ProtoLine(
@@ -62,6 +63,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			int layoutIndex, 
 			Message.Builder builder) {
 		this(parent.getLayout(), layoutIndex, childDefinition);
+		//System.out.println("--## 3");
 		bld = builder;
 
 		if (layout.hasChildren()) {
@@ -72,16 +74,18 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	public ProtoLine(ProtoLayoutDef layoutDescription, int layoutIndex, Message.Builder builder) {
 		this(layoutDescription, layoutIndex, (ProtoChildDefinition) null);
+		//System.out.println("--## 4");
 		bld = builder;
 	}
 	
 	public ProtoLine(ProtoLayoutDef layoutDescription, int layoutIndex, byte[] bytes) {
 		this(layoutDescription, layoutIndex, (ProtoChildDefinition) null);
-		
+		//System.out.println("--## 5");
 		data = bytes;
 	}
 	
 	private ProtoLine(ProtoLayoutDef layoutDescription, int layoutIndex, ProtoChildDefinition childDefinition) {
+		//System.out.println("--## 6");
 		layout = layoutDescription;
 		layoutIdx = layoutIndex;
 		
@@ -91,6 +95,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	}
 
 	public ProtoLine(ProtoLayoutDef layoutDescription, Message.Builder builder) {
+		//System.out.println("--## 7");
 		layout = layoutDescription;
 		bld = builder;
 		layoutIdx = 0;
@@ -314,24 +319,28 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	private Object getField(FieldDescriptor field, ProtoFieldDef reField) {
 
-		if (field.isRepeated()) {
-			return new ArrayDetails(this, field);
-		}
-		if (getBuilder().hasField(field)) {
-			Object value = getBuilder().getField(field);
-			if (field.getType() == Type.ENUM && field.isOptional()) {
-				System.out.println("--- Enum    value: " + value + " " + getBuilder().hasField(field));
-				System.out.println("--- Adjusted value: " + ProtoHelper.getAdjustedFieldValue(value, field));
+		try {
+			if (field.isRepeated()) {
+				return new ArrayDetails(this, reField);
 			}
-			return ProtoHelper.getAdjustedFieldValue(value, field);
+			if (getBuilder().hasField(field)) {
+				Object value = getBuilder().getField(field);
+	//			if (field.getType() == Type.ENUM && field.isOptional()) {
+	//				System.out.println("--- Enum    value: " + value + " " + getBuilder().hasField(field));
+	//				System.out.println("--- Adjusted value: " + ProtoHelper.getAdjustedFieldValue(value, field));
+	//			}
+				return ProtoHelper.getAdjustedFieldValue(value, field);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 
-		if (field.getType() == Type.ENUM && field.isOptional()) {
-			System.out.println("--- Enum value: Not-Present, returning NULL_OBJECT "
-					+ getBuilder().hasField(field));
+		if (field.isRequired()) {
+			return Common.MISSING_REQUIRED_VALUE;
 		}
 
-		return Common.NULL_OBJECT;
+		return Common.MISSING_VALUE;
 	}
 
 
@@ -340,13 +349,17 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	private void setField(FieldDescriptor field, Object newValue) {
 
-		if ((newValue == null || newValue == Common.NULL_OBJECT)  && field.isOptional()) {
-			getBuilder().clearField(field);
-		} else {
-			if (newValue != null) {
-				System.out.println("setField: " + newValue + " " 
-						+ newValue.getClass().getName()  +" " + field.getName());
+		if (Common.isEmpty(newValue)) {
+			if  (field.isOptional()) {
+				getBuilder().clearField(field);
+			} else {
+				throw new RuntimeException("Field: " + field.getName() + " must be enterd");
 			}
+		} else {
+//			if (newValue != null) {
+//				System.out.println("setField: " + newValue + " " 
+//						+ newValue.getClass().getName()  +" " + field.getName());
+//			}
 			ProtoHelper.setField(getBuilder(), field, newValue);
 		}
 		updateParent();
@@ -439,7 +452,9 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 					if (data != null) {
 						bld.mergeFrom(data);
 						data = null;
-					}
+					} else {
+						ProtoHelper.initBuilder(bld, layout.getRecord(layoutIdx).getProtoDesc());
+					}  
 				} catch (Exception e) {
 					String s ="Error with data: " + e.getMessage();
 					Common.logMsg(AbsSSLogger.WARNING, s, null);

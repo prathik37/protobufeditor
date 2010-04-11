@@ -3,32 +3,39 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
 import net.sf.JRecord.Details.AbstractLine;
 import  net.sf.RecordEditor.edit.display.array.ArrayInterface;
+import net.sf.RecordEditor.utils.common.Common;
+import net.sf.RecordEditor.utils.swing.CheckBoxTableRender;
+import net.sf.RecordEditor.utils.swing.Combo.ComboItemEditor;
+import net.sf.RecordEditor.utils.swing.Combo.ComboItemRender;
 
 import com.google.protobuf.Message;
-import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 
 public class ArrayDetails implements ArrayInterface {
 	@SuppressWarnings("unchecked")
 	public List array;
 
 	private ProtoLine line;
+	private ProtoFieldDef fieldDef;
 	private FieldDescriptor fieldDesc;
 	
 	/**
 	 * @param array
 	 * @param line
-	 * @param fieldDescription
+	 * @param fieldDefinition
 	 */
-	public ArrayDetails(ProtoLine line, FieldDescriptor fieldDescription) {
+	public ArrayDetails(ProtoLine line, ProtoFieldDef fieldDefinition) {
 		//this.array = line.getBuilder().getField(fieldDesc);
 		this.line = line;
-		this.fieldDesc = fieldDescription; 
+		this.fieldDef = fieldDefinition;
+		this.fieldDesc = fieldDefinition.getProtoField(); 
 		
 		retrieveArray();
 	}
@@ -65,24 +72,39 @@ public class ArrayDetails implements ArrayInterface {
 	 */
 	@Override
 	public String toString() {
-		if (fieldDesc.getType() == Type.ENUM) {
-			StringBuilder b = new StringBuilder("[");
-			String s = "";
+		StringBuilder b;
+		String s;
+		
+		switch(fieldDesc.getType()) {
+		case BYTES:
+		case ENUM:
+			b = new StringBuilder("[");
+			s = "";
 			for (int i = 0; i < array.size(); i++) {
-				b.append(s).append(((EnumValueDescriptor) array.get(i)).getName());
+				b.append(s).append(ProtoHelper.getAdjustedFieldValue(array.get(i), fieldDesc));
 				s = ", ";
 			}
 			b.append("]");
 			return b.toString();
-		} else if (fieldDesc.getType() == Type.STRING) {
-			StringBuilder b = new StringBuilder("[");
-			String s = "'";
+		case STRING:
+			b = new StringBuilder("[");
+			s = "'";
 			for (int i = 0; i < array.size(); i++) {
 				b.append(s).append(array.get(i)).append("'");
 				s = ",'";
 			}
 			b.append("]");
 			return b.toString();
+	
+//		case BOOL:
+//			b = new StringBuilder("[");
+//			s = "";
+//			for (int i = 0; i < array.size(); i++) {
+//				b.append(s).append(((EnumValueDescriptor) array.get(i)).getName());
+//				s = ", ";
+//			}
+//			b.append("]");
+//			return b.toString();
 		}
 		return array.toString();
 	}
@@ -92,7 +114,7 @@ public class ArrayDetails implements ArrayInterface {
 	 * @return the array
 	 */
 	@SuppressWarnings("unchecked")
-	public final List getArray() {
+	public final List getList() {
 		return array;
 	}
 
@@ -233,4 +255,64 @@ public class ArrayDetails implements ArrayInterface {
 		line.getBuilder().setField(fieldDesc, array);
 		line.updateParent();
 	}
+
+	public Object getReturn() {
+		return array;
+	}
+	
+	/**
+     * Get Table Cell Render
+     * <b>Note:</b> you should always return a new Editor rather than a
+     * the same editor each time
+     *
+     * @param fld field being displayed
+     *
+     * @return Table Cell Render to be used to display the field
+     */
+	@Override
+    public  TableCellRenderer getTableCellRenderer() {
+    	TableCellRenderer ret = null;
+    	switch (fieldDesc.getType()) {
+    	case ENUM: ret = new ComboItemRender(fieldDef.getComboModel()); 	break;
+    	case BOOL: ret = new CheckBoxTableRender(); 									break;
+    	}
+    	return ret;
+    }
+
+    /**
+     * Get Table Cell Editor
+     *
+     * @param fld field being displayed
+     *
+     * @return Table Cell Editor to be used to edit the field
+     */
+    @Override
+    public TableCellEditor getTableCellEditor() {
+    	TableCellEditor ret = null;
+       	switch (fieldDesc.getType()) {
+    	case ENUM: ret = new ComboItemEditor(fieldDef.getComboModel()); 	break;
+    	case BOOL: ret = new DefaultCellEditor(new CheckBoxTableRender());	break;
+    	}
+    	return ret;
+	
+    }
+
+
+
+    /**
+     * Get the normal height of a field
+     *
+     * @return field height
+     */
+    @Override
+    public  int getFieldHeight() {
+    	int ret = - 1;
+       	switch (fieldDesc.getType()) {
+    	case ENUM: ret = Common.COMBO_TABLE_ROW_HEIGHT; 	break;
+    	//case BOOL: ret = new DefaultCellEditor(new CheckBoxTableRender());	break;
+    	}
+    	return ret;
+
+    }
+
 }

@@ -7,7 +7,6 @@ import java.util.List;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
-import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.IO.AbstractLineWriter;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
@@ -16,7 +15,6 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
-import com.google.protobuf.DescriptorProtos.DescriptorProto.Builder;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.DescriptorValidationException;
 import com.google.protobuf.Descriptors.FileDescriptor;
@@ -24,7 +22,7 @@ import com.google.protobuf.Descriptors.FileDescriptor;
 import junit.framework.TestCase;
 
 public class TestDelimitedByteWriter extends TestCase {
-    private String salesFileOut   = "/home/bm/Work/Temp/" + "zrwProtoStoreSales.bin";
+    private String salesFileOut   = "/home/bm/Work/Temp/ProtoBuffers/" + "zrwProtoStoreSales.bin";
     
     private List<AbstractMessage> msgs;
     
@@ -106,7 +104,7 @@ public class TestDelimitedByteWriter extends TestCase {
    
     
     public ProtoLayoutDef getLayout() throws IOException, DescriptorValidationException{
-    	FileInputStream in = new FileInputStream("/home/bm/Documents/StoreSales.protocomp");
+    	FileInputStream in = new FileInputStream("/home/bm/Work/ProtoBuffers/StoreSales.protocomp");
     	FileDescriptorSet dp = FileDescriptorSet.parseFrom(in);
     	
 		fd = FileDescriptor.buildFrom(dp.getFile(0), new FileDescriptor[] {});

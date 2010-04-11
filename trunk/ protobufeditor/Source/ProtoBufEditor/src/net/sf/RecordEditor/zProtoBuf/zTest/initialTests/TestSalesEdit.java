@@ -28,8 +28,8 @@ public class TestSalesEdit {
 		//DynamicMessage msg = new DynamicMessage();
 		
 		//DynamicMessage
-		FileInputStream in = new FileInputStream("/home/bm/Documents/sales.protocomp");
-		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/protoSales.bin");
+		FileInputStream in = new FileInputStream("/home/bm/Work/ProtoBuffers/sales.protocomp");
+		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoBuffers/protoSales.bin");
 
 		//DescriptorProtos.
 		FileDescriptorSet dp = FileDescriptorSet.parseFrom(in);

@@ -47,6 +47,8 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 					type = Type.ftArrayField;
 				} else if (fd.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
 					type = Type.ftComboItemField;
+				} else if (fd.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.BOOL) {
+					type = Type.ftCheckBoxBoolean;
 				}
 				fields[i++] = new ProtoFieldDef(i, type, "",0, "",fd);
 			}

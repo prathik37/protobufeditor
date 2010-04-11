@@ -19,8 +19,8 @@ public class PI_TestStoreSalesEdit3 {
 	 */
 	public static void main(String[] args) throws Exception{
 
-		FileInputStream in = new FileInputStream("/home/bm/Documents/StoreSales3.protocomp");
-		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/protoStoreSales3.bin");
+		FileInputStream in = new FileInputStream("/home/bm/Work/ProtoBuffers/StoreSales3.protocomp");
+		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoBuffers/protoStoreSales3.bin");
 
 
 		FileDescriptorSet dp = FileDescriptorSet.parseFrom(in);

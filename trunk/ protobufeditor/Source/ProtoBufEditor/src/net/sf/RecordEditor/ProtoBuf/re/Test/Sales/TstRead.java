@@ -51,7 +51,7 @@ public class TstRead {
 		
 		//DynamicMessage
 		FileInputStream in = new FileInputStream("/home/bm/Download/protobuf-2.2.0/examples/addressbook.protocomp");
-		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoTest_Address1.bin");
+		FileInputStream indata = new FileInputStream("/home/bm/Work/Temp/ProtoBuffers/ProtoTest_Address1.bin");
 //		byte[] tb = new byte[1];
 //		String s;
 		byte[] b = new byte[in.available()];
@@ -84,7 +84,7 @@ public class TstRead {
 		
 		DynamicMessage msg = DynamicMessage.parseFrom(fd.findMessageTypeByName("AddressBook"), indata);
 		
-		Writer w = new FileWriter("/home/bm/Work/Temp/ProtoTest_Address1.xml");
+		Writer w = new FileWriter("/home/bm/Work/Temp/ProtoBuffers/ProtoTest_Address1.xml");
 		
 		//XmlFormat.print(msg, w);
 		
