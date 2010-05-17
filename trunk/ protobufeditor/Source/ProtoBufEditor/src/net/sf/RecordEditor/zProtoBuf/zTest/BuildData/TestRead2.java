@@ -8,7 +8,7 @@ import com.example.tutorial.AddressBookProtos.Person;
 public class TestRead2 {
 
 	public static void main(String[] args) throws IOException {
-		FileInputStream in = new FileInputStream("/home/bm/Work/Temp/ProtoTest_Address2.bin");
+		FileInputStream in = new FileInputStream("/home/bm/Work/Temp/ProtoBuffers/ProtoTest_Address2.bin");
 		int i = 1;
 		Person p;
 		do {

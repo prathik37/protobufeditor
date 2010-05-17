@@ -14,7 +14,6 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoDelimitedByteReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
-import net.sf.RecordEditor.edit.display.BaseDisplay;
 import net.sf.RecordEditor.edit.display.LineList;
 import net.sf.RecordEditor.edit.display.LineTree;
 import net.sf.RecordEditor.edit.display.LineTreeChild;
@@ -111,18 +110,17 @@ public class PackageInterface {
 			boolean pBrowse)  {
 		
 		ParseArgs args = new ParseArgs(NULL_ARGS);
-		BaseDisplay display;
 		FileView<ProtoLayoutDef> file = new FileView<ProtoLayoutDef>(lines, null, null, false);
 		
 	    new ProtoBufEditor(args.getDfltFile(), args.getInitialRow(), ProtoIOProvider.getInstance());
 	
 
 		if (layoutDtls.hasChildren()) {
-			display = new LineTreeChild(file, new LineNodeChild("File", file), true, 0);
+			new LineTreeChild(file, new LineNodeChild("File", file), true, 0);
 		} else if (layoutDtls.isXml()) {
-			display = new LineTree(file, TreeParserXml.getInstance(), true, 1);
+			new LineTree(file, TreeParserXml.getInstance(), true, 1);
 		} else {
-			display = new LineList(layoutDtls, file, file);
+			new LineList(layoutDtls, file, file);
 		}
 	}
 

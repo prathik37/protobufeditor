@@ -10,7 +10,7 @@ import com.example.tutorial.AddressBookProtos.Person.PhoneType;
 
 public class TestWrite2 {
 
-	static String filename = "/home/bm/Work/Temp/ProtoTest_Address3.bin";
+	static String filename = "/home/bm/Work/Temp/ProtoBuffers/ProtoTest_Address3.bin";
 	static PhoneType[] type = {null, Person.PhoneType.MOBILE, Person.PhoneType.HOME, Person.PhoneType.WORK};
 	
 	/**

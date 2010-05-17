@@ -21,7 +21,8 @@ import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 
 
 public class ProtoHelper {
-	public static byte[] EMPTY_BYTE_ARRAY = {};
+	public final static byte[] EMPTY_BYTE_ARRAY = {};
+	public final static ByteString EMPTY_BYTE_STRING = ByteString.copyFrom(EMPTY_BYTE_ARRAY);
 	
 	
 	public static Object getAdjustedFieldValue(Object value, FieldDescriptor field) {
@@ -80,7 +81,7 @@ public class ProtoHelper {
 	public static void setField(Message.Builder builder, FieldDescriptor field, Object newValue) {
 		Object value = newValue;
 
-		System.out.println("## 1 " + newValue + " " + field.isOptional() + " " +  field.isRepeated());
+		//System.out.println("## 1 " + newValue + " " + field.isOptional() + " " +  field.isRepeated());
 		if (newValue == null && (field.isOptional() || field.isRepeated())) {
 			builder.clearField(field);
 		} else if (field.isRepeated()) {
@@ -132,14 +133,14 @@ public class ProtoHelper {
 			}
 		} else {
 			value = adjustSingleValueForUpdate(field, newValue, false);
-			System.out.println("## 2 " + value + " " + field.isOptional() + " " +  field.isRepeated()
-					+ " " + (value == null)
-					+ " " + (value == null && (field.isOptional() || field.isRepeated()))
-					+ " " + field.getName()
-					+ " " + builder.getDescriptorForType().getName());
+//			System.out.println("## 2 " + value + " " + field.isOptional() + " " +  field.isRepeated()
+//					+ " " + (value == null)
+//					+ " " + (value == null && (field.isOptional() || field.isRepeated()))
+//					+ " " + field.getName()
+//					+ " " + builder.getDescriptorForType().getName());
 
 			if (value == null && (field.isOptional() || field.isRepeated())) {
-				System.out.println("## 3 Clear "); 
+				//System.out.println("## 3 Clear "); 
 				builder.clearField(field);
 			} else {
 				builder.setField(field, value);
@@ -229,21 +230,23 @@ public class ProtoHelper {
 			break;
 
 		case BYTES:
-			byte[] b; 
 			if (Common.isEmpty(newValue)) {
-				b = ConstClass.EMPTY_BYTE_ARRAY;
+				value = EMPTY_BYTE_STRING;
 			} else {
+				byte[] b; 
 				String s = newValue.toString();
-				
-				//System.out.println(" >>> ");
+
+				int ii;
 				b = new byte[s.length() / 2];
 				for (int i = 0; i < b.length; i++) {
-					b[i] = Byte.parseByte(s.substring(i * 2, i * 2 + 2), 16);
-					//System.out.print(" " + b[i] + " " + s.substring(i * 2, i * 2 + 2));
+					ii = Integer.parseInt(s.substring(i * 2, i * 2 + 2), 16);
+					if (ii > 127) {
+						ii= ii - 256;
+					}
+					b[i] = (byte) ii;
 				}
-				//System.out.println();
+				value = ByteString.copyFrom(b);
 			}
-			value = ByteString.copyFrom(b);
 
 			break;
 
@@ -374,7 +377,7 @@ public class ProtoHelper {
 			break;
 
 		case BYTES:
-			value = EMPTY_BYTE_ARRAY;
+			value = EMPTY_BYTE_STRING;
 			break;
 
 		case ENUM: {
@@ -384,7 +387,7 @@ public class ProtoHelper {
 	
 			break;
 		}
- 
+
 		case MESSAGE:
 		case GROUP:
 		}
