@@ -18,22 +18,16 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
+
 
 import net.sf.JRecord.IO.AbstractLineIOProvider;
-import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ArrayDetails;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
 import net.sf.RecordEditor.edit.EditRec;
 import net.sf.RecordEditor.edit.OpenFile;
-import net.sf.RecordEditor.edit.display.BaseDisplay;
 import net.sf.RecordEditor.edit.display.Action.HightlightMissingFields;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
-import net.sf.RecordEditor.edit.display.array.ArrayInterface;
-import net.sf.RecordEditor.edit.display.array.ArrayRender;
-import net.sf.RecordEditor.edit.display.array.ArrayTableEditor;
 import net.sf.RecordEditor.editProperties.EditOptions;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.common.Parameters;
@@ -48,6 +42,7 @@ import net.sf.RecordEditor.utils.edit.ReIOProvider;
  * @author Bruce Martin
  *
  */
+@SuppressWarnings("serial")
 public class ProtoBufEditor extends EditRec {
 
 	private  String[][]  options = {

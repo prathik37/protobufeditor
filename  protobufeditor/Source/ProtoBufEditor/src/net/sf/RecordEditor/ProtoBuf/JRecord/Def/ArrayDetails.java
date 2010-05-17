@@ -110,16 +110,6 @@ public class ArrayDetails implements ArrayInterface {
 	}
 
 
-	/**
-	 * @return the array
-	 */
-	@SuppressWarnings("unchecked")
-	public final List getList() {
-		return array;
-	}
-
-
-
 	/* (non-Javadoc)
 	 * @see net.sf.RecordEditor.edit.display.array.ArrayInterface.ArrayInterface#add(int, java.lang.Object)
 	 */

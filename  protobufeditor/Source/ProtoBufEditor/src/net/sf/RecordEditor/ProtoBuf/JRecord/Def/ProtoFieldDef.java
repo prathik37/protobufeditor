@@ -9,13 +9,14 @@ import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
 import net.sf.JRecord.Common.FieldDetail;
+import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.swing.Combo.ComboModelSupplier;
 
 
 public class ProtoFieldDef extends FieldDetail implements ComboModelSupplier {
 
 	private FieldDescriptor protoField;
-	private String[] enumSymbols = null; 
+	private Object[] enumSymbols = null; 
 
 	public ProtoFieldDef(int pPosition, int type, 
 			String font, int format, String paramater,
@@ -29,8 +30,8 @@ public class ProtoFieldDef extends FieldDetail implements ComboModelSupplier {
 			int inc = 0;
 			if (protoFieldDef.isOptional()) {
 				inc = 1;
-				enumSymbols = new String[list.size() + 1];
-				enumSymbols[0] = "";
+				enumSymbols = new Object[list.size() + 1];
+				enumSymbols[0] = Common.MISSING_VALUE;
 			} else {
 				enumSymbols = new String[list.size()];
 			}

@@ -3,8 +3,8 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 
+import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.FieldDetail;
 import net.sf.JRecord.Common.RecordException;
 import net.sf.JRecord.Details.AbstractFieldValue;
@@ -54,6 +54,8 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 				childDefinition, 
 				index,
 				layoutIndex, msg.newBuilderForType().mergeFrom(msg));
+//		System.out.println("New Proto Line " + layoutIndex + " " + parent.getLayout().getRecord(layoutIndex).getRecordName()
+//				+ " " + index + " --- " + msg.getDescriptorForType().getName());
 	}
 
 	public ProtoLine(
@@ -139,9 +141,12 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	@Override
 	public Object getField(int recordIdx, int fieldIdx) {
-		if (recordIdx != layoutIdx || fieldIdx >= layout.getRecord(layoutIdx).getFieldCount()) {
+		if (fieldIdx == Constants.KEY_INDEX  
+		||	recordIdx != layoutIdx 
+		|| fieldIdx >= layout.getRecord(layoutIdx).getFieldCount()) {
 			return null;
 		}
+		
 		return getField(layout.getField(recordIdx, fieldIdx));
 	}
 
@@ -222,15 +227,19 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			if (protoFieldDesc.isRepeated()) {
 				String sep = "{";
 				for (int j =0; j < build.getRepeatedFieldCount(protoFieldDesc); j++) {
-					b.append(sep).append(build.getRepeatedField(protoFieldDesc, j));
+					b.append(sep).append(
+							ProtoHelper.getAdjustedFieldValue(
+									build.getRepeatedField(protoFieldDesc, j),
+									protoFieldDesc
+									));
 					sep = ", ";
 				}
 				b.append("}\t");
 			} else if (build.hasField(protoFieldDesc)) {
 				val = build.getField(protoFieldDesc);
-				if (protoFieldDesc.getType() == Type.ENUM) {
-					val = ProtoHelper.getAdjustedFieldValue(val, protoFieldDesc);
-				} 
+				//if (protoFieldDesc.getType() == Type.ENUM) {
+				val = ProtoHelper.getAdjustedFieldValue(val, protoFieldDesc);
+				//} 
 				b.append(val).append('\t');
 			} else {
 				b.append('\t');
@@ -332,6 +341,8 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 				return ProtoHelper.getAdjustedFieldValue(value, field);
 			}
 		} catch (Exception e) {
+			System.out.println("## Error >> " + layoutIdx + " " + layout.getRecord(layoutIdx).getRecordName() + " "
+					+ bld.getDescriptorForType().getFullName());
 			e.printStackTrace();
 			return null;
 		}
@@ -411,7 +422,11 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	@Override
 	public void setLayout(ProtoLayoutDef newLayout) {
-		layoutIdx = newLayout.getRecordIndex(layout.getRecord(layoutIdx).getRecordName());
+//		System.out.print(" --> " + layoutIdx  + " " + layout.getRecord(layoutIdx).getRecordName());
+		
+		layoutIdx = newLayout.getRecordIndex(getBuilder().getDescriptorForType().getName());
+//		System.out.println("  --> " + layoutIdx + " " + newLayout.getRecord(layoutIdx).getRecordName()
+//				+ " " + getBuilder().getDescriptorForType().getFullName());
 		layout = newLayout;
 	}
 

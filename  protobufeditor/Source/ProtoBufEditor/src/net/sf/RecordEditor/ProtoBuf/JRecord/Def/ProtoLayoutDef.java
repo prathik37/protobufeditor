@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.google.protobuf.AbstractMessage;
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
 
@@ -338,7 +337,6 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	public final int getPrimaryMessageIndex() {
 		return primaryMessageIdx;
 	}
-	
 
 	/**
 	 * @return the primaryMessage
@@ -357,7 +355,10 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 			ArrayList<ProtoRecordDef> recordList) {
 		ProtoRecordDef[] recs = new ProtoRecordDef[recordList.size()];
 		recs = recordList.toArray(recs);
-		return new ProtoLayoutDef(fileDesc, fileStructure, recordList);
+		ProtoLayoutDef ret =  new ProtoLayoutDef(fileDesc, fileStructure, recordList);
+		
+		ret.setupChildRecords();
+		return ret;
 	}
 
 

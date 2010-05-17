@@ -33,6 +33,7 @@ import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection;
 import net.sf.RecordEditor.utils.swing.BasePanel;
 import net.sf.RecordEditor.utils.swing.FileChooser;
+import net.sf.RecordEditor.utils.swing.Combo.ComboOption;
 
 public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef>  {
 	
@@ -169,7 +170,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     	protoFile.removeAllItems();
     	FileDescriptorSet dp = getProtoDesc();
 
-    	System.out.println("Checking file " + (dp != null));
+    	//System.out.println("Checking file " + (dp != null));
     	if (dp != null && dp.getFileCount() > 0) {
     		for (int i = 0; i < dp.getFileCount(); i++) {
     			protoFile.addItem(dp.getFile(i).getName());
@@ -207,7 +208,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 
 			HashSet<Descriptor> usedRecords = new HashSet<Descriptor>();
-			System.out.println("Setting Messages for index=" + idx + " Count=" + msgTypes.size());
+			//System.out.println("Setting Messages for index=" + idx + " Count=" + msgTypes.size());
 			for (Descriptor d : msgTypes ) {
 				messageName.addItem(d.getName());
 				List<FieldDescriptor> fldList = d.getFields();
@@ -236,7 +237,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
         String layoutName = protoDefinitionFile.getText();
         FileDescriptorSet dp = null;
     
-        protoType =  ((ConstClass.Option) loaderOptions.getSelectedItem()).index;
+        protoType =  ((ComboOption) loaderOptions.getSelectedItem()).index;
   	
         try {     
            	 if (layoutName == null ||  "".equals(layoutName)) {
@@ -360,8 +361,8 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
         String layoutName = protoDefinitionFile.getText();
         FileDescriptorSet dp;
         
-        fileStruc = ((ConstClass.Option) fileStructure.getSelectedItem()).index;
-        copybooktype =  ((ConstClass.Option) loaderOptions.getSelectedItem()).index;
+        fileStruc = ((ComboOption) fileStructure.getSelectedItem()).index;
+        copybooktype =  ((ComboOption) loaderOptions.getSelectedItem()).index;
 
         try {
 	        if (layoutName == null ||  "".equals(layoutName)) {
