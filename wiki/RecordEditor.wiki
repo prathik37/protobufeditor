@@ -1,4 +1,4 @@
-#summary is a data file Editor.
+#summary Core data file Editor.
 
 = Introduction =
 
