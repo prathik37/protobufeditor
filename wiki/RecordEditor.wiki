@@ -20,3 +20,18 @@ As well as editing files it also
   * Copies files from one format to another (i.e. Cobol to/from Csv)
 
 The project is hosted at sourceforge [http://record-editor.sourceforge.net/]
+
+= RecordEditor Family =
+
+The core part of the *RecordEditor* operates on several Interfaces which include
+
+  * *AbstractLine*  -  Generic Record or Line from a File
+  * *AbstractLayoutDetail* - Generic schema definition
+
+The Editor core will work with any classes that implement all the appropriate
+interfaces. Currently there are4 front ends
+
+  # *RecordEditor* - For editing Fixed Width, csv/tsv delimited, Cobol, Mainframe and Xml (needs so work though) Files.
+  # *CobolEditor* - comes as part of the RecordEditor package. It can edit Files using either a Cobol or Xml Copybook (or file Description.
+  # *protobufeditor* - For Editing Protocol Buffer binary files
+  # *AvroEditor* - For editing Avro Binary serialised files. It is available at [http://avroeditor.sourceforge.net/WebSite02.html]
