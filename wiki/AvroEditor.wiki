@@ -1,0 +1,5 @@
+#summary Serialized Data Editor for Avro Binary Files.
+
+= Introduction =
+
+Version of the RecordEditor for Editing Avro [http://avro.apache.org/releases.html] binary files
