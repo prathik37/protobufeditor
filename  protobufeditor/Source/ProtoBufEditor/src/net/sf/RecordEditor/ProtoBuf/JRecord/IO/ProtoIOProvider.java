@@ -12,9 +12,16 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLineProvider;
 
 public class ProtoIOProvider implements AbstractLineIOProvider {
 
-	private static int[] keys = {Constants.IO_PROTO_SINGLE_MESSAGE, Constants.IO_PROTO_DELIMITED};
-	private static String[] names = {"ProtoBuffer Message", "ProtoBuffer Delimited Messages"};
-	private static String[] externalNames = {"ProtoBuf_Message", "ProtoBuf_Delimited"};
+	private static int[] keys = {
+		Constants.IO_PROTO_SINGLE_MESSAGE, Constants.IO_PROTO_DELIMITED, 
+		Constants.IO_PROTO_SD_SINGLE_MESSAGE, Constants.IO_PROTO_SD_DELIMITED};
+	private static String[] names = {
+		"ProtoBuffer Single Message", "ProtoBuffer Delimited Messages",
+		"ProtoBuffer Self Describing Message", "ProtoBuffer Self Describing Delimited"
+	};
+	private static String[] externalNames = {
+		"ProtoBuf_Message", "ProtoBuf_Delimited", 
+		"ProtoBuf_SD_Message",  "ProtoBuf_SD_Delimited"};
 	
 	private static ProtoLineProvider lineProvider = new ProtoLineProvider();
 	
@@ -41,6 +48,13 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 		break;
 		case(Constants.IO_PROTO_SINGLE_MESSAGE): 
 			reader = new ProtoMessageReader();
+		break;
+		case(Constants.IO_PROTO_SD_DELIMITED): 
+			reader = new ProtoSdDelimitedReader();
+		break;
+		case(Constants.IO_PROTO_SD_SINGLE_MESSAGE): 
+			reader = new ProtoSdMessageReader();
+		break;
 		}
 		return reader;
 	}
@@ -53,23 +67,42 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 
 	@Override
 	public AbstractLineWriter getLineWriter(int fileStructure) {
-		AbstractLineWriter reader = null;
+		AbstractLineWriter writer = null;
 		switch (fileStructure) {
 		case(Constants.IO_PROTO_DELIMITED): 
-			reader = new LineWriterWrapper(
+			writer = new LineWriterWrapper(
 					new ProtoDelimitedByteWriter()
 			);
 		break;
 		case(Constants.IO_PROTO_SINGLE_MESSAGE): 
-			reader = new ProtoMessageWriter();
+			writer = new ProtoMessageWriter();
+		break;
+		case(Constants.IO_PROTO_SD_DELIMITED): 
+			writer = new ProtoSdDelimitedWriter();
+		break;
+		case(Constants.IO_PROTO_SD_SINGLE_MESSAGE): 
+			//writer = new ProtoMessageWriter();
 		break;
 		}
-		return reader;
+		return writer;
 	}
+
 
 	@Override
 	public String getStructureName(int fileStructure) {
-		return externalNames[fileStructure];
+    	for (int i = 0; i < keys.length && keys[i] != Constants.NULL_INTEGER; i++) {
+    		if (keys[i] == fileStructure) {
+    			//System.out.println("--> " + fileStructure + " " + keys[i] + " " + externalNames[i]);
+    			return externalNames[i];
+    		}
+    	}
+    	return "";
+	}
+
+	
+	@Override
+	public String getStructureNameForIndex(int index) {
+		return externalNames[index];
 	}
 
 	@Override

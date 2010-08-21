@@ -14,9 +14,12 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
 import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.DescriptorValidationException;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 
 
@@ -106,7 +109,7 @@ public class ProtoHelper {
 					element = new String[nl.size()];
 					element = nl.toArray(element);
 				} else {
-					String[] strElements = (new BasicParser()).split(s, ",", "", 0);
+					String[] strElements = (BasicParser.getInstance()).split(s, ",", "", 0);
 					
 					element = new Object[strElements.length];
 					
@@ -400,6 +403,7 @@ public class ProtoHelper {
 	 * @param desc record description
 	 * @return requested builder
 	 */
+	@SuppressWarnings("unchecked")
 	public static AbstractMessage.Builder getBuilder(Descriptor desc) {
 		DynamicMessage.Builder ret = DynamicMessage.newBuilder(desc);
 		
@@ -420,4 +424,52 @@ public class ProtoHelper {
 			}
 		}
 	}
+	
+	
+    public static FileDescriptor getFileDescriptor(FileDescriptorSet dp, int idx) 
+    throws DescriptorValidationException {
+ 		FileDescriptor[] dependencies = {};
+
+ 		idx = Math.max(0, idx);
+ 		if (dp.getFile(idx).getDependencyCount() > 0 ) {
+ 			int i, j;
+ 			String depName;
+ 			dependencies = new FileDescriptor[dp.getFile(idx).getDependencyCount()];
+ 			for (i = 0; i < dependencies.length; i++) {
+ 				depName = dp.getFile(idx).getDependency(i);
+ 				for (j = 0; j < dp.getFileCount(); j++) {
+ 					if (depName.equals(dp.getFile(j).getName())) {
+ 						dependencies[i] = getFileDescriptor(dp, j);
+ 					}
+ 				}
+ 			}
+ 		}
+
+    	return FileDescriptor.buildFrom(dp.getFile(idx), dependencies);
+    }
+    
+    public static FileDescriptorSet getFileDescriptorSet(FileDescriptor descriptor) {
+    	FileDescriptorSet.Builder bld = FileDescriptorSet.newBuilder();
+     	
+    	addDescriptors(bld, descriptor);
+    	
+    	return bld.build();
+    }
+
+    
+    private static void addDescriptors(FileDescriptorSet.Builder bld, FileDescriptor descriptor) {
+
+    	if (descriptor != null ) {
+	     	List<FileDescriptor> depencies = descriptor.getDependencies();
+	    	
+	   		bld.addFile(descriptor.toProto());
+     	
+	    	for (FileDescriptor dep : depencies) {
+	    		addDescriptors(bld, dep);
+	    	}
+	    	
+	   	}
+
+    }
+
 }

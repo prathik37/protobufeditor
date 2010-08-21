@@ -1,6 +1,7 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
+import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.swing.Combo.ComboOption;
 
 public class ConstClass {
@@ -20,10 +21,16 @@ public class ConstClass {
 		STRUCTURE_OPTIONS = new ComboOption[p.getNumberOfEntries()];
 		for (int i = 0; i < STRUCTURE_OPTIONS.length; i++) {
 			STRUCTURE_OPTIONS[i] = new ComboOption(ProtoIOProvider.getInstance().getKey(i), 
-					ProtoIOProvider.getInstance().getName(i));
+					ProtoIOProvider.getInstance().getName(i).substring(12));
 		}
 	};
 
+	public static final String VAR_PROTO_IMBED_DIR = "ProtoImbedDir";
+	
+	public static final String VAR_PROTOBUF_COMPILE = "ProtoC";
+	public static final String VAR_PROTOBUF_COMPILE_OPTS = "ProtoCopts.";
+	
+	public static final int NUMBER_OF_PROTOC_OPTIONS = 8;
 	
 	
 	/**
@@ -42,4 +49,17 @@ public class ConstClass {
 		return STRUCTURE_OPTIONS.clone();
 	}
 
+	/**
+	 * Get the protoc compile command
+	 * @return protoc compile command
+	 */
+	public static final String getProtoC() {
+		String s = Parameters.getString(VAR_PROTOBUF_COMPILE);
+		
+		if (s == null || s.equals("")) {
+			s = "protoc";
+		}
+		
+		return s;
+	}
 }

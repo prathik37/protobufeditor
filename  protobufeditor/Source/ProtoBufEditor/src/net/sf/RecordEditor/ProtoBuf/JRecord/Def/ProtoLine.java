@@ -1,5 +1,7 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
+import java.awt.Color;
+
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -17,6 +19,7 @@ import net.sf.JRecord.Details.FieldValue;
 import net.sf.JRecord.Details.LineProvider;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.utils.common.Common;
+import net.sf.RecordEditor.utils.swing.ColorItem;
 
 
 /**
@@ -31,6 +34,9 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	private final static AbstractTreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine>
 				NULL_TREE_DETAILS 
 					= new NullTreeDtls<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoChildDefinition, ProtoLine>();
+	public static final Color DESCRIPTOR_COLOR = new Color(220, 220, 255);
+	public static final Color ENUM_COLOR = new Color(220, 255, 220);
+	
 	private Message.Builder bld;
 	private ProtoLayoutDef layout;
 	private int layoutIdx;
@@ -54,8 +60,6 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 				childDefinition, 
 				index,
 				layoutIndex, msg.newBuilderForType().mergeFrom(msg));
-//		System.out.println("New Proto Line " + layoutIndex + " " + parent.getLayout().getRecord(layoutIndex).getRecordName()
-//				+ " " + index + " --- " + msg.getDescriptorForType().getName());
 	}
 
 	public ProtoLine(
@@ -141,9 +145,23 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	@Override
 	public Object getField(int recordIdx, int fieldIdx) {
-		if (fieldIdx == Constants.KEY_INDEX  
-		||	recordIdx != layoutIdx 
-		|| fieldIdx >= layout.getRecord(layoutIdx).getFieldCount()) {
+		if (layout.isProtoDefinition() 
+		&& recordIdx != layoutIdx  && fieldIdx == 0
+		&& layout.getRecord(layoutIdx).getFieldCount() > 0) {
+			ColorItem item = new ColorItem();
+			item.data =  getField(layout.getField(layoutIdx, fieldIdx));
+			item.color = Color.WHITE;
+			if ("FileDescriptorProto".equalsIgnoreCase(layout.getRecord(layoutIdx).getRecordName())) {
+				item.color = Color.YELLOW; 
+			} else if ("DescriptorProto".equalsIgnoreCase(layout.getRecord(layoutIdx).getRecordName())) {
+				item.color = DESCRIPTOR_COLOR; 				
+			} else if ("EnumDescriptorProto".equalsIgnoreCase(layout.getRecord(layoutIdx).getRecordName())) {
+				item.color = ENUM_COLOR; 				
+			}
+			return item;
+		} else if (fieldIdx == Constants.KEY_INDEX  
+		||  recordIdx != layoutIdx 
+		||  fieldIdx >= layout.getRecord(layoutIdx).getFieldCount()) {
 			return null;
 		}
 		

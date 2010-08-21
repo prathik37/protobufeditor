@@ -6,7 +6,6 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
