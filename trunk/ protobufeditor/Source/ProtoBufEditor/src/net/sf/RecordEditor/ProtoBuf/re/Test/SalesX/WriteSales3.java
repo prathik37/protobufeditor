@@ -16,6 +16,7 @@ import net.sf.JRecord.IO.AbstractLineReader;
 
 import net.sf.JRecord.IO.CobolIoProvider;
 import net.sf.JRecord.Numeric.Convert;
+import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.re.Test.TestConst;
 
 
@@ -36,9 +37,10 @@ public class WriteSales3 {
     private String installDir     = TestConst.INPUT_DIR;
     private String salesFile      = installDir + "DTAR020_Sorted.bin";
     private String salesFileOut   = TestConst.OUTPUT_DIR + "protoStoreSales3.bin";
+    private String salesFileOutSD = TestConst.OUTPUT_DIR + "protoStoreSales3SD.bin";
     private String copybookName   = TestConst.COBOL_DIR + "DTAR020.cbl";
     
-    FileOutputStream out;
+    FileOutputStream out, outSD;
 
     Writer w ;
     
@@ -94,7 +96,12 @@ public class WriteSales3 {
             FieldDetail qtyField     = reader.getLayout().getField(0, fldNum++);
             FieldDetail salesField   = reader.getLayout().getField(0, fldNum++);
             
+            
             out = new FileOutputStream(salesFileOut);
+            outSD = new FileOutputStream(salesFileOutSD);
+
+            ProtoHelper	.getFileDescriptorSet(StoreSales3.getDescriptor())
+			.writeDelimitedTo(outSD);
 
             w = new FileWriter(salesFileOut + ".html");
             
@@ -137,6 +144,7 @@ public class WriteSales3 {
 			
             reader.close();
             out.close();
+            outSD.close();
             System.out.println("Written: " + lineNum );
             //generator.print("</body></html>");
             w.close();
@@ -156,6 +164,7 @@ public class WriteSales3 {
  			aSale = bldStore.build();
 			//HtmlFormat.print(aSale, generator);
 			aSale.writeDelimitedTo(out);
+			aSale.writeDelimitedTo(outSD);
 		}
 		bldStore = StoreSales3.Store.newBuilder();
 		bldStore	.setStore(store)

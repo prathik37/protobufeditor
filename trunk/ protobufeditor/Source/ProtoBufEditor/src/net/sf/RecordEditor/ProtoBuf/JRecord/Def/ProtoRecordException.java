@@ -1,5 +1,6 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
+@SuppressWarnings("serial")
 public class ProtoRecordException extends RuntimeException {
 
 	/**

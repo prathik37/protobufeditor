@@ -12,6 +12,7 @@ import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.Details.AbstractRecordDetail;
 import net.sf.JRecord.Details.BasicRecordDetail;
 import net.sf.JRecord.Types.Type;
+import net.sf.RecordEditor.record.format.CellFormat;
 
 public class ProtoRecordDef 
 extends BasicRecordDetail<ProtoFieldDef, ProtoRecordDef, ProtoChildDefinition>
@@ -25,10 +26,10 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		fieldCount = fields.length;
 	}
 
-	public ProtoRecordDef(Descriptor descriptor) {
+	public ProtoRecordDef(Descriptor descriptor, boolean highlightProto) {
 		protoDesc = descriptor;
 		List<FieldDescriptor> protoFields = protoDesc.getFields();
-		int i;
+		int i, format;
 		int count = 0;
 		int type;
 
@@ -42,6 +43,7 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		i = 0;
 		for (FieldDescriptor fd : protoFields) {
 			if (! isChild(fd)) {
+				format = 0;
 				type = Type.ftProtoField;
 				if (fd.isRepeated()) {
 					type = Type.ftArrayField;
@@ -49,8 +51,11 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 					type = Type.ftComboItemField;
 				} else if (fd.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.BOOL) {
 					type = Type.ftCheckBoxBoolean;
+				} else if (i == 0 && highlightProto && fd.getName().equalsIgnoreCase("name")) {
+					format = CellFormat.FMT_COLOR;
 				}
-				fields[i++] = new ProtoFieldDef(i, type, "",0, "",fd);
+				//System.out.println(" -- " + i + " " + highlightProto + " " + fd.getName() + " " + format);
+				fields[i++] = new ProtoFieldDef(i, type, "", format, "", fd);
 			}
 		}
 		fieldCount = count;
@@ -154,20 +159,32 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 			}
 		}
 
+//		boolean found;
 		childRecords = new ProtoChildDefinition[count];
 		i = 0;
 		for (FieldDescriptor fd : protoFields) {
 			if (isChild(fd)) {
+//				found =false;
 				for (j = 0; j < layout.getRecordCount(); j++) {
 //					System.out.println(" ==> " + fd.getFullName() + " > "
 //							+ fd.getMessageType().getFullName() + " > "
-//							+ layout.getRecord(j).getProtoDesc().getFullName());
+//							+ layout.getRecord(j).getProtoDesc().getFullName()
+//							+ " " + (fd.getMessageType().equals(layout.getRecord(j).getProtoDesc())));
 					if (fd.getMessageType().equals(layout.getRecord(j).getProtoDesc())) {
+//						System.out.println(" ==> " + fd.getFullName() + " > "
+//								+ fd.getMessageType().getFullName() + " > "
+//								+ layout.getRecord(j).getProtoDesc().getFullName()
+//								+ " " + (fd.getMessageType().equals(layout.getRecord(j).getProtoDesc())));
 						childRecords[i] = new ProtoChildDefinition(fd, layout.getRecord(j), j, i);
+//						found = true;
 						i += 1;
 						break;
 					}
 				}
+//				if (! found) {
+//					System.out.println(" --> " + fd.getFullName() + " > "
+//							+ fd.getMessageType().getFullName());
+//				}
 			}
 		}
 	}

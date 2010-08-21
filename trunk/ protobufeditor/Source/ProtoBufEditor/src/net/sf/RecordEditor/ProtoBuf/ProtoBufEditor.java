@@ -18,17 +18,21 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTabbedPane;
 
 
 import net.sf.JRecord.IO.AbstractLineIOProvider;
+import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
+import net.sf.RecordEditor.ProtoBuf.re.display.ShowProtoAction;
 import net.sf.RecordEditor.edit.EditRec;
 import net.sf.RecordEditor.edit.OpenFile;
 import net.sf.RecordEditor.edit.display.Action.HightlightMissingFields;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
 import net.sf.RecordEditor.editProperties.EditOptions;
+import net.sf.RecordEditor.editProperties.EditPropertiesPanel;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.common.ReActionHandler;
@@ -45,9 +49,27 @@ import net.sf.RecordEditor.utils.edit.ReIOProvider;
 @SuppressWarnings("serial")
 public class ProtoBufEditor extends EditRec {
 
-	private  String[][]  options = {
+	private static final String COMPC_SCREEN_DESC 
+		= "<h1>protoc Run options</h1>"
+		+ "<p>This screen lets you set the protoc Command and its extra options"
+		;
+	private static String[][]  READER_OPTIONS = {
 		{Consts.DEFAULT_PROTO_DEFINITION_READER, "The default Proto reader (standard/compiled) proto files"},
 		{Consts.DEFAULT_PROTO_FILE_STRUCTURE, "The default Proto Message Reader"},
+	};
+
+	private static final String[][] PROTOC_OPTS = new String[ConstClass.NUMBER_OF_PROTOC_OPTIONS + 1][];
+
+	static {
+		PROTOC_OPTS[0] = new String[] {ConstClass.VAR_PROTOBUF_COMPILE, "protoc command", null};
+		
+		for (int i = 0; i < ConstClass.NUMBER_OF_PROTOC_OPTIONS; i++) {
+			PROTOC_OPTS[i+1] = new String[] {
+						ConstClass.VAR_PROTOBUF_COMPILE_OPTS + (i), 
+						"User supplied protoc option " + i,
+						null
+			};
+		}
 	};
 	
 	private String[] loaders = {Consts.COPYBOOK_PROTO, Consts.COPYBOOK_COMPILED_PROTO}; 
@@ -55,6 +77,8 @@ public class ProtoBufEditor extends EditRec {
 			new DefaultComboBoxModel(loaders),
 			new DefaultComboBoxModel(ProtoIOProvider.getNames()),
 	};
+	
+	
     /**
 	 * Creating the File & record selection screen
 	 *
@@ -82,7 +106,7 @@ public class ProtoBufEditor extends EditRec {
         super(false, "Protocol Buffer Editor");
 
         ProtoIOProvider.register();
-        EditOptions.setDefaultDetails(options, models);
+        EditOptions.setDefaultDetails(READER_OPTIONS, models);
         //BaseDisplay.registerTableEditor(ArrayDetails.class, new ArrayRender(), new ArrayTableEditor());
         
         OpenFile open = new OpenFile(pInFile, pInitialRow, pIoProvider,
@@ -120,8 +144,22 @@ public class ProtoBufEditor extends EditRec {
         
         super.getViewMenu().addSeparator();
         super.getViewMenu().add(newAction(ReActionHandler.SHOW_INVALID_ACTIONS));
+        super.getViewMenu().add(addAction(new ShowProtoAction()));
     }
 
+
+	@Override
+	protected void editProperties(boolean includeJdbc, boolean includeWizardOptions) {
+
+		EditOptions editOpts = new EditOptions(false, includeJdbc, includeWizardOptions, false);
+		JTabbedPane protoPane = new JTabbedPane();
+		protoPane.add(
+				"protoc options",				
+				new EditPropertiesPanel(editOpts.getParams(), COMPC_SCREEN_DESC, PROTOC_OPTS)
+		);
+		editOpts.add("ProtoBuf", protoPane);
+		editOpts.displayScreen();
+	}
 
 	/**
 	 * Edit a record oriented file
@@ -131,11 +169,10 @@ public class ProtoBufEditor extends EditRec {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				//JFrame.setDefaultLookAndFeelDecorated(true);
+
 			    ParseArgs args = new ParseArgs(pgmArgs);
 
 			    new ProtoBufEditor(args.getDfltFile(), args.getInitialRow(), ProtoIOProvider.getInstance());
-			        	//new CopyBookDbReader());
 			}
 		});
 	}
