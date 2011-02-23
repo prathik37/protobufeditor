@@ -1,4 +1,4 @@
-#summary reCsvEditor
+#summary Editor for Csv Files
 
 
 = Details =
