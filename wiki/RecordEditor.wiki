@@ -35,3 +35,4 @@ interfaces. Currently there are4 front ends
   # *CobolEditor* - comes as part of the RecordEditor package. It can edit Files using either a Cobol or Xml Copybook (or file Description.
   # *protobufeditor* - For Editing Protocol Buffer binary files
   # *AvroEditor* - For editing Avro Binary serialised files. It is available at [http://avroeditor.sourceforge.net]
+  # *reCsvEditor* - For editing basic Csv Files. It is available at [http://recsveditor.sourceforge.net/]
