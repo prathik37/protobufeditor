@@ -1,0 +1,7 @@
+#summary reCsvEditor
+
+
+= Details =
+
+Editor for basic Csv files which is based on the RecordEditor.
+See http://recsveditor.sourceforge.net/ for more details.
