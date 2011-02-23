@@ -24,7 +24,7 @@ The project is hosted at sourceforge [http://record-editor.sourceforge.net/]
 = RecordEditor Family =
 
 The core part of the *RecordEditor* operates on several Interfaces which include
-*reCsvEditor*
+
   * *AbstractLine*  -  Generic Record or Line from a File
   * *AbstractLayoutDetail* - Generic schema definition
 
@@ -35,4 +35,4 @@ interfaces. Currently there are4 front ends
   # *CobolEditor* - comes as part of the RecordEditor package. It can edit Files using either a Cobol or Xml Copybook (or file Description.
   # *protobufeditor* - For Editing Protocol Buffer binary files
   # *AvroEditor* - For editing Avro Binary serialised files. It is available at [http://avroeditor.sourceforge.net]
-  # *reCsvEditor* - For editing basic Csv Files. It is available at [http://recsveditor.sourceforge.net/]
+  # *[reCsvEditor]* - For editing basic Csv Files. It is available at [http://recsveditor.sourceforge.net/]
