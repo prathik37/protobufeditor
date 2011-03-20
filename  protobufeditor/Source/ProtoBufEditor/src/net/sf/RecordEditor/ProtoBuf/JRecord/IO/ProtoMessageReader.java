@@ -24,6 +24,7 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 			throws IOException, RecordException {
 		
 		InputStream in = new BufferedInputStream(inputStream, Consts.IO_BUFFER_SIZE);
+		super.setLayout(layout);
 		
 		if (in.available() <= 0) {
 			data = null;

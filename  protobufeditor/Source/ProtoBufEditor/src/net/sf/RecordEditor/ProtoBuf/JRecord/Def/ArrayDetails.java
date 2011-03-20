@@ -10,8 +10,8 @@ import javax.swing.table.TableCellRenderer;
 
 import net.sf.JRecord.Details.AbstractLine;
 import  net.sf.RecordEditor.edit.display.array.ArrayInterface;
-import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.swing.CheckBoxTableRender;
+import net.sf.RecordEditor.utils.swing.SwingUtils;
 import net.sf.RecordEditor.utils.swing.Combo.ComboItemEditor;
 import net.sf.RecordEditor.utils.swing.Combo.ComboItemRender;
 
@@ -298,7 +298,7 @@ public class ArrayDetails implements ArrayInterface {
     public  int getFieldHeight() {
     	int ret = - 1;
        	switch (fieldDesc.getType()) {
-    	case ENUM: ret = Common.COMBO_TABLE_ROW_HEIGHT; 	break;
+    	case ENUM: ret = SwingUtils.COMBO_TABLE_ROW_HEIGHT; 	break;
     	//case BOOL: ret = new DefaultCellEditor(new CheckBoxTableRender());	break;
     	}
     	return ret;

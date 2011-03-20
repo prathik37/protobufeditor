@@ -19,7 +19,8 @@ import net.sf.JRecord.Details.FieldValue;
 import net.sf.JRecord.Details.LineProvider;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.utils.common.Common;
-import net.sf.RecordEditor.utils.swing.ColorItem;
+import net.sf.RecordEditor.utils.swing.Combo.ColorItem;
+
 
 
 /**
@@ -517,4 +518,14 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	public boolean isError() {
 		return ! getBuilder().isInitialized();
 	}
+
+	/**
+	 * @see net.sf.JRecord.Details.AbstractLine#getNewDataLine()
+	 */
+	@Override
+	public ProtoLine getNewDataLine() {
+		return clone();
+	}
+	
+	
 }

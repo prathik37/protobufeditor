@@ -2,8 +2,6 @@ package net.sf.RecordEditor.ProtoBuf;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FileDescriptor;
@@ -18,6 +16,8 @@ import net.sf.RecordEditor.edit.display.LineList;
 import net.sf.RecordEditor.edit.display.LineTree;
 import net.sf.RecordEditor.edit.display.LineTreeChild;
 import net.sf.RecordEditor.edit.file.FileView;
+import net.sf.RecordEditor.edit.file.storage.DataStore;
+import net.sf.RecordEditor.edit.file.storage.DataStoreStd;
 import net.sf.RecordEditor.edit.tree.LineNodeChild;
 import net.sf.RecordEditor.edit.tree.TreeParserXml;
 import net.sf.RecordEditor.utils.edit.ParseArgs;
@@ -54,13 +54,13 @@ public class PackageInterface {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 
-			    ArrayList<AbstractLine<ProtoLayoutDef>> lines 
-			    		= new ArrayList<AbstractLine<ProtoLayoutDef>>(1);
-			    ProtoLayoutDef layout
+				ProtoLayoutDef layout
 			    		= new ProtoLayoutDef(
 			    					builder.getDescriptorForType().getFile(), 
 			    					Constants.IO_PROTO_SINGLE_MESSAGE);
-			    int index = Math.max(0, layout.getRecordIndex(builder.getDescriptorForType().getName()));
+			    DataStoreStd<AbstractLine<ProtoLayoutDef>> lines 
+			    		= new DataStoreStd<AbstractLine<ProtoLayoutDef>>(layout, 1);
+				    int index = Math.max(0, layout.getRecordIndex(builder.getDescriptorForType().getName()));
 			    
 			    layout.setPrimaryMessageIndex(index);
 			    lines.add(new ProtoLine(layout, builder));
@@ -78,12 +78,12 @@ public class PackageInterface {
 
 				try {
 				    byte[] bytes;
-				    ArrayList<AbstractLine<ProtoLayoutDef>> lines 
-				    		= new ArrayList<AbstractLine<ProtoLayoutDef>>(1);
 				    ProtoLayoutDef layout
 				    		= new ProtoLayoutDef(
 				    					fileDescrtiption, 
 				    					Constants.IO_PROTO_DELIMITED);
+					    DataStoreStd<AbstractLine<ProtoLayoutDef>> lines 
+				    		= new DataStoreStd<AbstractLine<ProtoLayoutDef>>(layout, 1);
 					ProtoDelimitedByteReader reader = new ProtoDelimitedByteReader();
 					reader.open(in);
 	
@@ -105,12 +105,12 @@ public class PackageInterface {
 
 	}
 	
-	private static void processFile(List<AbstractLine<ProtoLayoutDef>> lines,
+	private static void processFile(DataStore<AbstractLine<ProtoLayoutDef>> lines,
 			ProtoLayoutDef layoutDtls,
 			boolean pBrowse)  {
 		
 		ParseArgs args = new ParseArgs(NULL_ARGS);
-		FileView<ProtoLayoutDef> file = new FileView<ProtoLayoutDef>(lines, null, null, false);
+		FileView file = new FileView(lines, null, null, false);
 		
 	    new ProtoBufEditor(args.getDfltFile(), args.getInitialRow(), ProtoIOProvider.getInstance());
 	

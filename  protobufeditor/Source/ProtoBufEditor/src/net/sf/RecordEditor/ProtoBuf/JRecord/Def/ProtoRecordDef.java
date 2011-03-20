@@ -118,7 +118,9 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		return Constants.rtProtoRecord;
 	}
 
-	@Override
+	//TODO Remove this method
+	@Deprecated
+	//@Override
 	public ProtoFieldDef getSelectionField() {
 		return null;
 	}
