@@ -1,14 +1,15 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 		click('Filter')
 		click('Uncheck Records')
 		select('Table', 'cell:Include,4(false)')
-		click('Filter')
+		click('Filter1')
 		select('Table', 'cell:2|name,1(Store: 59)')
 		assert_p('Table', 'Content', '[[20, Store: 20], [59, Store: 59], [166, Store: 166], [184, Store: 184]]')
 		select('Table', '5911', '1|store,1')

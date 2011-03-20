@@ -1,5 +1,5 @@
 useFixture(default)
-
+## Check
 def test():
 	from Modules import commonBits
 	java_recorded_version = '1.5.0_11'
@@ -10,7 +10,7 @@ def test():
 		click('Choose File')
 
 		if window('Open'):
-			select(commonBits.selectPane(), 'Ams_LocDownload_20041228.bin')
+			select(commonBits.selectPane(), 'ams_locdownload_20041228.bin')
 			click('Open')
 		close()
 

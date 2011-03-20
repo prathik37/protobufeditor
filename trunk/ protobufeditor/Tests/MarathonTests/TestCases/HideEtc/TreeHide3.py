@@ -5,7 +5,7 @@ def test():
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', commonBits.sampleDir() +  'protostoresales3.bin')
+		select('FileChooser', commonBits.sampleDir() +  'protoStoreSales3.bin')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,0')

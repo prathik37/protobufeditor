@@ -9,7 +9,7 @@ def test():
 ##		select('FileChooser1', r'C:\Program Files\RecordEdit\ProtoBuf/CopyBook/sales.protocomp')
 ##		select('ComboBox1', 'Compiled Proto')
 
-##		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/zzCreateSales.bin')
+##		select('FileChooser', commonBits.sampleDir() + 'zzCreateSales.bin')
 		select('FileChooser', commonBits.sampleDir() + 'zzCreateSales3xx.bin')
 		select('FileChooser1', commonBits.stdCopybookDir() +'StoreSales3.protocomp')
 		select('ComboBox1', 'Compiled Proto')
@@ -23,7 +23,7 @@ def test():
 		assert_p('JTreeTable', 'Content', '[[, , 11, 22]]')
 ##		select_menu('File>>Compare with Disk')
 		select('JTreeTable', 'cell:store,0(11)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			click('OK')
@@ -34,7 +34,7 @@ def test():
 		select('Table', '321', 'Data,0')
 		select('Table', 'Dept 321', 'Data,1')
 		select('Table', 'cell:Data,0(321)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			click('OK')

@@ -8,7 +8,7 @@ def test():
 		click('Choose File')
 
 		if window('Open'):
-			select(commonBits.selectPane(), 'Ams_LocDownload_20041228.bin')
+			select(commonBits.selectPane(), 'ams_locdownload_20041228.bin')
 			click('Open')
 		close()
 
@@ -25,14 +25,14 @@ def test():
 		select('Table', 'cell:Data,3(VIC West Ad Support)')
 		click('Find1')
 		click('Find1')
-		click('Find1')
+##		click('Find1')
 		select('Table', 'cell:Data,4(Westfield Shoppingtown)')
 		select('Table', 'cell:Data,4(Westfield Shoppingtown)')
 		assert_p('Table', 'Text', 'Westfield Shoppingtown', 'Data,4')
 		select('Table', 'cell:Data,4(Westfield Shoppingtown)')
 		click('Find1')
 		click('Find1')
-		click('Find1')
+##		click('Find1')
 		select('Table', 'cell:Data,4(Westfield Phoenix Plaza)')
 		select('Table', 'cell:Data,4(Westfield Phoenix Plaza)')
 		assert_p('Table', 'Text', 'Westfield Phoenix Plaza', 'Data,4')

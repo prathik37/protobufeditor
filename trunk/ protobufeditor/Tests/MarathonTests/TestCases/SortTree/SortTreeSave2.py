@@ -9,10 +9,10 @@ def test():
 
 		click('Edit1')
 		select_menu('View>>Sorted Field Tree')
-		select('List', 'sale')
-		select('List', 'sale')
+		#select('List', 'sale')
+		#select('List', 'sale')
 		select('Table', 'cell:Field,0( )')
-		select('List', 'sale')
+		#select('List', 'sale')
 		select('Table', 'department', 'Field,0')
 		select('Table', 'saleDate', 'Field,1')
 		select('Table', 'cell:Field,1(date)')
@@ -24,7 +24,10 @@ def test():
 		select('Table1', 'Sum', 'Function,5')
 		select('Table1', 'cell:Function,5(Sum)')
 		click('Save1')
-		select('FileChooser', commonBits.userDir() +  'SortTree'  + commonBits.fileSep() + 'xx2')
+		##select('FileChooser', commonBits.userDir() +  'SortTree'  + commonBits.fileSep() + 'xx2')
+		commonBits.selectFileName(select, commonBits.userDir() +  'SortTree'  + commonBits.fileSep() + 'xx2')
+
+
 		click('Save1')
 		select_menu('Window>>protoSales.bin>>Create Sorted Tree')
 		click('Build Tree')
@@ -53,7 +56,9 @@ def test():
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		select_menu('Window>>protoSales.bin>>Table: ')
 		select_menu('View>>Execute Sort Tree')
-		select('FileChooser', commonBits.userDir() +  'SortTree'  + commonBits.fileSep() + 'xx2')
+		##select('FileChooser', commonBits.userDir() +  'SortTree'  + commonBits.fileSep() + 'xx2')
+		commonBits.selectFileName(select, commonBits.userDir() +  'SortTree'  + commonBits.fileSep() + 'xx2')
+
 		click('Run')
 		select('JTreeTable', 'cell:price,1(166940)')
 		assert_p('JTreeTable', 'Text', '166940', 'price,1')

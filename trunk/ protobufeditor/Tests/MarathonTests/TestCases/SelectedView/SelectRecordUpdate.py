@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,1')
@@ -48,7 +49,7 @@ def test():
 		select_menu('File>>Compare with Disk')
 		assert_p('TextPane', 'Text', 'Files are Identical !!!')
 
-#		if window('Save Changes to file: /C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3b.bin'):
+#		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3b.bin'):
 #			click('No')
 #		close()
 	close()

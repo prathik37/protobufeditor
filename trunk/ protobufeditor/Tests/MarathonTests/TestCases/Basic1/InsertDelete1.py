@@ -1,13 +1,14 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3b.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3b.bin')
 		click('Edit1')
 		select('JTreeTable', 'cell:Tree,3(null)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			assert_p('OptionPane.comboBox', 'Content', '[[department, order, Store]]')
@@ -20,7 +21,7 @@ def test():
 		assert_p('Table', 'Content', '[[store, 1, , 1234, 1234], [name, 2, , , ]]')
 		select('Table', 'n 1234', 'Data,1')
 		select('Table', 'cell:Data,0(1234)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			click('OK')
@@ -29,7 +30,7 @@ def test():
 		select('Table', '456', 'Data,0')
 		select('Table', 'n 456', 'Data,1')
 		select('Table', 'cell:Data,0(456)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			click('OK')
@@ -43,9 +44,9 @@ def test():
 		select('Table', 'cell:Data,2(11)')
 		select_menu('File>>Compare with Disk')
 #		select('Table1', 'cell:Data,2(11)')
-		select('Table', 'cell:saleDate,3(n 456)')
+		select('Table', 'cell:' + commonBits.secondField() + ',3(n 456)')
 		assert_p('Table', 'Content', '[[, , , , , , ], [, Inserted, 856, 1234, n 1234, , ], [, , , , , , ], [, Inserted, 857, 456, n 456, , ], [, , , , , , ], [, Inserted, 858, 123, 11, 11, 22233]]')
-		select('Table', 'cell:saleDate,3(n 456)')
+		select('Table', 'cell:' + commonBits.secondField() + ',3(n 456)')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		select('Table', 'cell:Data,2(11)')
 		select('Table', 'cell:Data,2(11)')
@@ -93,10 +94,10 @@ def test():
 		rightclick('JTreeTable', 'Tree,4')
 		select_menu('Delete Record#{s#}')
 		select_menu('File>>Compare with Disk')
-		select('Table', 'cell:keycode,2(456)')
+		select('Table', 'cell:' + commonBits.firstField() + ',2(456)')
 		assert_p('Table', 'Content', '[[, Deleted, 856, 1234, n 1234, , ], [, , , , , , ], [, Deleted, 857, 456, n 456, , ], [, , , , , , ], [, Deleted, 858, 123, 11, 11, 22233], [, , , , , , ]]')
 		assert_p('Table', 'Content', '[[, Deleted, 856, 1234, n 1234, , ], [, , , , , , ], [, Deleted, 857, 456, n 456, , ], [, , , , , , ], [, Deleted, 858, 123, 11, 11, 22233], [, , , , , , ]]')
-		select('Table', 'cell:keycode,2(456)')
+		select('Table', 'cell:' + commonBits.firstField() + ',2(456)')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		select_menu('Window>>protoStoreSales3b.bin>>Tree View')
 		click('Save1')

@@ -5,8 +5,8 @@ def test():
 	java_recorded_version = '1.6.0_03'
 
 	if window('Protocol Buffer Editor'):
-
 		select('FileChooser',  commonBits.sampleDir() + 'Ams_LocDownload_20041228.bin')
+		select('FileChooser1', commonBits.stdCopybookDir() + 'Ams_Location.protocomp')
 
 		click('Edit1')
 		select('Table', 'rows:[0,1,2,3,4,5,6,7],columns:[2|Loc_Nbr,3|Loc_Type,4|Loc_Name]')

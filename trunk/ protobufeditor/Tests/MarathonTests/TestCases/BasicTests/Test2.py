@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		##assert_p('FileChooser1', 'Text', r'C:\Program Files\RecordEdit\ProtoBuf/CopyBook/StoreSales3.protocomp')
 		##select('ComboBox3', 'Store')
 		click('Edit1')

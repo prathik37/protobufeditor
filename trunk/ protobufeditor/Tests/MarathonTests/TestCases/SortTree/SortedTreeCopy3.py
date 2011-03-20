@@ -9,7 +9,7 @@ def test():
 		select('FileChooser', commonBits.sampleDir() + 'protoSales.bin')
 		click('Edit1')
 		select_menu('View>>Sorted Field Tree')
-		select('List', 'sale')
+		#select('List', 'sale')
 		select('Table', 'store', 'Field,0')
 		select('Table', 'department', 'Field,1')
 		select('Table', 'cell:Field,1(department)')

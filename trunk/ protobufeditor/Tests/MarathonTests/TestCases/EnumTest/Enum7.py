@@ -5,7 +5,10 @@ def test():
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', commonBits.sampleDir() +  'protosales11.bin')
+		select('FileChooser', commonBits.sampleDir() +  'protoSales11.bin')
+		select('ComboBox1', 'Compiled Proto')
+		select('FileChooser1', commonBits.stdCopybookDir() + 'Sales11.protocomp')
+		select('ComboBox1', 'Compiled Proto')
 		click('Edit1')
 		select('Table', 'rows:[1,2,3,4,5,6,7,8],columns:[4|saleDate,5|quantity]')
 		select_menu('View>>Table View #{Selected Records#}')

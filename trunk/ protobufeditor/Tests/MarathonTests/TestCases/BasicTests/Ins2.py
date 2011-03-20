@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,1')
@@ -28,7 +29,7 @@ def test():
 		select('JTreeTable', 'cell:Tree,3(null)')
 		assert_p('JTreeTable', 'Content', '[[, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , 61664713, 40118, 1, 17990], [, , 61664713, 40118, -1, -17990], [, , 61684613, 40118, 1, 12990], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ]]')
 		select('JTreeTable', 'cell:Tree,3(null)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			assert_p('OptionPane.comboBox', 'Content', '[[product, department]]')
@@ -41,7 +42,7 @@ def test():
 		select('Table', '11234', 'Data,3')
 		select('Table', 'cell:Data,2(89)')
 		assert_p('Table', 'Content', '[[keycode, 1, , 345, 345], [saleDate, 2, , 678, 678], [quantity, 3, , 89, 89], [price, 4, , 11234, 11234]]')
-		click('New1')
+		click('New')
 		select('Table', '987', 'Data,0')
 		select('Table', '876', 'Data,1')
 		select('Table', '654', 'Data,2')
@@ -52,16 +53,20 @@ def test():
 		select('Table', 'cell:Line No,1()')
 		select('Table', 'cell:Line No,1()')
 ##		assert_p('Table', 'Content', '[[, Deleted, 38, 987, 876, 654, 4321], [, , , , , , ], [, Deleted, 39, 345, 678, 89, 11234], [, , , , , , ]]')
-		assert_p('Table', 'Content', '[[, , , , , , ], [, Inserted, 38, 987, 876, 654, 4321], [, , , , , , ], [, Inserted, 39, 345, 678, 89, 11234]]')
+##		assert_p('Table', 'Content', '[[, , , , , , ], [, Inserted, 38, 987, 876, 654, 4321], [, , , , , , ], [, Inserted, 39, 345, 678, 89, 11234]]')
+
+		assert_p('Table', 'Content', '[[, , , , , , ], [, Inserted, 38, 345, 678, 89, 11234], [, , , , , , ], [, Inserted, 39, 987, 876, 654, 4321]]')
 
 		select('Table', 'cell:Line No,1()')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		select_menu('Window>>protoStoreSales3.bin>>Tree View')
 		select('JTreeTable', 'cell:keycode,6(61664713)')
-		assert_p('JTreeTable', 'Content', '[[, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , 61664713, 40118, 1, 17990], [, , 61664713, 40118, -1, -17990], [, , 61684613, 40118, 1, 12990], [, , 987, 876, 654, 4321], [, , 345, 678, 89, 11234], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ]]')
+##		assert_p('JTreeTable', 'Content', '[[, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , 61664713, 40118, 1, 17990], [, , 61664713, 40118, -1, -17990], [, , 61684613, 40118, 1, 12990], [, , 987, 876, 654, 4321], [, , 345, 678, 89, 11234], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ]]')
+		assert_p('JTreeTable', 'Content', '[[, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , 61664713, 40118, 1, 17990], [, , 61664713, 40118, -1, -17990], [, , 61684613, 40118, 1, 12990], [, , 345, 678, 89, 11234], [, , 987, 876, 654, 4321], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ]]')
+
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 
-		if window('Save Changes to file: /C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin'):
+		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3.bin'):
 			click('No')
 		close()
 

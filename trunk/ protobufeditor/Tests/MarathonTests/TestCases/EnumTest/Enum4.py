@@ -1,3 +1,4 @@
+	from Modules import commonBits
 useFixture(default)
 
 def test():
