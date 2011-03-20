@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3a.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3a.bin')
 		click('Edit1')
 		select('JTreeTable', 'cell:Tree,3(null)')
 		rightclick('JTreeTable', 'Tree,3')

@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,1')
@@ -44,7 +45,7 @@ def test():
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 
-##		if window('Save Changes to file: /C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin'):
+##		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3.bin'):
 ##			click('No')
 ##		close()
 	close()

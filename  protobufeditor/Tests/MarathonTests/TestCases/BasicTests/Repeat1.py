@@ -1,9 +1,10 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,1')
@@ -71,15 +72,18 @@ def test():
 		select('Table', 'cell:Data,1(8990)')
 		assert_p('Table', 'Content', '[[quantity, 1, , 1, 1], [price, 2, , 8990, 8990], [count, 3, , 1, 1]]')
 		select_menu('File>>Compare with Disk')
-		select('Table', 'cell:keycode,0(410)')
+
+##		select('LayoutCombo', 'Product')
+
+		select('Table', 'cell:' + commonBits.firstField() + ',0(410)')
 ##		assert_p('Table', 'Content', '[[, Deleted, 42, 410, Department: 410, , ], [, , , , , , ], [, Deleted, 43, 68634752, 40118, 1, 8990], [, , , , , , ], [, Deleted, 44, 1, 8990, 1, ], [, , , , , , ]]')
 		assert_p('Table', 'Content', '[[, , , , , , ], [, Inserted, 42, 410, Department: 410, , ], [, , , , , , ], [, Inserted, 43, 68634752, 40118, 1, 8990], [, , , , , , ], [, Inserted, 44, 1, 8990, 1, ]]')
 
-		select('Table', 'cell:keycode,0(410)')
+		select('Table', 'cell:' + commonBits.firstField() + ',0(410)')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 
-##		if window('Save Changes to file: /C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin'):
+##		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3.bin'):
 ##			click('No')
 ##		close()
 	close()

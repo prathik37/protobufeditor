@@ -10,7 +10,7 @@ def test():
 	if window('Protocol Buffer Editor'):
 		select('FileChooser', commonBits.sampleDir() + 'zXcStore.bin')
 		select('FileChooser1', commonBits.stdCopybookDir() + 'sales.protocomp')
-		select('ComboBox', 'ProtoBuffer Delimited Messages')
+		select('ComboBox', 'Delimited Messages')
 		select('ComboBox1', 'Compiled Proto')
 
 
@@ -29,7 +29,7 @@ def test():
 		assert_p('Table', 'Content', '[[keycode, 1, , 1111, 1111], [store, 2, , 222, 222], [department, 3, , 3333, 3333], [saleDate, 4, , 445566, 445566], [quantity, 5, , 1, 1], [price, 6, , 11000, 11000]]')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		assert_p('Table', 'Content', '[[1111, 222, 3333, 445566, 1, 11000]]')
-		click('New1')
+		click('New')
 		select('Table', '1212', 'Data,0')
 		select('Table', '12', 'Data,1')
 		select('Table', '12', 'Data,2')

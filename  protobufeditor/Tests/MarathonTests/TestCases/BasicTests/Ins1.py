@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 		rightclick('JTreeTable', 'Tree,1')
 		select_menu('Expand Tree')
@@ -21,7 +22,7 @@ def test():
 		select('Table', 'cell:Data,0(335)')
 		select('Table', 'cell:Data,0(335)')
 		assert_p('Table', 'Content', '[[department, 1, , 335, 335], [name, 2, , Department: 335, Department: 335]]')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			assert_p('OptionPane.comboBox', 'Text', 'product')
@@ -43,7 +44,7 @@ def test():
 		assert_p('Table', 'Content', '[[keycode, 1, , 123, 123], [saleDate, 2, , 456, 456], [quantity, 3, , 789, 789], [price, 4, , 6780, 6780]]')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 
-##		if window('Save Changes to file: /C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin'):
+##		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3.bin'):
 ##			click('No')
 ##		close()
 	close()

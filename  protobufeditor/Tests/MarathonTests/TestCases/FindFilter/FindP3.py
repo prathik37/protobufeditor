@@ -1,10 +1,11 @@
 useFixture(default)
 
 def test():
+	from Modules import commonBits
 	java_recorded_version = '1.6.0_17'
 
 	if window('Protocol Buffer Editor'):
-		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin')
+		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,2')
@@ -23,7 +24,7 @@ def test():
 ##		click('MetalInternalFrameTitlePane', 196, 16)
 
 
-		click('Find1')
+		##click('Find1')
 		select('ComboBox', 'All Fields')
 		click('Find1')
 
@@ -49,7 +50,7 @@ def test():
 		select('Table', 'cell:Data,0(61664713)')
 		assert_p('Table', 'Content', '[[keycode, 1, , 61664713, 61664713], [saleDate, 2, , 40118, 40118], [quantity, 3, , 1, 1], [price, 4, , 17990, 17990]]')
 
-#		if window('Save Changes to file: /C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3.bin'):
+#		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3.bin'):
 #			click('No')
 #		close()
 	close()

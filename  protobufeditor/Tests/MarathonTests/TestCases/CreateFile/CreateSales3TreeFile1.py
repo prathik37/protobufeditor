@@ -21,7 +21,7 @@ def test():
 		select('LayoutCombo', 'Store')
 		assert_p('JTreeTable', 'Content', '[[, , 11, name 11]]')
 		select('JTreeTable', 'cell:Tree,0(null)')
-		click('New1')
+		click('New')
 
 		if window('Record Selection'):
 			click('OK')
