@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JEditorPane;
 import javax.swing.JTabbedPane;
 
 
@@ -28,16 +29,19 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
 import net.sf.RecordEditor.ProtoBuf.re.display.ShowProtoAction;
 import net.sf.RecordEditor.edit.EditRec;
-import net.sf.RecordEditor.edit.OpenFile;
+
 import net.sf.RecordEditor.edit.display.Action.HightlightMissingFields;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
+import net.sf.RecordEditor.edit.open.OpenFile;
 import net.sf.RecordEditor.editProperties.EditOptions;
-import net.sf.RecordEditor.editProperties.EditPropertiesPanel;
+import net.sf.RecordEditor.editProperties.EditPropertiesPnl;
+
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.common.ReActionHandler;
 import net.sf.RecordEditor.utils.edit.ParseArgs;
 import net.sf.RecordEditor.utils.edit.ReIOProvider;
+import net.sf.RecordEditor.utils.screenManager.ReFrame;
 
 
 /**
@@ -58,15 +62,17 @@ public class ProtoBufEditor extends EditRec {
 		{Consts.DEFAULT_PROTO_FILE_STRUCTURE, "The default Proto Message Reader"},
 	};
 
-	private static final String[][] PROTOC_OPTS = new String[ConstClass.NUMBER_OF_PROTOC_OPTIONS + 1][];
+	private static final Object[][] PROTOC_OPTS = new Object[ConstClass.NUMBER_OF_PROTOC_OPTIONS + 1][];
 
 	static {
-		PROTOC_OPTS[0] = new String[] {ConstClass.VAR_PROTOBUF_COMPILE, "protoc command", null};
+		PROTOC_OPTS[0] = new Object[] {ConstClass.VAR_PROTOBUF_COMPILE, "protoc command", null, EditPropertiesPnl.FLD_TEXT, null};
 		
 		for (int i = 0; i < ConstClass.NUMBER_OF_PROTOC_OPTIONS; i++) {
-			PROTOC_OPTS[i+1] = new String[] {
+			PROTOC_OPTS[i+1] = new Object[] {
 						ConstClass.VAR_PROTOBUF_COMPILE_OPTS + (i), 
 						"User supplied protoc option " + i,
+						null,
+						EditPropertiesPnl.FLD_TEXT,
 						null
 			};
 		}
@@ -103,7 +109,7 @@ public class ProtoBufEditor extends EditRec {
     public ProtoBufEditor(final String pInFile,
      	   final int pInitialRow,
     	   final AbstractLineIOProvider pIoProvider) {
-        super(false, "Protocol Buffer Editor");
+        super(false, "Protocol Buffer Editor", null);
 
         ProtoIOProvider.register();
         EditOptions.setDefaultDetails(READER_OPTIONS, models);
@@ -155,12 +161,30 @@ public class ProtoBufEditor extends EditRec {
 		JTabbedPane protoPane = new JTabbedPane();
 		protoPane.add(
 				"protoc options",				
-				new EditPropertiesPanel(editOpts.getParams(), COMPC_SCREEN_DESC, PROTOC_OPTS)
+				new EditPropertiesPnl(editOpts.getParams(), COMPC_SCREEN_DESC, PROTOC_OPTS)
 		);
 		editOpts.add("ProtoBuf", protoPane);
 		editOpts.displayScreen();
 	}
 
+	@Override
+	protected void showAbout() {
+		ReFrame aboutFrame = new ReFrame("About", null, null);
+		JEditorPane aboutText = new JEditorPane("text/html",
+				"The <b>Protocol Buffers Editor</b> is an editor for Protocol Buffers binary "
+			  + "data files. It is built on top of the <b>RecordEditor</b><br><br><pre>"
+			  +	" <br><b>Author:</b><br><br> "
+			  + "\t<b>Bruce Martin</b>: Main author<br><br>"
+			  + " <b>Websites:</b><br><br> " 
+			  + "\t<b>RecordEditor          :</b> http://record-editor.sourceforge.net<br>"
+			  + "\t<b>Protocol buffer Editor:</b> http://code.google.com/p/protobufeditor/"		  
+			  + "</pre><br>"
+		);
+		
+		aboutFrame.getContentPane().add(aboutText);
+		aboutFrame.pack();
+		aboutFrame.setVisible(true);
+	}
 	/**
 	 * Edit a record oriented file
 	 * @param pgmArgs program arguments

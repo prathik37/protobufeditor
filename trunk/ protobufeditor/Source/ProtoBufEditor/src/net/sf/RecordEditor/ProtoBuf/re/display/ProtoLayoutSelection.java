@@ -28,6 +28,7 @@ import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
+import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
@@ -124,33 +125,33 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 			JButton layoutCreate1, JButton layoutCreate2, FileChooser layoutFile) {
   	    setupFields();
 
- 	    protoDefinitionFile.setText(Common.DEFAULT_COPYBOOK_DIRECTORY);
+ 	    protoDefinitionFile.setText(Common.OPTIONS.DEFAULT_COPYBOOK_DIRECTORY.get());
  	    protoImportDir.setText(Parameters.getString(ConstClass.VAR_PROTO_IMBED_DIR));
  	   
 
 	    if (layoutFile != null)  {
 	    	protoDefinitionFile = layoutFile;
 	    	
-		    pnl.addComponent("Output File Structure", fileStructure);
+		    pnl.addLine("Output File Structure", fileStructure);
 	    } else {
-		    pnl.addComponent("File Structure", fileStructure);
+		    pnl.addLine("File Structure", fileStructure);
 		    
 		    //loaderOptions.setSelectedIndex(0);
-	    	pnl.addComponent("Type of Definition", loaderOptions);
+	    	pnl.addLine("Type of Definition", loaderOptions);
 	    	//pnl.addComponent("Split Copybook", splitOption);
 	    	
 	    	pnl.setGap(BasePanel.GAP0);
-			pnl.addComponent("Proto Definition", protoDefinitionFile, protoDefinitionFile.getChooseFileButton());
-			pnl.addComponent("Proto Import Directory", protoImportDir, protoImportDir.getChooseFileButton());
+			pnl.addLine("Proto Definition", protoDefinitionFile, protoDefinitionFile.getChooseFileButton());
+			pnl.addLine("Proto Import Directory", protoImportDir, protoImportDir.getChooseFileButton());
 		    pnl.setGap(BasePanel.GAP0);
 		    
 //		    pnl.addComponent("Numeric Format", numericFormat);
 	    
-		    pnl.addComponent("Proto File", protoFile);
-		    pnl.addComponent("Primary Message", messageName);
+		    pnl.addLine("Proto File", protoFile);
+		    pnl.addLine("Primary Message", messageName);
 //		    pnl.addComponent("Quote", quote);
 		    pnl.setGap(BasePanel.GAP1);
-			pnl.addComponent("", null, goPanel);
+			pnl.addLine("", null, goPanel);
 			if (goPanel != null) {
 				pnl.setHeight(Math.max(BasePanel.NORMAL_HEIGHT * 3, goPanel.getPreferredSize().getHeight()));
 			}
@@ -609,8 +610,8 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	private void setupFields() {
 
 		if (loaderOptions == null) {
-			protoDefinitionFile   = new FileChooser("Choose Layout");
-			protoImportDir = new FileChooser("Imbed Directory");
+			protoDefinitionFile   = new FileChooser(true, "Choose Layout");
+			protoImportDir = new FileChooser(true, "Imbed Directory");
 			protoImportDir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			
      		fileStructure = new JComboBox(ConstClass.getStructureOptions());
@@ -705,7 +706,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	 */
 	@Override
 	public String formatLayoutName(String layoutName) {
-		return Common.DEFAULT_COPYBOOK_DIRECTORY + layoutName;
+		return Common.OPTIONS.DEFAULT_COPYBOOK_DIRECTORY.get() + layoutName;
 	}
 
 
