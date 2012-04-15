@@ -28,7 +28,6 @@ import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
-import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
@@ -37,9 +36,9 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoSelfDescribingReader;
+import net.sf.RecordEditor.re.openFile.AbstractLayoutSelection;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.common.Parameters;
-import net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection;
 import net.sf.RecordEditor.utils.swing.BasePanel;
 import net.sf.RecordEditor.utils.swing.FileChooser;
 import net.sf.RecordEditor.utils.swing.Combo.ComboOption;
@@ -669,7 +668,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 
 	/**
-	 * @see net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection#getDataBaseNames()
+	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#getDataBaseNames()
 	 */
 	@Override
 	public String[] getDataBaseNames() {
@@ -678,7 +677,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 
 	/**
-	 * @see net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection#setDatabaseIdx(int)
+	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#setDatabaseIdx(int)
 	 */
 	@Override
 	public void setDatabaseIdx(int idx) {
@@ -686,7 +685,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	}
 
 	/**
-	 * @see net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection#getDatabaseIdx()
+	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#getDatabaseIdx()
 	 */
 	@Override
 	public int getDatabaseIdx() {
@@ -694,7 +693,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	}
 
 	/**
-	 * @see net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection#getDatabaseName()
+	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#getDatabaseName()
 	 */
 	@Override
 	public String getDatabaseName() {
@@ -702,7 +701,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	}
 
 	/**
-	 * @see net.sf.RecordEditor.utils.openFile.AbstractLayoutSelection#formatLayoutName(java.lang.String)
+	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#formatLayoutName(java.lang.String)
 	 */
 	@Override
 	public String formatLayoutName(String layoutName) {
@@ -715,5 +714,14 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	 */
 	public final FileChooser getCopybookFile() {
 		return protoDefinitionFile;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#isFileBasedLayout()
+	 */
+	@Override
+	public boolean isFileBasedLayout() {
+		return true;
 	}
 }

@@ -3,29 +3,59 @@
 
 package net.sf.RecordEditor.ProtoBuf.re.Test.SalesX;
 
-/*
- *                 Warning           Warning        Warning      Warning 
- *                *------------------------------------------------------------*
- * 
- * This was generated using Protocol Buffers 2.3.0 There will be errors if
- * using other version of Protocol Buffers.
- * 
- * You can regenerate from the proto file in the copybook directory
- * 
- * Note: This package comes with the protocol buffers 2.2.0 Jar file
- * 
- */
-
 public final class StoreSales7 {
   private StoreSales7() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface ProductOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 keycode = 1;
+    boolean hasKeycode();
+    int getKeycode();
+    
+    // repeated int32 saleDate = 2;
+    java.util.List<java.lang.Integer> getSaleDateList();
+    int getSaleDateCount();
+    int getSaleDate(int index);
+    
+    // repeated int32 quantity = 3;
+    java.util.List<java.lang.Integer> getQuantityList();
+    int getQuantityCount();
+    int getQuantity(int index);
+    
+    // repeated int64 price = 4;
+    java.util.List<java.lang.Long> getPriceList();
+    int getPriceCount();
+    long getPrice(int index);
+    
+    // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product.SaleType saleType = 5;
+    java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> getSaleTypeList();
+    int getSaleTypeCount();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType getSaleType(int index);
+    
+    // repeated float priceFloat = 6;
+    java.util.List<java.lang.Float> getPriceFloatList();
+    int getPriceFloatCount();
+    float getPriceFloat(int index);
+    
+    // repeated double priceDouble = 7;
+    java.util.List<java.lang.Double> getPriceDoubleList();
+    int getPriceDoubleCount();
+    double getPriceDouble(int index);
+    
+    // repeated string strArray = 21;
+    java.util.List<String> getStrArrayList();
+    int getStrArrayCount();
+    String getStrArray(int index);
+  }
   public static final class Product extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements ProductOrBuilder {
     // Use Product.newBuilder() to construct.
-    private Product() {
-      initFields();
+    private Product(Builder builder) {
+      super(builder);
     }
     private Product(boolean noInit) {}
     
@@ -55,6 +85,10 @@ public final class StoreSales7 {
       SALE(2, 1),
       ;
       
+      public static final int RETURN_VALUE = -1;
+      public static final int OTHER_VALUE = 0;
+      public static final int SALE_VALUE = 1;
+      
       
       public final int getNumber() { return value; }
       
@@ -75,8 +109,8 @@ public final class StoreSales7 {
           internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<SaleType>() {
               public SaleType findValueByNumber(int number) {
-                return SaleType.valueOf(number)
-      ;        }
+                return SaleType.valueOf(number);
+              }
             };
       
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -95,6 +129,7 @@ public final class StoreSales7 {
       private static final SaleType[] VALUES = {
         RETURN, OTHER, SALE, 
       };
+      
       public static SaleType valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
@@ -103,144 +138,175 @@ public final class StoreSales7 {
         }
         return VALUES[desc.getIndex()];
       }
+      
       private final int index;
       private final int value;
+      
       private SaleType(int index, int value) {
         this.index = index;
         this.value = value;
       }
       
-      static {
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.getDescriptor();
-      }
-      
       // @@protoc_insertion_point(enum_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product.SaleType)
     }
     
+    private int bitField0_;
     // required int32 keycode = 1;
     public static final int KEYCODE_FIELD_NUMBER = 1;
-    private boolean hasKeycode;
-    private int keycode_ = 0;
-    public boolean hasKeycode() { return hasKeycode; }
-    public int getKeycode() { return keycode_; }
+    private int keycode_;
+    public boolean hasKeycode() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getKeycode() {
+      return keycode_;
+    }
     
     // repeated int32 saleDate = 2;
     public static final int SALEDATE_FIELD_NUMBER = 2;
-    private java.util.List<java.lang.Integer> saleDate_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getSaleDateList() {
+    private java.util.List<java.lang.Integer> saleDate_;
+    public java.util.List<java.lang.Integer>
+        getSaleDateList() {
       return saleDate_;
     }
-    public int getSaleDateCount() { return saleDate_.size(); }
+    public int getSaleDateCount() {
+      return saleDate_.size();
+    }
     public int getSaleDate(int index) {
       return saleDate_.get(index);
     }
     
     // repeated int32 quantity = 3;
     public static final int QUANTITY_FIELD_NUMBER = 3;
-    private java.util.List<java.lang.Integer> quantity_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getQuantityList() {
+    private java.util.List<java.lang.Integer> quantity_;
+    public java.util.List<java.lang.Integer>
+        getQuantityList() {
       return quantity_;
     }
-    public int getQuantityCount() { return quantity_.size(); }
+    public int getQuantityCount() {
+      return quantity_.size();
+    }
     public int getQuantity(int index) {
       return quantity_.get(index);
     }
     
     // repeated int64 price = 4;
     public static final int PRICE_FIELD_NUMBER = 4;
-    private java.util.List<java.lang.Long> price_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Long> getPriceList() {
+    private java.util.List<java.lang.Long> price_;
+    public java.util.List<java.lang.Long>
+        getPriceList() {
       return price_;
     }
-    public int getPriceCount() { return price_.size(); }
+    public int getPriceCount() {
+      return price_.size();
+    }
     public long getPrice(int index) {
       return price_.get(index);
     }
     
     // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product.SaleType saleType = 5;
     public static final int SALETYPE_FIELD_NUMBER = 5;
-    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> saleType_ =
-      java.util.Collections.emptyList();
+    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> saleType_;
     public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> getSaleTypeList() {
       return saleType_;
     }
-    public int getSaleTypeCount() { return saleType_.size(); }
+    public int getSaleTypeCount() {
+      return saleType_.size();
+    }
     public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType getSaleType(int index) {
       return saleType_.get(index);
     }
     
     // repeated float priceFloat = 6;
     public static final int PRICEFLOAT_FIELD_NUMBER = 6;
-    private java.util.List<java.lang.Float> priceFloat_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Float> getPriceFloatList() {
+    private java.util.List<java.lang.Float> priceFloat_;
+    public java.util.List<java.lang.Float>
+        getPriceFloatList() {
       return priceFloat_;
     }
-    public int getPriceFloatCount() { return priceFloat_.size(); }
+    public int getPriceFloatCount() {
+      return priceFloat_.size();
+    }
     public float getPriceFloat(int index) {
       return priceFloat_.get(index);
     }
     
     // repeated double priceDouble = 7;
     public static final int PRICEDOUBLE_FIELD_NUMBER = 7;
-    private java.util.List<java.lang.Double> priceDouble_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Double> getPriceDoubleList() {
+    private java.util.List<java.lang.Double> priceDouble_;
+    public java.util.List<java.lang.Double>
+        getPriceDoubleList() {
       return priceDouble_;
     }
-    public int getPriceDoubleCount() { return priceDouble_.size(); }
+    public int getPriceDoubleCount() {
+      return priceDouble_.size();
+    }
     public double getPriceDouble(int index) {
       return priceDouble_.get(index);
     }
     
     // repeated string strArray = 21;
     public static final int STRARRAY_FIELD_NUMBER = 21;
-    private java.util.List<java.lang.String> strArray_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.String> getStrArrayList() {
+    private com.google.protobuf.LazyStringList strArray_;
+    public java.util.List<String>
+        getStrArrayList() {
       return strArray_;
     }
-    public int getStrArrayCount() { return strArray_.size(); }
-    public java.lang.String getStrArray(int index) {
+    public int getStrArrayCount() {
+      return strArray_.size();
+    }
+    public String getStrArray(int index) {
       return strArray_.get(index);
     }
     
     private void initFields() {
+      keycode_ = 0;
+      saleDate_ = java.util.Collections.emptyList();;
+      quantity_ = java.util.Collections.emptyList();;
+      price_ = java.util.Collections.emptyList();;
+      saleType_ = java.util.Collections.emptyList();
+      priceFloat_ = java.util.Collections.emptyList();;
+      priceDouble_ = java.util.Collections.emptyList();;
+      strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasKeycode) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasKeycode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasKeycode()) {
-        output.writeInt32(1, getKeycode());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, keycode_);
       }
-      for (int element : getSaleDateList()) {
-        output.writeInt32(2, element);
+      for (int i = 0; i < saleDate_.size(); i++) {
+        output.writeInt32(2, saleDate_.get(i));
       }
-      for (int element : getQuantityList()) {
-        output.writeInt32(3, element);
+      for (int i = 0; i < quantity_.size(); i++) {
+        output.writeInt32(3, quantity_.get(i));
       }
-      for (long element : getPriceList()) {
-        output.writeInt64(4, element);
+      for (int i = 0; i < price_.size(); i++) {
+        output.writeInt64(4, price_.get(i));
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType element : getSaleTypeList()) {
-        output.writeEnum(5, element.getNumber());
+      for (int i = 0; i < saleType_.size(); i++) {
+        output.writeEnum(5, saleType_.get(i).getNumber());
       }
-      for (float element : getPriceFloatList()) {
-        output.writeFloat(6, element);
+      for (int i = 0; i < priceFloat_.size(); i++) {
+        output.writeFloat(6, priceFloat_.get(i));
       }
-      for (double element : getPriceDoubleList()) {
-        output.writeDouble(7, element);
+      for (int i = 0; i < priceDouble_.size(); i++) {
+        output.writeDouble(7, priceDouble_.get(i));
       }
-      for (java.lang.String element : getStrArrayList()) {
-        output.writeString(21, element);
+      for (int i = 0; i < strArray_.size(); i++) {
+        output.writeBytes(21, strArray_.getByteString(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -251,45 +317,45 @@ public final class StoreSales7 {
       if (size != -1) return size;
     
       size = 0;
-      if (hasKeycode()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getKeycode());
+          .computeInt32Size(1, keycode_);
       }
       {
         int dataSize = 0;
-        for (int element : getSaleDateList()) {
+        for (int i = 0; i < saleDate_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(element);
+            .computeInt32SizeNoTag(saleDate_.get(i));
         }
         size += dataSize;
         size += 1 * getSaleDateList().size();
       }
       {
         int dataSize = 0;
-        for (int element : getQuantityList()) {
+        for (int i = 0; i < quantity_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(element);
+            .computeInt32SizeNoTag(quantity_.get(i));
         }
         size += dataSize;
         size += 1 * getQuantityList().size();
       }
       {
         int dataSize = 0;
-        for (long element : getPriceList()) {
+        for (int i = 0; i < price_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(element);
+            .computeInt64SizeNoTag(price_.get(i));
         }
         size += dataSize;
         size += 1 * getPriceList().size();
       }
       {
         int dataSize = 0;
-        for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType element : getSaleTypeList()) {
+        for (int i = 0; i < saleType_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeEnumSizeNoTag(element.getNumber());
+            .computeEnumSizeNoTag(saleType_.get(i).getNumber());
         }
         size += dataSize;
-        size += 1 * getSaleTypeList().size();
+        size += 1 * saleType_.size();
       }
       {
         int dataSize = 0;
@@ -305,9 +371,9 @@ public final class StoreSales7 {
       }
       {
         int dataSize = 0;
-        for (java.lang.String element : getStrArrayList()) {
+        for (int i = 0; i < strArray_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeStringSizeNoTag(element);
+            .computeBytesSizeNoTag(strArray_.getByteString(i));
         }
         size += dataSize;
         size += 2 * getStrArrayList().size();
@@ -315,6 +381,13 @@ public final class StoreSales7 {
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product parseFrom(
@@ -391,34 +464,65 @@ public final class StoreSales7 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Product_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Product_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product();
+        super.clear();
+        keycode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        saleDate_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        quantity_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        price_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        saleType_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        priceFloat_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        priceDouble_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -430,61 +534,71 @@ public final class StoreSales7 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.saleDate_ != java.util.Collections.EMPTY_LIST) {
-          result.saleDate_ =
-            java.util.Collections.unmodifiableList(result.saleDate_);
+        result.keycode_ = keycode_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          saleDate_ = java.util.Collections.unmodifiableList(saleDate_);
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
-        if (result.quantity_ != java.util.Collections.EMPTY_LIST) {
-          result.quantity_ =
-            java.util.Collections.unmodifiableList(result.quantity_);
+        result.saleDate_ = saleDate_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          quantity_ = java.util.Collections.unmodifiableList(quantity_);
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
-        if (result.price_ != java.util.Collections.EMPTY_LIST) {
-          result.price_ =
-            java.util.Collections.unmodifiableList(result.price_);
+        result.quantity_ = quantity_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          price_ = java.util.Collections.unmodifiableList(price_);
+          bitField0_ = (bitField0_ & ~0x00000008);
         }
-        if (result.saleType_ != java.util.Collections.EMPTY_LIST) {
-          result.saleType_ =
-            java.util.Collections.unmodifiableList(result.saleType_);
+        result.price_ = price_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          saleType_ = java.util.Collections.unmodifiableList(saleType_);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
-        if (result.priceFloat_ != java.util.Collections.EMPTY_LIST) {
-          result.priceFloat_ =
-            java.util.Collections.unmodifiableList(result.priceFloat_);
+        result.saleType_ = saleType_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          priceFloat_ = java.util.Collections.unmodifiableList(priceFloat_);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
-        if (result.priceDouble_ != java.util.Collections.EMPTY_LIST) {
-          result.priceDouble_ =
-            java.util.Collections.unmodifiableList(result.priceDouble_);
+        result.priceFloat_ = priceFloat_;
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          priceDouble_ = java.util.Collections.unmodifiableList(priceDouble_);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
-        if (result.strArray_ != java.util.Collections.EMPTY_LIST) {
-          result.strArray_ =
-            java.util.Collections.unmodifiableList(result.strArray_);
+        result.priceDouble_ = priceDouble_;
+        if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          strArray_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              strArray_);
+          bitField0_ = (bitField0_ & ~0x00000080);
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product returnMe = result;
-        result = null;
-        return returnMe;
+        result.strArray_ = strArray_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -502,49 +616,85 @@ public final class StoreSales7 {
           setKeycode(other.getKeycode());
         }
         if (!other.saleDate_.isEmpty()) {
-          if (result.saleDate_.isEmpty()) {
-            result.saleDate_ = new java.util.ArrayList<java.lang.Integer>();
+          if (saleDate_.isEmpty()) {
+            saleDate_ = other.saleDate_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureSaleDateIsMutable();
+            saleDate_.addAll(other.saleDate_);
           }
-          result.saleDate_.addAll(other.saleDate_);
+          onChanged();
         }
         if (!other.quantity_.isEmpty()) {
-          if (result.quantity_.isEmpty()) {
-            result.quantity_ = new java.util.ArrayList<java.lang.Integer>();
+          if (quantity_.isEmpty()) {
+            quantity_ = other.quantity_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureQuantityIsMutable();
+            quantity_.addAll(other.quantity_);
           }
-          result.quantity_.addAll(other.quantity_);
+          onChanged();
         }
         if (!other.price_.isEmpty()) {
-          if (result.price_.isEmpty()) {
-            result.price_ = new java.util.ArrayList<java.lang.Long>();
+          if (price_.isEmpty()) {
+            price_ = other.price_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensurePriceIsMutable();
+            price_.addAll(other.price_);
           }
-          result.price_.addAll(other.price_);
+          onChanged();
         }
         if (!other.saleType_.isEmpty()) {
-          if (result.saleType_.isEmpty()) {
-            result.saleType_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType>();
+          if (saleType_.isEmpty()) {
+            saleType_ = other.saleType_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureSaleTypeIsMutable();
+            saleType_.addAll(other.saleType_);
           }
-          result.saleType_.addAll(other.saleType_);
+          onChanged();
         }
         if (!other.priceFloat_.isEmpty()) {
-          if (result.priceFloat_.isEmpty()) {
-            result.priceFloat_ = new java.util.ArrayList<java.lang.Float>();
+          if (priceFloat_.isEmpty()) {
+            priceFloat_ = other.priceFloat_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensurePriceFloatIsMutable();
+            priceFloat_.addAll(other.priceFloat_);
           }
-          result.priceFloat_.addAll(other.priceFloat_);
+          onChanged();
         }
         if (!other.priceDouble_.isEmpty()) {
-          if (result.priceDouble_.isEmpty()) {
-            result.priceDouble_ = new java.util.ArrayList<java.lang.Double>();
+          if (priceDouble_.isEmpty()) {
+            priceDouble_ = other.priceDouble_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensurePriceDoubleIsMutable();
+            priceDouble_.addAll(other.priceDouble_);
           }
-          result.priceDouble_.addAll(other.priceDouble_);
+          onChanged();
         }
         if (!other.strArray_.isEmpty()) {
-          if (result.strArray_.isEmpty()) {
-            result.strArray_ = new java.util.ArrayList<java.lang.String>();
+          if (strArray_.isEmpty()) {
+            strArray_ = other.strArray_;
+            bitField0_ = (bitField0_ & ~0x00000080);
+          } else {
+            ensureStrArrayIsMutable();
+            strArray_.addAll(other.strArray_);
           }
-          result.strArray_.addAll(other.strArray_);
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasKeycode()) {
+          
+          return false;
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -559,21 +709,25 @@ public final class StoreSales7 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setKeycode(input.readInt32());
+              bitField0_ |= 0x00000001;
+              keycode_ = input.readInt32();
               break;
             }
             case 16: {
-              addSaleDate(input.readInt32());
+              ensureSaleDateIsMutable();
+              saleDate_.add(input.readInt32());
               break;
             }
             case 18: {
@@ -586,7 +740,8 @@ public final class StoreSales7 {
               break;
             }
             case 24: {
-              addQuantity(input.readInt32());
+              ensureQuantityIsMutable();
+              quantity_.add(input.readInt32());
               break;
             }
             case 26: {
@@ -599,7 +754,8 @@ public final class StoreSales7 {
               break;
             }
             case 32: {
-              addPrice(input.readInt64());
+              ensurePriceIsMutable();
+              price_.add(input.readInt64());
               break;
             }
             case 34: {
@@ -637,7 +793,8 @@ public final class StoreSales7 {
               break;
             }
             case 53: {
-              addPriceFloat(input.readFloat());
+              ensurePriceFloatIsMutable();
+              priceFloat_.add(input.readFloat());
               break;
             }
             case 50: {
@@ -650,7 +807,8 @@ public final class StoreSales7 {
               break;
             }
             case 57: {
-              addPriceDouble(input.readDouble());
+              ensurePriceDoubleIsMutable();
+              priceDouble_.add(input.readDouble());
               break;
             }
             case 58: {
@@ -663,280 +821,367 @@ public final class StoreSales7 {
               break;
             }
             case 170: {
-              addStrArray(input.readString());
+              ensureStrArrayIsMutable();
+              strArray_.add(input.readBytes());
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required int32 keycode = 1;
+      private int keycode_ ;
       public boolean hasKeycode() {
-        return result.hasKeycode();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getKeycode() {
-        return result.getKeycode();
+        return keycode_;
       }
       public Builder setKeycode(int value) {
-        result.hasKeycode = true;
-        result.keycode_ = value;
+        bitField0_ |= 0x00000001;
+        keycode_ = value;
+        onChanged();
         return this;
       }
       public Builder clearKeycode() {
-        result.hasKeycode = false;
-        result.keycode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        keycode_ = 0;
+        onChanged();
         return this;
       }
       
       // repeated int32 saleDate = 2;
-      public java.util.List<java.lang.Integer> getSaleDateList() {
-        return java.util.Collections.unmodifiableList(result.saleDate_);
+      private java.util.List<java.lang.Integer> saleDate_ = java.util.Collections.emptyList();;
+      private void ensureSaleDateIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          saleDate_ = new java.util.ArrayList<java.lang.Integer>(saleDate_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getSaleDateList() {
+        return java.util.Collections.unmodifiableList(saleDate_);
       }
       public int getSaleDateCount() {
-        return result.getSaleDateCount();
+        return saleDate_.size();
       }
       public int getSaleDate(int index) {
-        return result.getSaleDate(index);
+        return saleDate_.get(index);
       }
-      public Builder setSaleDate(int index, int value) {
-        result.saleDate_.set(index, value);
+      public Builder setSaleDate(
+          int index, int value) {
+        ensureSaleDateIsMutable();
+        saleDate_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addSaleDate(int value) {
-        if (result.saleDate_.isEmpty()) {
-          result.saleDate_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.saleDate_.add(value);
+        ensureSaleDateIsMutable();
+        saleDate_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllSaleDate(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.saleDate_.isEmpty()) {
-          result.saleDate_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.saleDate_);
+        ensureSaleDateIsMutable();
+        super.addAll(values, saleDate_);
+        onChanged();
         return this;
       }
       public Builder clearSaleDate() {
-        result.saleDate_ = java.util.Collections.emptyList();
+        saleDate_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
         return this;
       }
       
       // repeated int32 quantity = 3;
-      public java.util.List<java.lang.Integer> getQuantityList() {
-        return java.util.Collections.unmodifiableList(result.quantity_);
+      private java.util.List<java.lang.Integer> quantity_ = java.util.Collections.emptyList();;
+      private void ensureQuantityIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          quantity_ = new java.util.ArrayList<java.lang.Integer>(quantity_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getQuantityList() {
+        return java.util.Collections.unmodifiableList(quantity_);
       }
       public int getQuantityCount() {
-        return result.getQuantityCount();
+        return quantity_.size();
       }
       public int getQuantity(int index) {
-        return result.getQuantity(index);
+        return quantity_.get(index);
       }
-      public Builder setQuantity(int index, int value) {
-        result.quantity_.set(index, value);
+      public Builder setQuantity(
+          int index, int value) {
+        ensureQuantityIsMutable();
+        quantity_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addQuantity(int value) {
-        if (result.quantity_.isEmpty()) {
-          result.quantity_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.quantity_.add(value);
+        ensureQuantityIsMutable();
+        quantity_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllQuantity(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.quantity_.isEmpty()) {
-          result.quantity_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.quantity_);
+        ensureQuantityIsMutable();
+        super.addAll(values, quantity_);
+        onChanged();
         return this;
       }
       public Builder clearQuantity() {
-        result.quantity_ = java.util.Collections.emptyList();
+        quantity_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
         return this;
       }
       
       // repeated int64 price = 4;
-      public java.util.List<java.lang.Long> getPriceList() {
-        return java.util.Collections.unmodifiableList(result.price_);
+      private java.util.List<java.lang.Long> price_ = java.util.Collections.emptyList();;
+      private void ensurePriceIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          price_ = new java.util.ArrayList<java.lang.Long>(price_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      public java.util.List<java.lang.Long>
+          getPriceList() {
+        return java.util.Collections.unmodifiableList(price_);
       }
       public int getPriceCount() {
-        return result.getPriceCount();
+        return price_.size();
       }
       public long getPrice(int index) {
-        return result.getPrice(index);
+        return price_.get(index);
       }
-      public Builder setPrice(int index, long value) {
-        result.price_.set(index, value);
+      public Builder setPrice(
+          int index, long value) {
+        ensurePriceIsMutable();
+        price_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addPrice(long value) {
-        if (result.price_.isEmpty()) {
-          result.price_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        result.price_.add(value);
+        ensurePriceIsMutable();
+        price_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllPrice(
           java.lang.Iterable<? extends java.lang.Long> values) {
-        if (result.price_.isEmpty()) {
-          result.price_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        super.addAll(values, result.price_);
+        ensurePriceIsMutable();
+        super.addAll(values, price_);
+        onChanged();
         return this;
       }
       public Builder clearPrice() {
-        result.price_ = java.util.Collections.emptyList();
+        price_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
         return this;
       }
       
       // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product.SaleType saleType = 5;
+      private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> saleType_ =
+        java.util.Collections.emptyList();
+      private void ensureSaleTypeIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          saleType_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType>(saleType_);
+          bitField0_ |= 0x00000010;
+        }
+      }
       public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> getSaleTypeList() {
-        return java.util.Collections.unmodifiableList(result.saleType_);
+        return java.util.Collections.unmodifiableList(saleType_);
       }
       public int getSaleTypeCount() {
-        return result.getSaleTypeCount();
+        return saleType_.size();
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType getSaleType(int index) {
-        return result.getSaleType(index);
+        return saleType_.get(index);
       }
-      public Builder setSaleType(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType value) {
+      public Builder setSaleType(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.saleType_.set(index, value);
+        ensureSaleTypeIsMutable();
+        saleType_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addSaleType(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        if (result.saleType_.isEmpty()) {
-          result.saleType_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType>();
-        }
-        result.saleType_.add(value);
+        ensureSaleTypeIsMutable();
+        saleType_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllSaleType(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType> values) {
-        if (result.saleType_.isEmpty()) {
-          result.saleType_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.SaleType>();
-        }
-        super.addAll(values, result.saleType_);
+        ensureSaleTypeIsMutable();
+        super.addAll(values, saleType_);
+        onChanged();
         return this;
       }
       public Builder clearSaleType() {
-        result.saleType_ = java.util.Collections.emptyList();
+        saleType_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
         return this;
       }
       
       // repeated float priceFloat = 6;
-      public java.util.List<java.lang.Float> getPriceFloatList() {
-        return java.util.Collections.unmodifiableList(result.priceFloat_);
+      private java.util.List<java.lang.Float> priceFloat_ = java.util.Collections.emptyList();;
+      private void ensurePriceFloatIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          priceFloat_ = new java.util.ArrayList<java.lang.Float>(priceFloat_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      public java.util.List<java.lang.Float>
+          getPriceFloatList() {
+        return java.util.Collections.unmodifiableList(priceFloat_);
       }
       public int getPriceFloatCount() {
-        return result.getPriceFloatCount();
+        return priceFloat_.size();
       }
       public float getPriceFloat(int index) {
-        return result.getPriceFloat(index);
+        return priceFloat_.get(index);
       }
-      public Builder setPriceFloat(int index, float value) {
-        result.priceFloat_.set(index, value);
+      public Builder setPriceFloat(
+          int index, float value) {
+        ensurePriceFloatIsMutable();
+        priceFloat_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addPriceFloat(float value) {
-        if (result.priceFloat_.isEmpty()) {
-          result.priceFloat_ = new java.util.ArrayList<java.lang.Float>();
-        }
-        result.priceFloat_.add(value);
+        ensurePriceFloatIsMutable();
+        priceFloat_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllPriceFloat(
           java.lang.Iterable<? extends java.lang.Float> values) {
-        if (result.priceFloat_.isEmpty()) {
-          result.priceFloat_ = new java.util.ArrayList<java.lang.Float>();
-        }
-        super.addAll(values, result.priceFloat_);
+        ensurePriceFloatIsMutable();
+        super.addAll(values, priceFloat_);
+        onChanged();
         return this;
       }
       public Builder clearPriceFloat() {
-        result.priceFloat_ = java.util.Collections.emptyList();
+        priceFloat_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
         return this;
       }
       
       // repeated double priceDouble = 7;
-      public java.util.List<java.lang.Double> getPriceDoubleList() {
-        return java.util.Collections.unmodifiableList(result.priceDouble_);
+      private java.util.List<java.lang.Double> priceDouble_ = java.util.Collections.emptyList();;
+      private void ensurePriceDoubleIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          priceDouble_ = new java.util.ArrayList<java.lang.Double>(priceDouble_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      public java.util.List<java.lang.Double>
+          getPriceDoubleList() {
+        return java.util.Collections.unmodifiableList(priceDouble_);
       }
       public int getPriceDoubleCount() {
-        return result.getPriceDoubleCount();
+        return priceDouble_.size();
       }
       public double getPriceDouble(int index) {
-        return result.getPriceDouble(index);
+        return priceDouble_.get(index);
       }
-      public Builder setPriceDouble(int index, double value) {
-        result.priceDouble_.set(index, value);
+      public Builder setPriceDouble(
+          int index, double value) {
+        ensurePriceDoubleIsMutable();
+        priceDouble_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addPriceDouble(double value) {
-        if (result.priceDouble_.isEmpty()) {
-          result.priceDouble_ = new java.util.ArrayList<java.lang.Double>();
-        }
-        result.priceDouble_.add(value);
+        ensurePriceDoubleIsMutable();
+        priceDouble_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllPriceDouble(
           java.lang.Iterable<? extends java.lang.Double> values) {
-        if (result.priceDouble_.isEmpty()) {
-          result.priceDouble_ = new java.util.ArrayList<java.lang.Double>();
-        }
-        super.addAll(values, result.priceDouble_);
+        ensurePriceDoubleIsMutable();
+        super.addAll(values, priceDouble_);
+        onChanged();
         return this;
       }
       public Builder clearPriceDouble() {
-        result.priceDouble_ = java.util.Collections.emptyList();
+        priceDouble_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
         return this;
       }
       
       // repeated string strArray = 21;
-      public java.util.List<java.lang.String> getStrArrayList() {
-        return java.util.Collections.unmodifiableList(result.strArray_);
+      private com.google.protobuf.LazyStringList strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureStrArrayIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          strArray_ = new com.google.protobuf.LazyStringArrayList(strArray_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+      public java.util.List<String>
+          getStrArrayList() {
+        return java.util.Collections.unmodifiableList(strArray_);
       }
       public int getStrArrayCount() {
-        return result.getStrArrayCount();
+        return strArray_.size();
       }
-      public java.lang.String getStrArray(int index) {
-        return result.getStrArray(index);
+      public String getStrArray(int index) {
+        return strArray_.get(index);
       }
-      public Builder setStrArray(int index, java.lang.String value) {
+      public Builder setStrArray(
+          int index, String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.strArray_.set(index, value);
+  ensureStrArrayIsMutable();
+        strArray_.set(index, value);
+        onChanged();
         return this;
       }
-      public Builder addStrArray(java.lang.String value) {
+      public Builder addStrArray(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  if (result.strArray_.isEmpty()) {
-          result.strArray_ = new java.util.ArrayList<java.lang.String>();
-        }
-        result.strArray_.add(value);
+  ensureStrArrayIsMutable();
+        strArray_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllStrArray(
-          java.lang.Iterable<? extends java.lang.String> values) {
-        if (result.strArray_.isEmpty()) {
-          result.strArray_ = new java.util.ArrayList<java.lang.String>();
-        }
-        super.addAll(values, result.strArray_);
+          java.lang.Iterable<String> values) {
+        ensureStrArrayIsMutable();
+        super.addAll(values, strArray_);
+        onChanged();
         return this;
       }
       public Builder clearStrArray() {
-        result.strArray_ = java.util.Collections.emptyList();
+        strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
         return this;
+      }
+      void addStrArray(com.google.protobuf.ByteString value) {
+        ensureStrArrayIsMutable();
+        strArray_.add(value);
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product)
@@ -944,18 +1189,29 @@ public final class StoreSales7 {
     
     static {
       defaultInstance = new Product(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product)
   }
   
+  public interface OrderOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 keycode = 1;
+    boolean hasKeycode();
+    int getKeycode();
+    
+    // required int32 quantity = 2;
+    boolean hasQuantity();
+    int getQuantity();
+  }
   public static final class Order extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements OrderOrBuilder {
     // Use Order.newBuilder() to construct.
-    private Order() {
-      initFields();
+    private Order(Builder builder) {
+      super(builder);
     }
     private Order(boolean noInit) {}
     
@@ -978,36 +1234,56 @@ public final class StoreSales7 {
       return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Order_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required int32 keycode = 1;
     public static final int KEYCODE_FIELD_NUMBER = 1;
-    private boolean hasKeycode;
-    private int keycode_ = 0;
-    public boolean hasKeycode() { return hasKeycode; }
-    public int getKeycode() { return keycode_; }
+    private int keycode_;
+    public boolean hasKeycode() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getKeycode() {
+      return keycode_;
+    }
     
     // required int32 quantity = 2;
     public static final int QUANTITY_FIELD_NUMBER = 2;
-    private boolean hasQuantity;
-    private int quantity_ = 0;
-    public boolean hasQuantity() { return hasQuantity; }
-    public int getQuantity() { return quantity_; }
+    private int quantity_;
+    public boolean hasQuantity() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getQuantity() {
+      return quantity_;
+    }
     
     private void initFields() {
+      keycode_ = 0;
+      quantity_ = 0;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasKeycode) return false;
-      if (!hasQuantity) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasKeycode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasKeycode()) {
-        output.writeInt32(1, getKeycode());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, keycode_);
       }
-      if (hasQuantity()) {
-        output.writeInt32(2, getQuantity());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, quantity_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1018,17 +1294,24 @@ public final class StoreSales7 {
       if (size != -1) return size;
     
       size = 0;
-      if (hasKeycode()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getKeycode());
+          .computeInt32Size(1, keycode_);
       }
-      if (hasQuantity()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, getQuantity());
+          .computeInt32Size(2, quantity_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order parseFrom(
@@ -1105,34 +1388,53 @@ public final class StoreSales7 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Order_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Order_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order();
+        super.clear();
+        keycode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1144,33 +1446,39 @@ public final class StoreSales7 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order returnMe = result;
-        result = null;
-        return returnMe;
+        result.keycode_ = keycode_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.quantity_ = quantity_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1194,6 +1502,18 @@ public final class StoreSales7 {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!hasKeycode()) {
+          
+          return false;
+        }
+        if (!hasQuantity()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1206,61 +1526,72 @@ public final class StoreSales7 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setKeycode(input.readInt32());
+              bitField0_ |= 0x00000001;
+              keycode_ = input.readInt32();
               break;
             }
             case 16: {
-              setQuantity(input.readInt32());
+              bitField0_ |= 0x00000002;
+              quantity_ = input.readInt32();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required int32 keycode = 1;
+      private int keycode_ ;
       public boolean hasKeycode() {
-        return result.hasKeycode();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getKeycode() {
-        return result.getKeycode();
+        return keycode_;
       }
       public Builder setKeycode(int value) {
-        result.hasKeycode = true;
-        result.keycode_ = value;
+        bitField0_ |= 0x00000001;
+        keycode_ = value;
+        onChanged();
         return this;
       }
       public Builder clearKeycode() {
-        result.hasKeycode = false;
-        result.keycode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        keycode_ = 0;
+        onChanged();
         return this;
       }
       
       // required int32 quantity = 2;
+      private int quantity_ ;
       public boolean hasQuantity() {
-        return result.hasQuantity();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getQuantity() {
-        return result.getQuantity();
+        return quantity_;
       }
       public Builder setQuantity(int value) {
-        result.hasQuantity = true;
-        result.quantity_ = value;
+        bitField0_ |= 0x00000002;
+        quantity_ = value;
+        onChanged();
         return this;
       }
       public Builder clearQuantity() {
-        result.hasQuantity = false;
-        result.quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        quantity_ = 0;
+        onChanged();
         return this;
       }
       
@@ -1269,18 +1600,33 @@ public final class StoreSales7 {
     
     static {
       defaultInstance = new Order(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Order)
   }
   
+  public interface SummaryOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 quantity = 1;
+    boolean hasQuantity();
+    int getQuantity();
+    
+    // required int64 price = 2;
+    boolean hasPrice();
+    long getPrice();
+    
+    // required int32 count = 3;
+    boolean hasCount();
+    int getCount();
+  }
   public static final class Summary extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements SummaryOrBuilder {
     // Use Summary.newBuilder() to construct.
-    private Summary() {
-      initFields();
+    private Summary(Builder builder) {
+      super(builder);
     }
     private Summary(boolean noInit) {}
     
@@ -1303,47 +1649,74 @@ public final class StoreSales7 {
       return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Summary_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required int32 quantity = 1;
     public static final int QUANTITY_FIELD_NUMBER = 1;
-    private boolean hasQuantity;
-    private int quantity_ = 0;
-    public boolean hasQuantity() { return hasQuantity; }
-    public int getQuantity() { return quantity_; }
+    private int quantity_;
+    public boolean hasQuantity() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getQuantity() {
+      return quantity_;
+    }
     
     // required int64 price = 2;
     public static final int PRICE_FIELD_NUMBER = 2;
-    private boolean hasPrice;
-    private long price_ = 0L;
-    public boolean hasPrice() { return hasPrice; }
-    public long getPrice() { return price_; }
+    private long price_;
+    public boolean hasPrice() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public long getPrice() {
+      return price_;
+    }
     
     // required int32 count = 3;
     public static final int COUNT_FIELD_NUMBER = 3;
-    private boolean hasCount;
-    private int count_ = 0;
-    public boolean hasCount() { return hasCount; }
-    public int getCount() { return count_; }
+    private int count_;
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getCount() {
+      return count_;
+    }
     
     private void initFields() {
+      quantity_ = 0;
+      price_ = 0L;
+      count_ = 0;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasQuantity) return false;
-      if (!hasPrice) return false;
-      if (!hasCount) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasQuantity()) {
-        output.writeInt32(1, getQuantity());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, quantity_);
       }
-      if (hasPrice()) {
-        output.writeInt64(2, getPrice());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt64(2, price_);
       }
-      if (hasCount()) {
-        output.writeInt32(3, getCount());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, count_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1354,21 +1727,28 @@ public final class StoreSales7 {
       if (size != -1) return size;
     
       size = 0;
-      if (hasQuantity()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getQuantity());
+          .computeInt32Size(1, quantity_);
       }
-      if (hasPrice()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, getPrice());
+          .computeInt64Size(2, price_);
       }
-      if (hasCount()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, getCount());
+          .computeInt32Size(3, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary parseFrom(
@@ -1445,34 +1825,55 @@ public final class StoreSales7 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Summary_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Summary_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary();
+        super.clear();
+        quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        price_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1484,33 +1885,43 @@ public final class StoreSales7 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary returnMe = result;
-        result = null;
-        return returnMe;
+        result.quantity_ = quantity_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.price_ = price_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1537,6 +1948,22 @@ public final class StoreSales7 {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!hasQuantity()) {
+          
+          return false;
+        }
+        if (!hasPrice()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1549,83 +1976,98 @@ public final class StoreSales7 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setQuantity(input.readInt32());
+              bitField0_ |= 0x00000001;
+              quantity_ = input.readInt32();
               break;
             }
             case 16: {
-              setPrice(input.readInt64());
+              bitField0_ |= 0x00000002;
+              price_ = input.readInt64();
               break;
             }
             case 24: {
-              setCount(input.readInt32());
+              bitField0_ |= 0x00000004;
+              count_ = input.readInt32();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required int32 quantity = 1;
+      private int quantity_ ;
       public boolean hasQuantity() {
-        return result.hasQuantity();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getQuantity() {
-        return result.getQuantity();
+        return quantity_;
       }
       public Builder setQuantity(int value) {
-        result.hasQuantity = true;
-        result.quantity_ = value;
+        bitField0_ |= 0x00000001;
+        quantity_ = value;
+        onChanged();
         return this;
       }
       public Builder clearQuantity() {
-        result.hasQuantity = false;
-        result.quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        quantity_ = 0;
+        onChanged();
         return this;
       }
       
       // required int64 price = 2;
+      private long price_ ;
       public boolean hasPrice() {
-        return result.hasPrice();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public long getPrice() {
-        return result.getPrice();
+        return price_;
       }
       public Builder setPrice(long value) {
-        result.hasPrice = true;
-        result.price_ = value;
+        bitField0_ |= 0x00000002;
+        price_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPrice() {
-        result.hasPrice = false;
-        result.price_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        price_ = 0L;
+        onChanged();
         return this;
       }
       
       // required int32 count = 3;
+      private int count_ ;
       public boolean hasCount() {
-        return result.hasCount();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public int getCount() {
-        return result.getCount();
+        return count_;
       }
       public Builder setCount(int value) {
-        result.hasCount = true;
-        result.count_ = value;
+        bitField0_ |= 0x00000004;
+        count_ = value;
+        onChanged();
         return this;
       }
       public Builder clearCount() {
-        result.hasCount = false;
-        result.count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        onChanged();
         return this;
       }
       
@@ -1634,18 +2076,44 @@ public final class StoreSales7 {
     
     static {
       defaultInstance = new Summary(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary)
   }
   
+  public interface DeptartmentOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 department = 1;
+    boolean hasDepartment();
+    int getDepartment();
+    
+    // required string name = 2;
+    boolean hasName();
+    String getName();
+    
+    // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product product = 3;
+    java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> 
+        getProductList();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product getProduct(int index);
+    int getProductCount();
+    java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder> 
+        getProductOrBuilderList();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder getProductOrBuilder(
+        int index);
+    
+    // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary summary = 4;
+    boolean hasSummary();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder getSummaryOrBuilder();
+  }
   public static final class Deptartment extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements DeptartmentOrBuilder {
     // Use Deptartment.newBuilder() to construct.
-    private Deptartment() {
-      initFields();
+    private Deptartment(Builder builder) {
+      super(builder);
     }
     private Deptartment(boolean noInit) {}
     
@@ -1668,68 +2136,132 @@ public final class StoreSales7 {
       return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Deptartment_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required int32 department = 1;
     public static final int DEPARTMENT_FIELD_NUMBER = 1;
-    private boolean hasDepartment;
-    private int department_ = 0;
-    public boolean hasDepartment() { return hasDepartment; }
-    public int getDepartment() { return department_; }
+    private int department_;
+    public boolean hasDepartment() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getDepartment() {
+      return department_;
+    }
     
     // required string name = 2;
     public static final int NAME_FIELD_NUMBER = 2;
-    private boolean hasName;
-    private java.lang.String name_ = "";
-    public boolean hasName() { return hasName; }
-    public java.lang.String getName() { return name_; }
+    private java.lang.Object name_;
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product product = 3;
     public static final int PRODUCT_FIELD_NUMBER = 3;
-    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> product_ =
-      java.util.Collections.emptyList();
+    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> product_;
     public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> getProductList() {
       return product_;
     }
-    public int getProductCount() { return product_.size(); }
+    public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder> 
+        getProductOrBuilderList() {
+      return product_;
+    }
+    public int getProductCount() {
+      return product_.size();
+    }
     public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product getProduct(int index) {
+      return product_.get(index);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder getProductOrBuilder(
+        int index) {
       return product_.get(index);
     }
     
     // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary summary = 4;
     public static final int SUMMARY_FIELD_NUMBER = 4;
-    private boolean hasSummary;
     private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary summary_;
-    public boolean hasSummary() { return hasSummary; }
-    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary() { return summary_; }
+    public boolean hasSummary() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary() {
+      return summary_;
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder getSummaryOrBuilder() {
+      return summary_;
+    }
     
     private void initFields() {
+      department_ = 0;
+      name_ = "";
+      product_ = java.util.Collections.emptyList();
       summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasDepartment) return false;
-      if (!hasName) return false;
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product element : getProductList()) {
-        if (!element.isInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasDepartment()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getProductCount(); i++) {
+        if (!getProduct(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       if (hasSummary()) {
-        if (!getSummary().isInitialized()) return false;
+        if (!getSummary().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasDepartment()) {
-        output.writeInt32(1, getDepartment());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, department_);
       }
-      if (hasName()) {
-        output.writeString(2, getName());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product element : getProductList()) {
-        output.writeMessage(3, element);
+      for (int i = 0; i < product_.size(); i++) {
+        output.writeMessage(3, product_.get(i));
       }
-      if (hasSummary()) {
-        output.writeMessage(4, getSummary());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(4, summary_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1740,25 +2272,32 @@ public final class StoreSales7 {
       if (size != -1) return size;
     
       size = 0;
-      if (hasDepartment()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getDepartment());
+          .computeInt32Size(1, department_);
       }
-      if (hasName()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getName());
+          .computeBytesSize(2, getNameBytes());
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product element : getProductList()) {
+      for (int i = 0; i < product_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, element);
+          .computeMessageSize(3, product_.get(i));
       }
-      if (hasSummary()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getSummary());
+          .computeMessageSize(4, summary_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment parseFrom(
@@ -1835,34 +2374,67 @@ public final class StoreSales7 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Deptartment_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Deptartment_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getProductFieldBuilder();
+          getSummaryFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        department_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (productBuilder_ == null) {
+          product_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          productBuilder_.clear();
         }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment();
+        if (summaryBuilder_ == null) {
+          summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+        } else {
+          summaryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1874,37 +2446,56 @@ public final class StoreSales7 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.product_ != java.util.Collections.EMPTY_LIST) {
-          result.product_ =
-            java.util.Collections.unmodifiableList(result.product_);
+        result.department_ = department_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment returnMe = result;
-        result = null;
-        return returnMe;
+        result.name_ = name_;
+        if (productBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            product_ = java.util.Collections.unmodifiableList(product_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.product_ = product_;
+        } else {
+          result.product_ = productBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (summaryBuilder_ == null) {
+          result.summary_ = summary_;
+        } else {
+          result.summary_ = summaryBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1924,17 +2515,61 @@ public final class StoreSales7 {
         if (other.hasName()) {
           setName(other.getName());
         }
-        if (!other.product_.isEmpty()) {
-          if (result.product_.isEmpty()) {
-            result.product_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product>();
+        if (productBuilder_ == null) {
+          if (!other.product_.isEmpty()) {
+            if (product_.isEmpty()) {
+              product_ = other.product_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureProductIsMutable();
+              product_.addAll(other.product_);
+            }
+            onChanged();
           }
-          result.product_.addAll(other.product_);
+        } else {
+          if (!other.product_.isEmpty()) {
+            if (productBuilder_.isEmpty()) {
+              productBuilder_.dispose();
+              productBuilder_ = null;
+              product_ = other.product_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              productBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getProductFieldBuilder() : null;
+            } else {
+              productBuilder_.addAllMessages(other.product_);
+            }
+          }
         }
         if (other.hasSummary()) {
           mergeSummary(other.getSummary());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasDepartment()) {
+          
+          return false;
+        }
+        if (!hasName()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getProductCount(); i++) {
+          if (!getProduct(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSummary()) {
+          if (!getSummary().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -1949,21 +2584,25 @@ public final class StoreSales7 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setDepartment(input.readInt32());
+              bitField0_ |= 0x00000001;
+              department_ = input.readInt32();
               break;
             }
             case 18: {
-              setName(input.readString());
+              bitField0_ |= 0x00000002;
+              name_ = input.readBytes();
               break;
             }
             case 26: {
@@ -1985,132 +2624,339 @@ public final class StoreSales7 {
         }
       }
       
+      private int bitField0_;
       
       // required int32 department = 1;
+      private int department_ ;
       public boolean hasDepartment() {
-        return result.hasDepartment();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getDepartment() {
-        return result.getDepartment();
+        return department_;
       }
       public Builder setDepartment(int value) {
-        result.hasDepartment = true;
-        result.department_ = value;
+        bitField0_ |= 0x00000001;
+        department_ = value;
+        onChanged();
         return this;
       }
       public Builder clearDepartment() {
-        result.hasDepartment = false;
-        result.department_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        department_ = 0;
+        onChanged();
         return this;
       }
       
       // required string name = 2;
+      private java.lang.Object name_ = "";
       public boolean hasName() {
-        return result.hasName();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public java.lang.String getName() {
-        return result.getName();
+      public String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setName(java.lang.String value) {
+      public Builder setName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasName = true;
-        result.name_ = value;
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
         return this;
       }
       public Builder clearName() {
-        result.hasName = false;
-        result.name_ = getDefaultInstance().getName();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = getDefaultInstance().getName();
+        onChanged();
         return this;
+      }
+      void setName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
       }
       
       // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Product product = 3;
+      private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> product_ =
+        java.util.Collections.emptyList();
+      private void ensureProductIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          product_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product>(product_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder> productBuilder_;
+      
       public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> getProductList() {
-        return java.util.Collections.unmodifiableList(result.product_);
+        if (productBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(product_);
+        } else {
+          return productBuilder_.getMessageList();
+        }
       }
       public int getProductCount() {
-        return result.getProductCount();
+        if (productBuilder_ == null) {
+          return product_.size();
+        } else {
+          return productBuilder_.getCount();
+        }
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product getProduct(int index) {
-        return result.getProduct(index);
-      }
-      public Builder setProduct(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (productBuilder_ == null) {
+          return product_.get(index);
+        } else {
+          return productBuilder_.getMessage(index);
         }
-        result.product_.set(index, value);
+      }
+      public Builder setProduct(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product value) {
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProductIsMutable();
+          product_.set(index, value);
+          onChanged();
+        } else {
+          productBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setProduct(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder builderForValue) {
-        result.product_.set(index, builderForValue.build());
+      public Builder setProduct(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          ensureProductIsMutable();
+          product_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          productBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addProduct(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProductIsMutable();
+          product_.add(value);
+          onChanged();
+        } else {
+          productBuilder_.addMessage(value);
         }
-        if (result.product_.isEmpty()) {
-          result.product_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product>();
-        }
-        result.product_.add(value);
         return this;
       }
-      public Builder addProduct(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder builderForValue) {
-        if (result.product_.isEmpty()) {
-          result.product_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product>();
+      public Builder addProduct(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product value) {
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProductIsMutable();
+          product_.add(index, value);
+          onChanged();
+        } else {
+          productBuilder_.addMessage(index, value);
         }
-        result.product_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addProduct(
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          ensureProductIsMutable();
+          product_.add(builderForValue.build());
+          onChanged();
+        } else {
+          productBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addProduct(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          ensureProductIsMutable();
+          product_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          productBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllProduct(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product> values) {
-        if (result.product_.isEmpty()) {
-          result.product_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product>();
+        if (productBuilder_ == null) {
+          ensureProductIsMutable();
+          super.addAll(values, product_);
+          onChanged();
+        } else {
+          productBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.product_);
         return this;
       }
       public Builder clearProduct() {
-        result.product_ = java.util.Collections.emptyList();
+        if (productBuilder_ == null) {
+          product_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          productBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeProduct(int index) {
+        if (productBuilder_ == null) {
+          ensureProductIsMutable();
+          product_.remove(index);
+          onChanged();
+        } else {
+          productBuilder_.remove(index);
+        }
+        return this;
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder getProductBuilder(
+          int index) {
+        return getProductFieldBuilder().getBuilder(index);
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder getProductOrBuilder(
+          int index) {
+        if (productBuilder_ == null) {
+          return product_.get(index);  } else {
+          return productBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder> 
+           getProductOrBuilderList() {
+        if (productBuilder_ != null) {
+          return productBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(product_);
+        }
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder addProductBuilder() {
+        return getProductFieldBuilder().addBuilder(
+            net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.getDefaultInstance());
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder addProductBuilder(
+          int index) {
+        return getProductFieldBuilder().addBuilder(
+            index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.getDefaultInstance());
+      }
+      public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder> 
+           getProductBuilderList() {
+        return getProductFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder> 
+          getProductFieldBuilder() {
+        if (productBuilder_ == null) {
+          productBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Product.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.ProductOrBuilder>(
+                  product_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          product_ = null;
+        }
+        return productBuilder_;
       }
       
       // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary summary = 4;
+      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder> summaryBuilder_;
       public boolean hasSummary() {
-        return result.hasSummary();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary() {
-        return result.getSummary();
+        if (summaryBuilder_ == null) {
+          return summary_;
+        } else {
+          return summaryBuilder_.getMessage();
+        }
       }
       public Builder setSummary(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (summaryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          summary_ = value;
+          onChanged();
+        } else {
+          summaryBuilder_.setMessage(value);
         }
-        result.hasSummary = true;
-        result.summary_ = value;
+        bitField0_ |= 0x00000008;
         return this;
       }
-      public Builder setSummary(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder builderForValue) {
-        result.hasSummary = true;
-        result.summary_ = builderForValue.build();
+      public Builder setSummary(
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder builderForValue) {
+        if (summaryBuilder_ == null) {
+          summary_ = builderForValue.build();
+          onChanged();
+        } else {
+          summaryBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
         return this;
       }
       public Builder mergeSummary(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary value) {
-        if (result.hasSummary() &&
-            result.summary_ != net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance()) {
-          result.summary_ =
-            net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.newBuilder(result.summary_).mergeFrom(value).buildPartial();
+        if (summaryBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              summary_ != net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance()) {
+            summary_ =
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.newBuilder(summary_).mergeFrom(value).buildPartial();
+          } else {
+            summary_ = value;
+          }
+          onChanged();
         } else {
-          result.summary_ = value;
+          summaryBuilder_.mergeFrom(value);
         }
-        result.hasSummary = true;
+        bitField0_ |= 0x00000008;
         return this;
       }
       public Builder clearSummary() {
-        result.hasSummary = false;
-        result.summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+        if (summaryBuilder_ == null) {
+          summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+          onChanged();
+        } else {
+          summaryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder getSummaryBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getSummaryFieldBuilder().getBuilder();
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder getSummaryOrBuilder() {
+        if (summaryBuilder_ != null) {
+          return summaryBuilder_.getMessageOrBuilder();
+        } else {
+          return summary_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder> 
+          getSummaryFieldBuilder() {
+        if (summaryBuilder_ == null) {
+          summaryBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder>(
+                  summary_,
+                  getParentForChildren(),
+                  isClean());
+          summary_ = null;
+        }
+        return summaryBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Deptartment)
@@ -2118,18 +2964,54 @@ public final class StoreSales7 {
     
     static {
       defaultInstance = new Deptartment(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Deptartment)
   }
   
+  public interface StoreOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 store = 1;
+    boolean hasStore();
+    int getStore();
+    
+    // required string name = 2;
+    boolean hasName();
+    String getName();
+    
+    // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Deptartment department = 3;
+    java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> 
+        getDepartmentList();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment getDepartment(int index);
+    int getDepartmentCount();
+    java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder> 
+        getDepartmentOrBuilderList();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder getDepartmentOrBuilder(
+        int index);
+    
+    // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Order order = 4;
+    java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> 
+        getOrderList();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order getOrder(int index);
+    int getOrderCount();
+    java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder> 
+        getOrderOrBuilderList();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder getOrderOrBuilder(
+        int index);
+    
+    // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary summary = 5;
+    boolean hasSummary();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder getSummaryOrBuilder();
+  }
   public static final class Store extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements StoreOrBuilder {
     // Use Store.newBuilder() to construct.
-    private Store() {
-      initFields();
+    private Store(Builder builder) {
+      super(builder);
     }
     private Store(boolean noInit) {}
     
@@ -2152,86 +3034,163 @@ public final class StoreSales7 {
       return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Store_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required int32 store = 1;
     public static final int STORE_FIELD_NUMBER = 1;
-    private boolean hasStore;
-    private int store_ = 0;
-    public boolean hasStore() { return hasStore; }
-    public int getStore() { return store_; }
+    private int store_;
+    public boolean hasStore() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getStore() {
+      return store_;
+    }
     
     // required string name = 2;
     public static final int NAME_FIELD_NUMBER = 2;
-    private boolean hasName;
-    private java.lang.String name_ = "";
-    public boolean hasName() { return hasName; }
-    public java.lang.String getName() { return name_; }
+    private java.lang.Object name_;
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Deptartment department = 3;
     public static final int DEPARTMENT_FIELD_NUMBER = 3;
-    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> department_ =
-      java.util.Collections.emptyList();
+    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> department_;
     public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> getDepartmentList() {
       return department_;
     }
-    public int getDepartmentCount() { return department_.size(); }
+    public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder> 
+        getDepartmentOrBuilderList() {
+      return department_;
+    }
+    public int getDepartmentCount() {
+      return department_.size();
+    }
     public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment getDepartment(int index) {
+      return department_.get(index);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder getDepartmentOrBuilder(
+        int index) {
       return department_.get(index);
     }
     
     // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Order order = 4;
     public static final int ORDER_FIELD_NUMBER = 4;
-    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> order_ =
-      java.util.Collections.emptyList();
+    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> order_;
     public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> getOrderList() {
       return order_;
     }
-    public int getOrderCount() { return order_.size(); }
+    public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder> 
+        getOrderOrBuilderList() {
+      return order_;
+    }
+    public int getOrderCount() {
+      return order_.size();
+    }
     public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order getOrder(int index) {
+      return order_.get(index);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder getOrderOrBuilder(
+        int index) {
       return order_.get(index);
     }
     
     // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary summary = 5;
     public static final int SUMMARY_FIELD_NUMBER = 5;
-    private boolean hasSummary;
     private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary summary_;
-    public boolean hasSummary() { return hasSummary; }
-    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary() { return summary_; }
+    public boolean hasSummary() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary() {
+      return summary_;
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder getSummaryOrBuilder() {
+      return summary_;
+    }
     
     private void initFields() {
+      store_ = 0;
+      name_ = "";
+      department_ = java.util.Collections.emptyList();
+      order_ = java.util.Collections.emptyList();
       summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasStore) return false;
-      if (!hasName) return false;
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment element : getDepartmentList()) {
-        if (!element.isInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasStore()) {
+        memoizedIsInitialized = 0;
+        return false;
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order element : getOrderList()) {
-        if (!element.isInitialized()) return false;
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getDepartmentCount(); i++) {
+        if (!getDepartment(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getOrderCount(); i++) {
+        if (!getOrder(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       if (hasSummary()) {
-        if (!getSummary().isInitialized()) return false;
+        if (!getSummary().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasStore()) {
-        output.writeInt32(1, getStore());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, store_);
       }
-      if (hasName()) {
-        output.writeString(2, getName());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment element : getDepartmentList()) {
-        output.writeMessage(3, element);
+      for (int i = 0; i < department_.size(); i++) {
+        output.writeMessage(3, department_.get(i));
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order element : getOrderList()) {
-        output.writeMessage(4, element);
+      for (int i = 0; i < order_.size(); i++) {
+        output.writeMessage(4, order_.get(i));
       }
-      if (hasSummary()) {
-        output.writeMessage(5, getSummary());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(5, summary_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2242,29 +3201,36 @@ public final class StoreSales7 {
       if (size != -1) return size;
     
       size = 0;
-      if (hasStore()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getStore());
+          .computeInt32Size(1, store_);
       }
-      if (hasName()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getName());
+          .computeBytesSize(2, getNameBytes());
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment element : getDepartmentList()) {
+      for (int i = 0; i < department_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, element);
+          .computeMessageSize(3, department_.get(i));
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order element : getOrderList()) {
+      for (int i = 0; i < order_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, element);
+          .computeMessageSize(4, order_.get(i));
       }
-      if (hasSummary()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getSummary());
+          .computeMessageSize(5, summary_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store parseFrom(
@@ -2341,34 +3307,74 @@ public final class StoreSales7 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.StoreOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Store_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_Store_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDepartmentFieldBuilder();
+          getOrderFieldBuilder();
+          getSummaryFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        store_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (departmentBuilder_ == null) {
+          department_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          departmentBuilder_.clear();
         }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store();
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          orderBuilder_.clear();
+        }
+        if (summaryBuilder_ == null) {
+          summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+        } else {
+          summaryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -2380,41 +3386,65 @@ public final class StoreSales7 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.department_ != java.util.Collections.EMPTY_LIST) {
-          result.department_ =
-            java.util.Collections.unmodifiableList(result.department_);
+        result.store_ = store_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-        if (result.order_ != java.util.Collections.EMPTY_LIST) {
-          result.order_ =
-            java.util.Collections.unmodifiableList(result.order_);
+        result.name_ = name_;
+        if (departmentBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            department_ = java.util.Collections.unmodifiableList(department_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.department_ = department_;
+        } else {
+          result.department_ = departmentBuilder_.build();
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Store returnMe = result;
-        result = null;
-        return returnMe;
+        if (orderBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            order_ = java.util.Collections.unmodifiableList(order_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.order_ = order_;
+        } else {
+          result.order_ = orderBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (summaryBuilder_ == null) {
+          result.summary_ = summary_;
+        } else {
+          result.summary_ = summaryBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2434,23 +3464,93 @@ public final class StoreSales7 {
         if (other.hasName()) {
           setName(other.getName());
         }
-        if (!other.department_.isEmpty()) {
-          if (result.department_.isEmpty()) {
-            result.department_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment>();
+        if (departmentBuilder_ == null) {
+          if (!other.department_.isEmpty()) {
+            if (department_.isEmpty()) {
+              department_ = other.department_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureDepartmentIsMutable();
+              department_.addAll(other.department_);
+            }
+            onChanged();
           }
-          result.department_.addAll(other.department_);
+        } else {
+          if (!other.department_.isEmpty()) {
+            if (departmentBuilder_.isEmpty()) {
+              departmentBuilder_.dispose();
+              departmentBuilder_ = null;
+              department_ = other.department_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              departmentBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDepartmentFieldBuilder() : null;
+            } else {
+              departmentBuilder_.addAllMessages(other.department_);
+            }
+          }
         }
-        if (!other.order_.isEmpty()) {
-          if (result.order_.isEmpty()) {
-            result.order_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order>();
+        if (orderBuilder_ == null) {
+          if (!other.order_.isEmpty()) {
+            if (order_.isEmpty()) {
+              order_ = other.order_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureOrderIsMutable();
+              order_.addAll(other.order_);
+            }
+            onChanged();
           }
-          result.order_.addAll(other.order_);
+        } else {
+          if (!other.order_.isEmpty()) {
+            if (orderBuilder_.isEmpty()) {
+              orderBuilder_.dispose();
+              orderBuilder_ = null;
+              order_ = other.order_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              orderBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getOrderFieldBuilder() : null;
+            } else {
+              orderBuilder_.addAllMessages(other.order_);
+            }
+          }
         }
         if (other.hasSummary()) {
           mergeSummary(other.getSummary());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasStore()) {
+          
+          return false;
+        }
+        if (!hasName()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getDepartmentCount(); i++) {
+          if (!getDepartment(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getOrderCount(); i++) {
+          if (!getOrder(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSummary()) {
+          if (!getSummary().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -2465,21 +3565,25 @@ public final class StoreSales7 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setStore(input.readInt32());
+              bitField0_ |= 0x00000001;
+              store_ = input.readInt32();
               break;
             }
             case 18: {
-              setName(input.readString());
+              bitField0_ |= 0x00000002;
+              name_ = input.readBytes();
               break;
             }
             case 26: {
@@ -2507,183 +3611,525 @@ public final class StoreSales7 {
         }
       }
       
+      private int bitField0_;
       
       // required int32 store = 1;
+      private int store_ ;
       public boolean hasStore() {
-        return result.hasStore();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getStore() {
-        return result.getStore();
+        return store_;
       }
       public Builder setStore(int value) {
-        result.hasStore = true;
-        result.store_ = value;
+        bitField0_ |= 0x00000001;
+        store_ = value;
+        onChanged();
         return this;
       }
       public Builder clearStore() {
-        result.hasStore = false;
-        result.store_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        store_ = 0;
+        onChanged();
         return this;
       }
       
       // required string name = 2;
+      private java.lang.Object name_ = "";
       public boolean hasName() {
-        return result.hasName();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public java.lang.String getName() {
-        return result.getName();
+      public String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setName(java.lang.String value) {
+      public Builder setName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasName = true;
-        result.name_ = value;
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
         return this;
       }
       public Builder clearName() {
-        result.hasName = false;
-        result.name_ = getDefaultInstance().getName();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = getDefaultInstance().getName();
+        onChanged();
         return this;
+      }
+      void setName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
       }
       
       // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Deptartment department = 3;
+      private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> department_ =
+        java.util.Collections.emptyList();
+      private void ensureDepartmentIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          department_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment>(department_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder> departmentBuilder_;
+      
       public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> getDepartmentList() {
-        return java.util.Collections.unmodifiableList(result.department_);
+        if (departmentBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(department_);
+        } else {
+          return departmentBuilder_.getMessageList();
+        }
       }
       public int getDepartmentCount() {
-        return result.getDepartmentCount();
+        if (departmentBuilder_ == null) {
+          return department_.size();
+        } else {
+          return departmentBuilder_.getCount();
+        }
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment getDepartment(int index) {
-        return result.getDepartment(index);
-      }
-      public Builder setDepartment(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (departmentBuilder_ == null) {
+          return department_.get(index);
+        } else {
+          return departmentBuilder_.getMessage(index);
         }
-        result.department_.set(index, value);
+      }
+      public Builder setDepartment(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment value) {
+        if (departmentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDepartmentIsMutable();
+          department_.set(index, value);
+          onChanged();
+        } else {
+          departmentBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setDepartment(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder builderForValue) {
-        result.department_.set(index, builderForValue.build());
+      public Builder setDepartment(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder builderForValue) {
+        if (departmentBuilder_ == null) {
+          ensureDepartmentIsMutable();
+          department_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          departmentBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addDepartment(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (departmentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDepartmentIsMutable();
+          department_.add(value);
+          onChanged();
+        } else {
+          departmentBuilder_.addMessage(value);
         }
-        if (result.department_.isEmpty()) {
-          result.department_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment>();
-        }
-        result.department_.add(value);
         return this;
       }
-      public Builder addDepartment(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder builderForValue) {
-        if (result.department_.isEmpty()) {
-          result.department_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment>();
+      public Builder addDepartment(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment value) {
+        if (departmentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDepartmentIsMutable();
+          department_.add(index, value);
+          onChanged();
+        } else {
+          departmentBuilder_.addMessage(index, value);
         }
-        result.department_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addDepartment(
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder builderForValue) {
+        if (departmentBuilder_ == null) {
+          ensureDepartmentIsMutable();
+          department_.add(builderForValue.build());
+          onChanged();
+        } else {
+          departmentBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addDepartment(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder builderForValue) {
+        if (departmentBuilder_ == null) {
+          ensureDepartmentIsMutable();
+          department_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          departmentBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllDepartment(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment> values) {
-        if (result.department_.isEmpty()) {
-          result.department_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment>();
+        if (departmentBuilder_ == null) {
+          ensureDepartmentIsMutable();
+          super.addAll(values, department_);
+          onChanged();
+        } else {
+          departmentBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.department_);
         return this;
       }
       public Builder clearDepartment() {
-        result.department_ = java.util.Collections.emptyList();
+        if (departmentBuilder_ == null) {
+          department_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          departmentBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeDepartment(int index) {
+        if (departmentBuilder_ == null) {
+          ensureDepartmentIsMutable();
+          department_.remove(index);
+          onChanged();
+        } else {
+          departmentBuilder_.remove(index);
+        }
+        return this;
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder getDepartmentBuilder(
+          int index) {
+        return getDepartmentFieldBuilder().getBuilder(index);
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder getDepartmentOrBuilder(
+          int index) {
+        if (departmentBuilder_ == null) {
+          return department_.get(index);  } else {
+          return departmentBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder> 
+           getDepartmentOrBuilderList() {
+        if (departmentBuilder_ != null) {
+          return departmentBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(department_);
+        }
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder addDepartmentBuilder() {
+        return getDepartmentFieldBuilder().addBuilder(
+            net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.getDefaultInstance());
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder addDepartmentBuilder(
+          int index) {
+        return getDepartmentFieldBuilder().addBuilder(
+            index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.getDefaultInstance());
+      }
+      public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder> 
+           getDepartmentBuilderList() {
+        return getDepartmentFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder> 
+          getDepartmentFieldBuilder() {
+        if (departmentBuilder_ == null) {
+          departmentBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Deptartment.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.DeptartmentOrBuilder>(
+                  department_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          department_ = null;
+        }
+        return departmentBuilder_;
       }
       
       // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Order order = 4;
+      private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> order_ =
+        java.util.Collections.emptyList();
+      private void ensureOrderIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          order_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order>(order_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder> orderBuilder_;
+      
       public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> getOrderList() {
-        return java.util.Collections.unmodifiableList(result.order_);
+        if (orderBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(order_);
+        } else {
+          return orderBuilder_.getMessageList();
+        }
       }
       public int getOrderCount() {
-        return result.getOrderCount();
+        if (orderBuilder_ == null) {
+          return order_.size();
+        } else {
+          return orderBuilder_.getCount();
+        }
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order getOrder(int index) {
-        return result.getOrder(index);
-      }
-      public Builder setOrder(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (orderBuilder_ == null) {
+          return order_.get(index);
+        } else {
+          return orderBuilder_.getMessage(index);
         }
-        result.order_.set(index, value);
+      }
+      public Builder setOrder(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.set(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setOrder(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder builderForValue) {
-        result.order_.set(index, builderForValue.build());
+      public Builder setOrder(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addOrder(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(value);
         }
-        if (result.order_.isEmpty()) {
-          result.order_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order>();
-        }
-        result.order_.add(value);
         return this;
       }
-      public Builder addOrder(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder builderForValue) {
-        if (result.order_.isEmpty()) {
-          result.order_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order>();
+      public Builder addOrder(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, value);
         }
-        result.order_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addOrder(
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addOrder(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllOrder(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order> values) {
-        if (result.order_.isEmpty()) {
-          result.order_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order>();
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          super.addAll(values, order_);
+          onChanged();
+        } else {
+          orderBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.order_);
         return this;
       }
       public Builder clearOrder() {
-        result.order_ = java.util.Collections.emptyList();
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          orderBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeOrder(int index) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.remove(index);
+          onChanged();
+        } else {
+          orderBuilder_.remove(index);
+        }
+        return this;
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder getOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().getBuilder(index);
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder getOrderOrBuilder(
+          int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);  } else {
+          return orderBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder> 
+           getOrderOrBuilderList() {
+        if (orderBuilder_ != null) {
+          return orderBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(order_);
+        }
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder addOrderBuilder() {
+        return getOrderFieldBuilder().addBuilder(
+            net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.getDefaultInstance());
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder addOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().addBuilder(
+            index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.getDefaultInstance());
+      }
+      public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder> 
+           getOrderBuilderList() {
+        return getOrderFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder> 
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Order.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.OrderOrBuilder>(
+                  order_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          order_ = null;
+        }
+        return orderBuilder_;
       }
       
       // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Summary summary = 5;
+      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder> summaryBuilder_;
       public boolean hasSummary() {
-        return result.hasSummary();
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary getSummary() {
-        return result.getSummary();
+        if (summaryBuilder_ == null) {
+          return summary_;
+        } else {
+          return summaryBuilder_.getMessage();
+        }
       }
       public Builder setSummary(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (summaryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          summary_ = value;
+          onChanged();
+        } else {
+          summaryBuilder_.setMessage(value);
         }
-        result.hasSummary = true;
-        result.summary_ = value;
+        bitField0_ |= 0x00000010;
         return this;
       }
-      public Builder setSummary(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder builderForValue) {
-        result.hasSummary = true;
-        result.summary_ = builderForValue.build();
+      public Builder setSummary(
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder builderForValue) {
+        if (summaryBuilder_ == null) {
+          summary_ = builderForValue.build();
+          onChanged();
+        } else {
+          summaryBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
         return this;
       }
       public Builder mergeSummary(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary value) {
-        if (result.hasSummary() &&
-            result.summary_ != net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance()) {
-          result.summary_ =
-            net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.newBuilder(result.summary_).mergeFrom(value).buildPartial();
+        if (summaryBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              summary_ != net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance()) {
+            summary_ =
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.newBuilder(summary_).mergeFrom(value).buildPartial();
+          } else {
+            summary_ = value;
+          }
+          onChanged();
         } else {
-          result.summary_ = value;
+          summaryBuilder_.mergeFrom(value);
         }
-        result.hasSummary = true;
+        bitField0_ |= 0x00000010;
         return this;
       }
       public Builder clearSummary() {
-        result.hasSummary = false;
-        result.summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+        if (summaryBuilder_ == null) {
+          summary_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.getDefaultInstance();
+          onChanged();
+        } else {
+          summaryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder getSummaryBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getSummaryFieldBuilder().getBuilder();
+      }
+      public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder getSummaryOrBuilder() {
+        if (summaryBuilder_ != null) {
+          return summaryBuilder_.getMessageOrBuilder();
+        } else {
+          return summary_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder> 
+          getSummaryFieldBuilder() {
+        if (summaryBuilder_ == null) {
+          summaryBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.Summary.Builder, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.SummaryOrBuilder>(
+                  summary_,
+                  getParentForChildren(),
+                  isClean());
+          summary_ = null;
+        }
+        return summaryBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Store)
@@ -2691,7 +4137,6 @@ public final class StoreSales7 {
     
     static {
       defaultInstance = new Store(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales7.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -2809,8 +4254,6 @@ public final class StoreSales7 {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }

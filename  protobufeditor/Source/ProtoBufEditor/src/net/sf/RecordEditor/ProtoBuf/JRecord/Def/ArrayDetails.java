@@ -9,11 +9,11 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import net.sf.JRecord.Details.AbstractLine;
-import  net.sf.RecordEditor.edit.display.array.ArrayInterface;
 import net.sf.RecordEditor.utils.swing.CheckBoxTableRender;
 import net.sf.RecordEditor.utils.swing.SwingUtils;
 import net.sf.RecordEditor.utils.swing.Combo.ComboItemEditor;
 import net.sf.RecordEditor.utils.swing.Combo.ComboItemRender;
+import net.sf.RecordEditor.utils.swing.array.ArrayInterface;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
@@ -41,7 +41,7 @@ public class ArrayDetails implements ArrayInterface {
 	}
 	
 	/**
-	 * {@link net.sf.RecordEditor.edit.display.array.ArrayInterface#retrieveArray()}
+	 * {@link net.sf.RecordEditor.utils.swing.array.ArrayInterface#retrieveArray()}
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -221,7 +221,7 @@ public class ArrayDetails implements ArrayInterface {
 	
 
 	/**
-	 * @see  net.sf.RecordEditor.edit.display.array.ArrayInterface#getColumnCount()
+	 * @see  net.sf.RecordEditor.utils.swing.array.ArrayInterface#getColumnCount()
 	 */
 	@Override
 	public int getColumnCount() {
@@ -230,7 +230,7 @@ public class ArrayDetails implements ArrayInterface {
 
 	
 	/**
-	 * @see net.sf.RecordEditor.edit.display.array.ArrayInterface#getLine()
+	 * @see net.sf.RecordEditor.utils.swing.array.ArrayInterface#getLine()
 	 */
 	@Override
 	public AbstractLine<?> getLine() {
@@ -238,7 +238,7 @@ public class ArrayDetails implements ArrayInterface {
 	}
 
 	/**
-	 * @see   net.sf.RecordEditor.edit.display.array.ArrayInterface#flush() 
+	 * @see   net.sf.RecordEditor.utils.swing.array.ArrayInterface#flush() 
 	 */
 	@Override
 	public void flush() {

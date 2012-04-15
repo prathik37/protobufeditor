@@ -5,7 +5,7 @@ def test():
 	java_recorded_version = '1.6.0_03'
 
 	if window('Protocol Buffer Editor'):
-		select_menu('File>>Compare Menu')
+		select_menu('Edit>>Compare Menu')
 		click('*2')
 		click('Choose File')
 

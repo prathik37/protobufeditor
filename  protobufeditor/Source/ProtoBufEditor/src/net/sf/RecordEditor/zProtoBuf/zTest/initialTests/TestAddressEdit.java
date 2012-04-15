@@ -11,8 +11,10 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.edit.display.LineTreeChild;
-import net.sf.RecordEditor.edit.file.FileView;
-import net.sf.RecordEditor.edit.tree.LineNodeChild;
+import net.sf.RecordEditor.re.file.FileView;
+import net.sf.RecordEditor.re.tree.LineNodeChild;
+import net.sf.RecordEditor.utils.fileStorage.DataStore;
+import net.sf.RecordEditor.utils.fileStorage.DataStoreStd;
 import net.sf.RecordEditor.utils.screenManager.ReMainFrame;
 
 import com.google.protobuf.DynamicMessage;
@@ -50,8 +52,8 @@ public class TestAddressEdit {
 		}
 		
 
-		ArrayList<AbstractLine<ProtoLayoutDef>> lines = new ArrayList<AbstractLine<ProtoLayoutDef>>(1);
 		ProtoLayoutDef layout = new ProtoLayoutDef(fd, Constants.IO_PROTO_DELIMITED);
+		DataStore<AbstractLine<ProtoLayoutDef>> lines = new DataStoreStd<AbstractLine<ProtoLayoutDef>>(layout, 1);
 		
 		
 		DynamicMessage.Builder bld = DynamicMessage
@@ -61,10 +63,10 @@ public class TestAddressEdit {
         
         lines.add(new ProtoLine(layout, bld));
        
-        FileView<ProtoLayoutDef> file = new FileView<ProtoLayoutDef>(lines, null, null, false);
+        FileView file = new FileView(lines, null, null, false);
         file.setAllowMultipleRecords(false);
          
-        new ReMainFrame("Proto Edit", "");
+        new ReMainFrame("Proto Edit", "", "");
         //new LineList(layout, file, file);
         new LineTreeChild(file, new LineNodeChild("File", file), true, 0);
 	}

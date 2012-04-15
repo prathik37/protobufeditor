@@ -33,14 +33,15 @@ import net.sf.RecordEditor.edit.EditRec;
 import net.sf.RecordEditor.edit.display.Action.HightlightMissingFields;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
 import net.sf.RecordEditor.edit.open.OpenFile;
-import net.sf.RecordEditor.editProperties.EditOptions;
-import net.sf.RecordEditor.editProperties.EditPropertiesPnl;
 
+import net.sf.RecordEditor.re.editProperties.EditOptions;
+import net.sf.RecordEditor.re.editProperties.EditPropertiesPnl;
+import net.sf.RecordEditor.re.util.ReIOProvider;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.common.ReActionHandler;
 import net.sf.RecordEditor.utils.edit.ParseArgs;
-import net.sf.RecordEditor.utils.edit.ReIOProvider;
+
 import net.sf.RecordEditor.utils.screenManager.ReFrame;
 
 
@@ -59,13 +60,18 @@ public class ProtoBufEditor extends EditRec {
 		;
 	private static String[][]  READER_OPTIONS = {
 		{Consts.DEFAULT_PROTO_DEFINITION_READER, "The default Proto reader (standard/compiled) proto files"},
-		{Consts.DEFAULT_PROTO_FILE_STRUCTURE, "The default Proto Message Reader"},
+		{Consts.DEFAULT_PROTO_FILE_STRUCTURE,    "The default Proto Message Reader"},
 	};
 
 	private static final Object[][] PROTOC_OPTS = new Object[ConstClass.NUMBER_OF_PROTOC_OPTIONS + 1][];
 
 	static {
-		PROTOC_OPTS[0] = new Object[] {ConstClass.VAR_PROTOBUF_COMPILE, "protoc command", null, EditPropertiesPnl.FLD_TEXT, null};
+        Common.OPTIONS.xsltAvailable.set(false);
+
+        ReIOProvider.register();
+        ProtoIOProvider.register();
+
+        PROTOC_OPTS[0] = new Object[] {ConstClass.VAR_PROTOBUF_COMPILE, "protoc command", null, EditPropertiesPnl.FLD_TEXT, null};
 		
 		for (int i = 0; i < ConstClass.NUMBER_OF_PROTOC_OPTIONS; i++) {
 			PROTOC_OPTS[i+1] = new Object[] {
@@ -111,7 +117,6 @@ public class ProtoBufEditor extends EditRec {
     	   final AbstractLineIOProvider pIoProvider) {
         super(false, "Protocol Buffer Editor", null);
 
-        ProtoIOProvider.register();
         EditOptions.setDefaultDetails(READER_OPTIONS, models);
         //BaseDisplay.registerTableEditor(ArrayDetails.class, new ArrayRender(), new ArrayTableEditor());
         

@@ -49,7 +49,7 @@ def test():
 		select('Table', '4321', 'Data,3')
 		select('Table', 'cell:Data,2(654)')
 		assert_p('Table', 'Content', '[[keycode, 1, , 987, 987], [saleDate, 2, , 876, 876], [quantity, 3, , 654, 654], [price, 4, , 4321, 4321]]')
-		select_menu('File>>Compare with Disk')
+		select_menu('Edit>>Compare with Disk')
 		select('Table', 'cell:Line No,1()')
 		select('Table', 'cell:Line No,1()')
 ##		assert_p('Table', 'Content', '[[, Deleted, 38, 987, 876, 654, 4321], [, , , , , , ], [, Deleted, 39, 345, 678, 89, 11234], [, , , , , , ]]')

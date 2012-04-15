@@ -3,29 +3,60 @@
 
 package net.sf.RecordEditor.ProtoBuf.re.Test.ams;
 
-/*
- *                 Warning           Warning        Warning      Warning 
- *                *------------------------------------------------------------*
- * 
- * This was generated using Protocol Buffers 2.3.0 There will be errors if
- * using other version of Protocol Buffers.
- * 
- * You can regenerate from the proto file in the copybook directory
- * 
- * Note: This package comes with the protocol buffers 2.2.0 Jar file
- * 
- */
-
 public final class AmsLocation {
   private AmsLocation() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface LocationsOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string Brand_Id = 1;
+    boolean hasBrandId();
+    String getBrandId();
+    
+    // required string Loc_Nbr = 2;
+    boolean hasLocNbr();
+    String getLocNbr();
+    
+    // required string Loc_Type = 3;
+    boolean hasLocType();
+    String getLocType();
+    
+    // required string Loc_Name = 4;
+    boolean hasLocName();
+    String getLocName();
+    
+    // required string Loc_Addr_Ln1 = 5;
+    boolean hasLocAddrLn1();
+    String getLocAddrLn1();
+    
+    // required string Loc_Addr_Ln2 = 6;
+    boolean hasLocAddrLn2();
+    String getLocAddrLn2();
+    
+    // required string Loc_Addr_Ln3 = 7;
+    boolean hasLocAddrLn3();
+    String getLocAddrLn3();
+    
+    // required string Loc_Postcode = 8;
+    boolean hasLocPostcode();
+    String getLocPostcode();
+    
+    // required string Loc_State = 9;
+    boolean hasLocState();
+    String getLocState();
+    
+    // required string Loc_Actv_Ind = 10;
+    boolean hasLocActvInd();
+    String getLocActvInd();
+  }
   public static final class Locations extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements LocationsOrBuilder {
     // Use Locations.newBuilder() to construct.
-    private Locations() {
-      initFields();
+    private Locations(Builder builder) {
+      super(builder);
     }
     private Locations(boolean noInit) {}
     
@@ -48,124 +79,420 @@ public final class AmsLocation {
       return net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_ams_Locations_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required string Brand_Id = 1;
     public static final int BRAND_ID_FIELD_NUMBER = 1;
-    private boolean hasBrandId;
-    private java.lang.String brandId_ = "";
-    public boolean hasBrandId() { return hasBrandId; }
-    public java.lang.String getBrandId() { return brandId_; }
+    private java.lang.Object brandId_;
+    public boolean hasBrandId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getBrandId() {
+      java.lang.Object ref = brandId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          brandId_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getBrandIdBytes() {
+      java.lang.Object ref = brandId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        brandId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Nbr = 2;
     public static final int LOC_NBR_FIELD_NUMBER = 2;
-    private boolean hasLocNbr;
-    private java.lang.String locNbr_ = "";
-    public boolean hasLocNbr() { return hasLocNbr; }
-    public java.lang.String getLocNbr() { return locNbr_; }
+    private java.lang.Object locNbr_;
+    public boolean hasLocNbr() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public String getLocNbr() {
+      java.lang.Object ref = locNbr_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locNbr_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocNbrBytes() {
+      java.lang.Object ref = locNbr_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locNbr_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Type = 3;
     public static final int LOC_TYPE_FIELD_NUMBER = 3;
-    private boolean hasLocType;
-    private java.lang.String locType_ = "";
-    public boolean hasLocType() { return hasLocType; }
-    public java.lang.String getLocType() { return locType_; }
+    private java.lang.Object locType_;
+    public boolean hasLocType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getLocType() {
+      java.lang.Object ref = locType_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locType_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocTypeBytes() {
+      java.lang.Object ref = locType_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Name = 4;
     public static final int LOC_NAME_FIELD_NUMBER = 4;
-    private boolean hasLocName;
-    private java.lang.String locName_ = "";
-    public boolean hasLocName() { return hasLocName; }
-    public java.lang.String getLocName() { return locName_; }
+    private java.lang.Object locName_;
+    public boolean hasLocName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public String getLocName() {
+      java.lang.Object ref = locName_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locName_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocNameBytes() {
+      java.lang.Object ref = locName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Addr_Ln1 = 5;
     public static final int LOC_ADDR_LN1_FIELD_NUMBER = 5;
-    private boolean hasLocAddrLn1;
-    private java.lang.String locAddrLn1_ = "";
-    public boolean hasLocAddrLn1() { return hasLocAddrLn1; }
-    public java.lang.String getLocAddrLn1() { return locAddrLn1_; }
+    private java.lang.Object locAddrLn1_;
+    public boolean hasLocAddrLn1() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public String getLocAddrLn1() {
+      java.lang.Object ref = locAddrLn1_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locAddrLn1_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocAddrLn1Bytes() {
+      java.lang.Object ref = locAddrLn1_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locAddrLn1_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Addr_Ln2 = 6;
     public static final int LOC_ADDR_LN2_FIELD_NUMBER = 6;
-    private boolean hasLocAddrLn2;
-    private java.lang.String locAddrLn2_ = "";
-    public boolean hasLocAddrLn2() { return hasLocAddrLn2; }
-    public java.lang.String getLocAddrLn2() { return locAddrLn2_; }
+    private java.lang.Object locAddrLn2_;
+    public boolean hasLocAddrLn2() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public String getLocAddrLn2() {
+      java.lang.Object ref = locAddrLn2_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locAddrLn2_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocAddrLn2Bytes() {
+      java.lang.Object ref = locAddrLn2_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locAddrLn2_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Addr_Ln3 = 7;
     public static final int LOC_ADDR_LN3_FIELD_NUMBER = 7;
-    private boolean hasLocAddrLn3;
-    private java.lang.String locAddrLn3_ = "";
-    public boolean hasLocAddrLn3() { return hasLocAddrLn3; }
-    public java.lang.String getLocAddrLn3() { return locAddrLn3_; }
+    private java.lang.Object locAddrLn3_;
+    public boolean hasLocAddrLn3() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    public String getLocAddrLn3() {
+      java.lang.Object ref = locAddrLn3_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locAddrLn3_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocAddrLn3Bytes() {
+      java.lang.Object ref = locAddrLn3_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locAddrLn3_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Postcode = 8;
     public static final int LOC_POSTCODE_FIELD_NUMBER = 8;
-    private boolean hasLocPostcode;
-    private java.lang.String locPostcode_ = "";
-    public boolean hasLocPostcode() { return hasLocPostcode; }
-    public java.lang.String getLocPostcode() { return locPostcode_; }
+    private java.lang.Object locPostcode_;
+    public boolean hasLocPostcode() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public String getLocPostcode() {
+      java.lang.Object ref = locPostcode_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locPostcode_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocPostcodeBytes() {
+      java.lang.Object ref = locPostcode_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locPostcode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_State = 9;
     public static final int LOC_STATE_FIELD_NUMBER = 9;
-    private boolean hasLocState;
-    private java.lang.String locState_ = "";
-    public boolean hasLocState() { return hasLocState; }
-    public java.lang.String getLocState() { return locState_; }
+    private java.lang.Object locState_;
+    public boolean hasLocState() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    public String getLocState() {
+      java.lang.Object ref = locState_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locState_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocStateBytes() {
+      java.lang.Object ref = locState_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locState_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required string Loc_Actv_Ind = 10;
     public static final int LOC_ACTV_IND_FIELD_NUMBER = 10;
-    private boolean hasLocActvInd;
-    private java.lang.String locActvInd_ = "";
-    public boolean hasLocActvInd() { return hasLocActvInd; }
-    public java.lang.String getLocActvInd() { return locActvInd_; }
+    private java.lang.Object locActvInd_;
+    public boolean hasLocActvInd() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    public String getLocActvInd() {
+      java.lang.Object ref = locActvInd_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          locActvInd_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getLocActvIndBytes() {
+      java.lang.Object ref = locActvInd_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        locActvInd_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     private void initFields() {
+      brandId_ = "";
+      locNbr_ = "";
+      locType_ = "";
+      locName_ = "";
+      locAddrLn1_ = "";
+      locAddrLn2_ = "";
+      locAddrLn3_ = "";
+      locPostcode_ = "";
+      locState_ = "";
+      locActvInd_ = "";
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasBrandId) return false;
-      if (!hasLocNbr) return false;
-      if (!hasLocType) return false;
-      if (!hasLocName) return false;
-      if (!hasLocAddrLn1) return false;
-      if (!hasLocAddrLn2) return false;
-      if (!hasLocAddrLn3) return false;
-      if (!hasLocPostcode) return false;
-      if (!hasLocState) return false;
-      if (!hasLocActvInd) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasBrandId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocNbr()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocAddrLn1()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocAddrLn2()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocAddrLn3()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocPostcode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocState()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLocActvInd()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasBrandId()) {
-        output.writeString(1, getBrandId());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getBrandIdBytes());
       }
-      if (hasLocNbr()) {
-        output.writeString(2, getLocNbr());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getLocNbrBytes());
       }
-      if (hasLocType()) {
-        output.writeString(3, getLocType());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getLocTypeBytes());
       }
-      if (hasLocName()) {
-        output.writeString(4, getLocName());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getLocNameBytes());
       }
-      if (hasLocAddrLn1()) {
-        output.writeString(5, getLocAddrLn1());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getLocAddrLn1Bytes());
       }
-      if (hasLocAddrLn2()) {
-        output.writeString(6, getLocAddrLn2());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getLocAddrLn2Bytes());
       }
-      if (hasLocAddrLn3()) {
-        output.writeString(7, getLocAddrLn3());
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(7, getLocAddrLn3Bytes());
       }
-      if (hasLocPostcode()) {
-        output.writeString(8, getLocPostcode());
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(8, getLocPostcodeBytes());
       }
-      if (hasLocState()) {
-        output.writeString(9, getLocState());
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(9, getLocStateBytes());
       }
-      if (hasLocActvInd()) {
-        output.writeString(10, getLocActvInd());
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBytes(10, getLocActvIndBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -176,49 +503,56 @@ public final class AmsLocation {
       if (size != -1) return size;
     
       size = 0;
-      if (hasBrandId()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(1, getBrandId());
+          .computeBytesSize(1, getBrandIdBytes());
       }
-      if (hasLocNbr()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(2, getLocNbr());
+          .computeBytesSize(2, getLocNbrBytes());
       }
-      if (hasLocType()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(3, getLocType());
+          .computeBytesSize(3, getLocTypeBytes());
       }
-      if (hasLocName()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(4, getLocName());
+          .computeBytesSize(4, getLocNameBytes());
       }
-      if (hasLocAddrLn1()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(5, getLocAddrLn1());
+          .computeBytesSize(5, getLocAddrLn1Bytes());
       }
-      if (hasLocAddrLn2()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(6, getLocAddrLn2());
+          .computeBytesSize(6, getLocAddrLn2Bytes());
       }
-      if (hasLocAddrLn3()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(7, getLocAddrLn3());
+          .computeBytesSize(7, getLocAddrLn3Bytes());
       }
-      if (hasLocPostcode()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(8, getLocPostcode());
+          .computeBytesSize(8, getLocPostcodeBytes());
       }
-      if (hasLocState()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(9, getLocState());
+          .computeBytesSize(9, getLocStateBytes());
       }
-      if (hasLocActvInd()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(10, getLocActvInd());
+          .computeBytesSize(10, getLocActvIndBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations parseFrom(
@@ -295,34 +629,69 @@ public final class AmsLocation {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.LocationsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_ams_Locations_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_ams_Locations_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations();
+        super.clear();
+        brandId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        locNbr_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        locType_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        locName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        locAddrLn1_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        locAddrLn2_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        locAddrLn3_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
+        locPostcode_ = "";
+        bitField0_ = (bitField0_ & ~0x00000080);
+        locState_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
+        locActvInd_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -334,33 +703,71 @@ public final class AmsLocation {
         return net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations result = new net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.Locations returnMe = result;
-        result = null;
-        return returnMe;
+        result.brandId_ = brandId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.locNbr_ = locNbr_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.locType_ = locType_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.locName_ = locName_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.locAddrLn1_ = locAddrLn1_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.locAddrLn2_ = locAddrLn2_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.locAddrLn3_ = locAddrLn3_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.locPostcode_ = locPostcode_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.locState_ = locState_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.locActvInd_ = locActvInd_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -408,6 +815,50 @@ public final class AmsLocation {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!hasBrandId()) {
+          
+          return false;
+        }
+        if (!hasLocNbr()) {
+          
+          return false;
+        }
+        if (!hasLocType()) {
+          
+          return false;
+        }
+        if (!hasLocName()) {
+          
+          return false;
+        }
+        if (!hasLocAddrLn1()) {
+          
+          return false;
+        }
+        if (!hasLocAddrLn2()) {
+          
+          return false;
+        }
+        if (!hasLocAddrLn3()) {
+          
+          return false;
+        }
+        if (!hasLocPostcode()) {
+          
+          return false;
+        }
+        if (!hasLocState()) {
+          
+          return false;
+        }
+        if (!hasLocActvInd()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -420,268 +871,431 @@ public final class AmsLocation {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 10: {
-              setBrandId(input.readString());
+              bitField0_ |= 0x00000001;
+              brandId_ = input.readBytes();
               break;
             }
             case 18: {
-              setLocNbr(input.readString());
+              bitField0_ |= 0x00000002;
+              locNbr_ = input.readBytes();
               break;
             }
             case 26: {
-              setLocType(input.readString());
+              bitField0_ |= 0x00000004;
+              locType_ = input.readBytes();
               break;
             }
             case 34: {
-              setLocName(input.readString());
+              bitField0_ |= 0x00000008;
+              locName_ = input.readBytes();
               break;
             }
             case 42: {
-              setLocAddrLn1(input.readString());
+              bitField0_ |= 0x00000010;
+              locAddrLn1_ = input.readBytes();
               break;
             }
             case 50: {
-              setLocAddrLn2(input.readString());
+              bitField0_ |= 0x00000020;
+              locAddrLn2_ = input.readBytes();
               break;
             }
             case 58: {
-              setLocAddrLn3(input.readString());
+              bitField0_ |= 0x00000040;
+              locAddrLn3_ = input.readBytes();
               break;
             }
             case 66: {
-              setLocPostcode(input.readString());
+              bitField0_ |= 0x00000080;
+              locPostcode_ = input.readBytes();
               break;
             }
             case 74: {
-              setLocState(input.readString());
+              bitField0_ |= 0x00000100;
+              locState_ = input.readBytes();
               break;
             }
             case 82: {
-              setLocActvInd(input.readString());
+              bitField0_ |= 0x00000200;
+              locActvInd_ = input.readBytes();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required string Brand_Id = 1;
+      private java.lang.Object brandId_ = "";
       public boolean hasBrandId() {
-        return result.hasBrandId();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public java.lang.String getBrandId() {
-        return result.getBrandId();
+      public String getBrandId() {
+        java.lang.Object ref = brandId_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          brandId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setBrandId(java.lang.String value) {
+      public Builder setBrandId(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasBrandId = true;
-        result.brandId_ = value;
+  bitField0_ |= 0x00000001;
+        brandId_ = value;
+        onChanged();
         return this;
       }
       public Builder clearBrandId() {
-        result.hasBrandId = false;
-        result.brandId_ = getDefaultInstance().getBrandId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        brandId_ = getDefaultInstance().getBrandId();
+        onChanged();
         return this;
+      }
+      void setBrandId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        brandId_ = value;
+        onChanged();
       }
       
       // required string Loc_Nbr = 2;
+      private java.lang.Object locNbr_ = "";
       public boolean hasLocNbr() {
-        return result.hasLocNbr();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public java.lang.String getLocNbr() {
-        return result.getLocNbr();
+      public String getLocNbr() {
+        java.lang.Object ref = locNbr_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locNbr_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocNbr(java.lang.String value) {
+      public Builder setLocNbr(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocNbr = true;
-        result.locNbr_ = value;
+  bitField0_ |= 0x00000002;
+        locNbr_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocNbr() {
-        result.hasLocNbr = false;
-        result.locNbr_ = getDefaultInstance().getLocNbr();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        locNbr_ = getDefaultInstance().getLocNbr();
+        onChanged();
         return this;
+      }
+      void setLocNbr(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
+        locNbr_ = value;
+        onChanged();
       }
       
       // required string Loc_Type = 3;
+      private java.lang.Object locType_ = "";
       public boolean hasLocType() {
-        return result.hasLocType();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public java.lang.String getLocType() {
-        return result.getLocType();
+      public String getLocType() {
+        java.lang.Object ref = locType_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locType_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocType(java.lang.String value) {
+      public Builder setLocType(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocType = true;
-        result.locType_ = value;
+  bitField0_ |= 0x00000004;
+        locType_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocType() {
-        result.hasLocType = false;
-        result.locType_ = getDefaultInstance().getLocType();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        locType_ = getDefaultInstance().getLocType();
+        onChanged();
         return this;
+      }
+      void setLocType(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        locType_ = value;
+        onChanged();
       }
       
       // required string Loc_Name = 4;
+      private java.lang.Object locName_ = "";
       public boolean hasLocName() {
-        return result.hasLocName();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      public java.lang.String getLocName() {
-        return result.getLocName();
+      public String getLocName() {
+        java.lang.Object ref = locName_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locName_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocName(java.lang.String value) {
+      public Builder setLocName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocName = true;
-        result.locName_ = value;
+  bitField0_ |= 0x00000008;
+        locName_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocName() {
-        result.hasLocName = false;
-        result.locName_ = getDefaultInstance().getLocName();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        locName_ = getDefaultInstance().getLocName();
+        onChanged();
         return this;
+      }
+      void setLocName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000008;
+        locName_ = value;
+        onChanged();
       }
       
       // required string Loc_Addr_Ln1 = 5;
+      private java.lang.Object locAddrLn1_ = "";
       public boolean hasLocAddrLn1() {
-        return result.hasLocAddrLn1();
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      public java.lang.String getLocAddrLn1() {
-        return result.getLocAddrLn1();
+      public String getLocAddrLn1() {
+        java.lang.Object ref = locAddrLn1_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locAddrLn1_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocAddrLn1(java.lang.String value) {
+      public Builder setLocAddrLn1(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocAddrLn1 = true;
-        result.locAddrLn1_ = value;
+  bitField0_ |= 0x00000010;
+        locAddrLn1_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocAddrLn1() {
-        result.hasLocAddrLn1 = false;
-        result.locAddrLn1_ = getDefaultInstance().getLocAddrLn1();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        locAddrLn1_ = getDefaultInstance().getLocAddrLn1();
+        onChanged();
         return this;
+      }
+      void setLocAddrLn1(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000010;
+        locAddrLn1_ = value;
+        onChanged();
       }
       
       // required string Loc_Addr_Ln2 = 6;
+      private java.lang.Object locAddrLn2_ = "";
       public boolean hasLocAddrLn2() {
-        return result.hasLocAddrLn2();
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      public java.lang.String getLocAddrLn2() {
-        return result.getLocAddrLn2();
+      public String getLocAddrLn2() {
+        java.lang.Object ref = locAddrLn2_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locAddrLn2_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocAddrLn2(java.lang.String value) {
+      public Builder setLocAddrLn2(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocAddrLn2 = true;
-        result.locAddrLn2_ = value;
+  bitField0_ |= 0x00000020;
+        locAddrLn2_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocAddrLn2() {
-        result.hasLocAddrLn2 = false;
-        result.locAddrLn2_ = getDefaultInstance().getLocAddrLn2();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        locAddrLn2_ = getDefaultInstance().getLocAddrLn2();
+        onChanged();
         return this;
+      }
+      void setLocAddrLn2(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000020;
+        locAddrLn2_ = value;
+        onChanged();
       }
       
       // required string Loc_Addr_Ln3 = 7;
+      private java.lang.Object locAddrLn3_ = "";
       public boolean hasLocAddrLn3() {
-        return result.hasLocAddrLn3();
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      public java.lang.String getLocAddrLn3() {
-        return result.getLocAddrLn3();
+      public String getLocAddrLn3() {
+        java.lang.Object ref = locAddrLn3_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locAddrLn3_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocAddrLn3(java.lang.String value) {
+      public Builder setLocAddrLn3(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocAddrLn3 = true;
-        result.locAddrLn3_ = value;
+  bitField0_ |= 0x00000040;
+        locAddrLn3_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocAddrLn3() {
-        result.hasLocAddrLn3 = false;
-        result.locAddrLn3_ = getDefaultInstance().getLocAddrLn3();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        locAddrLn3_ = getDefaultInstance().getLocAddrLn3();
+        onChanged();
         return this;
+      }
+      void setLocAddrLn3(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000040;
+        locAddrLn3_ = value;
+        onChanged();
       }
       
       // required string Loc_Postcode = 8;
+      private java.lang.Object locPostcode_ = "";
       public boolean hasLocPostcode() {
-        return result.hasLocPostcode();
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      public java.lang.String getLocPostcode() {
-        return result.getLocPostcode();
+      public String getLocPostcode() {
+        java.lang.Object ref = locPostcode_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locPostcode_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocPostcode(java.lang.String value) {
+      public Builder setLocPostcode(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocPostcode = true;
-        result.locPostcode_ = value;
+  bitField0_ |= 0x00000080;
+        locPostcode_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocPostcode() {
-        result.hasLocPostcode = false;
-        result.locPostcode_ = getDefaultInstance().getLocPostcode();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        locPostcode_ = getDefaultInstance().getLocPostcode();
+        onChanged();
         return this;
+      }
+      void setLocPostcode(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000080;
+        locPostcode_ = value;
+        onChanged();
       }
       
       // required string Loc_State = 9;
+      private java.lang.Object locState_ = "";
       public boolean hasLocState() {
-        return result.hasLocState();
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
-      public java.lang.String getLocState() {
-        return result.getLocState();
+      public String getLocState() {
+        java.lang.Object ref = locState_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locState_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocState(java.lang.String value) {
+      public Builder setLocState(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocState = true;
-        result.locState_ = value;
+  bitField0_ |= 0x00000100;
+        locState_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocState() {
-        result.hasLocState = false;
-        result.locState_ = getDefaultInstance().getLocState();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        locState_ = getDefaultInstance().getLocState();
+        onChanged();
         return this;
+      }
+      void setLocState(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000100;
+        locState_ = value;
+        onChanged();
       }
       
       // required string Loc_Actv_Ind = 10;
+      private java.lang.Object locActvInd_ = "";
       public boolean hasLocActvInd() {
-        return result.hasLocActvInd();
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
-      public java.lang.String getLocActvInd() {
-        return result.getLocActvInd();
+      public String getLocActvInd() {
+        java.lang.Object ref = locActvInd_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          locActvInd_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setLocActvInd(java.lang.String value) {
+      public Builder setLocActvInd(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasLocActvInd = true;
-        result.locActvInd_ = value;
+  bitField0_ |= 0x00000200;
+        locActvInd_ = value;
+        onChanged();
         return this;
       }
       public Builder clearLocActvInd() {
-        result.hasLocActvInd = false;
-        result.locActvInd_ = getDefaultInstance().getLocActvInd();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        locActvInd_ = getDefaultInstance().getLocActvInd();
+        onChanged();
         return this;
+      }
+      void setLocActvInd(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000200;
+        locActvInd_ = value;
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.re.Test.ams.Locations)
@@ -689,7 +1303,6 @@ public final class AmsLocation {
     
     static {
       defaultInstance = new Locations(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.ams.AmsLocation.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -739,8 +1352,6 @@ public final class AmsLocation {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }

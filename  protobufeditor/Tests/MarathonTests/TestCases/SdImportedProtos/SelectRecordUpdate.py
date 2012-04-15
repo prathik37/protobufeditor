@@ -34,7 +34,7 @@ def test():
 		select_menu('Window>>protoStoreSales3SDim.bin>>Tree View')
 		select('JTreeTable', 'cell:saleDate,5(40118)')
 		assert_p('JTreeTable', 'Content', '[[, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , 61664713, 40118, 1, 17990], [, , 61664713, 40118, -11, -1117990], [, , 61684613, 40118, 1, 12990], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ]]')
-		select_menu('File>>Compare with Disk')
+		select_menu('Edit>>Compare with Disk')
 		select('Table', 'cell:Line No,0(40118)')
 		assert_p('Table', 'Content', '[[, Old, 36, 61664713, 40118, -1, -17990], [, New, 36, , , -11, -1117990]]')
 		select('Table', 'cell:Line No,0(40118)')
@@ -46,7 +46,7 @@ def test():
 		select_menu('Window>>protoStoreSales3SDim.bin>>Record: ')
 		select('Table', 'cell:Data,1(40118)')
 		assert_p('Table', 'Content', '[[keycode, 1, , 61664713, 61664713], [saleDate, 2, , 40118, 40118], [quantity, 3, , -1, -1], [price, 4, , -17990, -17990]]')
-		select_menu('File>>Compare with Disk')
+		select_menu('Edit>>Compare with Disk')
 		assert_p('TextPane', 'Text', 'Files are Identical !!!')
 
 #		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3b.bin'):

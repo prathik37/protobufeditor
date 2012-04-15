@@ -15,6 +15,10 @@ public final class FieldTest2 {
     SALE(2, 1),
     ;
     
+    public static final int RETURN_VALUE = -1;
+    public static final int OTHER_VALUE = 0;
+    public static final int SALE_VALUE = 1;
+    
     
     public final int getNumber() { return value; }
     
@@ -35,8 +39,8 @@ public final class FieldTest2 {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<SaleType>() {
             public SaleType findValueByNumber(int number) {
-              return SaleType.valueOf(number)
-    ;        }
+              return SaleType.valueOf(number);
+            }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -55,6 +59,7 @@ public final class FieldTest2 {
     private static final SaleType[] VALUES = {
       RETURN, OTHER, SALE, 
     };
+    
     public static SaleType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -63,25 +68,107 @@ public final class FieldTest2 {
       }
       return VALUES[desc.getIndex()];
     }
+    
     private final int index;
     private final int value;
+    
     private SaleType(int index, int value) {
       this.index = index;
       this.value = value;
     }
     
-    static {
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.getDescriptor();
-    }
-    
     // @@protoc_insertion_point(enum_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType)
   }
   
+  public interface TestFields2OrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // repeated int32 f01 = 1;
+    java.util.List<java.lang.Integer> getF01List();
+    int getF01Count();
+    int getF01(int index);
+    
+    // repeated sint32 f02 = 2;
+    java.util.List<java.lang.Integer> getF02List();
+    int getF02Count();
+    int getF02(int index);
+    
+    // repeated sfixed32 f03 = 3;
+    java.util.List<java.lang.Integer> getF03List();
+    int getF03Count();
+    int getF03(int index);
+    
+    // repeated uint32 f04 = 4;
+    java.util.List<java.lang.Integer> getF04List();
+    int getF04Count();
+    int getF04(int index);
+    
+    // repeated fixed32 f05 = 5;
+    java.util.List<java.lang.Integer> getF05List();
+    int getF05Count();
+    int getF05(int index);
+    
+    // repeated int64 f06 = 6;
+    java.util.List<java.lang.Long> getF06List();
+    int getF06Count();
+    long getF06(int index);
+    
+    // repeated sint64 f07 = 7;
+    java.util.List<java.lang.Long> getF07List();
+    int getF07Count();
+    long getF07(int index);
+    
+    // repeated sfixed64 f08 = 8;
+    java.util.List<java.lang.Long> getF08List();
+    int getF08Count();
+    long getF08(int index);
+    
+    // repeated uint64 f09 = 9;
+    java.util.List<java.lang.Long> getF09List();
+    int getF09Count();
+    long getF09(int index);
+    
+    // repeated fixed64 f10 = 10;
+    java.util.List<java.lang.Long> getF10List();
+    int getF10Count();
+    long getF10(int index);
+    
+    // repeated float f11 = 11;
+    java.util.List<java.lang.Float> getF11List();
+    int getF11Count();
+    float getF11(int index);
+    
+    // repeated double f12 = 12;
+    java.util.List<java.lang.Double> getF12List();
+    int getF12Count();
+    double getF12(int index);
+    
+    // repeated bool f13 = 13;
+    java.util.List<java.lang.Boolean> getF13List();
+    int getF13Count();
+    boolean getF13(int index);
+    
+    // repeated string f15 = 15;
+    java.util.List<String> getF15List();
+    int getF15Count();
+    String getF15(int index);
+    
+    // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f17 = 17;
+    java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> getF17List();
+    int getF17Count();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType getF17(int index);
+    
+    // repeated bytes f19 = 19;
+    java.util.List<com.google.protobuf.ByteString> getF19List();
+    int getF19Count();
+    com.google.protobuf.ByteString getF19(int index);
+  }
   public static final class TestFields2 extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements TestFields2OrBuilder {
     // Use TestFields2.newBuilder() to construct.
-    private TestFields2() {
-      initFields();
+    private TestFields2(Builder builder) {
+      super(builder);
     }
     private TestFields2(boolean noInit) {}
     
@@ -106,252 +193,304 @@ public final class FieldTest2 {
     
     // repeated int32 f01 = 1;
     public static final int F01_FIELD_NUMBER = 1;
-    private java.util.List<java.lang.Integer> f01_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getF01List() {
+    private java.util.List<java.lang.Integer> f01_;
+    public java.util.List<java.lang.Integer>
+        getF01List() {
       return f01_;
     }
-    public int getF01Count() { return f01_.size(); }
+    public int getF01Count() {
+      return f01_.size();
+    }
     public int getF01(int index) {
       return f01_.get(index);
     }
     
     // repeated sint32 f02 = 2;
     public static final int F02_FIELD_NUMBER = 2;
-    private java.util.List<java.lang.Integer> f02_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getF02List() {
+    private java.util.List<java.lang.Integer> f02_;
+    public java.util.List<java.lang.Integer>
+        getF02List() {
       return f02_;
     }
-    public int getF02Count() { return f02_.size(); }
+    public int getF02Count() {
+      return f02_.size();
+    }
     public int getF02(int index) {
       return f02_.get(index);
     }
     
     // repeated sfixed32 f03 = 3;
     public static final int F03_FIELD_NUMBER = 3;
-    private java.util.List<java.lang.Integer> f03_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getF03List() {
+    private java.util.List<java.lang.Integer> f03_;
+    public java.util.List<java.lang.Integer>
+        getF03List() {
       return f03_;
     }
-    public int getF03Count() { return f03_.size(); }
+    public int getF03Count() {
+      return f03_.size();
+    }
     public int getF03(int index) {
       return f03_.get(index);
     }
     
     // repeated uint32 f04 = 4;
     public static final int F04_FIELD_NUMBER = 4;
-    private java.util.List<java.lang.Integer> f04_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getF04List() {
+    private java.util.List<java.lang.Integer> f04_;
+    public java.util.List<java.lang.Integer>
+        getF04List() {
       return f04_;
     }
-    public int getF04Count() { return f04_.size(); }
+    public int getF04Count() {
+      return f04_.size();
+    }
     public int getF04(int index) {
       return f04_.get(index);
     }
     
     // repeated fixed32 f05 = 5;
     public static final int F05_FIELD_NUMBER = 5;
-    private java.util.List<java.lang.Integer> f05_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getF05List() {
+    private java.util.List<java.lang.Integer> f05_;
+    public java.util.List<java.lang.Integer>
+        getF05List() {
       return f05_;
     }
-    public int getF05Count() { return f05_.size(); }
+    public int getF05Count() {
+      return f05_.size();
+    }
     public int getF05(int index) {
       return f05_.get(index);
     }
     
     // repeated int64 f06 = 6;
     public static final int F06_FIELD_NUMBER = 6;
-    private java.util.List<java.lang.Long> f06_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Long> getF06List() {
+    private java.util.List<java.lang.Long> f06_;
+    public java.util.List<java.lang.Long>
+        getF06List() {
       return f06_;
     }
-    public int getF06Count() { return f06_.size(); }
+    public int getF06Count() {
+      return f06_.size();
+    }
     public long getF06(int index) {
       return f06_.get(index);
     }
     
     // repeated sint64 f07 = 7;
     public static final int F07_FIELD_NUMBER = 7;
-    private java.util.List<java.lang.Long> f07_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Long> getF07List() {
+    private java.util.List<java.lang.Long> f07_;
+    public java.util.List<java.lang.Long>
+        getF07List() {
       return f07_;
     }
-    public int getF07Count() { return f07_.size(); }
+    public int getF07Count() {
+      return f07_.size();
+    }
     public long getF07(int index) {
       return f07_.get(index);
     }
     
     // repeated sfixed64 f08 = 8;
     public static final int F08_FIELD_NUMBER = 8;
-    private java.util.List<java.lang.Long> f08_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Long> getF08List() {
+    private java.util.List<java.lang.Long> f08_;
+    public java.util.List<java.lang.Long>
+        getF08List() {
       return f08_;
     }
-    public int getF08Count() { return f08_.size(); }
+    public int getF08Count() {
+      return f08_.size();
+    }
     public long getF08(int index) {
       return f08_.get(index);
     }
     
     // repeated uint64 f09 = 9;
     public static final int F09_FIELD_NUMBER = 9;
-    private java.util.List<java.lang.Long> f09_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Long> getF09List() {
+    private java.util.List<java.lang.Long> f09_;
+    public java.util.List<java.lang.Long>
+        getF09List() {
       return f09_;
     }
-    public int getF09Count() { return f09_.size(); }
+    public int getF09Count() {
+      return f09_.size();
+    }
     public long getF09(int index) {
       return f09_.get(index);
     }
     
     // repeated fixed64 f10 = 10;
     public static final int F10_FIELD_NUMBER = 10;
-    private java.util.List<java.lang.Long> f10_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Long> getF10List() {
+    private java.util.List<java.lang.Long> f10_;
+    public java.util.List<java.lang.Long>
+        getF10List() {
       return f10_;
     }
-    public int getF10Count() { return f10_.size(); }
+    public int getF10Count() {
+      return f10_.size();
+    }
     public long getF10(int index) {
       return f10_.get(index);
     }
     
     // repeated float f11 = 11;
     public static final int F11_FIELD_NUMBER = 11;
-    private java.util.List<java.lang.Float> f11_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Float> getF11List() {
+    private java.util.List<java.lang.Float> f11_;
+    public java.util.List<java.lang.Float>
+        getF11List() {
       return f11_;
     }
-    public int getF11Count() { return f11_.size(); }
+    public int getF11Count() {
+      return f11_.size();
+    }
     public float getF11(int index) {
       return f11_.get(index);
     }
     
     // repeated double f12 = 12;
     public static final int F12_FIELD_NUMBER = 12;
-    private java.util.List<java.lang.Double> f12_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Double> getF12List() {
+    private java.util.List<java.lang.Double> f12_;
+    public java.util.List<java.lang.Double>
+        getF12List() {
       return f12_;
     }
-    public int getF12Count() { return f12_.size(); }
+    public int getF12Count() {
+      return f12_.size();
+    }
     public double getF12(int index) {
       return f12_.get(index);
     }
     
     // repeated bool f13 = 13;
     public static final int F13_FIELD_NUMBER = 13;
-    private java.util.List<java.lang.Boolean> f13_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Boolean> getF13List() {
+    private java.util.List<java.lang.Boolean> f13_;
+    public java.util.List<java.lang.Boolean>
+        getF13List() {
       return f13_;
     }
-    public int getF13Count() { return f13_.size(); }
+    public int getF13Count() {
+      return f13_.size();
+    }
     public boolean getF13(int index) {
       return f13_.get(index);
     }
     
     // repeated string f15 = 15;
     public static final int F15_FIELD_NUMBER = 15;
-    private java.util.List<java.lang.String> f15_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.String> getF15List() {
+    private com.google.protobuf.LazyStringList f15_;
+    public java.util.List<String>
+        getF15List() {
       return f15_;
     }
-    public int getF15Count() { return f15_.size(); }
-    public java.lang.String getF15(int index) {
+    public int getF15Count() {
+      return f15_.size();
+    }
+    public String getF15(int index) {
       return f15_.get(index);
     }
     
     // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f17 = 17;
     public static final int F17_FIELD_NUMBER = 17;
-    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> f17_ =
-      java.util.Collections.emptyList();
+    private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> f17_;
     public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> getF17List() {
       return f17_;
     }
-    public int getF17Count() { return f17_.size(); }
+    public int getF17Count() {
+      return f17_.size();
+    }
     public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType getF17(int index) {
       return f17_.get(index);
     }
     
     // repeated bytes f19 = 19;
     public static final int F19_FIELD_NUMBER = 19;
-    private java.util.List<com.google.protobuf.ByteString> f19_ =
-      java.util.Collections.emptyList();
-    public java.util.List<com.google.protobuf.ByteString> getF19List() {
+    private java.util.List<com.google.protobuf.ByteString> f19_;
+    public java.util.List<com.google.protobuf.ByteString>
+        getF19List() {
       return f19_;
     }
-    public int getF19Count() { return f19_.size(); }
+    public int getF19Count() {
+      return f19_.size();
+    }
     public com.google.protobuf.ByteString getF19(int index) {
       return f19_.get(index);
     }
     
     private void initFields() {
+      f01_ = java.util.Collections.emptyList();;
+      f02_ = java.util.Collections.emptyList();;
+      f03_ = java.util.Collections.emptyList();;
+      f04_ = java.util.Collections.emptyList();;
+      f05_ = java.util.Collections.emptyList();;
+      f06_ = java.util.Collections.emptyList();;
+      f07_ = java.util.Collections.emptyList();;
+      f08_ = java.util.Collections.emptyList();;
+      f09_ = java.util.Collections.emptyList();;
+      f10_ = java.util.Collections.emptyList();;
+      f11_ = java.util.Collections.emptyList();;
+      f12_ = java.util.Collections.emptyList();;
+      f13_ = java.util.Collections.emptyList();;
+      f15_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      f17_ = java.util.Collections.emptyList();
+      f19_ = java.util.Collections.emptyList();;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int element : getF01List()) {
-        output.writeInt32(1, element);
+      for (int i = 0; i < f01_.size(); i++) {
+        output.writeInt32(1, f01_.get(i));
       }
-      for (int element : getF02List()) {
-        output.writeSInt32(2, element);
+      for (int i = 0; i < f02_.size(); i++) {
+        output.writeSInt32(2, f02_.get(i));
       }
-      for (int element : getF03List()) {
-        output.writeSFixed32(3, element);
+      for (int i = 0; i < f03_.size(); i++) {
+        output.writeSFixed32(3, f03_.get(i));
       }
-      for (int element : getF04List()) {
-        output.writeUInt32(4, element);
+      for (int i = 0; i < f04_.size(); i++) {
+        output.writeUInt32(4, f04_.get(i));
       }
-      for (int element : getF05List()) {
-        output.writeFixed32(5, element);
+      for (int i = 0; i < f05_.size(); i++) {
+        output.writeFixed32(5, f05_.get(i));
       }
-      for (long element : getF06List()) {
-        output.writeInt64(6, element);
+      for (int i = 0; i < f06_.size(); i++) {
+        output.writeInt64(6, f06_.get(i));
       }
-      for (long element : getF07List()) {
-        output.writeSInt64(7, element);
+      for (int i = 0; i < f07_.size(); i++) {
+        output.writeSInt64(7, f07_.get(i));
       }
-      for (long element : getF08List()) {
-        output.writeSFixed64(8, element);
+      for (int i = 0; i < f08_.size(); i++) {
+        output.writeSFixed64(8, f08_.get(i));
       }
-      for (long element : getF09List()) {
-        output.writeUInt64(9, element);
+      for (int i = 0; i < f09_.size(); i++) {
+        output.writeUInt64(9, f09_.get(i));
       }
-      for (long element : getF10List()) {
-        output.writeFixed64(10, element);
+      for (int i = 0; i < f10_.size(); i++) {
+        output.writeFixed64(10, f10_.get(i));
       }
-      for (float element : getF11List()) {
-        output.writeFloat(11, element);
+      for (int i = 0; i < f11_.size(); i++) {
+        output.writeFloat(11, f11_.get(i));
       }
-      for (double element : getF12List()) {
-        output.writeDouble(12, element);
+      for (int i = 0; i < f12_.size(); i++) {
+        output.writeDouble(12, f12_.get(i));
       }
-      for (boolean element : getF13List()) {
-        output.writeBool(13, element);
+      for (int i = 0; i < f13_.size(); i++) {
+        output.writeBool(13, f13_.get(i));
       }
-      for (java.lang.String element : getF15List()) {
-        output.writeString(15, element);
+      for (int i = 0; i < f15_.size(); i++) {
+        output.writeBytes(15, f15_.getByteString(i));
       }
-      for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType element : getF17List()) {
-        output.writeEnum(17, element.getNumber());
+      for (int i = 0; i < f17_.size(); i++) {
+        output.writeEnum(17, f17_.get(i).getNumber());
       }
-      for (com.google.protobuf.ByteString element : getF19List()) {
-        output.writeBytes(19, element);
+      for (int i = 0; i < f19_.size(); i++) {
+        output.writeBytes(19, f19_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -364,18 +503,18 @@ public final class FieldTest2 {
       size = 0;
       {
         int dataSize = 0;
-        for (int element : getF01List()) {
+        for (int i = 0; i < f01_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(element);
+            .computeInt32SizeNoTag(f01_.get(i));
         }
         size += dataSize;
         size += 1 * getF01List().size();
       }
       {
         int dataSize = 0;
-        for (int element : getF02List()) {
+        for (int i = 0; i < f02_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeSInt32SizeNoTag(element);
+            .computeSInt32SizeNoTag(f02_.get(i));
         }
         size += dataSize;
         size += 1 * getF02List().size();
@@ -388,9 +527,9 @@ public final class FieldTest2 {
       }
       {
         int dataSize = 0;
-        for (int element : getF04List()) {
+        for (int i = 0; i < f04_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt32SizeNoTag(element);
+            .computeUInt32SizeNoTag(f04_.get(i));
         }
         size += dataSize;
         size += 1 * getF04List().size();
@@ -403,18 +542,18 @@ public final class FieldTest2 {
       }
       {
         int dataSize = 0;
-        for (long element : getF06List()) {
+        for (int i = 0; i < f06_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt64SizeNoTag(element);
+            .computeInt64SizeNoTag(f06_.get(i));
         }
         size += dataSize;
         size += 1 * getF06List().size();
       }
       {
         int dataSize = 0;
-        for (long element : getF07List()) {
+        for (int i = 0; i < f07_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeSInt64SizeNoTag(element);
+            .computeSInt64SizeNoTag(f07_.get(i));
         }
         size += dataSize;
         size += 1 * getF07List().size();
@@ -427,9 +566,9 @@ public final class FieldTest2 {
       }
       {
         int dataSize = 0;
-        for (long element : getF09List()) {
+        for (int i = 0; i < f09_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt64SizeNoTag(element);
+            .computeUInt64SizeNoTag(f09_.get(i));
         }
         size += dataSize;
         size += 1 * getF09List().size();
@@ -460,27 +599,27 @@ public final class FieldTest2 {
       }
       {
         int dataSize = 0;
-        for (java.lang.String element : getF15List()) {
+        for (int i = 0; i < f15_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeStringSizeNoTag(element);
+            .computeBytesSizeNoTag(f15_.getByteString(i));
         }
         size += dataSize;
         size += 1 * getF15List().size();
       }
       {
         int dataSize = 0;
-        for (net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType element : getF17List()) {
+        for (int i = 0; i < f17_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeEnumSizeNoTag(element.getNumber());
+            .computeEnumSizeNoTag(f17_.get(i).getNumber());
         }
         size += dataSize;
-        size += 2 * getF17List().size();
+        size += 2 * f17_.size();
       }
       {
         int dataSize = 0;
-        for (com.google.protobuf.ByteString element : getF19List()) {
+        for (int i = 0; i < f19_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(element);
+            .computeBytesSizeNoTag(f19_.get(i));
         }
         size += dataSize;
         size += 2 * getF19List().size();
@@ -488,6 +627,13 @@ public final class FieldTest2 {
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 parseFrom(
@@ -564,34 +710,81 @@ public final class FieldTest2 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_TestFields2_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_TestFields2_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2();
+        super.clear();
+        f01_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        f02_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        f03_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        f04_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        f05_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        f06_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        f07_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        f08_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        f09_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        f10_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        f11_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        f12_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        f13_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        f15_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        f17_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00004000);
+        f19_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00008000);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -603,97 +796,110 @@ public final class FieldTest2 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          f01_ = java.util.Collections.unmodifiableList(f01_);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
-        if (result.f01_ != java.util.Collections.EMPTY_LIST) {
-          result.f01_ =
-            java.util.Collections.unmodifiableList(result.f01_);
+        result.f01_ = f01_;
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          f02_ = java.util.Collections.unmodifiableList(f02_);
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
-        if (result.f02_ != java.util.Collections.EMPTY_LIST) {
-          result.f02_ =
-            java.util.Collections.unmodifiableList(result.f02_);
+        result.f02_ = f02_;
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          f03_ = java.util.Collections.unmodifiableList(f03_);
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
-        if (result.f03_ != java.util.Collections.EMPTY_LIST) {
-          result.f03_ =
-            java.util.Collections.unmodifiableList(result.f03_);
+        result.f03_ = f03_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          f04_ = java.util.Collections.unmodifiableList(f04_);
+          bitField0_ = (bitField0_ & ~0x00000008);
         }
-        if (result.f04_ != java.util.Collections.EMPTY_LIST) {
-          result.f04_ =
-            java.util.Collections.unmodifiableList(result.f04_);
+        result.f04_ = f04_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          f05_ = java.util.Collections.unmodifiableList(f05_);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
-        if (result.f05_ != java.util.Collections.EMPTY_LIST) {
-          result.f05_ =
-            java.util.Collections.unmodifiableList(result.f05_);
+        result.f05_ = f05_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          f06_ = java.util.Collections.unmodifiableList(f06_);
+          bitField0_ = (bitField0_ & ~0x00000020);
         }
-        if (result.f06_ != java.util.Collections.EMPTY_LIST) {
-          result.f06_ =
-            java.util.Collections.unmodifiableList(result.f06_);
+        result.f06_ = f06_;
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          f07_ = java.util.Collections.unmodifiableList(f07_);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
-        if (result.f07_ != java.util.Collections.EMPTY_LIST) {
-          result.f07_ =
-            java.util.Collections.unmodifiableList(result.f07_);
+        result.f07_ = f07_;
+        if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          f08_ = java.util.Collections.unmodifiableList(f08_);
+          bitField0_ = (bitField0_ & ~0x00000080);
         }
-        if (result.f08_ != java.util.Collections.EMPTY_LIST) {
-          result.f08_ =
-            java.util.Collections.unmodifiableList(result.f08_);
+        result.f08_ = f08_;
+        if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          f09_ = java.util.Collections.unmodifiableList(f09_);
+          bitField0_ = (bitField0_ & ~0x00000100);
         }
-        if (result.f09_ != java.util.Collections.EMPTY_LIST) {
-          result.f09_ =
-            java.util.Collections.unmodifiableList(result.f09_);
+        result.f09_ = f09_;
+        if (((bitField0_ & 0x00000200) == 0x00000200)) {
+          f10_ = java.util.Collections.unmodifiableList(f10_);
+          bitField0_ = (bitField0_ & ~0x00000200);
         }
-        if (result.f10_ != java.util.Collections.EMPTY_LIST) {
-          result.f10_ =
-            java.util.Collections.unmodifiableList(result.f10_);
+        result.f10_ = f10_;
+        if (((bitField0_ & 0x00000400) == 0x00000400)) {
+          f11_ = java.util.Collections.unmodifiableList(f11_);
+          bitField0_ = (bitField0_ & ~0x00000400);
         }
-        if (result.f11_ != java.util.Collections.EMPTY_LIST) {
-          result.f11_ =
-            java.util.Collections.unmodifiableList(result.f11_);
+        result.f11_ = f11_;
+        if (((bitField0_ & 0x00000800) == 0x00000800)) {
+          f12_ = java.util.Collections.unmodifiableList(f12_);
+          bitField0_ = (bitField0_ & ~0x00000800);
         }
-        if (result.f12_ != java.util.Collections.EMPTY_LIST) {
-          result.f12_ =
-            java.util.Collections.unmodifiableList(result.f12_);
+        result.f12_ = f12_;
+        if (((bitField0_ & 0x00001000) == 0x00001000)) {
+          f13_ = java.util.Collections.unmodifiableList(f13_);
+          bitField0_ = (bitField0_ & ~0x00001000);
         }
-        if (result.f13_ != java.util.Collections.EMPTY_LIST) {
-          result.f13_ =
-            java.util.Collections.unmodifiableList(result.f13_);
+        result.f13_ = f13_;
+        if (((bitField0_ & 0x00002000) == 0x00002000)) {
+          f15_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              f15_);
+          bitField0_ = (bitField0_ & ~0x00002000);
         }
-        if (result.f15_ != java.util.Collections.EMPTY_LIST) {
-          result.f15_ =
-            java.util.Collections.unmodifiableList(result.f15_);
+        result.f15_ = f15_;
+        if (((bitField0_ & 0x00004000) == 0x00004000)) {
+          f17_ = java.util.Collections.unmodifiableList(f17_);
+          bitField0_ = (bitField0_ & ~0x00004000);
         }
-        if (result.f17_ != java.util.Collections.EMPTY_LIST) {
-          result.f17_ =
-            java.util.Collections.unmodifiableList(result.f17_);
+        result.f17_ = f17_;
+        if (((bitField0_ & 0x00008000) == 0x00008000)) {
+          f19_ = java.util.Collections.unmodifiableList(f19_);
+          bitField0_ = (bitField0_ & ~0x00008000);
         }
-        if (result.f19_ != java.util.Collections.EMPTY_LIST) {
-          result.f19_ =
-            java.util.Collections.unmodifiableList(result.f19_);
-        }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 returnMe = result;
-        result = null;
-        return returnMe;
+        result.f19_ = f19_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -708,103 +914,171 @@ public final class FieldTest2 {
       public Builder mergeFrom(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2 other) {
         if (other == net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.TestFields2.getDefaultInstance()) return this;
         if (!other.f01_.isEmpty()) {
-          if (result.f01_.isEmpty()) {
-            result.f01_ = new java.util.ArrayList<java.lang.Integer>();
+          if (f01_.isEmpty()) {
+            f01_ = other.f01_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureF01IsMutable();
+            f01_.addAll(other.f01_);
           }
-          result.f01_.addAll(other.f01_);
+          onChanged();
         }
         if (!other.f02_.isEmpty()) {
-          if (result.f02_.isEmpty()) {
-            result.f02_ = new java.util.ArrayList<java.lang.Integer>();
+          if (f02_.isEmpty()) {
+            f02_ = other.f02_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureF02IsMutable();
+            f02_.addAll(other.f02_);
           }
-          result.f02_.addAll(other.f02_);
+          onChanged();
         }
         if (!other.f03_.isEmpty()) {
-          if (result.f03_.isEmpty()) {
-            result.f03_ = new java.util.ArrayList<java.lang.Integer>();
+          if (f03_.isEmpty()) {
+            f03_ = other.f03_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureF03IsMutable();
+            f03_.addAll(other.f03_);
           }
-          result.f03_.addAll(other.f03_);
+          onChanged();
         }
         if (!other.f04_.isEmpty()) {
-          if (result.f04_.isEmpty()) {
-            result.f04_ = new java.util.ArrayList<java.lang.Integer>();
+          if (f04_.isEmpty()) {
+            f04_ = other.f04_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureF04IsMutable();
+            f04_.addAll(other.f04_);
           }
-          result.f04_.addAll(other.f04_);
+          onChanged();
         }
         if (!other.f05_.isEmpty()) {
-          if (result.f05_.isEmpty()) {
-            result.f05_ = new java.util.ArrayList<java.lang.Integer>();
+          if (f05_.isEmpty()) {
+            f05_ = other.f05_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureF05IsMutable();
+            f05_.addAll(other.f05_);
           }
-          result.f05_.addAll(other.f05_);
+          onChanged();
         }
         if (!other.f06_.isEmpty()) {
-          if (result.f06_.isEmpty()) {
-            result.f06_ = new java.util.ArrayList<java.lang.Long>();
+          if (f06_.isEmpty()) {
+            f06_ = other.f06_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureF06IsMutable();
+            f06_.addAll(other.f06_);
           }
-          result.f06_.addAll(other.f06_);
+          onChanged();
         }
         if (!other.f07_.isEmpty()) {
-          if (result.f07_.isEmpty()) {
-            result.f07_ = new java.util.ArrayList<java.lang.Long>();
+          if (f07_.isEmpty()) {
+            f07_ = other.f07_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensureF07IsMutable();
+            f07_.addAll(other.f07_);
           }
-          result.f07_.addAll(other.f07_);
+          onChanged();
         }
         if (!other.f08_.isEmpty()) {
-          if (result.f08_.isEmpty()) {
-            result.f08_ = new java.util.ArrayList<java.lang.Long>();
+          if (f08_.isEmpty()) {
+            f08_ = other.f08_;
+            bitField0_ = (bitField0_ & ~0x00000080);
+          } else {
+            ensureF08IsMutable();
+            f08_.addAll(other.f08_);
           }
-          result.f08_.addAll(other.f08_);
+          onChanged();
         }
         if (!other.f09_.isEmpty()) {
-          if (result.f09_.isEmpty()) {
-            result.f09_ = new java.util.ArrayList<java.lang.Long>();
+          if (f09_.isEmpty()) {
+            f09_ = other.f09_;
+            bitField0_ = (bitField0_ & ~0x00000100);
+          } else {
+            ensureF09IsMutable();
+            f09_.addAll(other.f09_);
           }
-          result.f09_.addAll(other.f09_);
+          onChanged();
         }
         if (!other.f10_.isEmpty()) {
-          if (result.f10_.isEmpty()) {
-            result.f10_ = new java.util.ArrayList<java.lang.Long>();
+          if (f10_.isEmpty()) {
+            f10_ = other.f10_;
+            bitField0_ = (bitField0_ & ~0x00000200);
+          } else {
+            ensureF10IsMutable();
+            f10_.addAll(other.f10_);
           }
-          result.f10_.addAll(other.f10_);
+          onChanged();
         }
         if (!other.f11_.isEmpty()) {
-          if (result.f11_.isEmpty()) {
-            result.f11_ = new java.util.ArrayList<java.lang.Float>();
+          if (f11_.isEmpty()) {
+            f11_ = other.f11_;
+            bitField0_ = (bitField0_ & ~0x00000400);
+          } else {
+            ensureF11IsMutable();
+            f11_.addAll(other.f11_);
           }
-          result.f11_.addAll(other.f11_);
+          onChanged();
         }
         if (!other.f12_.isEmpty()) {
-          if (result.f12_.isEmpty()) {
-            result.f12_ = new java.util.ArrayList<java.lang.Double>();
+          if (f12_.isEmpty()) {
+            f12_ = other.f12_;
+            bitField0_ = (bitField0_ & ~0x00000800);
+          } else {
+            ensureF12IsMutable();
+            f12_.addAll(other.f12_);
           }
-          result.f12_.addAll(other.f12_);
+          onChanged();
         }
         if (!other.f13_.isEmpty()) {
-          if (result.f13_.isEmpty()) {
-            result.f13_ = new java.util.ArrayList<java.lang.Boolean>();
+          if (f13_.isEmpty()) {
+            f13_ = other.f13_;
+            bitField0_ = (bitField0_ & ~0x00001000);
+          } else {
+            ensureF13IsMutable();
+            f13_.addAll(other.f13_);
           }
-          result.f13_.addAll(other.f13_);
+          onChanged();
         }
         if (!other.f15_.isEmpty()) {
-          if (result.f15_.isEmpty()) {
-            result.f15_ = new java.util.ArrayList<java.lang.String>();
+          if (f15_.isEmpty()) {
+            f15_ = other.f15_;
+            bitField0_ = (bitField0_ & ~0x00002000);
+          } else {
+            ensureF15IsMutable();
+            f15_.addAll(other.f15_);
           }
-          result.f15_.addAll(other.f15_);
+          onChanged();
         }
         if (!other.f17_.isEmpty()) {
-          if (result.f17_.isEmpty()) {
-            result.f17_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType>();
+          if (f17_.isEmpty()) {
+            f17_ = other.f17_;
+            bitField0_ = (bitField0_ & ~0x00004000);
+          } else {
+            ensureF17IsMutable();
+            f17_.addAll(other.f17_);
           }
-          result.f17_.addAll(other.f17_);
+          onChanged();
         }
         if (!other.f19_.isEmpty()) {
-          if (result.f19_.isEmpty()) {
-            result.f19_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
+          if (f19_.isEmpty()) {
+            f19_ = other.f19_;
+            bitField0_ = (bitField0_ & ~0x00008000);
+          } else {
+            ensureF19IsMutable();
+            f19_.addAll(other.f19_);
           }
-          result.f19_.addAll(other.f19_);
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        return true;
       }
       
       public Builder mergeFrom(
@@ -819,17 +1093,20 @@ public final class FieldTest2 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              addF01(input.readInt32());
+              ensureF01IsMutable();
+              f01_.add(input.readInt32());
               break;
             }
             case 10: {
@@ -842,7 +1119,8 @@ public final class FieldTest2 {
               break;
             }
             case 16: {
-              addF02(input.readSInt32());
+              ensureF02IsMutable();
+              f02_.add(input.readSInt32());
               break;
             }
             case 18: {
@@ -855,7 +1133,8 @@ public final class FieldTest2 {
               break;
             }
             case 29: {
-              addF03(input.readSFixed32());
+              ensureF03IsMutable();
+              f03_.add(input.readSFixed32());
               break;
             }
             case 26: {
@@ -868,7 +1147,8 @@ public final class FieldTest2 {
               break;
             }
             case 32: {
-              addF04(input.readUInt32());
+              ensureF04IsMutable();
+              f04_.add(input.readUInt32());
               break;
             }
             case 34: {
@@ -881,7 +1161,8 @@ public final class FieldTest2 {
               break;
             }
             case 45: {
-              addF05(input.readFixed32());
+              ensureF05IsMutable();
+              f05_.add(input.readFixed32());
               break;
             }
             case 42: {
@@ -894,7 +1175,8 @@ public final class FieldTest2 {
               break;
             }
             case 48: {
-              addF06(input.readInt64());
+              ensureF06IsMutable();
+              f06_.add(input.readInt64());
               break;
             }
             case 50: {
@@ -907,7 +1189,8 @@ public final class FieldTest2 {
               break;
             }
             case 56: {
-              addF07(input.readSInt64());
+              ensureF07IsMutable();
+              f07_.add(input.readSInt64());
               break;
             }
             case 58: {
@@ -920,7 +1203,8 @@ public final class FieldTest2 {
               break;
             }
             case 65: {
-              addF08(input.readSFixed64());
+              ensureF08IsMutable();
+              f08_.add(input.readSFixed64());
               break;
             }
             case 66: {
@@ -933,7 +1217,8 @@ public final class FieldTest2 {
               break;
             }
             case 72: {
-              addF09(input.readUInt64());
+              ensureF09IsMutable();
+              f09_.add(input.readUInt64());
               break;
             }
             case 74: {
@@ -946,7 +1231,8 @@ public final class FieldTest2 {
               break;
             }
             case 81: {
-              addF10(input.readFixed64());
+              ensureF10IsMutable();
+              f10_.add(input.readFixed64());
               break;
             }
             case 82: {
@@ -959,7 +1245,8 @@ public final class FieldTest2 {
               break;
             }
             case 93: {
-              addF11(input.readFloat());
+              ensureF11IsMutable();
+              f11_.add(input.readFloat());
               break;
             }
             case 90: {
@@ -972,7 +1259,8 @@ public final class FieldTest2 {
               break;
             }
             case 97: {
-              addF12(input.readDouble());
+              ensureF12IsMutable();
+              f12_.add(input.readDouble());
               break;
             }
             case 98: {
@@ -985,7 +1273,8 @@ public final class FieldTest2 {
               break;
             }
             case 104: {
-              addF13(input.readBool());
+              ensureF13IsMutable();
+              f13_.add(input.readBool());
               break;
             }
             case 106: {
@@ -998,7 +1287,8 @@ public final class FieldTest2 {
               break;
             }
             case 122: {
-              addF15(input.readString());
+              ensureF15IsMutable();
+              f15_.add(input.readBytes());
               break;
             }
             case 136: {
@@ -1027,573 +1317,756 @@ public final class FieldTest2 {
               break;
             }
             case 154: {
-              addF19(input.readBytes());
+              ensureF19IsMutable();
+              f19_.add(input.readBytes());
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // repeated int32 f01 = 1;
-      public java.util.List<java.lang.Integer> getF01List() {
-        return java.util.Collections.unmodifiableList(result.f01_);
+      private java.util.List<java.lang.Integer> f01_ = java.util.Collections.emptyList();;
+      private void ensureF01IsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          f01_ = new java.util.ArrayList<java.lang.Integer>(f01_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getF01List() {
+        return java.util.Collections.unmodifiableList(f01_);
       }
       public int getF01Count() {
-        return result.getF01Count();
+        return f01_.size();
       }
       public int getF01(int index) {
-        return result.getF01(index);
+        return f01_.get(index);
       }
-      public Builder setF01(int index, int value) {
-        result.f01_.set(index, value);
+      public Builder setF01(
+          int index, int value) {
+        ensureF01IsMutable();
+        f01_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF01(int value) {
-        if (result.f01_.isEmpty()) {
-          result.f01_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.f01_.add(value);
+        ensureF01IsMutable();
+        f01_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF01(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.f01_.isEmpty()) {
-          result.f01_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.f01_);
+        ensureF01IsMutable();
+        super.addAll(values, f01_);
+        onChanged();
         return this;
       }
       public Builder clearF01() {
-        result.f01_ = java.util.Collections.emptyList();
+        f01_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
         return this;
       }
       
       // repeated sint32 f02 = 2;
-      public java.util.List<java.lang.Integer> getF02List() {
-        return java.util.Collections.unmodifiableList(result.f02_);
+      private java.util.List<java.lang.Integer> f02_ = java.util.Collections.emptyList();;
+      private void ensureF02IsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          f02_ = new java.util.ArrayList<java.lang.Integer>(f02_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getF02List() {
+        return java.util.Collections.unmodifiableList(f02_);
       }
       public int getF02Count() {
-        return result.getF02Count();
+        return f02_.size();
       }
       public int getF02(int index) {
-        return result.getF02(index);
+        return f02_.get(index);
       }
-      public Builder setF02(int index, int value) {
-        result.f02_.set(index, value);
+      public Builder setF02(
+          int index, int value) {
+        ensureF02IsMutable();
+        f02_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF02(int value) {
-        if (result.f02_.isEmpty()) {
-          result.f02_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.f02_.add(value);
+        ensureF02IsMutable();
+        f02_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF02(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.f02_.isEmpty()) {
-          result.f02_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.f02_);
+        ensureF02IsMutable();
+        super.addAll(values, f02_);
+        onChanged();
         return this;
       }
       public Builder clearF02() {
-        result.f02_ = java.util.Collections.emptyList();
+        f02_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
         return this;
       }
       
       // repeated sfixed32 f03 = 3;
-      public java.util.List<java.lang.Integer> getF03List() {
-        return java.util.Collections.unmodifiableList(result.f03_);
+      private java.util.List<java.lang.Integer> f03_ = java.util.Collections.emptyList();;
+      private void ensureF03IsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          f03_ = new java.util.ArrayList<java.lang.Integer>(f03_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getF03List() {
+        return java.util.Collections.unmodifiableList(f03_);
       }
       public int getF03Count() {
-        return result.getF03Count();
+        return f03_.size();
       }
       public int getF03(int index) {
-        return result.getF03(index);
+        return f03_.get(index);
       }
-      public Builder setF03(int index, int value) {
-        result.f03_.set(index, value);
+      public Builder setF03(
+          int index, int value) {
+        ensureF03IsMutable();
+        f03_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF03(int value) {
-        if (result.f03_.isEmpty()) {
-          result.f03_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.f03_.add(value);
+        ensureF03IsMutable();
+        f03_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF03(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.f03_.isEmpty()) {
-          result.f03_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.f03_);
+        ensureF03IsMutable();
+        super.addAll(values, f03_);
+        onChanged();
         return this;
       }
       public Builder clearF03() {
-        result.f03_ = java.util.Collections.emptyList();
+        f03_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
         return this;
       }
       
       // repeated uint32 f04 = 4;
-      public java.util.List<java.lang.Integer> getF04List() {
-        return java.util.Collections.unmodifiableList(result.f04_);
+      private java.util.List<java.lang.Integer> f04_ = java.util.Collections.emptyList();;
+      private void ensureF04IsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          f04_ = new java.util.ArrayList<java.lang.Integer>(f04_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getF04List() {
+        return java.util.Collections.unmodifiableList(f04_);
       }
       public int getF04Count() {
-        return result.getF04Count();
+        return f04_.size();
       }
       public int getF04(int index) {
-        return result.getF04(index);
+        return f04_.get(index);
       }
-      public Builder setF04(int index, int value) {
-        result.f04_.set(index, value);
+      public Builder setF04(
+          int index, int value) {
+        ensureF04IsMutable();
+        f04_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF04(int value) {
-        if (result.f04_.isEmpty()) {
-          result.f04_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.f04_.add(value);
+        ensureF04IsMutable();
+        f04_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF04(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.f04_.isEmpty()) {
-          result.f04_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.f04_);
+        ensureF04IsMutable();
+        super.addAll(values, f04_);
+        onChanged();
         return this;
       }
       public Builder clearF04() {
-        result.f04_ = java.util.Collections.emptyList();
+        f04_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
         return this;
       }
       
       // repeated fixed32 f05 = 5;
-      public java.util.List<java.lang.Integer> getF05List() {
-        return java.util.Collections.unmodifiableList(result.f05_);
+      private java.util.List<java.lang.Integer> f05_ = java.util.Collections.emptyList();;
+      private void ensureF05IsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          f05_ = new java.util.ArrayList<java.lang.Integer>(f05_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getF05List() {
+        return java.util.Collections.unmodifiableList(f05_);
       }
       public int getF05Count() {
-        return result.getF05Count();
+        return f05_.size();
       }
       public int getF05(int index) {
-        return result.getF05(index);
+        return f05_.get(index);
       }
-      public Builder setF05(int index, int value) {
-        result.f05_.set(index, value);
+      public Builder setF05(
+          int index, int value) {
+        ensureF05IsMutable();
+        f05_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF05(int value) {
-        if (result.f05_.isEmpty()) {
-          result.f05_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.f05_.add(value);
+        ensureF05IsMutable();
+        f05_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF05(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.f05_.isEmpty()) {
-          result.f05_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.f05_);
+        ensureF05IsMutable();
+        super.addAll(values, f05_);
+        onChanged();
         return this;
       }
       public Builder clearF05() {
-        result.f05_ = java.util.Collections.emptyList();
+        f05_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
         return this;
       }
       
       // repeated int64 f06 = 6;
-      public java.util.List<java.lang.Long> getF06List() {
-        return java.util.Collections.unmodifiableList(result.f06_);
+      private java.util.List<java.lang.Long> f06_ = java.util.Collections.emptyList();;
+      private void ensureF06IsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          f06_ = new java.util.ArrayList<java.lang.Long>(f06_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      public java.util.List<java.lang.Long>
+          getF06List() {
+        return java.util.Collections.unmodifiableList(f06_);
       }
       public int getF06Count() {
-        return result.getF06Count();
+        return f06_.size();
       }
       public long getF06(int index) {
-        return result.getF06(index);
+        return f06_.get(index);
       }
-      public Builder setF06(int index, long value) {
-        result.f06_.set(index, value);
+      public Builder setF06(
+          int index, long value) {
+        ensureF06IsMutable();
+        f06_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF06(long value) {
-        if (result.f06_.isEmpty()) {
-          result.f06_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        result.f06_.add(value);
+        ensureF06IsMutable();
+        f06_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF06(
           java.lang.Iterable<? extends java.lang.Long> values) {
-        if (result.f06_.isEmpty()) {
-          result.f06_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        super.addAll(values, result.f06_);
+        ensureF06IsMutable();
+        super.addAll(values, f06_);
+        onChanged();
         return this;
       }
       public Builder clearF06() {
-        result.f06_ = java.util.Collections.emptyList();
+        f06_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
         return this;
       }
       
       // repeated sint64 f07 = 7;
-      public java.util.List<java.lang.Long> getF07List() {
-        return java.util.Collections.unmodifiableList(result.f07_);
+      private java.util.List<java.lang.Long> f07_ = java.util.Collections.emptyList();;
+      private void ensureF07IsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          f07_ = new java.util.ArrayList<java.lang.Long>(f07_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      public java.util.List<java.lang.Long>
+          getF07List() {
+        return java.util.Collections.unmodifiableList(f07_);
       }
       public int getF07Count() {
-        return result.getF07Count();
+        return f07_.size();
       }
       public long getF07(int index) {
-        return result.getF07(index);
+        return f07_.get(index);
       }
-      public Builder setF07(int index, long value) {
-        result.f07_.set(index, value);
+      public Builder setF07(
+          int index, long value) {
+        ensureF07IsMutable();
+        f07_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF07(long value) {
-        if (result.f07_.isEmpty()) {
-          result.f07_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        result.f07_.add(value);
+        ensureF07IsMutable();
+        f07_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF07(
           java.lang.Iterable<? extends java.lang.Long> values) {
-        if (result.f07_.isEmpty()) {
-          result.f07_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        super.addAll(values, result.f07_);
+        ensureF07IsMutable();
+        super.addAll(values, f07_);
+        onChanged();
         return this;
       }
       public Builder clearF07() {
-        result.f07_ = java.util.Collections.emptyList();
+        f07_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
         return this;
       }
       
       // repeated sfixed64 f08 = 8;
-      public java.util.List<java.lang.Long> getF08List() {
-        return java.util.Collections.unmodifiableList(result.f08_);
+      private java.util.List<java.lang.Long> f08_ = java.util.Collections.emptyList();;
+      private void ensureF08IsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          f08_ = new java.util.ArrayList<java.lang.Long>(f08_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+      public java.util.List<java.lang.Long>
+          getF08List() {
+        return java.util.Collections.unmodifiableList(f08_);
       }
       public int getF08Count() {
-        return result.getF08Count();
+        return f08_.size();
       }
       public long getF08(int index) {
-        return result.getF08(index);
+        return f08_.get(index);
       }
-      public Builder setF08(int index, long value) {
-        result.f08_.set(index, value);
+      public Builder setF08(
+          int index, long value) {
+        ensureF08IsMutable();
+        f08_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF08(long value) {
-        if (result.f08_.isEmpty()) {
-          result.f08_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        result.f08_.add(value);
+        ensureF08IsMutable();
+        f08_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF08(
           java.lang.Iterable<? extends java.lang.Long> values) {
-        if (result.f08_.isEmpty()) {
-          result.f08_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        super.addAll(values, result.f08_);
+        ensureF08IsMutable();
+        super.addAll(values, f08_);
+        onChanged();
         return this;
       }
       public Builder clearF08() {
-        result.f08_ = java.util.Collections.emptyList();
+        f08_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
         return this;
       }
       
       // repeated uint64 f09 = 9;
-      public java.util.List<java.lang.Long> getF09List() {
-        return java.util.Collections.unmodifiableList(result.f09_);
+      private java.util.List<java.lang.Long> f09_ = java.util.Collections.emptyList();;
+      private void ensureF09IsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          f09_ = new java.util.ArrayList<java.lang.Long>(f09_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+      public java.util.List<java.lang.Long>
+          getF09List() {
+        return java.util.Collections.unmodifiableList(f09_);
       }
       public int getF09Count() {
-        return result.getF09Count();
+        return f09_.size();
       }
       public long getF09(int index) {
-        return result.getF09(index);
+        return f09_.get(index);
       }
-      public Builder setF09(int index, long value) {
-        result.f09_.set(index, value);
+      public Builder setF09(
+          int index, long value) {
+        ensureF09IsMutable();
+        f09_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF09(long value) {
-        if (result.f09_.isEmpty()) {
-          result.f09_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        result.f09_.add(value);
+        ensureF09IsMutable();
+        f09_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF09(
           java.lang.Iterable<? extends java.lang.Long> values) {
-        if (result.f09_.isEmpty()) {
-          result.f09_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        super.addAll(values, result.f09_);
+        ensureF09IsMutable();
+        super.addAll(values, f09_);
+        onChanged();
         return this;
       }
       public Builder clearF09() {
-        result.f09_ = java.util.Collections.emptyList();
+        f09_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
         return this;
       }
       
       // repeated fixed64 f10 = 10;
-      public java.util.List<java.lang.Long> getF10List() {
-        return java.util.Collections.unmodifiableList(result.f10_);
+      private java.util.List<java.lang.Long> f10_ = java.util.Collections.emptyList();;
+      private void ensureF10IsMutable() {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+          f10_ = new java.util.ArrayList<java.lang.Long>(f10_);
+          bitField0_ |= 0x00000200;
+         }
+      }
+      public java.util.List<java.lang.Long>
+          getF10List() {
+        return java.util.Collections.unmodifiableList(f10_);
       }
       public int getF10Count() {
-        return result.getF10Count();
+        return f10_.size();
       }
       public long getF10(int index) {
-        return result.getF10(index);
+        return f10_.get(index);
       }
-      public Builder setF10(int index, long value) {
-        result.f10_.set(index, value);
+      public Builder setF10(
+          int index, long value) {
+        ensureF10IsMutable();
+        f10_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF10(long value) {
-        if (result.f10_.isEmpty()) {
-          result.f10_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        result.f10_.add(value);
+        ensureF10IsMutable();
+        f10_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF10(
           java.lang.Iterable<? extends java.lang.Long> values) {
-        if (result.f10_.isEmpty()) {
-          result.f10_ = new java.util.ArrayList<java.lang.Long>();
-        }
-        super.addAll(values, result.f10_);
+        ensureF10IsMutable();
+        super.addAll(values, f10_);
+        onChanged();
         return this;
       }
       public Builder clearF10() {
-        result.f10_ = java.util.Collections.emptyList();
+        f10_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        onChanged();
         return this;
       }
       
       // repeated float f11 = 11;
-      public java.util.List<java.lang.Float> getF11List() {
-        return java.util.Collections.unmodifiableList(result.f11_);
+      private java.util.List<java.lang.Float> f11_ = java.util.Collections.emptyList();;
+      private void ensureF11IsMutable() {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+          f11_ = new java.util.ArrayList<java.lang.Float>(f11_);
+          bitField0_ |= 0x00000400;
+         }
+      }
+      public java.util.List<java.lang.Float>
+          getF11List() {
+        return java.util.Collections.unmodifiableList(f11_);
       }
       public int getF11Count() {
-        return result.getF11Count();
+        return f11_.size();
       }
       public float getF11(int index) {
-        return result.getF11(index);
+        return f11_.get(index);
       }
-      public Builder setF11(int index, float value) {
-        result.f11_.set(index, value);
+      public Builder setF11(
+          int index, float value) {
+        ensureF11IsMutable();
+        f11_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF11(float value) {
-        if (result.f11_.isEmpty()) {
-          result.f11_ = new java.util.ArrayList<java.lang.Float>();
-        }
-        result.f11_.add(value);
+        ensureF11IsMutable();
+        f11_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF11(
           java.lang.Iterable<? extends java.lang.Float> values) {
-        if (result.f11_.isEmpty()) {
-          result.f11_ = new java.util.ArrayList<java.lang.Float>();
-        }
-        super.addAll(values, result.f11_);
+        ensureF11IsMutable();
+        super.addAll(values, f11_);
+        onChanged();
         return this;
       }
       public Builder clearF11() {
-        result.f11_ = java.util.Collections.emptyList();
+        f11_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        onChanged();
         return this;
       }
       
       // repeated double f12 = 12;
-      public java.util.List<java.lang.Double> getF12List() {
-        return java.util.Collections.unmodifiableList(result.f12_);
+      private java.util.List<java.lang.Double> f12_ = java.util.Collections.emptyList();;
+      private void ensureF12IsMutable() {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
+          f12_ = new java.util.ArrayList<java.lang.Double>(f12_);
+          bitField0_ |= 0x00000800;
+         }
+      }
+      public java.util.List<java.lang.Double>
+          getF12List() {
+        return java.util.Collections.unmodifiableList(f12_);
       }
       public int getF12Count() {
-        return result.getF12Count();
+        return f12_.size();
       }
       public double getF12(int index) {
-        return result.getF12(index);
+        return f12_.get(index);
       }
-      public Builder setF12(int index, double value) {
-        result.f12_.set(index, value);
+      public Builder setF12(
+          int index, double value) {
+        ensureF12IsMutable();
+        f12_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF12(double value) {
-        if (result.f12_.isEmpty()) {
-          result.f12_ = new java.util.ArrayList<java.lang.Double>();
-        }
-        result.f12_.add(value);
+        ensureF12IsMutable();
+        f12_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF12(
           java.lang.Iterable<? extends java.lang.Double> values) {
-        if (result.f12_.isEmpty()) {
-          result.f12_ = new java.util.ArrayList<java.lang.Double>();
-        }
-        super.addAll(values, result.f12_);
+        ensureF12IsMutable();
+        super.addAll(values, f12_);
+        onChanged();
         return this;
       }
       public Builder clearF12() {
-        result.f12_ = java.util.Collections.emptyList();
+        f12_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        onChanged();
         return this;
       }
       
       // repeated bool f13 = 13;
-      public java.util.List<java.lang.Boolean> getF13List() {
-        return java.util.Collections.unmodifiableList(result.f13_);
+      private java.util.List<java.lang.Boolean> f13_ = java.util.Collections.emptyList();;
+      private void ensureF13IsMutable() {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+          f13_ = new java.util.ArrayList<java.lang.Boolean>(f13_);
+          bitField0_ |= 0x00001000;
+         }
+      }
+      public java.util.List<java.lang.Boolean>
+          getF13List() {
+        return java.util.Collections.unmodifiableList(f13_);
       }
       public int getF13Count() {
-        return result.getF13Count();
+        return f13_.size();
       }
       public boolean getF13(int index) {
-        return result.getF13(index);
+        return f13_.get(index);
       }
-      public Builder setF13(int index, boolean value) {
-        result.f13_.set(index, value);
+      public Builder setF13(
+          int index, boolean value) {
+        ensureF13IsMutable();
+        f13_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF13(boolean value) {
-        if (result.f13_.isEmpty()) {
-          result.f13_ = new java.util.ArrayList<java.lang.Boolean>();
-        }
-        result.f13_.add(value);
+        ensureF13IsMutable();
+        f13_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF13(
           java.lang.Iterable<? extends java.lang.Boolean> values) {
-        if (result.f13_.isEmpty()) {
-          result.f13_ = new java.util.ArrayList<java.lang.Boolean>();
-        }
-        super.addAll(values, result.f13_);
+        ensureF13IsMutable();
+        super.addAll(values, f13_);
+        onChanged();
         return this;
       }
       public Builder clearF13() {
-        result.f13_ = java.util.Collections.emptyList();
+        f13_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        onChanged();
         return this;
       }
       
       // repeated string f15 = 15;
-      public java.util.List<java.lang.String> getF15List() {
-        return java.util.Collections.unmodifiableList(result.f15_);
+      private com.google.protobuf.LazyStringList f15_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureF15IsMutable() {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
+          f15_ = new com.google.protobuf.LazyStringArrayList(f15_);
+          bitField0_ |= 0x00002000;
+         }
+      }
+      public java.util.List<String>
+          getF15List() {
+        return java.util.Collections.unmodifiableList(f15_);
       }
       public int getF15Count() {
-        return result.getF15Count();
+        return f15_.size();
       }
-      public java.lang.String getF15(int index) {
-        return result.getF15(index);
+      public String getF15(int index) {
+        return f15_.get(index);
       }
-      public Builder setF15(int index, java.lang.String value) {
+      public Builder setF15(
+          int index, String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.f15_.set(index, value);
+  ensureF15IsMutable();
+        f15_.set(index, value);
+        onChanged();
         return this;
       }
-      public Builder addF15(java.lang.String value) {
+      public Builder addF15(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  if (result.f15_.isEmpty()) {
-          result.f15_ = new java.util.ArrayList<java.lang.String>();
-        }
-        result.f15_.add(value);
+  ensureF15IsMutable();
+        f15_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF15(
-          java.lang.Iterable<? extends java.lang.String> values) {
-        if (result.f15_.isEmpty()) {
-          result.f15_ = new java.util.ArrayList<java.lang.String>();
-        }
-        super.addAll(values, result.f15_);
+          java.lang.Iterable<String> values) {
+        ensureF15IsMutable();
+        super.addAll(values, f15_);
+        onChanged();
         return this;
       }
       public Builder clearF15() {
-        result.f15_ = java.util.Collections.emptyList();
+        f15_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
         return this;
+      }
+      void addF15(com.google.protobuf.ByteString value) {
+        ensureF15IsMutable();
+        f15_.add(value);
+        onChanged();
       }
       
       // repeated .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f17 = 17;
+      private java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> f17_ =
+        java.util.Collections.emptyList();
+      private void ensureF17IsMutable() {
+        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
+          f17_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType>(f17_);
+          bitField0_ |= 0x00004000;
+        }
+      }
       public java.util.List<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> getF17List() {
-        return java.util.Collections.unmodifiableList(result.f17_);
+        return java.util.Collections.unmodifiableList(f17_);
       }
       public int getF17Count() {
-        return result.getF17Count();
+        return f17_.size();
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType getF17(int index) {
-        return result.getF17(index);
+        return f17_.get(index);
       }
-      public Builder setF17(int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType value) {
+      public Builder setF17(
+          int index, net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.f17_.set(index, value);
+        ensureF17IsMutable();
+        f17_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF17(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        if (result.f17_.isEmpty()) {
-          result.f17_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType>();
-        }
-        result.f17_.add(value);
+        ensureF17IsMutable();
+        f17_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF17(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType> values) {
-        if (result.f17_.isEmpty()) {
-          result.f17_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.SaleType>();
-        }
-        super.addAll(values, result.f17_);
+        ensureF17IsMutable();
+        super.addAll(values, f17_);
+        onChanged();
         return this;
       }
       public Builder clearF17() {
-        result.f17_ = java.util.Collections.emptyList();
+        f17_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00004000);
+        onChanged();
         return this;
       }
       
       // repeated bytes f19 = 19;
-      public java.util.List<com.google.protobuf.ByteString> getF19List() {
-        return java.util.Collections.unmodifiableList(result.f19_);
+      private java.util.List<com.google.protobuf.ByteString> f19_ = java.util.Collections.emptyList();;
+      private void ensureF19IsMutable() {
+        if (!((bitField0_ & 0x00008000) == 0x00008000)) {
+          f19_ = new java.util.ArrayList<com.google.protobuf.ByteString>(f19_);
+          bitField0_ |= 0x00008000;
+         }
+      }
+      public java.util.List<com.google.protobuf.ByteString>
+          getF19List() {
+        return java.util.Collections.unmodifiableList(f19_);
       }
       public int getF19Count() {
-        return result.getF19Count();
+        return f19_.size();
       }
       public com.google.protobuf.ByteString getF19(int index) {
-        return result.getF19(index);
+        return f19_.get(index);
       }
-      public Builder setF19(int index, com.google.protobuf.ByteString value) {
+      public Builder setF19(
+          int index, com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.f19_.set(index, value);
+  ensureF19IsMutable();
+        f19_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addF19(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  if (result.f19_.isEmpty()) {
-          result.f19_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-        }
-        result.f19_.add(value);
+  ensureF19IsMutable();
+        f19_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllF19(
           java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
-        if (result.f19_.isEmpty()) {
-          result.f19_ = new java.util.ArrayList<com.google.protobuf.ByteString>();
-        }
-        super.addAll(values, result.f19_);
+        ensureF19IsMutable();
+        super.addAll(values, f19_);
+        onChanged();
         return this;
       }
       public Builder clearF19() {
-        result.f19_ = java.util.Collections.emptyList();
+        f19_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00008000);
+        onChanged();
         return this;
       }
       
@@ -1602,7 +2075,6 @@ public final class FieldTest2 {
     
     static {
       defaultInstance = new TestFields2(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest2.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -1655,8 +2127,6 @@ public final class FieldTest2 {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }

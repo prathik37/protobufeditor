@@ -15,12 +15,12 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.edit.display.LineList;
 import net.sf.RecordEditor.edit.display.LineTree;
 import net.sf.RecordEditor.edit.display.LineTreeChild;
-import net.sf.RecordEditor.edit.file.FileView;
-import net.sf.RecordEditor.edit.file.storage.DataStore;
-import net.sf.RecordEditor.edit.file.storage.DataStoreStd;
-import net.sf.RecordEditor.edit.tree.LineNodeChild;
-import net.sf.RecordEditor.edit.tree.TreeParserXml;
+import net.sf.RecordEditor.re.file.FileView;
+import net.sf.RecordEditor.re.tree.LineNodeChild;
+import net.sf.RecordEditor.re.tree.TreeParserXml;
 import net.sf.RecordEditor.utils.edit.ParseArgs;
+import net.sf.RecordEditor.utils.fileStorage.DataStore;
+import net.sf.RecordEditor.utils.fileStorage.DataStoreStd;
 
 /**
  * This class is a programmers interface to the ProtoBuffers Editor

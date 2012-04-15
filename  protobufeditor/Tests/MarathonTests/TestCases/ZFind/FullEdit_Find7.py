@@ -8,7 +8,7 @@ def test():
 		click('Choose File')
 
 		if window('Open'):
-			select(commonBits.selectPane(), 'ams_locdownload_20041228.bin')
+			select(commonBits.selectPaneFn(), 'ams_locdownload_20041228.bin')
 			click('Open')
 		close()
 

@@ -11,7 +11,7 @@ def test():
 
 		if window('Open'):
 ##			select('FilePane$3', 'ams_locdownload_20041228.bin')
-			select(commonBits.selectPane(), 'ams_locdownload_20041228.bin')
+			select(commonBits.selectPaneFn(), 'ams_locdownload_20041228.bin')
 			click('Open')
 		close()
 

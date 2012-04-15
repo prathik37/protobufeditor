@@ -15,6 +15,10 @@ public final class FieldTest {
     SALE(2, 1),
     ;
     
+    public static final int RETURN_VALUE = -1;
+    public static final int OTHER_VALUE = 0;
+    public static final int SALE_VALUE = 1;
+    
     
     public final int getNumber() { return value; }
     
@@ -35,8 +39,8 @@ public final class FieldTest {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<SaleType>() {
             public SaleType findValueByNumber(int number) {
-              return SaleType.valueOf(number)
-    ;        }
+              return SaleType.valueOf(number);
+            }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -55,6 +59,7 @@ public final class FieldTest {
     private static final SaleType[] VALUES = {
       RETURN, OTHER, SALE, 
     };
+    
     public static SaleType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -63,25 +68,107 @@ public final class FieldTest {
       }
       return VALUES[desc.getIndex()];
     }
+    
     private final int index;
     private final int value;
+    
     private SaleType(int index, int value) {
       this.index = index;
       this.value = value;
     }
     
-    static {
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.getDescriptor();
-    }
-    
     // @@protoc_insertion_point(enum_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType)
   }
   
+  public interface TestFieldsOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 f01 = 1;
+    boolean hasF01();
+    int getF01();
+    
+    // required sint32 f02 = 2;
+    boolean hasF02();
+    int getF02();
+    
+    // required sfixed32 f03 = 3;
+    boolean hasF03();
+    int getF03();
+    
+    // required uint32 f04 = 4;
+    boolean hasF04();
+    int getF04();
+    
+    // required fixed32 f05 = 5;
+    boolean hasF05();
+    int getF05();
+    
+    // required int64 f06 = 6;
+    boolean hasF06();
+    long getF06();
+    
+    // required sint64 f07 = 7;
+    boolean hasF07();
+    long getF07();
+    
+    // required sfixed64 f08 = 8;
+    boolean hasF08();
+    long getF08();
+    
+    // required uint64 f09 = 9;
+    boolean hasF09();
+    long getF09();
+    
+    // required fixed64 f10 = 10;
+    boolean hasF10();
+    long getF10();
+    
+    // required float f11 = 11;
+    boolean hasF11();
+    float getF11();
+    
+    // required double f12 = 12;
+    boolean hasF12();
+    double getF12();
+    
+    // required bool f13 = 13;
+    boolean hasF13();
+    boolean getF13();
+    
+    // optional bool f14 = 14;
+    boolean hasF14();
+    boolean getF14();
+    
+    // required string f15 = 15;
+    boolean hasF15();
+    String getF15();
+    
+    // optional string f16 = 16;
+    boolean hasF16();
+    String getF16();
+    
+    // required .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f17 = 17;
+    boolean hasF17();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF17();
+    
+    // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f18 = 18;
+    boolean hasF18();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF18();
+    
+    // required bytes f19 = 19;
+    boolean hasF19();
+    com.google.protobuf.ByteString getF19();
+    
+    // optional bytes f20 = 20;
+    boolean hasF20();
+    com.google.protobuf.ByteString getF20();
+  }
   public static final class TestFields extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements TestFieldsOrBuilder {
     // Use TestFields.newBuilder() to construct.
-    private TestFields() {
-      initFields();
+    private TestFields(Builder builder) {
+      super(builder);
     }
     private TestFields(boolean noInit) {}
     
@@ -104,232 +191,408 @@ public final class FieldTest {
       return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_TestFields_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required int32 f01 = 1;
     public static final int F01_FIELD_NUMBER = 1;
-    private boolean hasF01;
-    private int f01_ = 0;
-    public boolean hasF01() { return hasF01; }
-    public int getF01() { return f01_; }
+    private int f01_;
+    public boolean hasF01() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getF01() {
+      return f01_;
+    }
     
     // required sint32 f02 = 2;
     public static final int F02_FIELD_NUMBER = 2;
-    private boolean hasF02;
-    private int f02_ = 0;
-    public boolean hasF02() { return hasF02; }
-    public int getF02() { return f02_; }
+    private int f02_;
+    public boolean hasF02() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getF02() {
+      return f02_;
+    }
     
     // required sfixed32 f03 = 3;
     public static final int F03_FIELD_NUMBER = 3;
-    private boolean hasF03;
-    private int f03_ = 0;
-    public boolean hasF03() { return hasF03; }
-    public int getF03() { return f03_; }
+    private int f03_;
+    public boolean hasF03() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getF03() {
+      return f03_;
+    }
     
     // required uint32 f04 = 4;
     public static final int F04_FIELD_NUMBER = 4;
-    private boolean hasF04;
-    private int f04_ = 0;
-    public boolean hasF04() { return hasF04; }
-    public int getF04() { return f04_; }
+    private int f04_;
+    public boolean hasF04() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public int getF04() {
+      return f04_;
+    }
     
     // required fixed32 f05 = 5;
     public static final int F05_FIELD_NUMBER = 5;
-    private boolean hasF05;
-    private int f05_ = 0;
-    public boolean hasF05() { return hasF05; }
-    public int getF05() { return f05_; }
+    private int f05_;
+    public boolean hasF05() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public int getF05() {
+      return f05_;
+    }
     
     // required int64 f06 = 6;
     public static final int F06_FIELD_NUMBER = 6;
-    private boolean hasF06;
-    private long f06_ = 0L;
-    public boolean hasF06() { return hasF06; }
-    public long getF06() { return f06_; }
+    private long f06_;
+    public boolean hasF06() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public long getF06() {
+      return f06_;
+    }
     
     // required sint64 f07 = 7;
     public static final int F07_FIELD_NUMBER = 7;
-    private boolean hasF07;
-    private long f07_ = 0L;
-    public boolean hasF07() { return hasF07; }
-    public long getF07() { return f07_; }
+    private long f07_;
+    public boolean hasF07() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    public long getF07() {
+      return f07_;
+    }
     
     // required sfixed64 f08 = 8;
     public static final int F08_FIELD_NUMBER = 8;
-    private boolean hasF08;
-    private long f08_ = 0L;
-    public boolean hasF08() { return hasF08; }
-    public long getF08() { return f08_; }
+    private long f08_;
+    public boolean hasF08() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public long getF08() {
+      return f08_;
+    }
     
     // required uint64 f09 = 9;
     public static final int F09_FIELD_NUMBER = 9;
-    private boolean hasF09;
-    private long f09_ = 0L;
-    public boolean hasF09() { return hasF09; }
-    public long getF09() { return f09_; }
+    private long f09_;
+    public boolean hasF09() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    public long getF09() {
+      return f09_;
+    }
     
     // required fixed64 f10 = 10;
     public static final int F10_FIELD_NUMBER = 10;
-    private boolean hasF10;
-    private long f10_ = 0L;
-    public boolean hasF10() { return hasF10; }
-    public long getF10() { return f10_; }
+    private long f10_;
+    public boolean hasF10() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    public long getF10() {
+      return f10_;
+    }
     
     // required float f11 = 11;
     public static final int F11_FIELD_NUMBER = 11;
-    private boolean hasF11;
-    private float f11_ = 0F;
-    public boolean hasF11() { return hasF11; }
-    public float getF11() { return f11_; }
+    private float f11_;
+    public boolean hasF11() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    public float getF11() {
+      return f11_;
+    }
     
     // required double f12 = 12;
     public static final int F12_FIELD_NUMBER = 12;
-    private boolean hasF12;
-    private double f12_ = 0D;
-    public boolean hasF12() { return hasF12; }
-    public double getF12() { return f12_; }
+    private double f12_;
+    public boolean hasF12() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    public double getF12() {
+      return f12_;
+    }
     
     // required bool f13 = 13;
     public static final int F13_FIELD_NUMBER = 13;
-    private boolean hasF13;
-    private boolean f13_ = false;
-    public boolean hasF13() { return hasF13; }
-    public boolean getF13() { return f13_; }
+    private boolean f13_;
+    public boolean hasF13() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    public boolean getF13() {
+      return f13_;
+    }
     
     // optional bool f14 = 14;
     public static final int F14_FIELD_NUMBER = 14;
-    private boolean hasF14;
-    private boolean f14_ = false;
-    public boolean hasF14() { return hasF14; }
-    public boolean getF14() { return f14_; }
+    private boolean f14_;
+    public boolean hasF14() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    public boolean getF14() {
+      return f14_;
+    }
     
     // required string f15 = 15;
     public static final int F15_FIELD_NUMBER = 15;
-    private boolean hasF15;
-    private java.lang.String f15_ = "";
-    public boolean hasF15() { return hasF15; }
-    public java.lang.String getF15() { return f15_; }
+    private java.lang.Object f15_;
+    public boolean hasF15() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    public String getF15() {
+      java.lang.Object ref = f15_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          f15_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getF15Bytes() {
+      java.lang.Object ref = f15_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        f15_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // optional string f16 = 16;
     public static final int F16_FIELD_NUMBER = 16;
-    private boolean hasF16;
-    private java.lang.String f16_ = "";
-    public boolean hasF16() { return hasF16; }
-    public java.lang.String getF16() { return f16_; }
+    private java.lang.Object f16_;
+    public boolean hasF16() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    public String getF16() {
+      java.lang.Object ref = f16_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          f16_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getF16Bytes() {
+      java.lang.Object ref = f16_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        f16_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
     
     // required .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f17 = 17;
     public static final int F17_FIELD_NUMBER = 17;
-    private boolean hasF17;
     private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType f17_;
-    public boolean hasF17() { return hasF17; }
-    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF17() { return f17_; }
+    public boolean hasF17() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF17() {
+      return f17_;
+    }
     
     // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f18 = 18;
     public static final int F18_FIELD_NUMBER = 18;
-    private boolean hasF18;
     private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType f18_;
-    public boolean hasF18() { return hasF18; }
-    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF18() { return f18_; }
+    public boolean hasF18() {
+      return ((bitField0_ & 0x00020000) == 0x00020000);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF18() {
+      return f18_;
+    }
     
     // required bytes f19 = 19;
     public static final int F19_FIELD_NUMBER = 19;
-    private boolean hasF19;
-    private com.google.protobuf.ByteString f19_ = com.google.protobuf.ByteString.EMPTY;
-    public boolean hasF19() { return hasF19; }
-    public com.google.protobuf.ByteString getF19() { return f19_; }
+    private com.google.protobuf.ByteString f19_;
+    public boolean hasF19() {
+      return ((bitField0_ & 0x00040000) == 0x00040000);
+    }
+    public com.google.protobuf.ByteString getF19() {
+      return f19_;
+    }
     
     // optional bytes f20 = 20;
     public static final int F20_FIELD_NUMBER = 20;
-    private boolean hasF20;
-    private com.google.protobuf.ByteString f20_ = com.google.protobuf.ByteString.EMPTY;
-    public boolean hasF20() { return hasF20; }
-    public com.google.protobuf.ByteString getF20() { return f20_; }
+    private com.google.protobuf.ByteString f20_;
+    public boolean hasF20() {
+      return ((bitField0_ & 0x00080000) == 0x00080000);
+    }
+    public com.google.protobuf.ByteString getF20() {
+      return f20_;
+    }
     
     private void initFields() {
+      f01_ = 0;
+      f02_ = 0;
+      f03_ = 0;
+      f04_ = 0;
+      f05_ = 0;
+      f06_ = 0L;
+      f07_ = 0L;
+      f08_ = 0L;
+      f09_ = 0L;
+      f10_ = 0L;
+      f11_ = 0F;
+      f12_ = 0D;
+      f13_ = false;
+      f14_ = false;
+      f15_ = "";
+      f16_ = "";
       f17_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
       f18_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+      f19_ = com.google.protobuf.ByteString.EMPTY;
+      f20_ = com.google.protobuf.ByteString.EMPTY;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasF01) return false;
-      if (!hasF02) return false;
-      if (!hasF03) return false;
-      if (!hasF04) return false;
-      if (!hasF05) return false;
-      if (!hasF06) return false;
-      if (!hasF07) return false;
-      if (!hasF08) return false;
-      if (!hasF09) return false;
-      if (!hasF10) return false;
-      if (!hasF11) return false;
-      if (!hasF12) return false;
-      if (!hasF13) return false;
-      if (!hasF15) return false;
-      if (!hasF17) return false;
-      if (!hasF19) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasF01()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF02()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF03()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF04()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF05()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF06()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF07()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF08()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF09()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF10()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF11()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF12()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF13()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF15()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF17()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasF19()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasF01()) {
-        output.writeInt32(1, getF01());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, f01_);
       }
-      if (hasF02()) {
-        output.writeSInt32(2, getF02());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeSInt32(2, f02_);
       }
-      if (hasF03()) {
-        output.writeSFixed32(3, getF03());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeSFixed32(3, f03_);
       }
-      if (hasF04()) {
-        output.writeUInt32(4, getF04());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt32(4, f04_);
       }
-      if (hasF05()) {
-        output.writeFixed32(5, getF05());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFixed32(5, f05_);
       }
-      if (hasF06()) {
-        output.writeInt64(6, getF06());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt64(6, f06_);
       }
-      if (hasF07()) {
-        output.writeSInt64(7, getF07());
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeSInt64(7, f07_);
       }
-      if (hasF08()) {
-        output.writeSFixed64(8, getF08());
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeSFixed64(8, f08_);
       }
-      if (hasF09()) {
-        output.writeUInt64(9, getF09());
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt64(9, f09_);
       }
-      if (hasF10()) {
-        output.writeFixed64(10, getF10());
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeFixed64(10, f10_);
       }
-      if (hasF11()) {
-        output.writeFloat(11, getF11());
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeFloat(11, f11_);
       }
-      if (hasF12()) {
-        output.writeDouble(12, getF12());
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeDouble(12, f12_);
       }
-      if (hasF13()) {
-        output.writeBool(13, getF13());
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeBool(13, f13_);
       }
-      if (hasF14()) {
-        output.writeBool(14, getF14());
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeBool(14, f14_);
       }
-      if (hasF15()) {
-        output.writeString(15, getF15());
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeBytes(15, getF15Bytes());
       }
-      if (hasF16()) {
-        output.writeString(16, getF16());
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeBytes(16, getF16Bytes());
       }
-      if (hasF17()) {
-        output.writeEnum(17, getF17().getNumber());
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeEnum(17, f17_.getNumber());
       }
-      if (hasF18()) {
-        output.writeEnum(18, getF18().getNumber());
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
+        output.writeEnum(18, f18_.getNumber());
       }
-      if (hasF19()) {
-        output.writeBytes(19, getF19());
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
+        output.writeBytes(19, f19_);
       }
-      if (hasF20()) {
-        output.writeBytes(20, getF20());
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
+        output.writeBytes(20, f20_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -340,89 +603,96 @@ public final class FieldTest {
       if (size != -1) return size;
     
       size = 0;
-      if (hasF01()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getF01());
+          .computeInt32Size(1, f01_);
       }
-      if (hasF02()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(2, getF02());
+          .computeSInt32Size(2, f02_);
       }
-      if (hasF03()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSFixed32Size(3, getF03());
+          .computeSFixed32Size(3, f03_);
       }
-      if (hasF04()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, getF04());
+          .computeUInt32Size(4, f04_);
       }
-      if (hasF05()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFixed32Size(5, getF05());
+          .computeFixed32Size(5, f05_);
       }
-      if (hasF06()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, getF06());
+          .computeInt64Size(6, f06_);
       }
-      if (hasF07()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt64Size(7, getF07());
+          .computeSInt64Size(7, f07_);
       }
-      if (hasF08()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSFixed64Size(8, getF08());
+          .computeSFixed64Size(8, f08_);
       }
-      if (hasF09()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(9, getF09());
+          .computeUInt64Size(9, f09_);
       }
-      if (hasF10()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFixed64Size(10, getF10());
+          .computeFixed64Size(10, f10_);
       }
-      if (hasF11()) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(11, getF11());
+          .computeFloatSize(11, f11_);
       }
-      if (hasF12()) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(12, getF12());
+          .computeDoubleSize(12, f12_);
       }
-      if (hasF13()) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(13, getF13());
+          .computeBoolSize(13, f13_);
       }
-      if (hasF14()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(14, getF14());
+          .computeBoolSize(14, f14_);
       }
-      if (hasF15()) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(15, getF15());
+          .computeBytesSize(15, getF15Bytes());
       }
-      if (hasF16()) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeStringSize(16, getF16());
+          .computeBytesSize(16, getF16Bytes());
       }
-      if (hasF17()) {
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(17, getF17().getNumber());
+          .computeEnumSize(17, f17_.getNumber());
       }
-      if (hasF18()) {
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(18, getF18().getNumber());
+          .computeEnumSize(18, f18_.getNumber());
       }
-      if (hasF19()) {
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(19, getF19());
+          .computeBytesSize(19, f19_);
       }
-      if (hasF20()) {
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(20, getF20());
+          .computeBytesSize(20, f20_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields parseFrom(
@@ -499,34 +769,89 @@ public final class FieldTest {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFieldsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_TestFields_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_TestFields_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields();
+        super.clear();
+        f01_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        f02_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        f03_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        f04_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        f05_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        f06_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        f07_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        f08_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        f09_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        f10_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        f11_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        f12_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        f13_ = false;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        f14_ = false;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        f15_ = "";
+        bitField0_ = (bitField0_ & ~0x00004000);
+        f16_ = "";
+        bitField0_ = (bitField0_ & ~0x00008000);
+        f17_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+        bitField0_ = (bitField0_ & ~0x00010000);
+        f18_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+        bitField0_ = (bitField0_ & ~0x00020000);
+        f19_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00040000);
+        f20_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00080000);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -538,33 +863,111 @@ public final class FieldTest {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.TestFields returnMe = result;
-        result = null;
-        return returnMe;
+        result.f01_ = f01_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.f02_ = f02_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.f03_ = f03_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.f04_ = f04_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.f05_ = f05_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.f06_ = f06_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.f07_ = f07_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.f08_ = f08_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.f09_ = f09_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.f10_ = f10_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.f11_ = f11_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.f12_ = f12_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.f13_ = f13_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
+        result.f14_ = f14_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        result.f15_ = f15_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        result.f16_ = f16_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
+        }
+        result.f17_ = f17_;
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00020000;
+        }
+        result.f18_ = f18_;
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00040000;
+        }
+        result.f19_ = f19_;
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
+        }
+        result.f20_ = f20_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -642,6 +1045,74 @@ public final class FieldTest {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!hasF01()) {
+          
+          return false;
+        }
+        if (!hasF02()) {
+          
+          return false;
+        }
+        if (!hasF03()) {
+          
+          return false;
+        }
+        if (!hasF04()) {
+          
+          return false;
+        }
+        if (!hasF05()) {
+          
+          return false;
+        }
+        if (!hasF06()) {
+          
+          return false;
+        }
+        if (!hasF07()) {
+          
+          return false;
+        }
+        if (!hasF08()) {
+          
+          return false;
+        }
+        if (!hasF09()) {
+          
+          return false;
+        }
+        if (!hasF10()) {
+          
+          return false;
+        }
+        if (!hasF11()) {
+          
+          return false;
+        }
+        if (!hasF12()) {
+          
+          return false;
+        }
+        if (!hasF13()) {
+          
+          return false;
+        }
+        if (!hasF15()) {
+          
+          return false;
+        }
+        if (!hasF17()) {
+          
+          return false;
+        }
+        if (!hasF19()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -654,77 +1125,95 @@ public final class FieldTest {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setF01(input.readInt32());
+              bitField0_ |= 0x00000001;
+              f01_ = input.readInt32();
               break;
             }
             case 16: {
-              setF02(input.readSInt32());
+              bitField0_ |= 0x00000002;
+              f02_ = input.readSInt32();
               break;
             }
             case 29: {
-              setF03(input.readSFixed32());
+              bitField0_ |= 0x00000004;
+              f03_ = input.readSFixed32();
               break;
             }
             case 32: {
-              setF04(input.readUInt32());
+              bitField0_ |= 0x00000008;
+              f04_ = input.readUInt32();
               break;
             }
             case 45: {
-              setF05(input.readFixed32());
+              bitField0_ |= 0x00000010;
+              f05_ = input.readFixed32();
               break;
             }
             case 48: {
-              setF06(input.readInt64());
+              bitField0_ |= 0x00000020;
+              f06_ = input.readInt64();
               break;
             }
             case 56: {
-              setF07(input.readSInt64());
+              bitField0_ |= 0x00000040;
+              f07_ = input.readSInt64();
               break;
             }
             case 65: {
-              setF08(input.readSFixed64());
+              bitField0_ |= 0x00000080;
+              f08_ = input.readSFixed64();
               break;
             }
             case 72: {
-              setF09(input.readUInt64());
+              bitField0_ |= 0x00000100;
+              f09_ = input.readUInt64();
               break;
             }
             case 81: {
-              setF10(input.readFixed64());
+              bitField0_ |= 0x00000200;
+              f10_ = input.readFixed64();
               break;
             }
             case 93: {
-              setF11(input.readFloat());
+              bitField0_ |= 0x00000400;
+              f11_ = input.readFloat();
               break;
             }
             case 97: {
-              setF12(input.readDouble());
+              bitField0_ |= 0x00000800;
+              f12_ = input.readDouble();
               break;
             }
             case 104: {
-              setF13(input.readBool());
+              bitField0_ |= 0x00001000;
+              f13_ = input.readBool();
               break;
             }
             case 112: {
-              setF14(input.readBool());
+              bitField0_ |= 0x00002000;
+              f14_ = input.readBool();
               break;
             }
             case 122: {
-              setF15(input.readString());
+              bitField0_ |= 0x00004000;
+              f15_ = input.readBytes();
               break;
             }
             case 130: {
-              setF16(input.readString());
+              bitField0_ |= 0x00008000;
+              f16_ = input.readBytes();
               break;
             }
             case 136: {
@@ -733,7 +1222,8 @@ public final class FieldTest {
               if (value == null) {
                 unknownFields.mergeVarintField(17, rawValue);
               } else {
-                setF17(value);
+                bitField0_ |= 0x00010000;
+                f17_ = value;
               }
               break;
             }
@@ -743,398 +1233,486 @@ public final class FieldTest {
               if (value == null) {
                 unknownFields.mergeVarintField(18, rawValue);
               } else {
-                setF18(value);
+                bitField0_ |= 0x00020000;
+                f18_ = value;
               }
               break;
             }
             case 154: {
-              setF19(input.readBytes());
+              bitField0_ |= 0x00040000;
+              f19_ = input.readBytes();
               break;
             }
             case 162: {
-              setF20(input.readBytes());
+              bitField0_ |= 0x00080000;
+              f20_ = input.readBytes();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required int32 f01 = 1;
+      private int f01_ ;
       public boolean hasF01() {
-        return result.hasF01();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getF01() {
-        return result.getF01();
+        return f01_;
       }
       public Builder setF01(int value) {
-        result.hasF01 = true;
-        result.f01_ = value;
+        bitField0_ |= 0x00000001;
+        f01_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF01() {
-        result.hasF01 = false;
-        result.f01_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        f01_ = 0;
+        onChanged();
         return this;
       }
       
       // required sint32 f02 = 2;
+      private int f02_ ;
       public boolean hasF02() {
-        return result.hasF02();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getF02() {
-        return result.getF02();
+        return f02_;
       }
       public Builder setF02(int value) {
-        result.hasF02 = true;
-        result.f02_ = value;
+        bitField0_ |= 0x00000002;
+        f02_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF02() {
-        result.hasF02 = false;
-        result.f02_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        f02_ = 0;
+        onChanged();
         return this;
       }
       
       // required sfixed32 f03 = 3;
+      private int f03_ ;
       public boolean hasF03() {
-        return result.hasF03();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public int getF03() {
-        return result.getF03();
+        return f03_;
       }
       public Builder setF03(int value) {
-        result.hasF03 = true;
-        result.f03_ = value;
+        bitField0_ |= 0x00000004;
+        f03_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF03() {
-        result.hasF03 = false;
-        result.f03_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        f03_ = 0;
+        onChanged();
         return this;
       }
       
       // required uint32 f04 = 4;
+      private int f04_ ;
       public boolean hasF04() {
-        return result.hasF04();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public int getF04() {
-        return result.getF04();
+        return f04_;
       }
       public Builder setF04(int value) {
-        result.hasF04 = true;
-        result.f04_ = value;
+        bitField0_ |= 0x00000008;
+        f04_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF04() {
-        result.hasF04 = false;
-        result.f04_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        f04_ = 0;
+        onChanged();
         return this;
       }
       
       // required fixed32 f05 = 5;
+      private int f05_ ;
       public boolean hasF05() {
-        return result.hasF05();
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       public int getF05() {
-        return result.getF05();
+        return f05_;
       }
       public Builder setF05(int value) {
-        result.hasF05 = true;
-        result.f05_ = value;
+        bitField0_ |= 0x00000010;
+        f05_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF05() {
-        result.hasF05 = false;
-        result.f05_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        f05_ = 0;
+        onChanged();
         return this;
       }
       
       // required int64 f06 = 6;
+      private long f06_ ;
       public boolean hasF06() {
-        return result.hasF06();
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       public long getF06() {
-        return result.getF06();
+        return f06_;
       }
       public Builder setF06(long value) {
-        result.hasF06 = true;
-        result.f06_ = value;
+        bitField0_ |= 0x00000020;
+        f06_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF06() {
-        result.hasF06 = false;
-        result.f06_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        f06_ = 0L;
+        onChanged();
         return this;
       }
       
       // required sint64 f07 = 7;
+      private long f07_ ;
       public boolean hasF07() {
-        return result.hasF07();
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       public long getF07() {
-        return result.getF07();
+        return f07_;
       }
       public Builder setF07(long value) {
-        result.hasF07 = true;
-        result.f07_ = value;
+        bitField0_ |= 0x00000040;
+        f07_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF07() {
-        result.hasF07 = false;
-        result.f07_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        f07_ = 0L;
+        onChanged();
         return this;
       }
       
       // required sfixed64 f08 = 8;
+      private long f08_ ;
       public boolean hasF08() {
-        return result.hasF08();
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       public long getF08() {
-        return result.getF08();
+        return f08_;
       }
       public Builder setF08(long value) {
-        result.hasF08 = true;
-        result.f08_ = value;
+        bitField0_ |= 0x00000080;
+        f08_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF08() {
-        result.hasF08 = false;
-        result.f08_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        f08_ = 0L;
+        onChanged();
         return this;
       }
       
       // required uint64 f09 = 9;
+      private long f09_ ;
       public boolean hasF09() {
-        return result.hasF09();
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       public long getF09() {
-        return result.getF09();
+        return f09_;
       }
       public Builder setF09(long value) {
-        result.hasF09 = true;
-        result.f09_ = value;
+        bitField0_ |= 0x00000100;
+        f09_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF09() {
-        result.hasF09 = false;
-        result.f09_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        f09_ = 0L;
+        onChanged();
         return this;
       }
       
       // required fixed64 f10 = 10;
+      private long f10_ ;
       public boolean hasF10() {
-        return result.hasF10();
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       public long getF10() {
-        return result.getF10();
+        return f10_;
       }
       public Builder setF10(long value) {
-        result.hasF10 = true;
-        result.f10_ = value;
+        bitField0_ |= 0x00000200;
+        f10_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF10() {
-        result.hasF10 = false;
-        result.f10_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        f10_ = 0L;
+        onChanged();
         return this;
       }
       
       // required float f11 = 11;
+      private float f11_ ;
       public boolean hasF11() {
-        return result.hasF11();
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       public float getF11() {
-        return result.getF11();
+        return f11_;
       }
       public Builder setF11(float value) {
-        result.hasF11 = true;
-        result.f11_ = value;
+        bitField0_ |= 0x00000400;
+        f11_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF11() {
-        result.hasF11 = false;
-        result.f11_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        f11_ = 0F;
+        onChanged();
         return this;
       }
       
       // required double f12 = 12;
+      private double f12_ ;
       public boolean hasF12() {
-        return result.hasF12();
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       public double getF12() {
-        return result.getF12();
+        return f12_;
       }
       public Builder setF12(double value) {
-        result.hasF12 = true;
-        result.f12_ = value;
+        bitField0_ |= 0x00000800;
+        f12_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF12() {
-        result.hasF12 = false;
-        result.f12_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000800);
+        f12_ = 0D;
+        onChanged();
         return this;
       }
       
       // required bool f13 = 13;
+      private boolean f13_ ;
       public boolean hasF13() {
-        return result.hasF13();
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       public boolean getF13() {
-        return result.getF13();
+        return f13_;
       }
       public Builder setF13(boolean value) {
-        result.hasF13 = true;
-        result.f13_ = value;
+        bitField0_ |= 0x00001000;
+        f13_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF13() {
-        result.hasF13 = false;
-        result.f13_ = false;
+        bitField0_ = (bitField0_ & ~0x00001000);
+        f13_ = false;
+        onChanged();
         return this;
       }
       
       // optional bool f14 = 14;
+      private boolean f14_ ;
       public boolean hasF14() {
-        return result.hasF14();
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       public boolean getF14() {
-        return result.getF14();
+        return f14_;
       }
       public Builder setF14(boolean value) {
-        result.hasF14 = true;
-        result.f14_ = value;
+        bitField0_ |= 0x00002000;
+        f14_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF14() {
-        result.hasF14 = false;
-        result.f14_ = false;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        f14_ = false;
+        onChanged();
         return this;
       }
       
       // required string f15 = 15;
+      private java.lang.Object f15_ = "";
       public boolean hasF15() {
-        return result.hasF15();
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
-      public java.lang.String getF15() {
-        return result.getF15();
+      public String getF15() {
+        java.lang.Object ref = f15_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          f15_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setF15(java.lang.String value) {
+      public Builder setF15(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasF15 = true;
-        result.f15_ = value;
+  bitField0_ |= 0x00004000;
+        f15_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF15() {
-        result.hasF15 = false;
-        result.f15_ = getDefaultInstance().getF15();
+        bitField0_ = (bitField0_ & ~0x00004000);
+        f15_ = getDefaultInstance().getF15();
+        onChanged();
         return this;
+      }
+      void setF15(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00004000;
+        f15_ = value;
+        onChanged();
       }
       
       // optional string f16 = 16;
+      private java.lang.Object f16_ = "";
       public boolean hasF16() {
-        return result.hasF16();
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
-      public java.lang.String getF16() {
-        return result.getF16();
+      public String getF16() {
+        java.lang.Object ref = f16_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          f16_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setF16(java.lang.String value) {
+      public Builder setF16(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasF16 = true;
-        result.f16_ = value;
+  bitField0_ |= 0x00008000;
+        f16_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF16() {
-        result.hasF16 = false;
-        result.f16_ = getDefaultInstance().getF16();
+        bitField0_ = (bitField0_ & ~0x00008000);
+        f16_ = getDefaultInstance().getF16();
+        onChanged();
         return this;
+      }
+      void setF16(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00008000;
+        f16_ = value;
+        onChanged();
       }
       
       // required .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f17 = 17;
+      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType f17_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
       public boolean hasF17() {
-        return result.hasF17();
+        return ((bitField0_ & 0x00010000) == 0x00010000);
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF17() {
-        return result.getF17();
+        return f17_;
       }
       public Builder setF17(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.hasF17 = true;
-        result.f17_ = value;
+        bitField0_ |= 0x00010000;
+        f17_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF17() {
-        result.hasF17 = false;
-        result.f17_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+        bitField0_ = (bitField0_ & ~0x00010000);
+        f17_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+        onChanged();
         return this;
       }
       
       // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType f18 = 18;
+      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType f18_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
       public boolean hasF18() {
-        return result.hasF18();
+        return ((bitField0_ & 0x00020000) == 0x00020000);
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType getF18() {
-        return result.getF18();
+        return f18_;
       }
       public Builder setF18(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.hasF18 = true;
-        result.f18_ = value;
+        bitField0_ |= 0x00020000;
+        f18_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF18() {
-        result.hasF18 = false;
-        result.f18_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+        bitField0_ = (bitField0_ & ~0x00020000);
+        f18_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.SaleType.RETURN;
+        onChanged();
         return this;
       }
       
       // required bytes f19 = 19;
+      private com.google.protobuf.ByteString f19_ = com.google.protobuf.ByteString.EMPTY;
       public boolean hasF19() {
-        return result.hasF19();
+        return ((bitField0_ & 0x00040000) == 0x00040000);
       }
       public com.google.protobuf.ByteString getF19() {
-        return result.getF19();
+        return f19_;
       }
       public Builder setF19(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasF19 = true;
-        result.f19_ = value;
+  bitField0_ |= 0x00040000;
+        f19_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF19() {
-        result.hasF19 = false;
-        result.f19_ = getDefaultInstance().getF19();
+        bitField0_ = (bitField0_ & ~0x00040000);
+        f19_ = getDefaultInstance().getF19();
+        onChanged();
         return this;
       }
       
       // optional bytes f20 = 20;
+      private com.google.protobuf.ByteString f20_ = com.google.protobuf.ByteString.EMPTY;
       public boolean hasF20() {
-        return result.hasF20();
+        return ((bitField0_ & 0x00080000) == 0x00080000);
       }
       public com.google.protobuf.ByteString getF20() {
-        return result.getF20();
+        return f20_;
       }
       public Builder setF20(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.hasF20 = true;
-        result.f20_ = value;
+  bitField0_ |= 0x00080000;
+        f20_ = value;
+        onChanged();
         return this;
       }
       public Builder clearF20() {
-        result.hasF20 = false;
-        result.f20_ = getDefaultInstance().getF20();
+        bitField0_ = (bitField0_ & ~0x00080000);
+        f20_ = getDefaultInstance().getF20();
+        onChanged();
         return this;
       }
       
@@ -1143,7 +1721,6 @@ public final class FieldTest {
     
     static {
       defaultInstance = new TestFields(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.FieldTest.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -1199,8 +1776,6 @@ public final class FieldTest {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }

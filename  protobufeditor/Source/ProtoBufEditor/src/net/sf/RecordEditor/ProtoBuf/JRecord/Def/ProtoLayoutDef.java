@@ -21,7 +21,7 @@ import net.sf.JRecord.Details.RecordDecider;
  * @author bm
  *
  */
-public class ProtoLayoutDef 
+public class ProtoLayoutDef
 extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 //implements AbstractLayoutDetails<ProtoFieldDef, ProtoRecordDef> {
 
