@@ -9,6 +9,13 @@ def Linux():
 
 
 def isWindowsLook():
+	return 0
+
+
+def isVersion80():
+	return 1
+
+def isVersion81():
 	return 1
 
 
@@ -27,29 +34,28 @@ def fileSep():
 
 def sampleDir():
 	if windows():
-		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\SampleFiles\\'
-	else:
-		return '/home/' + Linux() + '/RecordEdit/ProtoBuf/SampleFiles/'
+		return utilDir()+ 'SampleFiles\\'
+	else: 
+		return utilDir()+ 'SampleFiles/'
+
 
 def velocityDir():
 	if windows():
-		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\VelocityTemplates\\File\\'
+		return utilDir()+ 'SampleVelocityTemplates\\File\\'
 	else: 
-		return '/home/' + Linux() + '/ProtoBuf/VelocityTemplates/File/'
+		return utilDir()+ 'SampleVelocityTemplates/File/'
 
 def implementationSampleDir():
-	if windows():
-		return 'C:\\Program Files\\ProtoBuf\\SampleFiles\\'
-	else:
-		return '/home/' + Linux() + '/RecordEdit/ProtoBuf/SampleFiles/'
-##	return '/C:/Program Files/RecordEdit/HSQLDB/SampleFiles/'
-#	return '/home/knoppix/RecordEdit/HSQLDB/SampleFiles/'
+	return  sampleDir()
 
 def cobolTestDir():
 	if windows():
-		return 'E:\\Work\\RecordEdit\\CobolTests\\TestData\\'
-	else: 
-		return '/home/' + Linux() + '/reTest/'
+		return "C:\\Users\\mum\\Bruce\\CobolTestData\\"
+		##return "C:\\Users\\mum\\Bruce\\CobolTestData\\"
+		##return 'E:\\Work\\RecordEdit\\CobolTests\\TestData\\'
+	else: 	
+		return '/home/bm/Programs/open-cobol-1.0/CobolSrc/z1Test/'
+##		return '/home/' + Linux() + '/reTest/'
 
 def getJasperReportName():
 	return r'E:\Work\RecordEdit\Jasper\untitled_report_1.jrxml'
@@ -59,26 +65,26 @@ def usingEditStart():
 	return true
 
 	
-def stdCopybookDir():
-	if windows():
-		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\CopyBook\\'
-	else:
-		return '/home/' + Linux() + '/RecordEdit/ProtoBuf/CopyBook/'
-
-
-	
 def xmlCopybookDir():
 	if windows():
-		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\CopyBook\\'
+		return paramDir() + 'CopyBook\\'
 	else:
-		return '/home/' + Linux() + '/RecordEdit/ProtoBuf/CopyBook/'
+		return paramDir() + 'CopyBook/'
 
 	
+def stdCopybookDir():
+	if windows():
+		return paramDir() + 'CopyBook\\'
+	else:
+		return paramDir() + 'CopyBook/'
+
+
+
 def CobolCopybookDir():
 	if windows():
-		return 'C:\\Program Files\\RecordEdit\\ProtoBuf\\CopyBook\\'
+		return paramDir() + 'CopyBook\\'
 	else:
-		return '/home/' + Linux() + '/RecordEdit/ProtoBuf/CopyBook/'
+		return paramDir() + 'CopyBook/'
 
 ##	return '/union/home/guest/linux_HSQLDB_Edit/TestCase/Xml/XmlTree2.py'
 
@@ -143,10 +149,53 @@ def setCobolLayout2(select, recordLayout, format):
 
 def userDir():
 	if windows():
-		return 'C:\\Users\\bm\\.RecordEditor\\ProtoBuf\\User\\'
-	else:
-		return '/home/' + Linux() + '/.RecordEditor/ProtoBuf/User/'
+		return paramDir() + 'User\\'
+
+		##return 'C:\\Users\\mum\\RecordEditor_HSQL\\User\\'
+		##return 'C:\\Users\\bm\\.RecordEditor\\' + version() + '\\User\\'
+
+	else: 
+		return paramDir() + '/User/'
+
+
+def utilDir():
+	return paramDir()
+	
+def paramDir():
+	if windows():
+		if isVersion80():
+			return 'C:\\Users\\Mum\\.RecordEditor\\ProtoBuf\\'
+		else:
+			return 'C:\\JavaPrograms\\RecordEdit\\'
+
+		##return 'C:\\Users\\mum\\RecordEditor_HSQL\\User\\'
+		##return 'C:\\Users\\bm\\.RecordEditor\\' + version() + '\\User\\'
+	else: 
+		return '/home/bm' + '/.RecordEditor/ProtoBuf' 
+
 
 def selectPane():
+#	return 'File Name'
 #	return 'FilePane$4'
 	return 'FilePane$3'
+
+def selectPaneFn():
+	return 'File Name'
+
+def selectFileName(select, name):
+	select('File Name', name)
+
+def selectOldFilemenu(select_menu, menu, text):
+	if isVersion80():
+		select_menu(menu + '>>' + text)
+	else:
+		select_menu('File>>' + text)
+
+
+def firstField():
+##	return 'store'
+	return 'keycode'
+
+def secondField():
+	return 'saleDate'
+##	return 'keycode'

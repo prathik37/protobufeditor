@@ -1,23 +1,25 @@
 useFixture(default)
 
+## Does not work Java 6 64bit
+
 def test():
 	from Modules import commonBits
 	java_recorded_version = '1.6.0_03'
 
 	if window('Protocol Buffer Editor'):
-		select_menu('File>>Compare Menu')
+		select_menu('Edit>>Compare Menu')
 		click('*1')
 		click('Choose File')
 
 		if window('Open'):
-			select(commonBits.selectPane(), 'Ams_LocDownload_20041228_Extract.bin')
+			select(commonBits.selectPaneFn(), 'Ams_LocDownload_20041228_Extract.bin')
 			click('Open')
 		close()
 
 		click('Choose File1')
 
 		if window('Open'):
-			select(commonBits.selectPane(), 'Ams_LocDownload_20041228_Extract2.bin')
+			select(commonBits.selectPaneFn(), 'Ams_LocDownload_20041228_Extract2.bin')
 			click('Open')
 		close()
 
@@ -30,14 +32,14 @@ def test():
 		select('TabbedPane', '')
 		click('Choose File')
 
-		if window('Open'):
+		if window('Save'):
 			select(commonBits.selectPane(), 'Compare')
 			doubleclick(commonBits.selectPane(), '0')
 			if commonBits.isWindowsLook():
 				select(commonBits.selectPane(), 'zzTest_asmLocation.Xml')
 			else:
 				select('File Name', 'zzTest_asmLocation.Xml')
-			click('Open')
+			click('Save')
 		close()
 
 		click('Save1')

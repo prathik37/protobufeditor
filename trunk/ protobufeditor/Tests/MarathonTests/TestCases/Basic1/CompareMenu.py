@@ -5,12 +5,12 @@ def test():
 	java_recorded_version = '1.6.0_03'
 
 	if window('Protocol Buffer Editor'):
-		select_menu('File>>Compare Menu')
+		select_menu('Edit>>Compare Menu')
 		click('*1')
 		click('Choose File')
 
 		if window('Open'):
-			select(commonBits.selectPane(), 'Ams_LocDownload_20041228_Extract.bin')
+			select(commonBits.selectPaneFn(), 'Ams_LocDownload_20041228_Extract.bin')
 			click('Open')
 		close()
 		#commonBits.setRecordLayout2(select, 'ams Store')

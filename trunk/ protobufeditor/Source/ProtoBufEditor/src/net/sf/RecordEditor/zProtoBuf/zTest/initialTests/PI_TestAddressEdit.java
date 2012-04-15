@@ -9,12 +9,7 @@ import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Details.AbstractLine;
 import net.sf.RecordEditor.ProtoBuf.PackageInterface;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
-import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
-import net.sf.RecordEditor.edit.display.LineTreeChild;
-import net.sf.RecordEditor.edit.file.FileView;
-import net.sf.RecordEditor.edit.tree.LineNodeChild;
-import net.sf.RecordEditor.utils.screenManager.ReMainFrame;
 
 import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;

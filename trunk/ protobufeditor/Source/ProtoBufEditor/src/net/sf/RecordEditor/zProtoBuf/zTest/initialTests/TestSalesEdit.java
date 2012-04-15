@@ -2,7 +2,6 @@ package net.sf.RecordEditor.zProtoBuf.zTest.initialTests;
 
 import java.io.FileInputStream;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.JRecord.Details.AbstractLine;
@@ -10,7 +9,9 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.edit.display.LineList;
-import net.sf.RecordEditor.edit.file.FileView;
+import net.sf.RecordEditor.re.file.FileView;
+import net.sf.RecordEditor.utils.fileStorage.DataStore;
+import net.sf.RecordEditor.utils.fileStorage.DataStoreStd;
 import net.sf.RecordEditor.utils.screenManager.ReMainFrame;
 
 import com.google.protobuf.DynamicMessage;
@@ -50,8 +51,8 @@ public class TestSalesEdit {
 		
 		DynamicMessage.Builder bld;
 
-		ArrayList<AbstractLine<ProtoLayoutDef>> lines = new ArrayList<AbstractLine<ProtoLayoutDef>>();
 		ProtoLayoutDef layout = new ProtoLayoutDef(fd, 0);
+		DataStore<AbstractLine<ProtoLayoutDef>> lines = new DataStoreStd<AbstractLine<ProtoLayoutDef>>(layout);
 
 
 		long t= System.currentTimeMillis();
@@ -65,9 +66,9 @@ public class TestSalesEdit {
 
         indata.close();
        
-        FileView<ProtoLayoutDef> file = new FileView<ProtoLayoutDef>(lines, null, null, false);
+        FileView file = new FileView(lines, null, null, false);
          
-        new ReMainFrame("Proto Edit", "");
+        new ReMainFrame("Proto Edit", "", "");
         new LineList(layout, file, file);
 	}
 

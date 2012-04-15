@@ -6,7 +6,7 @@ package net.sf.RecordEditor.ProtoBuf;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
 import net.sf.RecordEditor.diff.Menu;
-import net.sf.RecordEditor.utils.openFile.AbstractLayoutSelectCreator;
+import net.sf.RecordEditor.re.openFile.AbstractLayoutSelectCreator;
 import net.sf.RecordEditor.utils.screenManager.ReMainFrame;
 
 /**
@@ -18,7 +18,7 @@ public class CompareProtoLayout {
 	public final static void newMenu() {
 		 new Menu(new AbstractLayoutSelectCreator<ProtoLayoutSelection>() {
 			/**
-			 * @see net.sf.RecordEditor.utils.openFile.AbstractLayoutSelectCreator#create()
+			 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelectCreator#create()
 			 */
 			@Override
 			public ProtoLayoutSelection create() {
@@ -35,7 +35,7 @@ public class CompareProtoLayout {
 	 */
 	public static void main(String[] args) {
 		
-		 new ReMainFrame("Proto Buffer Compare", "");
+		 new ReMainFrame("Proto Buffer Compare", "", "pCmp");
 		 newMenu();
 	}
 

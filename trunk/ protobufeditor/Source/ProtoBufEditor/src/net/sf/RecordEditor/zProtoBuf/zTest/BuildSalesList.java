@@ -12,7 +12,8 @@ import net.sf.JRecord.External.CopybookLoader;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.IO.CobolIoProvider;
 import net.sf.JRecord.Numeric.Convert;
-import net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.StoreSales;
+import net.sf.RecordEditor.ProtoBuf.re.Test.Sales2.StoreSales;
+
 
 
 import com.google.protobuf.AbstractMessage;

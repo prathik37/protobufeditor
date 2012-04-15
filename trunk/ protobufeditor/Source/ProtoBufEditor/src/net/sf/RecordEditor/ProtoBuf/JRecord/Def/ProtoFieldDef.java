@@ -18,7 +18,7 @@ public class ProtoFieldDef extends FieldDetail implements ComboModelSupplier {
 	private FieldDescriptor protoField;
 	private Object[] enumSymbols = null; 
 
-	public ProtoFieldDef(int pPosition, int type, 
+	public ProtoFieldDef(int pPosition, int type,
 			String font, int format, String paramater,
 			FieldDescriptor protoFieldDef) {
 		super(protoFieldDef.getName(), protoFieldDef.getFullName(), type, 0, font, format, paramater);

@@ -3,19 +3,6 @@
 
 package net.sf.RecordEditor.ProtoBuf.re.Test.SalesX;
 
-/*
- *                 Warning           Warning        Warning      Warning 
- *                *------------------------------------------------------------*
- * 
- * This was generated using Protocol Buffers 2.3.0 There will be errors if
- * using other version of Protocol Buffers.
- * 
- * You can regenerate from the proto file in the copybook directory
- * 
- * Note: This package comes with the protocol buffers 2.2.0 Jar file
- * 
- */
-
 public final class Sales11 {
   private Sales11() {}
   public static void registerAllExtensions(
@@ -27,6 +14,10 @@ public final class Sales11 {
     OTHER(1, 0),
     SALE(2, 1),
     ;
+    
+    public static final int RETURN_VALUE = -1;
+    public static final int OTHER_VALUE = 0;
+    public static final int SALE_VALUE = 1;
     
     
     public final int getNumber() { return value; }
@@ -48,8 +39,8 @@ public final class Sales11 {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<SaleType>() {
             public SaleType findValueByNumber(int number) {
-              return SaleType.valueOf(number)
-    ;        }
+              return SaleType.valueOf(number);
+            }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -68,6 +59,7 @@ public final class Sales11 {
     private static final SaleType[] VALUES = {
       RETURN, OTHER, SALE, 
     };
+    
     public static SaleType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -76,15 +68,13 @@ public final class Sales11 {
       }
       return VALUES[desc.getIndex()];
     }
+    
     private final int index;
     private final int value;
+    
     private SaleType(int index, int value) {
       this.index = index;
       this.value = value;
-    }
-    
-    static {
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.getDescriptor();
     }
     
     // @@protoc_insertion_point(enum_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType)
@@ -97,6 +87,11 @@ public final class Sales11 {
     DEBIT_CARD(2, 3),
     CHEQUE(3, 4),
     ;
+    
+    public static final int CASH_VALUE = 1;
+    public static final int CREDIT_CARD_VALUE = 2;
+    public static final int DEBIT_CARD_VALUE = 3;
+    public static final int CHEQUE_VALUE = 4;
     
     
     public final int getNumber() { return value; }
@@ -119,8 +114,8 @@ public final class Sales11 {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<PaymentType>() {
             public PaymentType findValueByNumber(int number) {
-              return PaymentType.valueOf(number)
-    ;        }
+              return PaymentType.valueOf(number);
+            }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -139,6 +134,7 @@ public final class Sales11 {
     private static final PaymentType[] VALUES = {
       CASH, CREDIT_CARD, DEBIT_CARD, CHEQUE, 
     };
+    
     public static PaymentType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -147,25 +143,72 @@ public final class Sales11 {
       }
       return VALUES[desc.getIndex()];
     }
+    
     private final int index;
     private final int value;
+    
     private PaymentType(int index, int value) {
       this.index = index;
       this.value = value;
     }
     
-    static {
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.getDescriptor();
-    }
-    
     // @@protoc_insertion_point(enum_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.PaymentType)
   }
   
+  public interface sale11OrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 keycode = 1;
+    boolean hasKeycode();
+    int getKeycode();
+    
+    // required int32 store = 2;
+    boolean hasStore();
+    int getStore();
+    
+    // optional int32 department = 3;
+    boolean hasDepartment();
+    int getDepartment();
+    
+    // optional int32 saleDate = 4;
+    boolean hasSaleDate();
+    int getSaleDate();
+    
+    // optional int32 quantity = 5;
+    boolean hasQuantity();
+    int getQuantity();
+    
+    // optional int64 price = 6;
+    boolean hasPrice();
+    long getPrice();
+    
+    // optional float priceFloat = 7;
+    boolean hasPriceFloat();
+    float getPriceFloat();
+    
+    // optional double priceDouble = 8;
+    boolean hasPriceDouble();
+    double getPriceDouble();
+    
+    // required .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType saleType = 10;
+    boolean hasSaleType();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType getSaleType();
+    
+    // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.PaymentType paymentType = 11;
+    boolean hasPaymentType();
+    net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType getPaymentType();
+    
+    // repeated string strArray = 21;
+    java.util.List<String> getStrArrayList();
+    int getStrArrayCount();
+    String getStrArray(int index);
+  }
   public static final class sale11 extends
-      com.google.protobuf.GeneratedMessage {
+      com.google.protobuf.GeneratedMessage
+      implements sale11OrBuilder {
     // Use sale11.newBuilder() to construct.
-    private sale11() {
-      initFields();
+    private sale11(Builder builder) {
+      super(builder);
     }
     private sale11(boolean noInit) {}
     
@@ -188,134 +231,190 @@ public final class Sales11 {
       return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_sale11_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required int32 keycode = 1;
     public static final int KEYCODE_FIELD_NUMBER = 1;
-    private boolean hasKeycode;
-    private int keycode_ = 0;
-    public boolean hasKeycode() { return hasKeycode; }
-    public int getKeycode() { return keycode_; }
+    private int keycode_;
+    public boolean hasKeycode() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getKeycode() {
+      return keycode_;
+    }
     
     // required int32 store = 2;
     public static final int STORE_FIELD_NUMBER = 2;
-    private boolean hasStore;
-    private int store_ = 0;
-    public boolean hasStore() { return hasStore; }
-    public int getStore() { return store_; }
+    private int store_;
+    public boolean hasStore() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getStore() {
+      return store_;
+    }
     
     // optional int32 department = 3;
     public static final int DEPARTMENT_FIELD_NUMBER = 3;
-    private boolean hasDepartment;
-    private int department_ = 0;
-    public boolean hasDepartment() { return hasDepartment; }
-    public int getDepartment() { return department_; }
+    private int department_;
+    public boolean hasDepartment() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getDepartment() {
+      return department_;
+    }
     
     // optional int32 saleDate = 4;
     public static final int SALEDATE_FIELD_NUMBER = 4;
-    private boolean hasSaleDate;
-    private int saleDate_ = 0;
-    public boolean hasSaleDate() { return hasSaleDate; }
-    public int getSaleDate() { return saleDate_; }
+    private int saleDate_;
+    public boolean hasSaleDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public int getSaleDate() {
+      return saleDate_;
+    }
     
     // optional int32 quantity = 5;
     public static final int QUANTITY_FIELD_NUMBER = 5;
-    private boolean hasQuantity;
-    private int quantity_ = 0;
-    public boolean hasQuantity() { return hasQuantity; }
-    public int getQuantity() { return quantity_; }
+    private int quantity_;
+    public boolean hasQuantity() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public int getQuantity() {
+      return quantity_;
+    }
     
     // optional int64 price = 6;
     public static final int PRICE_FIELD_NUMBER = 6;
-    private boolean hasPrice;
-    private long price_ = 0L;
-    public boolean hasPrice() { return hasPrice; }
-    public long getPrice() { return price_; }
+    private long price_;
+    public boolean hasPrice() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public long getPrice() {
+      return price_;
+    }
     
     // optional float priceFloat = 7;
     public static final int PRICEFLOAT_FIELD_NUMBER = 7;
-    private boolean hasPriceFloat;
-    private float priceFloat_ = 0F;
-    public boolean hasPriceFloat() { return hasPriceFloat; }
-    public float getPriceFloat() { return priceFloat_; }
+    private float priceFloat_;
+    public boolean hasPriceFloat() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    public float getPriceFloat() {
+      return priceFloat_;
+    }
     
     // optional double priceDouble = 8;
     public static final int PRICEDOUBLE_FIELD_NUMBER = 8;
-    private boolean hasPriceDouble;
-    private double priceDouble_ = 0D;
-    public boolean hasPriceDouble() { return hasPriceDouble; }
-    public double getPriceDouble() { return priceDouble_; }
+    private double priceDouble_;
+    public boolean hasPriceDouble() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public double getPriceDouble() {
+      return priceDouble_;
+    }
     
     // required .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType saleType = 10;
     public static final int SALETYPE_FIELD_NUMBER = 10;
-    private boolean hasSaleType;
     private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType saleType_;
-    public boolean hasSaleType() { return hasSaleType; }
-    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType getSaleType() { return saleType_; }
+    public boolean hasSaleType() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType getSaleType() {
+      return saleType_;
+    }
     
     // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.PaymentType paymentType = 11;
     public static final int PAYMENTTYPE_FIELD_NUMBER = 11;
-    private boolean hasPaymentType;
     private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType paymentType_;
-    public boolean hasPaymentType() { return hasPaymentType; }
-    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType getPaymentType() { return paymentType_; }
+    public boolean hasPaymentType() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType getPaymentType() {
+      return paymentType_;
+    }
     
     // repeated string strArray = 21;
     public static final int STRARRAY_FIELD_NUMBER = 21;
-    private java.util.List<java.lang.String> strArray_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.String> getStrArrayList() {
+    private com.google.protobuf.LazyStringList strArray_;
+    public java.util.List<String>
+        getStrArrayList() {
       return strArray_;
     }
-    public int getStrArrayCount() { return strArray_.size(); }
-    public java.lang.String getStrArray(int index) {
+    public int getStrArrayCount() {
+      return strArray_.size();
+    }
+    public String getStrArray(int index) {
       return strArray_.get(index);
     }
     
     private void initFields() {
+      keycode_ = 0;
+      store_ = 0;
+      department_ = 0;
+      saleDate_ = 0;
+      quantity_ = 0;
+      price_ = 0L;
+      priceFloat_ = 0F;
+      priceDouble_ = 0D;
       saleType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType.RETURN;
       paymentType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType.CASH;
+      strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasKeycode) return false;
-      if (!hasStore) return false;
-      if (!hasSaleType) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasKeycode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStore()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSaleType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (hasKeycode()) {
-        output.writeInt32(1, getKeycode());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, keycode_);
       }
-      if (hasStore()) {
-        output.writeInt32(2, getStore());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, store_);
       }
-      if (hasDepartment()) {
-        output.writeInt32(3, getDepartment());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, department_);
       }
-      if (hasSaleDate()) {
-        output.writeInt32(4, getSaleDate());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, saleDate_);
       }
-      if (hasQuantity()) {
-        output.writeInt32(5, getQuantity());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, quantity_);
       }
-      if (hasPrice()) {
-        output.writeInt64(6, getPrice());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt64(6, price_);
       }
-      if (hasPriceFloat()) {
-        output.writeFloat(7, getPriceFloat());
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeFloat(7, priceFloat_);
       }
-      if (hasPriceDouble()) {
-        output.writeDouble(8, getPriceDouble());
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeDouble(8, priceDouble_);
       }
-      if (hasSaleType()) {
-        output.writeEnum(10, getSaleType().getNumber());
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeEnum(10, saleType_.getNumber());
       }
-      if (hasPaymentType()) {
-        output.writeEnum(11, getPaymentType().getNumber());
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeEnum(11, paymentType_.getNumber());
       }
-      for (java.lang.String element : getStrArrayList()) {
-        output.writeString(21, element);
+      for (int i = 0; i < strArray_.size(); i++) {
+        output.writeBytes(21, strArray_.getByteString(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -326,51 +425,51 @@ public final class Sales11 {
       if (size != -1) return size;
     
       size = 0;
-      if (hasKeycode()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, getKeycode());
+          .computeInt32Size(1, keycode_);
       }
-      if (hasStore()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, getStore());
+          .computeInt32Size(2, store_);
       }
-      if (hasDepartment()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, getDepartment());
+          .computeInt32Size(3, department_);
       }
-      if (hasSaleDate()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, getSaleDate());
+          .computeInt32Size(4, saleDate_);
       }
-      if (hasQuantity()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, getQuantity());
+          .computeInt32Size(5, quantity_);
       }
-      if (hasPrice()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(6, getPrice());
+          .computeInt64Size(6, price_);
       }
-      if (hasPriceFloat()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(7, getPriceFloat());
+          .computeFloatSize(7, priceFloat_);
       }
-      if (hasPriceDouble()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(8, getPriceDouble());
+          .computeDoubleSize(8, priceDouble_);
       }
-      if (hasSaleType()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(10, getSaleType().getNumber());
+          .computeEnumSize(10, saleType_.getNumber());
       }
-      if (hasPaymentType()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(11, getPaymentType().getNumber());
+          .computeEnumSize(11, paymentType_.getNumber());
       }
       {
         int dataSize = 0;
-        for (java.lang.String element : getStrArrayList()) {
+        for (int i = 0; i < strArray_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeStringSizeNoTag(element);
+            .computeBytesSizeNoTag(strArray_.getByteString(i));
         }
         size += dataSize;
         size += 2 * getStrArrayList().size();
@@ -378,6 +477,13 @@ public final class Sales11 {
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 parseFrom(
@@ -454,34 +560,71 @@ public final class Sales11 {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> {
-      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 result;
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11();
-        return builder;
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_sale11_descriptor;
       }
       
-      protected net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.internal_static_net_sf_RecordEditor_ProtoBuf_re_Test_SalesX_sale11_fieldAccessorTable;
+      }
+      
+      // Construct using net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11();
+        super.clear();
+        keycode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        store_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        department_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        saleDate_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        price_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        priceFloat_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        priceDouble_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        saleType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType.RETURN;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        paymentType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType.CASH;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -493,37 +636,77 @@ public final class Sales11 {
         return net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 build() {
-        if (result != null && !isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 result = new net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.strArray_ != java.util.Collections.EMPTY_LIST) {
-          result.strArray_ =
-            java.util.Collections.unmodifiableList(result.strArray_);
+        result.keycode_ = keycode_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-        net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.sale11 returnMe = result;
-        result = null;
-        return returnMe;
+        result.store_ = store_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.department_ = department_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.saleDate_ = saleDate_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.quantity_ = quantity_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.price_ = price_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.priceFloat_ = priceFloat_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.priceDouble_ = priceDouble_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.saleType_ = saleType_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.paymentType_ = paymentType_;
+        if (((bitField0_ & 0x00000400) == 0x00000400)) {
+          strArray_ = new com.google.protobuf.UnmodifiableLazyStringList(
+              strArray_);
+          bitField0_ = (bitField0_ & ~0x00000400);
+        }
+        result.strArray_ = strArray_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -568,13 +751,33 @@ public final class Sales11 {
           setPaymentType(other.getPaymentType());
         }
         if (!other.strArray_.isEmpty()) {
-          if (result.strArray_.isEmpty()) {
-            result.strArray_ = new java.util.ArrayList<java.lang.String>();
+          if (strArray_.isEmpty()) {
+            strArray_ = other.strArray_;
+            bitField0_ = (bitField0_ & ~0x00000400);
+          } else {
+            ensureStrArrayIsMutable();
+            strArray_.addAll(other.strArray_);
           }
-          result.strArray_.addAll(other.strArray_);
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasKeycode()) {
+          
+          return false;
+        }
+        if (!hasStore()) {
+          
+          return false;
+        }
+        if (!hasSaleType()) {
+          
+          return false;
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -589,45 +792,55 @@ public final class Sales11 {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setKeycode(input.readInt32());
+              bitField0_ |= 0x00000001;
+              keycode_ = input.readInt32();
               break;
             }
             case 16: {
-              setStore(input.readInt32());
+              bitField0_ |= 0x00000002;
+              store_ = input.readInt32();
               break;
             }
             case 24: {
-              setDepartment(input.readInt32());
+              bitField0_ |= 0x00000004;
+              department_ = input.readInt32();
               break;
             }
             case 32: {
-              setSaleDate(input.readInt32());
+              bitField0_ |= 0x00000008;
+              saleDate_ = input.readInt32();
               break;
             }
             case 40: {
-              setQuantity(input.readInt32());
+              bitField0_ |= 0x00000010;
+              quantity_ = input.readInt32();
               break;
             }
             case 48: {
-              setPrice(input.readInt64());
+              bitField0_ |= 0x00000020;
+              price_ = input.readInt64();
               break;
             }
             case 61: {
-              setPriceFloat(input.readFloat());
+              bitField0_ |= 0x00000040;
+              priceFloat_ = input.readFloat();
               break;
             }
             case 65: {
-              setPriceDouble(input.readDouble());
+              bitField0_ |= 0x00000080;
+              priceDouble_ = input.readDouble();
               break;
             }
             case 80: {
@@ -636,7 +849,8 @@ public final class Sales11 {
               if (value == null) {
                 unknownFields.mergeVarintField(10, rawValue);
               } else {
-                setSaleType(value);
+                bitField0_ |= 0x00000100;
+                saleType_ = value;
               }
               break;
             }
@@ -646,243 +860,292 @@ public final class Sales11 {
               if (value == null) {
                 unknownFields.mergeVarintField(11, rawValue);
               } else {
-                setPaymentType(value);
+                bitField0_ |= 0x00000200;
+                paymentType_ = value;
               }
               break;
             }
             case 170: {
-              addStrArray(input.readString());
+              ensureStrArrayIsMutable();
+              strArray_.add(input.readBytes());
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // required int32 keycode = 1;
+      private int keycode_ ;
       public boolean hasKeycode() {
-        return result.hasKeycode();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getKeycode() {
-        return result.getKeycode();
+        return keycode_;
       }
       public Builder setKeycode(int value) {
-        result.hasKeycode = true;
-        result.keycode_ = value;
+        bitField0_ |= 0x00000001;
+        keycode_ = value;
+        onChanged();
         return this;
       }
       public Builder clearKeycode() {
-        result.hasKeycode = false;
-        result.keycode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        keycode_ = 0;
+        onChanged();
         return this;
       }
       
       // required int32 store = 2;
+      private int store_ ;
       public boolean hasStore() {
-        return result.hasStore();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getStore() {
-        return result.getStore();
+        return store_;
       }
       public Builder setStore(int value) {
-        result.hasStore = true;
-        result.store_ = value;
+        bitField0_ |= 0x00000002;
+        store_ = value;
+        onChanged();
         return this;
       }
       public Builder clearStore() {
-        result.hasStore = false;
-        result.store_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        store_ = 0;
+        onChanged();
         return this;
       }
       
       // optional int32 department = 3;
+      private int department_ ;
       public boolean hasDepartment() {
-        return result.hasDepartment();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public int getDepartment() {
-        return result.getDepartment();
+        return department_;
       }
       public Builder setDepartment(int value) {
-        result.hasDepartment = true;
-        result.department_ = value;
+        bitField0_ |= 0x00000004;
+        department_ = value;
+        onChanged();
         return this;
       }
       public Builder clearDepartment() {
-        result.hasDepartment = false;
-        result.department_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        department_ = 0;
+        onChanged();
         return this;
       }
       
       // optional int32 saleDate = 4;
+      private int saleDate_ ;
       public boolean hasSaleDate() {
-        return result.hasSaleDate();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public int getSaleDate() {
-        return result.getSaleDate();
+        return saleDate_;
       }
       public Builder setSaleDate(int value) {
-        result.hasSaleDate = true;
-        result.saleDate_ = value;
+        bitField0_ |= 0x00000008;
+        saleDate_ = value;
+        onChanged();
         return this;
       }
       public Builder clearSaleDate() {
-        result.hasSaleDate = false;
-        result.saleDate_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        saleDate_ = 0;
+        onChanged();
         return this;
       }
       
       // optional int32 quantity = 5;
+      private int quantity_ ;
       public boolean hasQuantity() {
-        return result.hasQuantity();
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       public int getQuantity() {
-        return result.getQuantity();
+        return quantity_;
       }
       public Builder setQuantity(int value) {
-        result.hasQuantity = true;
-        result.quantity_ = value;
+        bitField0_ |= 0x00000010;
+        quantity_ = value;
+        onChanged();
         return this;
       }
       public Builder clearQuantity() {
-        result.hasQuantity = false;
-        result.quantity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        quantity_ = 0;
+        onChanged();
         return this;
       }
       
       // optional int64 price = 6;
+      private long price_ ;
       public boolean hasPrice() {
-        return result.hasPrice();
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       public long getPrice() {
-        return result.getPrice();
+        return price_;
       }
       public Builder setPrice(long value) {
-        result.hasPrice = true;
-        result.price_ = value;
+        bitField0_ |= 0x00000020;
+        price_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPrice() {
-        result.hasPrice = false;
-        result.price_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        price_ = 0L;
+        onChanged();
         return this;
       }
       
       // optional float priceFloat = 7;
+      private float priceFloat_ ;
       public boolean hasPriceFloat() {
-        return result.hasPriceFloat();
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       public float getPriceFloat() {
-        return result.getPriceFloat();
+        return priceFloat_;
       }
       public Builder setPriceFloat(float value) {
-        result.hasPriceFloat = true;
-        result.priceFloat_ = value;
+        bitField0_ |= 0x00000040;
+        priceFloat_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPriceFloat() {
-        result.hasPriceFloat = false;
-        result.priceFloat_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        priceFloat_ = 0F;
+        onChanged();
         return this;
       }
       
       // optional double priceDouble = 8;
+      private double priceDouble_ ;
       public boolean hasPriceDouble() {
-        return result.hasPriceDouble();
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       public double getPriceDouble() {
-        return result.getPriceDouble();
+        return priceDouble_;
       }
       public Builder setPriceDouble(double value) {
-        result.hasPriceDouble = true;
-        result.priceDouble_ = value;
+        bitField0_ |= 0x00000080;
+        priceDouble_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPriceDouble() {
-        result.hasPriceDouble = false;
-        result.priceDouble_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        priceDouble_ = 0D;
+        onChanged();
         return this;
       }
       
       // required .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.SaleType saleType = 10;
+      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType saleType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType.RETURN;
       public boolean hasSaleType() {
-        return result.hasSaleType();
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType getSaleType() {
-        return result.getSaleType();
+        return saleType_;
       }
       public Builder setSaleType(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.hasSaleType = true;
-        result.saleType_ = value;
+        bitField0_ |= 0x00000100;
+        saleType_ = value;
+        onChanged();
         return this;
       }
       public Builder clearSaleType() {
-        result.hasSaleType = false;
-        result.saleType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType.RETURN;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        saleType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.SaleType.RETURN;
+        onChanged();
         return this;
       }
       
       // optional .net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.PaymentType paymentType = 11;
+      private net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType paymentType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType.CASH;
       public boolean hasPaymentType() {
-        return result.hasPaymentType();
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       public net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType getPaymentType() {
-        return result.getPaymentType();
+        return paymentType_;
       }
       public Builder setPaymentType(net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.hasPaymentType = true;
-        result.paymentType_ = value;
+        bitField0_ |= 0x00000200;
+        paymentType_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPaymentType() {
-        result.hasPaymentType = false;
-        result.paymentType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType.CASH;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        paymentType_ = net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.PaymentType.CASH;
+        onChanged();
         return this;
       }
       
       // repeated string strArray = 21;
-      public java.util.List<java.lang.String> getStrArrayList() {
-        return java.util.Collections.unmodifiableList(result.strArray_);
+      private com.google.protobuf.LazyStringList strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureStrArrayIsMutable() {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+          strArray_ = new com.google.protobuf.LazyStringArrayList(strArray_);
+          bitField0_ |= 0x00000400;
+         }
+      }
+      public java.util.List<String>
+          getStrArrayList() {
+        return java.util.Collections.unmodifiableList(strArray_);
       }
       public int getStrArrayCount() {
-        return result.getStrArrayCount();
+        return strArray_.size();
       }
-      public java.lang.String getStrArray(int index) {
-        return result.getStrArray(index);
+      public String getStrArray(int index) {
+        return strArray_.get(index);
       }
-      public Builder setStrArray(int index, java.lang.String value) {
+      public Builder setStrArray(
+          int index, String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  result.strArray_.set(index, value);
+  ensureStrArrayIsMutable();
+        strArray_.set(index, value);
+        onChanged();
         return this;
       }
-      public Builder addStrArray(java.lang.String value) {
+      public Builder addStrArray(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  if (result.strArray_.isEmpty()) {
-          result.strArray_ = new java.util.ArrayList<java.lang.String>();
-        }
-        result.strArray_.add(value);
+  ensureStrArrayIsMutable();
+        strArray_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllStrArray(
-          java.lang.Iterable<? extends java.lang.String> values) {
-        if (result.strArray_.isEmpty()) {
-          result.strArray_ = new java.util.ArrayList<java.lang.String>();
-        }
-        super.addAll(values, result.strArray_);
+          java.lang.Iterable<String> values) {
+        ensureStrArrayIsMutable();
+        super.addAll(values, strArray_);
+        onChanged();
         return this;
       }
       public Builder clearStrArray() {
-        result.strArray_ = java.util.Collections.emptyList();
+        strArray_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        onChanged();
         return this;
+      }
+      void addStrArray(com.google.protobuf.ByteString value) {
+        ensureStrArrayIsMutable();
+        strArray_.add(value);
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.sale11)
@@ -890,7 +1153,6 @@ public final class Sales11 {
     
     static {
       defaultInstance = new sale11(true);
-      net.sf.RecordEditor.ProtoBuf.re.Test.SalesX.Sales11.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -946,8 +1208,6 @@ public final class Sales11 {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }

@@ -71,7 +71,7 @@ def test():
 		click('Right')
 		select('Table', 'cell:Data,1(8990)')
 		assert_p('Table', 'Content', '[[quantity, 1, , 1, 1], [price, 2, , 8990, 8990], [count, 3, , 1, 1]]')
-		select_menu('File>>Compare with Disk')
+		select_menu('Edit>>Compare with Disk')
 
 ##		select('LayoutCombo', 'Product')
 

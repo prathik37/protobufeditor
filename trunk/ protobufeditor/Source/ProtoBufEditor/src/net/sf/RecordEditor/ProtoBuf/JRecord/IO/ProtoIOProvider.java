@@ -27,14 +27,16 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 	
 	private static  ProtoIOProvider instance = new ProtoIOProvider();
 	private static boolean toRegister = true;
+
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public LineProvider getLineProvider(int fileStructure) {
 		return  lineProvider;
 	}
 
-	@SuppressWarnings("unchecked")
+
+	@SuppressWarnings("rawtypes")
 	@Override
 	public AbstractLineReader getLineReader(int fileStructure,
 			LineProvider provider) {
@@ -59,7 +61,8 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 		return reader;
 	}
 
-	@SuppressWarnings("unchecked")
+
+	@SuppressWarnings("rawtypes")
 	@Override
 	public AbstractLineReader getLineReader(int fileStructure) {
 		return getLineReader(fileStructure, lineProvider);

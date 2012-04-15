@@ -12,9 +12,9 @@ import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.Details.AbstractRecordDetail;
 import net.sf.JRecord.Details.BasicRecordDetail;
 import net.sf.JRecord.Types.Type;
-import net.sf.RecordEditor.record.format.CellFormat;
+import net.sf.RecordEditor.re.jrecord.format.CellFormat;
 
-public class ProtoRecordDef 
+public class ProtoRecordDef
 extends BasicRecordDetail<ProtoFieldDef, ProtoRecordDef, ProtoChildDefinition>
 implements AbstractRecordDetail<ProtoFieldDef> {
 
@@ -45,6 +45,7 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 			if (! isChild(fd)) {
 				format = 0;
 				type = Type.ftProtoField;
+				System.out.print("\t" + fd.getType());
 				if (fd.isRepeated()) {
 					type = Type.ftArrayField;
 				} else if (fd.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
@@ -58,6 +59,8 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 				fields[i++] = new ProtoFieldDef(i, type, "", format, "", fd);
 			}
 		}
+		System.out.println();
+		System.out.println(protoDesc.getName() + "\t" + fields.length);
 		fieldCount = count;
 	}
 

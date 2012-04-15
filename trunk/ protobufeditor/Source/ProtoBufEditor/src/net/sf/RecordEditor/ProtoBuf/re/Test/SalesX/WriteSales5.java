@@ -16,6 +16,7 @@ import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.IO.CobolIoProvider;
 import net.sf.JRecord.Numeric.Convert;
 import net.sf.RecordEditor.ProtoBuf.re.Test.TestConst;
+import net.sf.RecordEditor.ProtoBuf.re.Test.Sales5.StoreSales5;
 
 
 //

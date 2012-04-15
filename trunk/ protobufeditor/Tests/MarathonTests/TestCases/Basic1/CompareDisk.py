@@ -1,5 +1,6 @@
 useFixture(default)
-## Check
+
+## Check
 def test():
 	from Modules import commonBits
 	java_recorded_version = '1.6.0_03'
@@ -9,7 +10,7 @@ def test():
 
 		if window('Open'):
 ##			select(commonBits.selectPane(), 'Ams_LocDownload_20041228.bin')
-			select(commonBits.selectPane(), 'ams_locdownload_20041228.bin')
+			select(commonBits.selectPaneFn(), 'ams_locdownload_20041228.bin')
 			click('Open')
 		close()
 
@@ -20,7 +21,7 @@ def test():
 		select('Table', '22', '5|Loc_Addr_Ln1,1')
 		select('Table', '33', '6|Loc_Addr_Ln2,2')
 		select('Table', 'cell:7|Loc_Addr_Ln3,2()')
-		select_menu('File>>Compare with Disk')
+		select_menu('Edit>>Compare with Disk')
 ##		select('Table1', 'cell:7|Loc_Addr_Ln3,2()')
 		select('Table', 'cell:Loc_Name,0(DC - Taras Ave)')
 		assert_p('Table', 'Text', 'DC - Taras Ave', 'Loc_Name,0')

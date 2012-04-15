@@ -6,10 +6,10 @@ import com.google.protobuf.DynamicMessage;
 import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
+import net.sf.JRecord.Common.AbstractFieldValue;
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.FieldDetail;
 import net.sf.JRecord.Common.RecordException;
-import net.sf.JRecord.Details.AbstractFieldValue;
 
 import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.Details.AbstractTreeDetails;

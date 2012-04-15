@@ -21,7 +21,7 @@ def test():
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		select('LayoutCombo', 'Store')
 		assert_p('JTreeTable', 'Content', '[[, , 11, 22]]')
-##		select_menu('File>>Compare with Disk')
+##		select_menu('Edit>>Compare with Disk')
 		select('JTreeTable', 'cell:store,0(11)')
 		click('New')
 

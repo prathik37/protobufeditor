@@ -6,7 +6,7 @@ def test():
 
 	if window('Protocol Buffer Editor'):
 ##		click('PopupMenu$Separator5', 73, 0)
-		select_menu('File>>Compare Menu')
+		select_menu('Edit>>Compare Menu')
 		click('*1')
 		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		select('FileChooser1', commonBits.sampleDir() + 'protoStoreSales3_Compare2.bin')
