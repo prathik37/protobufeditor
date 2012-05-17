@@ -25,6 +25,7 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
+import com.google.protobuf.DynamicMessage;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
@@ -34,6 +35,8 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
+import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Utils;
+import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoDelimitedByteReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoSelfDescribingReader;
 import net.sf.RecordEditor.re.openFile.AbstractLayoutSelection;
@@ -44,12 +47,12 @@ import net.sf.RecordEditor.utils.swing.FileChooser;
 import net.sf.RecordEditor.utils.swing.Combo.ComboOption;
 
 public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef>  {
-	
+
 	private static final String SEPERATOR = ",,";
-	
+
 	private static final String PROTO_COMPILE_OUTPUT = "--descriptor_set_out=";
-	
-	
+
+
 
 	private FileChooser  protoDefinitionFile;
 	private FileChooser  protoImportDir;
@@ -60,16 +63,16 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	private JComboBox protoFile;
 	private JComboBox messageName;
 	private JTextField fileField;
-	
+
 //    private JComboBox fieldSeparator;
 //    private JComboBox quote;
 	private JTextArea message = null;
 
 //	private int mode = MODE_NORMAL;
-	
+
 	private boolean listnersActive = true;
 
-	
+
 	ActionListener fileListner = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -91,7 +94,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 		}
 	};
 
- 
+
 
 
 	@Override
@@ -99,6 +102,16 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 			JButton layoutCreate1, JButton layoutCreate2) {
 		addLayoutSelection(pnl, goPanel, layoutCreate1, layoutCreate2, null);
 		fileField = file;
+
+		if (file != null && file instanceof FileChooser) {
+			((FileChooser) file).addFcFocusListener(
+					 new FocusAdapter() {
+				        	public void focusLost(FocusEvent e) {
+				        		fileChanged();
+				           	}
+					 }
+			);
+		}
 	}
 
 //	/**
@@ -108,7 +121,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 //	 * @param layoutFile layout file
 //	 */
 //	public void addLayoutSelection(BasePanel pnl, JPanel goPanel, 	FileChooser layoutFile) {
-//		
+//
 //		addLayoutSelection(pnl, goPanel, null, null, layoutFile);
 //	}
 
@@ -124,28 +137,28 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 			JButton layoutCreate1, JButton layoutCreate2, FileChooser layoutFile) {
   	    setupFields();
 
- 	    protoDefinitionFile.setText(Common.OPTIONS.DEFAULT_COPYBOOK_DIRECTORY.get());
  	    protoImportDir.setText(Parameters.getString(ConstClass.VAR_PROTO_IMBED_DIR));
- 	   
 
 	    if (layoutFile != null)  {
 	    	protoDefinitionFile = layoutFile;
-	    	
+
 		    pnl.addLine("Output File Structure", fileStructure);
 	    } else {
+	    	protoDefinitionFile.setText(Common.OPTIONS.DEFAULT_COPYBOOK_DIRECTORY.get());
+
 		    pnl.addLine("File Structure", fileStructure);
-		    
+
 		    //loaderOptions.setSelectedIndex(0);
 	    	pnl.addLine("Type of Definition", loaderOptions);
 	    	//pnl.addComponent("Split Copybook", splitOption);
-	    	
+
 	    	pnl.setGap(BasePanel.GAP0);
 			pnl.addLine("Proto Definition", protoDefinitionFile, protoDefinitionFile.getChooseFileButton());
 			pnl.addLine("Proto Import Directory", protoImportDir, protoImportDir.getChooseFileButton());
 		    pnl.setGap(BasePanel.GAP0);
-		    
+
 //		    pnl.addComponent("Numeric Format", numericFormat);
-	    
+
 		    pnl.addLine("Proto File", protoFile);
 		    pnl.addLine("Primary Message", messageName);
 //		    pnl.addComponent("Quote", quote);
@@ -155,7 +168,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 				pnl.setHeight(Math.max(BasePanel.NORMAL_HEIGHT * 3, goPanel.getPreferredSize().getHeight()));
 			}
 	    }
-		
+
 //	    } else {
 //		    pnl.setGap(BasePanel.GAP1);
 //	    }
@@ -163,12 +176,10 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	    //System.out.println("Setting listners ");
 	    fileStructure.addActionListener(fileListner);
 	    loaderOptions.addActionListener(fileListner);
-	    
+
 	    FocusAdapter focuslistner = new FocusAdapter() {
         	public void focusLost(FocusEvent e) {
-        		if (listnersActive) {
-        			setFile(-1);
-        		}
+        		protoFileChanged();
            	}
         };
 	    protoDefinitionFile.addFcFocusListener(focuslistner);
@@ -176,29 +187,108 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 		setEditable();
 	}
-	
 
-    
+
+
     /**
      * set editable
      */
     private void setEditable() {
-  
+
     }
 
-             
+
+    public final void fileChanged() {
+    	if (listnersActive) {
+    		String s = fileField.getText();
+    		File f = new File(s);
+
+			if (f.exists() && f.length() > 0) {
+				int type = Constants.IO_PROTO_SINGLE_MESSAGE;
+				ProtoDelimitedByteReader r = new ProtoDelimitedByteReader();
+				try {
+					int i = 0;
+					byte[] b;
+
+					Descriptor desc = Utils.getFileDescriptor().getMessageTypes().get(0);
+					r.open(s);
+					while ((b = r.read()) != null && i++ < 200) {
+						DynamicMessage.newBuilder(desc).mergeFrom(b);
+					}
+
+					type = Constants.IO_PROTO_DELIMITED;
+
+				} catch (IOException e) {
+					System.out.println("Error Reading ProtoFile");
+				} finally {
+					System.out.println("Read ProtoFile");
+					try {
+						r.close();
+					} catch (Exception e) {
+					}
+				}
+
+				try {
+					int fileStruc = ((ComboOption) fileStructure.getSelectedItem()).index;
+					listnersActive = false;
+
+					if (type == Constants.IO_PROTO_SINGLE_MESSAGE) {
+						if (fileStruc != Constants.IO_PROTO_SINGLE_MESSAGE
+						&&  fileStruc != Constants.IO_PROTO_SD_SINGLE_MESSAGE) {
+							fileStructure.setSelectedIndex(ConstClass.getFileStructureIndex(type));
+						}
+					} else if (fileStruc != Constants.IO_PROTO_DELIMITED
+						   &&  fileStruc != Constants.IO_PROTO_SD_DELIMITED) {
+						fileStructure.setSelectedIndex(ConstClass.getFileStructureIndex(type));
+					}
+				} finally {
+					listnersActive = true;
+				}
+
+			}
+    	}
+    }
+
+
+    private void protoFileChanged() {
+
+		if (listnersActive) {
+			String s = protoDefinitionFile.getText();
+			File f = new File(s);
+
+			if (f.exists() && f.length() > 0) {
+				int type = ConstClass.COPYBOOK_PROTO;
+				try {
+					if ( getFileDescriptor(s) != null) {
+						type = ConstClass.COPYBOOK_COMPILED_PROTO;
+					}
+				} catch (IOException e) {
+				}
+
+				listnersActive = false;
+				try {
+					loaderOptions.setSelectedIndex(ConstClass.getLoaderIndex(type));
+				} finally {
+					listnersActive = true;
+				}
+			}
+
+			setFile(-1);
+		}
+    }
+
     private void setFile(int idx) {
-    	
+
     	protoFile.removeActionListener(msgListner);
     	protoFile.removeAllItems();
     	FileDescriptorSet dp = getProtoDesc();
-    	
+
      	//System.out.println("Checking file " + (dp != null));
     	if (dp != null && dp.getFileCount() > 0) {
     		for (int i = 0; i < dp.getFileCount(); i++) {
     			protoFile.addItem(dp.getFile(i).getName());
     		}
-    		
+
     		//TODO set message
     		//TODO set message
 
@@ -206,7 +296,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     			HashSet<String> usedRecords = new HashSet<String>();
     			FileDescriptor[] fileDescs = new FileDescriptor[dp.getFileCount()];
     			List<Descriptor> msgTypes;
-    			
+
     			idx = 0;
     			addMessages(dp, usedRecords, fileDescs);
 
@@ -223,7 +313,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	    					//	System.out.println("    --> " + d.getFullName());
 	    					}
 	    				}
-	    				
+
     				}
 	   				//System.out.println();
     			}
@@ -235,19 +325,19 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 //    				}
 //    			}
     		}
-    		
+
     		protoFile.setSelectedIndex(idx);
     		setupMsgCombo(dp, idx);
-    		
+
     		if (dp.getFileCount() > 1) {
     			protoFile.addActionListener(msgListner);
     		}
     	}
     }
 
-    
+
     private void setMsgCombo() {
-    	
+
 
     	FileDescriptorSet dp = getProtoDesc();
 
@@ -258,9 +348,9 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     }
 
     private void setupMsgCombo(FileDescriptorSet dp, int idx) {
-    	
+
     	messageName.removeAllItems();
-    	
+
      	try {
   	    	FileDescriptor fd = ProtoHelper.getFileDescriptor(dp, idx);
 			List<Descriptor> msgTypes = fd.getMessageTypes();
@@ -268,18 +358,18 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 
 			HashSet<String> usedRecords = new HashSet<String>();
-			
+
 			addMessages(dp, usedRecords, new FileDescriptor[dp.getFileCount()]);
 			for (Descriptor d : msgTypes ) {
-				messageName.addItem(d.getName());			
+				messageName.addItem(d.getName());
 			}
-						
+
 			for (Descriptor d : msgTypes ) {
 				if (! usedRecords.contains(d.getFullName())) {
 					messageName.setSelectedIndex(index);
 					break;
 				}
-			
+
 				index += 1;
 			}
 
@@ -288,8 +378,8 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     		e.printStackTrace();
 		}
     }
-    
-    
+
+
     private void addMessages(FileDescriptorSet dp, HashSet<String> usedRecords, FileDescriptor[] fileDescs) {
 		List<Descriptor> msgTypes;
 
@@ -304,7 +394,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 						if (field.getJavaType().equals(JavaType.MESSAGE)) {
 							usedRecords.add(field.getMessageType().getFullName());
 						}
-					}	
+					}
 				}
 			} catch (Exception e) {
 			}
@@ -316,16 +406,16 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
         int protoType;
         String layoutName = protoDefinitionFile.getText();
         FileDescriptorSet dp = null;
-    
+
         protoType =  ((ComboOption) loaderOptions.getSelectedItem()).index;
-  	
+
         try {
       		 if (fileField != null) {
        			 dp  = getFileDescriptionSet((
-       					 (ComboOption) fileStructure.getSelectedItem()).index, 
+       					 (ComboOption) fileStructure.getSelectedItem()).index,
        					 fileField.getText());
-       		 } 
-      		 
+       		 }
+
       		 if (dp != null) {
       		 } else if (layoutName == null ||  "".equals(layoutName)) {
             //copybookFile.requestFocus();
@@ -351,21 +441,21 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
     	String compiledFile;
     	String s, cmd, imbed;
-   	
-    	
-     	
- 
+
+
+
+
     	ArrayList<String> cmdOptList = new ArrayList<String>(15);
     	StringBuilder cmdBld = new StringBuilder();
     	String[] cmdAndArgs;
-    	
+
     	cmdOptList.add(ConstClass.getProtoC());
     	cmdOptList.add(layoutName);
     	if (pos > 0) {
     		lastPart = layoutName.substring(pos + 1);
     		cmdOptList.add("--proto_path=" + layoutName.substring(0, pos));
     	}
-    	
+
     	imbed = protoImportDir.getText();
     	if (! "".equals(imbed)) {
     		cmdOptList.add("--proto_path=" + imbed);
@@ -374,28 +464,28 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     			Parameters.writeProperties();
     		}
     	}
-    	
-    	compiledFile = Parameters.getPropertiesDirectory() 
-					+ File.separator + "TempWork" + File.separator
+
+    	compiledFile = Parameters.getPropertiesDirectoryWithFinalSlash()
+    				+ "TempWork" + File.separator
 					+ lastPart + "comp";
     	cmdOptList.add( "--include_imports");
     	cmdOptList.add(PROTO_COMPILE_OUTPUT + compiledFile);
-    	
+
     	for (int i = 0 ; i < ConstClass.NUMBER_OF_PROTOC_OPTIONS; i++) {
     		s = Parameters.getString(ConstClass.VAR_PROTOBUF_COMPILE_OPTS + i);
     		if (s != null && ! "".equals(s)) {
     			cmdOptList.add(s);
     		}
     	}
-    	
-    	
+
+
     	cmdAndArgs = new String[cmdOptList.size()];
     	cmdAndArgs = cmdOptList.toArray(cmdAndArgs);
     	for (int i = 0; i < cmdAndArgs.length; i++) {
     		cmdBld.append(cmdAndArgs[i]).append(' ');
     	}
     	cmd = cmdBld.toString();
-    	
+
     	try {
     		File file = new File(compiledFile);
     		if (file.exists()) {
@@ -403,43 +493,43 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     		}
     	} catch (Exception e) {
 		}
-    	   	
+
     	Process child = Runtime.getRuntime().exec(cmdAndArgs);
 
 		InputStream in = child.getErrorStream();
-		
+
 		while ((c = in.read()) >= 0) {
 			oBuf.append((char)c);
 		}
 		in.close();
 		child.destroy();
 		s = oBuf.toString();
-		
+
 		if (s != null && !"".equals(s)) {
 			Common.logMsg(AbsSSLogger.WARNING, "Messages Compiling proto file \n\n"
 					+cmd + "\n\n"+s, null);
 //		} else {
 //			Common.logMsg(AbsSSLogger.WARNING, cmd, null);
 		}
-		
+
    		File file = new File(compiledFile);
    		if (! file.exists()) {
    			message.setText("Error Compiling proto file:\n" + s);
    			throw new RuntimeException("Error Compiling proto");
    		}
- 		
+
     	return getFileDescriptor(compiledFile);
     }
-    
+
     private FileDescriptorSet getFileDescriptor(String inFileName) throws IOException {
     	FileDescriptorSet ret = null;
     	FileInputStream infile = new FileInputStream(inFileName);
     	try {
-    		ret = FileDescriptorSet.parseFrom(infile); 
+    		ret = FileDescriptorSet.parseFrom(infile);
 		} finally {
 			infile.close();
 		}
-		
+
 		return ret;
     }
 
@@ -466,7 +556,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
         int fileStruc, copybooktype;
         String layoutName = protoDefinitionFile.getText();
         FileDescriptorSet dp;
-                
+
         fileStruc = ((ComboOption) fileStructure.getSelectedItem()).index;
         copybooktype =  ((ComboOption) loaderOptions.getSelectedItem()).index;
 
@@ -475,7 +565,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     	   if (layout != null) {
     		   return layout;
     	   }
-    	   
+
 	       if (layoutName == null ||  "".equals(layoutName)) {
 	            protoDefinitionFile.requestFocus();
 	            message.setText("You must enter a proto file name ");
@@ -483,11 +573,11 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	    	   if (	copybooktype == ConstClass.COPYBOOK_COMPILED_PROTO
 	    		||	copybooktype == ConstClass.COPYBOOK_PROTO) {
 		    	   dp = getFileDescriptorSet(copybooktype, layoutName);
-	
+
 		    	   int index = protoFile.getSelectedIndex();
 		    	   FileDescriptor fd = ProtoHelper.getFileDescriptor(dp, index);
 		    	   ret =  new ProtoLayoutDef(fd, fileStruc);
-		    	   
+
 		    	   ret.setPrimaryMessageIndex(messageName.getSelectedIndex());
 	    	   }
 	        }
@@ -495,15 +585,15 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
             protoDefinitionFile.requestFocus();
             message.setText("You must enter a valid Record Layout name:\n" + e.getMessage());
             e.printStackTrace();
-        } 
+        }
 
         return ret;
 	}
-	
+
 	private FileDescriptorSet getFileDescriptorSet(int copybooktype, String layoutName)
 	throws IOException {
 		FileDescriptorSet dp = null;
-		
+
  	   if (copybooktype == ConstClass.COPYBOOK_PROTO) {
 		   dp = compileProto(layoutName);
 	   } else if (copybooktype == ConstClass.COPYBOOK_COMPILED_PROTO){
@@ -512,38 +602,38 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
  	   return dp;
 	}
-	
-	private ProtoLayoutDef getLayoutFromFile(int fileStruc, String fileName) 
+
+	private ProtoLayoutDef getLayoutFromFile(int fileStruc, String fileName)
 	throws IOException, RecordException {
 		ProtoLayoutDef ret = null;
 		AbstractLineReader reader = getReader(fileStruc, fileName);
 		if (reader != null) {
 			ret = (ProtoLayoutDef) reader.getLayout();
-			
+
 			ret.setPrimaryMessageIndex(messageName.getSelectedIndex());
 		}
-		
+
 		return ret;
 	}
 
-	
-	private FileDescriptorSet getFileDescriptionSet(int fileStruc, String fileName) 
+
+	private FileDescriptorSet getFileDescriptionSet(int fileStruc, String fileName)
 	throws IOException, RecordException {
 		FileDescriptorSet ret = null;
 		AbstractLineReader reader = getReader(fileStruc, fileName);
 		if (reader != null && (reader instanceof ProtoSelfDescribingReader)) {
 			ret = ((ProtoSelfDescribingReader) reader).getFileDescriptorSet();
 		}
-		
+
 		return ret;
 	}
 
-	private AbstractLineReader getReader(int fileStruc, String fileName) 
+	private AbstractLineReader getReader(int fileStruc, String fileName)
 	throws IOException, RecordException {
-		
-		
+
+
 	   AbstractLineReader ret = null;
-		
+
 //	   System.out.println(" FileStructure --> " + fileStruc);
  	   if ((fileStruc == Constants.IO_PROTO_SD_DELIMITED
  		|| fileStruc >= Constants.IO_PROTO_SD_SINGLE_MESSAGE)
@@ -567,7 +657,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 		return getRecordLayout(fileName);
 	}
 
-    
+
 	@Override
 	public void reload() {
 
@@ -580,10 +670,10 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
         try {
         	int loader;
         	setupFields();
-        	
+
         	listnersActive = false;
             protoDefinitionFile.setText(t.nextToken());
-            
+
             loader = getIntToken(t);
             fileStructure.setSelectedIndex(getIntToken(t));
             loaderOptions.setSelectedIndex(loader);
@@ -593,7 +683,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
             messageName.setSelectedIndex(getIntToken(t));
 //            quote.setSelectedIndex(getIntToken(t));
             messageName.setSelectedItem(t.nextToken());
-            
+
 			setFile(-1);
 			setEditable();
         } catch (Exception e) {
@@ -605,30 +695,30 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 
 		return false;
 	}
-	
+
 	private void setupFields() {
 
 		if (loaderOptions == null) {
 			protoDefinitionFile   = new FileChooser(true, "Choose Layout");
 			protoImportDir = new FileChooser(true, "Imbed Directory");
 			protoImportDir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-			
+
      		fileStructure = new JComboBox(ConstClass.getStructureOptions());
     		loaderOptions = new JComboBox(ConstClass.getCopybookLoaders());
 
     		protoFile = new JComboBox();
 //        	quote          = new JComboBox(Common.QUOTE_LIST);
         	messageName = new JComboBox();
-        	
+
         	setCombo(fileStructure, Consts.DEFAULT_PROTO_FILE_STRUCTURE);
         	setCombo(loaderOptions, Consts.DEFAULT_PROTO_DEFINITION_READER);
 		}
 	}
 
-	
+
 	private void setCombo(JComboBox combo, String key) {
 		String value = Parameters.getString(key);
-		
+
        	if (value != null && ! "".equals(value)) {
     		for (int i = 0; i < combo.getItemCount(); i++) {
     			if (value.equals(combo.getItemAt(i).toString())) {
@@ -639,8 +729,8 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
     	}
 
 	}
-	
-	
+
+
     /**
      * get the next integer Token
      * @param t StringTokenizer
@@ -650,7 +740,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
         int ret = 0;
         String s = t.nextToken();
 
-        try { 
+        try {
             ret = Integer.parseInt(s);
         } catch (Exception e) {
         }
@@ -681,7 +771,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	 */
 	@Override
 	public void setDatabaseIdx(int idx) {
-		
+
 	}
 
 	/**
@@ -715,7 +805,7 @@ public class ProtoLayoutSelection extends AbstractLayoutSelection<ProtoLayoutDef
 	public final FileChooser getCopybookFile() {
 		return protoDefinitionFile;
 	}
-	
+
 
 	/* (non-Javadoc)
 	 * @see net.sf.RecordEditor.re.openFile.AbstractLayoutSelection#isFileBasedLayout()

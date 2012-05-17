@@ -169,6 +169,36 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		return getField(layout.getField(recordIdx, fieldIdx));
 	}
 
+	private Object getFieldProto(FieldDescriptor field, ProtoFieldDef reField) {
+
+		try {
+			if (field.isRepeated()) {
+				return new ArrayDetails(this, reField);
+			}
+			if (getBuilder().hasField(field)) {
+				Object value = getBuilder().getField(field);
+	//			if (field.getType() == Type.ENUM && field.isOptional()) {
+	//				System.out.println("--- Enum    value: " + value + " " + getBuilder().hasField(field));
+	//				System.out.println("--- Adjusted value: " + ProtoHelper.getAdjustedFieldValue(value, field));
+	//			}
+				return ProtoHelper.getAdjustedFieldValue(value, field);
+			}
+		} catch (Exception e) {
+			System.out.println("## Error >> " + layoutIdx + " " + layout.getRecord(layoutIdx).getRecordName() + " "
+					+ bld.getDescriptorForType().getFullName());
+			e.printStackTrace();
+			
+			return null;
+		}
+
+		if (field.isRequired()) {
+			return Common.MISSING_REQUIRED_VALUE;
+		}
+
+		return Common.MISSING_VALUE;
+	}
+
+
 	@Override
 	public Object getField(FieldDetail field) {
 		if (field == null ) {
@@ -185,7 +215,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		if (field == null) {
 			return null;
 		}
-		return getField(field.getProtoField(), field);
+		return getFieldProto(field.getProtoField(), field);
 	}
 
 	@Override
@@ -344,35 +374,6 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			setField(field.getProtoField(), value);
 		}
 	}
-
-	private Object getField(FieldDescriptor field, ProtoFieldDef reField) {
-
-		try {
-			if (field.isRepeated()) {
-				return new ArrayDetails(this, reField);
-			}
-			if (getBuilder().hasField(field)) {
-				Object value = getBuilder().getField(field);
-	//			if (field.getType() == Type.ENUM && field.isOptional()) {
-	//				System.out.println("--- Enum    value: " + value + " " + getBuilder().hasField(field));
-	//				System.out.println("--- Adjusted value: " + ProtoHelper.getAdjustedFieldValue(value, field));
-	//			}
-				return ProtoHelper.getAdjustedFieldValue(value, field);
-			}
-		} catch (Exception e) {
-			System.out.println("## Error >> " + layoutIdx + " " + layout.getRecord(layoutIdx).getRecordName() + " "
-					+ bld.getDescriptorForType().getFullName());
-			e.printStackTrace();
-			return null;
-		}
-
-		if (field.isRequired()) {
-			return Common.MISSING_REQUIRED_VALUE;
-		}
-
-		return Common.MISSING_VALUE;
-	}
-
 
 
 
