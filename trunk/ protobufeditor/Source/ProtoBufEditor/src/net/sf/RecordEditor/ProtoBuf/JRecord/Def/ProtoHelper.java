@@ -26,11 +26,11 @@ import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 public class ProtoHelper {
 	public final static byte[] EMPTY_BYTE_ARRAY = {};
 	public final static ByteString EMPTY_BYTE_STRING = ByteString.copyFrom(EMPTY_BYTE_ARRAY);
-	
-	
+
+
 	public static Object getAdjustedFieldValue(Object value, FieldDescriptor field) {
 		Object ret = value;
-		
+
 	    switch (field.getType()) {
            case INT32:
            case INT64:
@@ -41,7 +41,7 @@ public class ProtoHelper {
            case FLOAT:
            case DOUBLE:
            case BOOL:
-           case STRING:  
+           case STRING:
         	  break;
 
            case UINT32:
@@ -65,7 +65,7 @@ public class ProtoHelper {
 
            case ENUM: {
         	   ret = ((EnumValueDescriptor) value).getName();
-        	   
+
                break;
            }
 
@@ -96,7 +96,7 @@ public class ProtoHelper {
 				if (s.endsWith("]")) {
 					s = s.substring(0, s.length() - 1);
 				}
-					
+
 				if (field.getType() == Type.STRING) {
 					StandardParser p = new StandardParser();
 					ArrayList<String> nl = new ArrayList<String>();
@@ -110,20 +110,20 @@ public class ProtoHelper {
 					element = nl.toArray(element);
 				} else {
 					String[] strElements = (BasicParser.getInstance()).split(s, ",", "", 0);
-					
+
 					element = new Object[strElements.length];
-					
+
 					for (int i =0; i < strElements.length; i++) {
-						strElements[i] = dropFromStart(strElements[i], " ");			
-						
+						strElements[i] = dropFromStart(strElements[i], " ");
+
 						element[i] = adjustSingleValueForUpdate(field, strElements[i], true);
 					}
 				}
-				
+
 				Object hold = builder.getField(field);
 				try {
 					builder.clearField(field);
-					
+
 					for (int i =0; i < element.length; i++) {
 						builder.addRepeatedField(field, element[i]);
 					}
@@ -143,28 +143,28 @@ public class ProtoHelper {
 //					+ " " + builder.getDescriptorForType().getName());
 
 			if (value == null && (field.isOptional() || field.isRepeated())) {
-				//System.out.println("## 3 Clear "); 
+				//System.out.println("## 3 Clear ");
 				builder.clearField(field);
 			} else {
 				builder.setField(field, value);
 			}
 		}
 	}
-	
+
 	private static String dropFromStart(String s, String prefix) {
 		if (s.startsWith(prefix)) {
 			s = s.substring(1);
 		}
-		
+
 		return s;
 	}
-	
-	
-	public static Object adjustSingleValueForUpdate(FieldDescriptor field, Object newValue, 
+
+
+	public static Object adjustSingleValueForUpdate(FieldDescriptor field, Object newValue,
 			boolean mustBeValid) {;
 		Object value = newValue;
 		long l;
-		
+
 		switch (field.getType()) {
 		case INT32:
 		case SINT32:
@@ -236,7 +236,7 @@ public class ProtoHelper {
 			if (Common.isEmpty(newValue)) {
 				value = EMPTY_BYTE_STRING;
 			} else {
-				byte[] b; 
+				byte[] b;
 				String s = newValue.toString();
 
 				int ii;
@@ -260,7 +260,7 @@ public class ProtoHelper {
 				value = null;
 			} else {
 				Descriptors.EnumDescriptor enumType = field.getEnumType();
-	
+
 				boolean isNum = false;
 				int number = 0;
 				if (newValue instanceof Number) {
@@ -300,10 +300,10 @@ public class ProtoHelper {
 		case GROUP:
 			throw new RuntimeException("Can't get here.");
 		}
-	
+
 		return value;
 	}
-	
+
 
 	private static Number getNumber(Object val) {
 		if (val instanceof Number) {
@@ -312,7 +312,7 @@ public class ProtoHelper {
 			return Integer.valueOf(0);
 		} else {
 			return new BigInteger(val.toString());
-		} 
+		}
 	}
 
 	 /**
@@ -332,7 +332,7 @@ public class ProtoHelper {
     private static Number unsignedToNumber(long value) {
         if (value >= 0) {
             return Long.valueOf(value);
-        } else { 
+        } else {
             // Pull off the most-significant bit so that BigInteger doesn't
             // think
             // the number is negative, then set it again using setBit().
@@ -341,10 +341,10 @@ public class ProtoHelper {
     }
 
 
-	
+
 	public static Object getDefaultValue(FieldDescriptor field) {;
 		Object value = null;
-		
+
 		switch (field.getType()) {
 		case INT32:
 		case SINT32:
@@ -362,16 +362,16 @@ public class ProtoHelper {
 			value = Long.valueOf(0);
 			break;
 
-		case FLOAT:		
-			value = Float.valueOf(0);	
+		case FLOAT:
+			value = Float.valueOf(0);
 			break;
 
 		case DOUBLE:
 			value = Double.valueOf(0);
-			
+
 			break;
 
-		case BOOL:			
+		case BOOL:
 			value = Boolean.FALSE;
 			break;
 
@@ -385,16 +385,16 @@ public class ProtoHelper {
 
 		case ENUM: {
 			Descriptors.EnumDescriptor enumType = field.getEnumType();
-			
+
 			value = enumType.findValueByNumber(0);
-	
+
 			break;
 		}
 
 		case MESSAGE:
 		case GROUP:
 		}
-	
+
 		return value;
 	}
 
@@ -403,15 +403,15 @@ public class ProtoHelper {
 	 * @param desc record description
 	 * @return requested builder
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static AbstractMessage.Builder getBuilder(Descriptor desc) {
 		DynamicMessage.Builder ret = DynamicMessage.newBuilder(desc);
-		
+
 		initBuilder(ret, desc);
-		
+
 		return ret;
 	}
-	
+
 	public static void initBuilder(Message.Builder bld, Descriptor desc) {
 		Object o;
 		List<FieldDescriptor> fields = desc.getFields();
@@ -424,9 +424,9 @@ public class ProtoHelper {
 			}
 		}
 	}
-	
-	
-    public static FileDescriptor getFileDescriptor(FileDescriptorSet dp, int idx) 
+
+
+    public static FileDescriptor getFileDescriptor(FileDescriptorSet dp, int idx)
     throws DescriptorValidationException {
  		FileDescriptor[] dependencies = {};
 
@@ -447,27 +447,27 @@ public class ProtoHelper {
 
     	return FileDescriptor.buildFrom(dp.getFile(idx), dependencies);
     }
-    
+
     public static FileDescriptorSet getFileDescriptorSet(FileDescriptor descriptor) {
     	FileDescriptorSet.Builder bld = FileDescriptorSet.newBuilder();
-     	
+
     	addDescriptors(bld, descriptor);
-    	
+
     	return bld.build();
     }
 
-    
+
     private static void addDescriptors(FileDescriptorSet.Builder bld, FileDescriptor descriptor) {
 
     	if (descriptor != null ) {
 	     	List<FileDescriptor> depencies = descriptor.getDependencies();
-	    	
+
 	   		bld.addFile(descriptor.toProto());
-     	
+
 	    	for (FileDescriptor dep : depencies) {
 	    		addDescriptors(bld, dep);
 	    	}
-	    	
+
 	   	}
 
     }

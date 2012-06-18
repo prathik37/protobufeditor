@@ -25,19 +25,19 @@ import net.sf.RecordEditor.utils.swing.Combo.ColorItem;
 
 /**
  * implementation of LineInterface for ProtoBuffer lines.
- * 
+ *
  * @author Bruce Martin
  *
  */
 public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
-//	public final static byte[] EMPTY_BYTE_ARRAY = {}; 
+//	public final static byte[] EMPTY_BYTE_ARRAY = {};
 	private final static AbstractTreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine>
-				NULL_TREE_DETAILS 
+				NULL_TREE_DETAILS
 					= new NullTreeDtls<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoChildDefinition, ProtoLine>();
 	public static final Color DESCRIPTOR_COLOR = new Color(220, 220, 255);
 	public static final Color ENUM_COLOR = new Color(220, 255, 220);
-	
+
 	private Message.Builder bld;
 	private ProtoLayoutDef layout;
 	private int layoutIdx;
@@ -45,29 +45,29 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	private ProtoTreeDetails treeDtls = null;
 
 	private byte[] data = null;
-	
+
 	public ProtoLine(ProtoLine parent, ProtoChildDefinition childDefinition, int layoutIndex, Message msg) {
 		this(parent, childDefinition, -1,  layoutIndex,  msg);
 		//System.out.println("--## 1");
 	}
-	
+
 	public ProtoLine(
-			ProtoLine parent, 
-			ProtoChildDefinition childDefinition, 
+			ProtoLine parent,
+			ProtoChildDefinition childDefinition,
 			int index,
-			int layoutIndex, 
+			int layoutIndex,
 			Message msg) {
-		this(parent, 
-				childDefinition, 
+		this(parent,
+				childDefinition,
 				index,
 				layoutIndex, msg.newBuilderForType().mergeFrom(msg));
 	}
 
 	public ProtoLine(
-			ProtoLine parent, 
-			ProtoChildDefinition childDefinition, 
+			ProtoLine parent,
+			ProtoChildDefinition childDefinition,
 			int index,
-			int layoutIndex, 
+			int layoutIndex,
 			Message.Builder builder) {
 		this(parent.getLayout(), layoutIndex, childDefinition);
 		//System.out.println("--## 3");
@@ -84,18 +84,18 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		//System.out.println("--## 4");
 		bld = builder;
 	}
-	
+
 	public ProtoLine(ProtoLayoutDef layoutDescription, int layoutIndex, byte[] bytes) {
 		this(layoutDescription, layoutIndex, (ProtoChildDefinition) null);
 		//System.out.println("--## 5");
 		data = bytes;
 	}
-	
+
 	private ProtoLine(ProtoLayoutDef layoutDescription, int layoutIndex, ProtoChildDefinition childDefinition) {
 		//System.out.println("--## 6");
 		layout = layoutDescription;
 		layoutIdx = layoutIndex;
-		
+
 		if (layout.hasChildren()) {
 			treeDtls = new ProtoTreeDetails(this, childDefinition);
 		}
@@ -106,20 +106,20 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		layout = layoutDescription;
 		bld = builder;
 		layoutIdx = 0;
-		
+
 		for (int i = 0; i < layout.getRecordCount(); i++) {
 			if (builder.getDescriptorForType().equals(layout.getRecord(i).getProtoDesc())) {
 				layoutIdx = i;
 				break;
 			}
 		}
-		
+
 		if (layout.hasChildren()) {
 			treeDtls = new ProtoTreeDetails(this, null);
 		}
 	}
-	
-	
+
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public AbstractTreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine> getTreeDetails() {
@@ -141,31 +141,31 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		} else if (getBuilder().isInitialized()) {
 			return getMsg().toByteArray();
 		}
-		return ConstClass.EMPTY_BYTE_ARRAY;	
+		return ConstClass.EMPTY_BYTE_ARRAY;
 	}
 
 	@Override
 	public Object getField(int recordIdx, int fieldIdx) {
-		if (layout.isProtoDefinition() 
+		if (layout.isProtoDefinition()
 		&& recordIdx != layoutIdx  && fieldIdx == 0
 		&& layout.getRecord(layoutIdx).getFieldCount() > 0) {
 			ColorItem item = new ColorItem();
 			item.data =  getField(layout.getField(layoutIdx, fieldIdx));
 			item.color = Color.WHITE;
 			if ("FileDescriptorProto".equalsIgnoreCase(layout.getRecord(layoutIdx).getRecordName())) {
-				item.color = Color.YELLOW; 
+				item.color = Color.YELLOW;
 			} else if ("DescriptorProto".equalsIgnoreCase(layout.getRecord(layoutIdx).getRecordName())) {
-				item.color = DESCRIPTOR_COLOR; 				
+				item.color = DESCRIPTOR_COLOR;
 			} else if ("EnumDescriptorProto".equalsIgnoreCase(layout.getRecord(layoutIdx).getRecordName())) {
-				item.color = ENUM_COLOR; 				
+				item.color = ENUM_COLOR;
 			}
 			return item;
-		} else if (fieldIdx == Constants.KEY_INDEX  
-		||  recordIdx != layoutIdx 
+		} else if (fieldIdx == Constants.KEY_INDEX
+		||  recordIdx != layoutIdx
 		||  fieldIdx >= layout.getRecord(layoutIdx).getFieldCount()) {
 			return null;
 		}
-		
+
 		return getField(layout.getField(recordIdx, fieldIdx));
 	}
 
@@ -187,7 +187,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			System.out.println("## Error >> " + layoutIdx + " " + layout.getRecord(layoutIdx).getRecordName() + " "
 					+ bld.getDescriptorForType().getFullName());
 			e.printStackTrace();
-			
+
 			return null;
 		}
 
@@ -202,12 +202,12 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	@Override
 	public Object getField(FieldDetail field) {
 		if (field == null ) {
-			System.out.println("Null Field");
+			//System.out.println("Null Field");
 			return null;
 		} else if (field instanceof ProtoFieldDef) {
 			return getField((ProtoFieldDef) field);
 		}
-		
+
 		return null;
 	}
 
@@ -238,7 +238,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		if (o != null) {
 			ret = o.toString();
 		}
-		
+
 		return ret;
 	}
 
@@ -269,10 +269,10 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		Message.Builder build = getBuilder();
 		FieldDescriptor protoFieldDesc;
 		Object val;
-		
+
 		for (int i = 0; i < recordDef.getFieldCount(); i++) {
 			protoFieldDesc = recordDef.getField(i).getProtoField();
-		
+
 			if (protoFieldDesc.isRepeated()) {
 				String sep = "{";
 				for (int j =0; j < build.getRepeatedFieldCount(protoFieldDesc); j++) {
@@ -288,7 +288,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 				val = build.getField(protoFieldDesc);
 				//if (protoFieldDesc.getType() == Type.ENUM) {
 				val = ProtoHelper.getAdjustedFieldValue(val, protoFieldDesc);
-				//} 
+				//}
 				b.append(val).append('\t');
 			} else {
 				b.append('\t');
@@ -327,7 +327,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	 */
 	@Override
 	public void setData(byte[] newVal) {
-		
+
 	}
 
 	@Override
@@ -388,7 +388,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			}
 		} else {
 //			if (newValue != null) {
-//				System.out.println("setField: " + newValue + " " 
+//				System.out.println("setField: " + newValue + " "
 //						+ newValue.getClass().getName()  +" " + field.getName());
 //			}
 			ProtoHelper.setField(getBuilder(), field, newValue);
@@ -406,8 +406,8 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 				msg = bld.clone().build();
 			} catch (Exception e) {
 				Common.logMsg(
-						AbsSSLogger.WARNING, 
-						"Error updating Message in parent (missing required fields ???): " + e.getMessage(), 
+						AbsSSLogger.WARNING,
+						"Error updating Message in parent (missing required fields ???): " + e.getMessage(),
 						null);
 				return;
 			}
@@ -418,7 +418,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 					ProtoChildDefinition def = treeDtls.getChildDefinitionInParent();
 					if (parentDtl.isRebuildChildren(def.childIndex)) {
 						parentDtl.rebuildRepeatedField(
-								def, 
+								def,
 								parentDtl.getLines(def.getChildIndex()));
 						//		    			   if (parentDtl.isRebuildChildren(def.childIndex)) {
 						//		    				   Common.logMsg("Incomplete record has prevented full updates being made", null);
@@ -429,7 +429,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 					}
 				} else {
 					treeDtls.getParentLine().getBuilder().setRepeatedField(
-							parentFld, treeDtls.getParentIndex(), msg);	    			   
+							parentFld, treeDtls.getParentIndex(), msg);
 				}
 			} else {
 				treeDtls.getParentLine().getBuilder().setField(parentFld, msg);
@@ -443,7 +443,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	@Override
 	public void setLayout(ProtoLayoutDef newLayout) {
 //		System.out.print(" --> " + layoutIdx  + " " + layout.getRecord(layoutIdx).getRecordName());
-		
+
 		layoutIdx = newLayout.getRecordIndex(getBuilder().getDescriptorForType().getName());
 //		System.out.println("  --> " + layoutIdx + " " + newLayout.getRecord(layoutIdx).getRecordName()
 //				+ " " + getBuilder().getDescriptorForType().getFullName());
@@ -462,10 +462,10 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	}
 
-	
+
 	public ProtoLine clone() {
 		ProtoLine ret;
-		
+
 		if (treeDtls == null || treeDtls.getParentLine() == null) {
 			ret = new ProtoLine(layout, layoutIdx, getBuilder().clone());
 		} else {
@@ -473,30 +473,30 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		}
 		return ret;
 	}
-	
+
 	public final Message getMsg() {
 		return getBuilder().clone().build();
 	}
-	
+
 	public final Message.Builder getBuilder() {
 		if (data != null || bld == null) {
 			synchronized (data) {
 				try {
 					bld = DynamicMessage.newBuilder(layout.getRecord(layoutIdx).getProtoDesc());
-					
+
 					if (data != null) {
 						bld.mergeFrom(data);
 						data = null;
 					} else {
 						ProtoHelper.initBuilder(bld, layout.getRecord(layoutIdx).getProtoDesc());
-					}  
+					}
 				} catch (Exception e) {
 					String s ="Error with data: " + e.getMessage();
 					Common.logMsg(AbsSSLogger.WARNING, s, null);
 					System.out.println(s);
 				}
 			}
-		} 
+		}
 		return bld;
 	}
 
@@ -508,7 +508,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		if (build != null) {
 			data = null;
 		}
-		
+
 		updateParent();
 	}
 
@@ -527,6 +527,6 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	public ProtoLine getNewDataLine() {
 		return clone();
 	}
-	
-	
+
+
 }

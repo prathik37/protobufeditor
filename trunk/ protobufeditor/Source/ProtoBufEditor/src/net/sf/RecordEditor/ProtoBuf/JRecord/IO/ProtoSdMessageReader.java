@@ -18,16 +18,17 @@ import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
 import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.IO.AbstractLineReader;
-import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
-import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Utils;
+import net.sf.RecordEditor.ProtoBuf.common.Utils;
 
 public class ProtoSdMessageReader extends AbstractLineReader<ProtoLayoutDef>
 implements ProtoSelfDescribingReader {
 
 	private static final FileDescriptor fileDesc = Utils.getFileDescriptor();
+	private static final int MIN_BUFFER_SIZE = 256 * 256 * 8;
+	private static final int MAX_BUFFER_SIZE = MIN_BUFFER_SIZE * 16;
 
 
 	private ProtoLine data;
@@ -40,7 +41,8 @@ implements ProtoSelfDescribingReader {
 	@Override
 	public void open(InputStream inputStream, ProtoLayoutDef layout)
 			throws IOException, RecordException {
-		InputStream in = new BufferedInputStream(inputStream, Consts.IO_BUFFER_SIZE);
+		int bufSize = Math.min(MAX_BUFFER_SIZE, Math.max(inputStream.available(), MIN_BUFFER_SIZE));
+		InputStream in = new BufferedInputStream(inputStream, bufSize);
 
 		fileset = null;
 

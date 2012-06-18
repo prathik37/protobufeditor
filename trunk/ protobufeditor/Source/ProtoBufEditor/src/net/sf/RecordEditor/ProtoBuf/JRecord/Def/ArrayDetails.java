@@ -19,13 +19,13 @@ import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 
 public class ArrayDetails implements ArrayInterface {
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public List array;
 
 	private ProtoLine line;
 	private ProtoFieldDef fieldDef;
 	private FieldDescriptor fieldDesc;
-	
+
 	/**
 	 * @param array
 	 * @param line
@@ -35,38 +35,38 @@ public class ArrayDetails implements ArrayInterface {
 		//this.array = line.getBuilder().getField(fieldDesc);
 		this.line = line;
 		this.fieldDef = fieldDefinition;
-		this.fieldDesc = fieldDefinition.getProtoField(); 
-		
+		this.fieldDesc = fieldDefinition.getProtoField();
+
 		retrieveArray();
 	}
-	
+
 	/**
 	 * {@link net.sf.RecordEditor.utils.swing.array.ArrayInterface#retrieveArray()}
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void retrieveArray() {
 		Message.Builder bld = line.getBuilder();
-		
+
 		Object list = bld.getField(fieldDesc);
-		
+
 		if (list instanceof List) {
 			array = (List) list;
 		} else if (fieldDesc.isRepeated()) {
-			
+
 			int count = bld.getRepeatedFieldCount(fieldDesc);
-			
-			array = new ArrayList(count);	
+
+			array = new ArrayList(count);
 			for (int i = 0; i < count; i++) {
 				array.add(bld.getRepeatedField(fieldDesc, i));
-			} 
+			}
 		} else {
-			array = new ArrayList(2);	
+			array = new ArrayList(2);
 			array.add(bld.getField(fieldDesc));
 		}
 	}
-	
-	
+
+
 	/* (non-Javadoc)
 	 * @see  net.sf.RecordEditor.edit.display.array.ArrayInterface#getText()
 	 */
@@ -74,7 +74,7 @@ public class ArrayDetails implements ArrayInterface {
 	public String toString() {
 		StringBuilder b;
 		String s;
-		
+
 		switch(fieldDesc.getType()) {
 		case BYTES:
 		case ENUM:
@@ -95,7 +95,7 @@ public class ArrayDetails implements ArrayInterface {
 			}
 			b.append("]");
 			return b.toString();
-	
+
 //		case BOOL:
 //			b = new StringBuilder("[");
 //			s = "";
@@ -128,7 +128,7 @@ public class ArrayDetails implements ArrayInterface {
 	public boolean add(Object value) {
 		boolean ret =  array.add(checkObject(value, null));
 		flush();
-		
+
 		return ret;
 	}
 
@@ -137,11 +137,11 @@ public class ArrayDetails implements ArrayInterface {
 		Object o = newValue;
 		Object temp;
 		String msg;
-		
+
 		if (oldValue == null) {
 			ret = ProtoHelper.getDefaultValue(fieldDesc);
 		}
-		
+
 		temp = checkObj(o);
 		while (o != null && temp instanceof Exception) {
 			msg = ((Exception) temp).getMessage();
@@ -159,22 +159,22 @@ public class ArrayDetails implements ArrayInterface {
         if (o != null && ! (temp instanceof Exception)) {
         	ret = temp;
         }
-		
+
 		return ret;
 	}
-	
+
 	private Object checkObj(Object o) {
 		Object ret = null;
-		
+
 		try {
 			ret = ProtoHelper.adjustSingleValueForUpdate(fieldDesc, o, false);
 		} catch (Exception e) {
 			ret = e;
 		}
-		
+
 		return ret;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see net.sf.RecordEditor.edit.display.array.ArrayInterface.ArrayInterface#get(int)
 	 */
@@ -217,8 +217,8 @@ public class ArrayDetails implements ArrayInterface {
 	public int size() {
 		return array.size();
 	}
-	
-	
+
+
 
 	/**
 	 * @see  net.sf.RecordEditor.utils.swing.array.ArrayInterface#getColumnCount()
@@ -228,7 +228,7 @@ public class ArrayDetails implements ArrayInterface {
 		return 1;
 	}
 
-	
+
 	/**
 	 * @see net.sf.RecordEditor.utils.swing.array.ArrayInterface#getLine()
 	 */
@@ -238,7 +238,7 @@ public class ArrayDetails implements ArrayInterface {
 	}
 
 	/**
-	 * @see   net.sf.RecordEditor.utils.swing.array.ArrayInterface#flush() 
+	 * @see   net.sf.RecordEditor.utils.swing.array.ArrayInterface#flush()
 	 */
 	@Override
 	public void flush() {
@@ -249,7 +249,7 @@ public class ArrayDetails implements ArrayInterface {
 	public Object getReturn() {
 		return array;
 	}
-	
+
 	/**
      * Get Table Cell Render
      * <b>Note:</b> you should always return a new Editor rather than a
@@ -284,7 +284,7 @@ public class ArrayDetails implements ArrayInterface {
     	case BOOL: ret = new DefaultCellEditor(new CheckBoxTableRender());	break;
     	}
     	return ret;
-	
+
     }
 
 
