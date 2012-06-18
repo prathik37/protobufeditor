@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
@@ -31,10 +31,10 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	private int fileStructure;
 	private FileDescriptor fileDesc;
 	private int primaryMessageIdx = 0;
-	
+
 	private boolean protoDefinition = false;
 
-	private  ProtoLayoutDef(FileDescriptor fileDescription, int fileFormat, 
+	private  ProtoLayoutDef(FileDescriptor fileDescription, int fileFormat,
 			ArrayList<ProtoRecordDef> recordList) {
 		fileDesc = fileDescription;
 		fileStructure = fileFormat;
@@ -45,43 +45,43 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public ProtoLayoutDef(FileDescriptor fileDescription, int fileFormat) {
 		this(fileDescription, fileFormat, false);
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public ProtoLayoutDef(FileDescriptor fileDescription, int fileFormat, boolean protoDef) {
 		fileDesc = fileDescription;
 		fileStructure = fileFormat;
 
 		ArrayList<ProtoRecordDef> recs = new ArrayList<ProtoRecordDef>();
-		
+
 		protoDefinition = protoDef;
-		
+
 		addTRecords(recs, fileDesc, protoDef);
 
-		
+
 		records = new ProtoRecordDef[recs.size()];
-		
+
 		records = recs.toArray(records);
-		
+
 		setupChildRecords();
 	}
-	
+
 	//int ind = 1;
 	//String tabs = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-	
+
 	private void addTRecords(ArrayList<ProtoRecordDef> recs, FileDescriptor fileDesc, boolean highlightProto) {
 		System.out.println();
 		System.out.println("File Descriptor: " + fileDesc.getName());
 		addTRecords(recs, fileDesc.getMessageTypes(), highlightProto);
-		
+
 		List<FileDescriptor> depList = fileDesc.getDependencies();
-		
+
 		System.out.println(" Adding dependencies ... ");
 		for (FileDescriptor dep : depList) {
 			addTRecords(recs, dep, highlightProto);
@@ -90,11 +90,11 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 
 	private void addTRecords(ArrayList<ProtoRecordDef> recs, List<Descriptor> msgs, boolean highlightProto) {
 		//ind += 1;
-		
+
 		if (msgs == null) {
 			return;
 		}
-		
+
 		for (Descriptor d : msgs) {
 //			System.out.println(tabs.substring(tabs.length() - ind)
 //					+ d.getFullName()
@@ -119,7 +119,7 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 		throw new ProtoRecordException("You can not add records to this layouts");
 	}
 
-	
+
 	/**
 	 * @see net.sf.JRecord.Details.AbstractLineDetails#getAdjField(int, int)
 	 */
@@ -209,7 +209,7 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
     		for (i = 0; i < records.length; i++) {
     		    size += records[i].getFieldCount();
     		}
- 
+
     		fieldNameMap = new HashMap<String, ProtoFieldDef>(size);
 
     		for (i = 0; i < records.length; i++) {
@@ -349,11 +349,11 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	 */
 	@Override
 	public void setAllowChildren(boolean allowChildren) {
-			
+
 	}
 
 	/**
-	 * set Child records 
+	 * set Child records
 	 */
 	private void setupChildRecords() {
 		for (int i = 0; i < records.length; i++) {
@@ -382,9 +382,9 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	/**
 	 * @return the primaryMessage
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public final AbstractMessage.Builder getPrimaryMsgBuilder() {
-		return ProtoHelper.getBuilder(records[primaryMessageIdx].getProtoDesc()); 
+		return ProtoHelper.getBuilder(records[primaryMessageIdx].getProtoDesc());
 	}
 
 
@@ -397,7 +397,7 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 		ProtoRecordDef[] recs = new ProtoRecordDef[recordList.size()];
 		recs = recordList.toArray(recs);
 		ProtoLayoutDef ret =  new ProtoLayoutDef(fileDesc, fileStructure, recordList);
-		
+
 		ret.setupChildRecords();
 		return ret;
 	}
@@ -413,12 +413,12 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 		//ProtoRecordDef ret;
 
 		flds = fields.toArray(flds);
-		
+
 		return new ProtoRecordDef(record.getProtoDesc(), flds);
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean isProtoDefinition() {

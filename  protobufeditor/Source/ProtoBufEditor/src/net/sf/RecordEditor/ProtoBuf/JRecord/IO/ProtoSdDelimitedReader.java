@@ -14,43 +14,44 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLineProvider;
 
-public class ProtoSdDelimitedReader extends LineReaderWrapper 
+public class ProtoSdDelimitedReader extends LineReaderWrapper
 implements ProtoSelfDescribingReader {
 
 	private ProtoDelimitedByteReader reader;
 	private FileDescriptorSet fileDescriptorSet = null;
-	
+
 	public ProtoSdDelimitedReader() {
 		this(new ProtoDelimitedByteReader());
 	}
-	
-	
+
+
 	private ProtoSdDelimitedReader(
 			ProtoDelimitedByteReader byteReader) {
 		super(new ProtoLineProvider(), byteReader);
-		
+
 		reader = byteReader;
 	}
 
 
-	@SuppressWarnings("unchecked")
+
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void open(InputStream inputStream, AbstractLayoutDetails pLayout)
 			throws IOException, RecordException {
 
         reader.open(inputStream);
-		
+
 		byte[] bytes = reader.read();
-		
+
 		super.setLayout(pLayout);
 		if (pLayout == null) {
 			FileDescriptorSet.Builder bld = FileDescriptorSet.newBuilder().mergeFrom(bytes);
 			fileDescriptorSet = bld.build();
-			
+
 			try {
 				super.setLayout(
 						new ProtoLayoutDef(
-								ProtoHelper.getFileDescriptor(fileDescriptorSet, 0), 
+								ProtoHelper.getFileDescriptor(fileDescriptorSet, 0),
 								Constants.IO_PROTO_SD_DELIMITED)
 				);
 			} catch (DescriptorValidationException e) {
@@ -64,6 +65,6 @@ implements ProtoSelfDescribingReader {
 		return fileDescriptorSet;
 	}
 
-	
-	
+
+
 }
