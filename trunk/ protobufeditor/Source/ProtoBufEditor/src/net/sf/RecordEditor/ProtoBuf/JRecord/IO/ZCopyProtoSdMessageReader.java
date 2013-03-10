@@ -5,23 +5,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
-import com.google.protobuf.ByteString;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.DescriptorValidationException;
-import com.google.protobuf.Descriptors.FileDescriptor;
-
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
-import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
+
+import com.google.protobuf.ByteString;
+import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.DescriptorValidationException;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 public class ZCopyProtoSdMessageReader extends AbstractLineReader<ProtoLayoutDef>
 implements ProtoSelfDescribingReader {
@@ -31,7 +30,7 @@ implements ProtoSelfDescribingReader {
 
 	private ProtoLine data;
 	private FileDescriptorSet fileset = null;
-	
+
 
 	/**
 	 * @see net.sf.JRecord.IO.AbstractLineReader#open(java.io.InputStream, net.sf.JRecord.Details.AbstractLayoutDetails)
@@ -46,8 +45,8 @@ implements ProtoSelfDescribingReader {
 			//byte[] bytes = new byte[in.available() + 1];
 			try {
 			in.mark(in.available());
-			
-			
+
+
 			Descriptor desc = fileDesc.getMessageTypes().get(0);
 			DynamicMessage.Builder builder = DynamicMessage.newBuilder(desc);
 			builder.mergeFrom(in);
@@ -61,25 +60,25 @@ implements ProtoSelfDescribingReader {
 					+ " " + fsBuilder.getFile(1).getName()
 			);
 			fileset = fsBuilder.build();
-			
+
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new IOException(e);
 			}
 			try {
 				layout = new ProtoLayoutDef(
-						ProtoHelper.getFileDescriptor(fileset, 0), 
+						ProtoHelper.getFileDescriptor(fileset, 0),
 						Constants.IO_PROTO_SD_SINGLE_MESSAGE);
 			} catch (DescriptorValidationException e) {
 				e.printStackTrace();
 				throw new IOException(e);
 			}
 			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in));
-		
+
 		} else {
 			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in));
 		}
-		
+
 		super.setLayout(layout);
 		in.close();
 	}
@@ -88,7 +87,7 @@ implements ProtoSelfDescribingReader {
 	 * @see net.sf.JRecord.IO.AbstractLineReader#read()
 	 */
 	@Override
-	public AbstractLine<ProtoLayoutDef> read() throws IOException {
+	public ProtoLine read() throws IOException {
 
 		ProtoLine ret =  data;
 		data = null;
@@ -104,7 +103,7 @@ implements ProtoSelfDescribingReader {
 	}
 
 	private static FileDescriptor getFileDescriptor() {
-		 java.lang.String descriptorData = 
+		 java.lang.String descriptorData =
 			      "\n\017SdMessage.proto\022\010tutorial\"\034\n\005SdMsg\022\023\n\013" +
 			      "proto_files\030\001 \002(\014B\026\n\024com.example.tutoria" +
 			      "l"
@@ -124,7 +123,7 @@ implements ProtoSelfDescribingReader {
 	        throw new IllegalArgumentException(
 	          "Failed to parse protocol buffer descriptor for generated code.", e);
 	      }
-	      
+
 
 	      final FileDescriptor result;
 	      try {
@@ -142,6 +141,6 @@ implements ProtoSelfDescribingReader {
 
 		return fileset;
 	}
-	
-	
+
+
 }

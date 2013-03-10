@@ -5,25 +5,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.JRecord.Common.Conversion;
+import net.sf.JRecord.Common.RecordRunTimeException;
 import net.sf.JRecord.CsvParser.BasicParser;
+import net.sf.JRecord.CsvParser.CsvDefinition;
 import net.sf.JRecord.CsvParser.StandardParser;
 import net.sf.RecordEditor.utils.common.Common;
 
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.ByteString;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.Message;
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.DescriptorValidationException;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor.Type;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.Message;
 
 
 public class ProtoHelper {
+	private static final String MUST_BE_POSITIVE = "must be >= 0";
 	public final static byte[] EMPTY_BYTE_ARRAY = {};
 	public final static ByteString EMPTY_BYTE_STRING = ByteString.copyFrom(EMPTY_BYTE_ARRAY);
 
@@ -101,15 +104,16 @@ public class ProtoHelper {
 					StandardParser p = new StandardParser();
 					ArrayList<String> nl = new ArrayList<String>();
 					int i =0;
-					String rf = p.getField2(i++, s, ",", "'");
+					CsvDefinition csvDef = new CsvDefinition(",", "'");
+					String rf = p.getField2(i++, s, csvDef);
 					while (rf != null) {
 						nl.add(rf);
-						rf = p.getField2(i++, s, ",", "'");
+						rf = p.getField2(i++, s, csvDef);
 					}
 					element = new String[nl.size()];
 					element = nl.toArray(element);
 				} else {
-					String[] strElements = (BasicParser.getInstance()).split(s, ",", "", 0);
+					String[] strElements = (BasicParser.getInstance()).split(s, new CsvDefinition(",", ""), 0);
 
 					element = new Object[strElements.length];
 
@@ -186,7 +190,7 @@ public class ProtoHelper {
 		case FIXED32:
 			l = getNumber(newValue).longValue();
 			if (l < 0) {
-				throw new RuntimeException("must be >= 0");
+				throw new RecordRunTimeException(MUST_BE_POSITIVE);
 			}
 			value = Integer.valueOf((int) l);
 			break;
@@ -195,7 +199,7 @@ public class ProtoHelper {
 		case FIXED64:
 			l = getNumber(newValue).longValue();
 			if (l < 0) {
-				throw new RuntimeException("must be >= 0");
+				throw new RecordRunTimeException(MUST_BE_POSITIVE);
 			}
 			value = Long.valueOf(l);
 			break;
@@ -255,7 +259,7 @@ public class ProtoHelper {
 
 		case ENUM: {
 			if (newValue == null) {
-				throw new RuntimeException("An enum must have a value");
+				throw new RecordRunTimeException("An enum must have a value");
 			} else if ("".equals(newValue)) {
 				value = null;
 			} else {
@@ -276,19 +280,17 @@ public class ProtoHelper {
 				if (isNum) {
 					value = enumType.findValueByNumber(number);
 					if (value == null) {
-						throw new RuntimeException("Enum type \""
-								+ enumType.getFullName()
-								+ "\" has no value with number "
-								+ number + ".");
+						throw new RecordRunTimeException(
+								"Enum type \"{0}\" has no value with number {1}.",
+								new Object[] {enumType.getFullName(), number});
 					}
 				} else {
 					String id = newValue.toString();
 					value = enumType.findValueByName(id);
 					if (value == null && (field.isRequired() || mustBeValid)) {
-						throw new RuntimeException("Enum type \""
-								+ enumType.getName()
-								+ "\" has no value named \""
-								+ id + "\".");
+						throw new RecordRunTimeException(
+									"Enum type \"{0}\" has no value named \"{1}\".",
+									new Object[] { enumType.getName(), id});
 					}
 				}
 			}
@@ -467,9 +469,7 @@ public class ProtoHelper {
 	    	for (FileDescriptor dep : depencies) {
 	    		addDescriptors(bld, dep);
 	    	}
-
 	   	}
-
     }
 
 }

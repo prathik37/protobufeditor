@@ -14,17 +14,12 @@
 package net.sf.RecordEditor.ProtoBuf;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.swing.AbstractAction;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 import javax.swing.JTabbedPane;
-
 
 import net.sf.JRecord.IO.AbstractLineIOProvider;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
@@ -35,20 +30,20 @@ import net.sf.RecordEditor.ProtoBuf.re.display.ProtoLayoutSelection;
 import net.sf.RecordEditor.ProtoBuf.re.display.ShowProtoAction;
 import net.sf.RecordEditor.ProtoBuf.summary.ProtoSummaryStore;
 import net.sf.RecordEditor.edit.EditRec;
-
-import net.sf.RecordEditor.edit.display.Action.HightlightMissingFields;
+import net.sf.RecordEditor.edit.display.Action.HighlightMissingFields;
 import net.sf.RecordEditor.edit.display.Action.VisibilityAction;
 import net.sf.RecordEditor.edit.open.OpenFile;
-
+import net.sf.RecordEditor.re.editProperties.DefaultOptModel;
 import net.sf.RecordEditor.re.editProperties.EditOptions;
 import net.sf.RecordEditor.re.editProperties.EditPropertiesPnl;
 import net.sf.RecordEditor.re.util.ReIOProvider;
 import net.sf.RecordEditor.utils.common.Common;
-import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.common.ReActionHandler;
 import net.sf.RecordEditor.utils.edit.ParseArgs;
-
+import net.sf.RecordEditor.utils.lang.ReAbstractAction;
+import net.sf.RecordEditor.utils.params.Parameters;
 import net.sf.RecordEditor.utils.screenManager.ReFrame;
+import net.sf.RecordEditor.utils.swing.ComboBoxs.EnglishStrModel;
 
 
 
@@ -106,9 +101,9 @@ public class ProtoBufEditor extends EditRec {
 	};
 
 	private String[] loaders = {Consts.COPYBOOK_PROTO, Consts.COPYBOOK_COMPILED_PROTO};
-	private ComboBoxModel[] models = {
-			new DefaultComboBoxModel(loaders),
-			new DefaultComboBoxModel(ProtoIOProvider.getNames()),
+	private EnglishStrModel[] models = {
+			DefaultOptModel.newModel("ProtoIdlLoader", loaders),
+			DefaultOptModel.newModel(ProtoIOProvider.getNames()),
 	};
 
 
@@ -148,12 +143,12 @@ public class ProtoBufEditor extends EditRec {
 
         super.getEditMenu().addSeparator();
         super.getEditMenu().add(addAction(new VisibilityAction()));
-        super.getEditMenu().add(new HightlightMissingFields() );
+        super.getEditMenu().add(new HighlightMissingFields() );
 
         this.setOpenFileWindow(
         		open,
         		null,
-				new AbstractAction("Compare Menu") {
+				new ReAbstractAction("Compare Menu") {
 
 					/**
 					 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -197,29 +192,28 @@ public class ProtoBufEditor extends EditRec {
 
 		try {
 			helpMenu.add(
-				new showURI(
+				new ShowURI(
 						"ProtoBuf Introduction",
-						(new File(Common.formatHelpURL("ProtoBufIntro.htm").substring(5))).toURI()));
+						Common.formatHelpURL("ProtoBufIntro.htm").toURI()));
 
 			super.addWebsitesToHelpMenu(helpMenu);
 
 			helpMenu.addSeparator();
-			helpMenu.add(new showURI(
+			helpMenu.add(new ShowURI(
 					"ProtoBuf Editor's Web Page",
 					new URI("http://code.google.com/p/protobufeditor/")));
-			helpMenu.add(new showURI(
+			helpMenu.add(new ShowURI(
 					"ProtoBuf Editor's Discussions",
 					new URI("https://groups.google.com/forum/?fromgroups#!forum/protobufeditor-users")));
 			helpMenu.addSeparator();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
 	protected void showAbout() {
-		ReFrame aboutFrame = new ReFrame("About", null, null);
+		ReFrame aboutFrame = new ReFrame("", "About", null, null);
 		JEditorPane aboutText = new JEditorPane("text/html",
 				"The <b>Protocol Buffers Editor</b> is an editor for Protocol Buffers binary "
 			  + "data files. It is built on top of the <b>RecordEditor</b><br><br><pre>"

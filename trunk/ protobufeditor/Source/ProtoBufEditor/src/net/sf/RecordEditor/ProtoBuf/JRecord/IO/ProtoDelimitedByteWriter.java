@@ -4,11 +4,11 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import com.google.protobuf.CodedOutputStream;
-
 import net.sf.JRecord.ByteIO.AbstractByteWriter;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
+
+import com.google.protobuf.CodedOutputStream;
 
 public class ProtoDelimitedByteWriter extends AbstractByteWriter {
 

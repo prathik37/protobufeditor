@@ -1,8 +1,8 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
-import com.google.protobuf.Descriptors.FieldDescriptor;
-
 import net.sf.JRecord.Details.AbstractChildDetails;
+
+import com.google.protobuf.Descriptors.FieldDescriptor;
 
 public class ProtoChildDefinition implements AbstractChildDetails<ProtoRecordDef> {
 

@@ -7,14 +7,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import net.sf.JRecord.Common.Constants;
+import net.sf.JRecord.Common.IFieldDetail;
+import net.sf.JRecord.Details.AbstractLayoutDetails;
+import net.sf.JRecord.Details.AbstractRecordDetail.FieldDetails;
+import net.sf.JRecord.Details.BasicLayout;
+import net.sf.JRecord.Details.IAttribute;
+import net.sf.JRecord.Details.RecordDecider;
+
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
-
-import net.sf.JRecord.Common.Constants;
-import net.sf.JRecord.Details.AbstractLayoutDetails;
-import net.sf.JRecord.Details.BasicLayout;
-import net.sf.JRecord.Details.RecordDecider;
 
 
 /**
@@ -22,12 +25,12 @@ import net.sf.JRecord.Details.RecordDecider;
  *
  */
 public class ProtoLayoutDef
-extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
+extends BasicLayout<ProtoRecordDef> {
 //implements AbstractLayoutDetails<ProtoFieldDef, ProtoRecordDef> {
 
 	private static final byte[] EMPTY_BYTE_ARRAY = {};
 
-	private HashMap<String, ProtoFieldDef> fieldNameMap = null;
+	private HashMap<String, ProtoRecordDef.ProtoFieldDef> fieldNameMap = null;
 	private int fileStructure;
 	private FileDescriptor fileDesc;
 	private int primaryMessageIdx = 0;
@@ -42,6 +45,14 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 		records = new ProtoRecordDef[recordList.size()];
 		records = recordList.toArray(records);
 		setupChildRecords();
+	}
+
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.Details.BasicLayout#getField(int, int)
+	 */
+	@Override
+	public ProtoRecordDef.ProtoFieldDef getField(int layoutIdx, int fieldIdx) {
+		return records[layoutIdx].getField(fieldIdx);
 	}
 
 	/**
@@ -111,19 +122,19 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#addRecord(net.sf.JRecord.Details.AbstractRecordDetail)
-	 */
-	@Override
-	public void addRecord(ProtoRecordDef record) {
-		throw new ProtoRecordException("You can not add records to this layouts");
-	}
+//	/* (non-Javadoc)
+//	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#addRecord(net.sf.JRecord.Details.AbstractRecordDetail)
+//	 */
+//	@Override
+//	public void addRecord(ProtoRecordDef record) {
+//		throw new ProtoRecordException("You can not add records to this layouts");
+//	}
 
 
 	/**
 	 * @see net.sf.JRecord.Details.AbstractLineDetails#getAdjField(int, int)
 	 */
-    public ProtoFieldDef getAdjField(int layoutIdx, int fieldIdx) {
+    public ProtoRecordDef.ProtoFieldDef getAdjField(int layoutIdx, int fieldIdx) {
         return getRecord(layoutIdx)
                        .getField(getAdjFieldNumber(layoutIdx, fieldIdx));
     }
@@ -176,13 +187,16 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 		return System.getProperty("line.separator");
 	}
 
+
+
 	/* (non-Javadoc)
-	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#getField(byte[], int, net.sf.JRecord.Common.FieldDetail)
+	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#getField(byte[], int, net.sf.JRecord.Common.IFieldDetail)
 	 */
 	@Override
-	public Object getField(byte[] record, int type, ProtoFieldDef field) {
+	public Object getField(byte[] record, int type, IFieldDetail field) {
 		return null;
 	}
+
 
 	/**
 	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#getFieldDescriptions(int, int)
@@ -197,20 +211,20 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#getFieldFromName(java.lang.String)
 	 */
 	@Override
-	public ProtoFieldDef getFieldFromName(String fieldName) {
-		ProtoFieldDef ret = null;
+	public ProtoRecordDef.ProtoFieldDef getFieldFromName(String fieldName) {
+		ProtoRecordDef.ProtoFieldDef ret = null;
     	String key = fieldName.toUpperCase();
 
     	if (fieldNameMap == null) {
     		int i, j, size;
-    		ProtoFieldDef fld;
+    		ProtoRecordDef.ProtoFieldDef fld;
 
     		size = 0;
     		for (i = 0; i < records.length; i++) {
     		    size += records[i].getFieldCount();
     		}
 
-    		fieldNameMap = new HashMap<String, ProtoFieldDef>(size);
+    		fieldNameMap = new HashMap<String, ProtoRecordDef.ProtoFieldDef>(size);
 
     		for (i = 0; i < records.length; i++) {
     			//FieldDetail[] flds = records[i].getFields();
@@ -392,10 +406,7 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	 * @see net.sf.JRecord.Details.BasicLayout#getNewLayout(java.util.ArrayList)
 	 */
 	@Override
-	protected AbstractLayoutDetails<ProtoFieldDef, ProtoRecordDef> getNewLayout(
-			ArrayList<ProtoRecordDef> recordList) {
-		ProtoRecordDef[] recs = new ProtoRecordDef[recordList.size()];
-		recs = recordList.toArray(recs);
+	protected AbstractLayoutDetails getNewLayout(ArrayList<ProtoRecordDef> recordList) {
 		ProtoLayoutDef ret =  new ProtoLayoutDef(fileDesc, fileStructure, recordList);
 
 		ret.setupChildRecords();
@@ -408,8 +419,8 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	 */
 	@Override
 	protected ProtoRecordDef getNewRecord(ProtoRecordDef record,
-			ArrayList<ProtoFieldDef> fields) {
-		ProtoFieldDef[] flds = new ProtoFieldDef[fields.size()];
+			ArrayList<? extends FieldDetails> fields) {
+		ProtoRecordDef.ProtoFieldDef[] flds = new ProtoRecordDef.ProtoFieldDef[fields.size()];
 		//ProtoRecordDef ret;
 
 		flds = fields.toArray(flds);
@@ -424,4 +435,26 @@ extends BasicLayout<ProtoFieldDef, ProtoRecordDef> {
 	public boolean isProtoDefinition() {
 		return protoDefinition;
 	}
+
+
+
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#getAttribute(net.sf.JRecord.Details.IAttribute)
+	 */
+	@Override
+	public Object getAttribute(IAttribute attr) {
+
+		return null;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#setAttribute(net.sf.JRecord.Details.IAttribute, java.lang.Object)
+	 */
+	@Override
+	public void setAttribute(IAttribute attr, Object value) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

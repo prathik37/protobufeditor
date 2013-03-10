@@ -19,14 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.FileDescriptor;
-import com.google.protobuf.DynamicMessage;
-
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
 import net.sf.JRecord.IO.AbstractLineReader;
+import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.JRecord.Log.TextLog;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
@@ -35,29 +31,36 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoDelimitedByteReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoSelfDescribingReader;
-import net.sf.RecordEditor.ProtoBuf.common.BoolOption;
 import net.sf.RecordEditor.ProtoBuf.common.Const;
 import net.sf.RecordEditor.ProtoBuf.common.Utils;
 import net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary;
 import net.sf.RecordEditor.ProtoBuf.summary.ProtoSummaryStore;
 import net.sf.RecordEditor.re.openFile.AbstractLayoutSelection;
 import net.sf.RecordEditor.utils.common.Common;
-import net.sf.RecordEditor.utils.common.Parameters;
 import net.sf.RecordEditor.utils.common.StreamUtil;
+import net.sf.RecordEditor.utils.lang.LangConversion;
+import net.sf.RecordEditor.utils.params.BoolOpt;
+import net.sf.RecordEditor.utils.params.Parameters;
 import net.sf.RecordEditor.utils.swing.BasePanel;
 import net.sf.RecordEditor.utils.swing.FileChooser;
+import net.sf.RecordEditor.utils.swing.SwingUtils;
 import net.sf.RecordEditor.utils.swing.Combo.ComboOption;
 
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DynamicMessage;
+
 public class ProtoLayoutSelection
-   extends AbstractLayoutSelection<ProtoLayoutDef>
+   extends AbstractLayoutSelection
 implements ProtoLayoutActionInterface {
 
 	private static final String SEPERATOR = ",,";
 
 	public static final String NULL_STR = "$$Empty$$";
 
-	private static final BoolOption CHECK_NEW_PROTO = new BoolOption(Const.CHECK_PREVIOUS_PROTO, true);
-
+	private static final BoolOpt CHECK_NEW_PROTO = new BoolOpt(Const.CHECK_PREVIOUS_PROTO, true);
+	private static final String NO_PROTO_FILE = LangConversion.convert("You must enter a Proto Definition File");
 
 	private FileChooser  protoDefinitionFile;
 	private FileChooser  protoImportDir;
@@ -70,7 +73,7 @@ implements ProtoLayoutActionInterface {
 	private JTextField fileField;
 
 	private JTextArea message = null;
-	private JButton protoSearchBtn = new JButton("Proto Search", Common.getRecordIcon(Common.ID_SEARCH_ICON));
+	private JButton protoSearchBtn = SwingUtils.newButton("Proto Search", Common.getRecordIcon(Common.ID_SEARCH_ICON));
 
 
 	private boolean listnersActive = true;
@@ -186,15 +189,15 @@ implements ProtoLayoutActionInterface {
 				String s = fileField.getText();
 				File f;
 				if ("".equals(s)) {
-					message.setText("You must enter the filename");
+					setMessageTxt("You must Enter a filename");
 				} else if (! (f = new File(s)).exists()) {
-					message.setText("File: " + s + " does not exist");
+					setMessageTxt("File: {0} does not exist", s);
 				} else if (f.isDirectory()) {
-					message.setText("File: " + s + " is a directory, it should be a protocol buffers file");
+					setMessageTxt("File: {0} is a directory, it should be a protocol buffers file", s);
 				} else {
 					byte[] b = getFileBytes();
 					if (b == null) {
-						message.setText("No data to check");
+						setMessageTxt("No data to check");
 					} else {
 						new ProtoSearchPnl(b, s, ProtoLayoutSelection.this);
 					}
@@ -470,7 +473,7 @@ implements ProtoLayoutActionInterface {
 			}
 
     	} catch (Exception e) {
-    		Common.logMsg("Error Setting up Messages: " + e.getMessage(), e);
+    		Common.logMsg(AbsSSLogger.ERROR, "Error Setting up Messages:", e.getMessage(), e);
     		e.printStackTrace();
 		}
     }
@@ -494,7 +497,7 @@ implements ProtoLayoutActionInterface {
       		 if (dp != null) {
       		 } else if (layoutName == null ||  "".equals(layoutName)) {
             //copybookFile.requestFocus();
-           		 message.setText("You must enter a Record Layout name ");
+      			message.setText(NO_PROTO_FILE);
            	 } else {
            		dp = getFileDescriptorSet(protoType, layoutName);
            	 }
@@ -558,7 +561,7 @@ implements ProtoLayoutActionInterface {
 
 	       if (layoutName == null ||  "".equals(layoutName)) {
 	            protoDefinitionFile.requestFocus();
-	            message.setText("You must enter a proto file name ");
+	            message.setText(NO_PROTO_FILE);
 	       } else {
 	    	   if (	copybooktype == ConstClass.COPYBOOK_COMPILED_PROTO
 	    		||	copybooktype == ConstClass.COPYBOOK_PROTO) {
@@ -573,7 +576,7 @@ implements ProtoLayoutActionInterface {
 	        }
         } catch (Exception e) {
             protoDefinitionFile.requestFocus();
-            message.setText("You must enter a valid Record Layout name:\n" + e.getMessage());
+            message.setText(LangConversion.convert("You must enter a valid Proto File:") + "\n" + e.getMessage());
             e.printStackTrace();
         }
 
@@ -767,7 +770,6 @@ implements ProtoLayoutActionInterface {
     		loaderOptions = new JComboBox(ConstClass.getCopybookLoaders());
 
     		protoFile = new JComboBox();
-//        	quote          = new JComboBox(Common.QUOTE_LIST);
         	messageName = new JComboBox();
 
         	setCombo(fileStructure, Consts.DEFAULT_PROTO_FILE_STRUCTURE);
@@ -808,6 +810,14 @@ implements ProtoLayoutActionInterface {
         return ret;
     }
 
+    private void setMessageTxt(String s) {
+    	message.setText(LangConversion.convert(s));
+    }
+
+
+    private void setMessageTxt(String s, String param) {
+    	message.setText(LangConversion.convert(s, param));
+    }
 
 	/**
 	 * @param message the message to set

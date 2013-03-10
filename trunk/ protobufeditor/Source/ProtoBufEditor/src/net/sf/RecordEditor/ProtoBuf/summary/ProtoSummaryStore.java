@@ -16,27 +16,28 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.JRecord.Log.AbsSSLogger;
+import net.sf.JRecord.Log.TextLog;
+import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
+import net.sf.RecordEditor.ProtoBuf.common.Const;
+import net.sf.RecordEditor.ProtoBuf.common.Utils;
+import net.sf.RecordEditor.utils.common.Common;
+import net.sf.RecordEditor.utils.params.AParameterChangeListner;
+import net.sf.RecordEditor.utils.params.BoolOpt;
+import net.sf.RecordEditor.utils.params.Parameters;
+
 import com.google.protobuf.AbstractMessage;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
-import com.google.protobuf.WireFormat;
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
-import com.google.protobuf.WireFormat.JavaType;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import com.google.protobuf.UnknownFieldSet;
-
-import net.sf.JRecord.Log.TextLog;
-import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
-import net.sf.RecordEditor.ProtoBuf.common.BoolOption;
-import net.sf.RecordEditor.ProtoBuf.common.Const;
-import net.sf.RecordEditor.ProtoBuf.common.Utils;
-import net.sf.RecordEditor.utils.common.AParameterChangeListner;
-import net.sf.RecordEditor.utils.common.Common;
-import net.sf.RecordEditor.utils.common.Parameters;
+import com.google.protobuf.WireFormat;
+import com.google.protobuf.WireFormat.JavaType;
 
 
 /**
@@ -63,7 +64,7 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 
 	public static final ProtoSummaryStore instance = new ProtoSummaryStore();
 
-	private static final BoolOption DO_SEARCH = new BoolOption(Const.USE_EXTENDED_LOOKUP, true);
+	private static final BoolOpt DO_SEARCH = new BoolOpt(Const.USE_EXTENDED_LOOKUP, true);
 
 	private ArrayList<ProtoSummary.Proto> summaries = new ArrayList<ProtoSummary.Proto>(500);
 	private HashMap<String, ProtoSummary.Proto> summaryMap;
@@ -95,7 +96,7 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 				}
 				is.close();
 			} catch (Exception e) {
-				Common.logMsg("Error Loading Proto Summary file", e);
+				Common.logMsg("Error Loading Proto Summary file:", e);
 				e.printStackTrace();
 			} finally {
 				if (is != null) {
@@ -123,7 +124,7 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 				}
 				r.close();
 			} catch (IOException e) {
-				Common.logMsg("Error Proto Directory file", e);
+				Common.logMsg("Error Processing Proto Directory file", e);
 				e.printStackTrace();
 			} finally {
 				if (r != null) {
@@ -158,7 +159,7 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 						}
 					}
 				} catch (Exception e) {
-					Common.logMsg("Error Retrieving proto definition: " + b.getFilename() , e);
+					Common.logMsg(AbsSSLogger.ERROR, "Error Retrieving proto definition:", b.getFilename() , e);
 				}
 			} else {
 				summaries.add(b.build());

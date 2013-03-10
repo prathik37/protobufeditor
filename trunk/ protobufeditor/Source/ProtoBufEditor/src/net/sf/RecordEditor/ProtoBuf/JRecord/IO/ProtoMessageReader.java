@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import net.sf.JRecord.Common.RecordException;
-import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
@@ -14,7 +13,7 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 
 	private ProtoLine data;
-	
+
 
 	/**
 	 * @see net.sf.JRecord.IO.AbstractLineReader#open(java.io.InputStream, net.sf.JRecord.Details.AbstractLayoutDetails)
@@ -22,10 +21,10 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 	@Override
 	public void open(InputStream inputStream, ProtoLayoutDef layout)
 			throws IOException, RecordException {
-		
+
 		InputStream in = new BufferedInputStream(inputStream, Consts.IO_BUFFER_SIZE);
 		super.setLayout(layout);
-		
+
 		if (in.available() <= 0) {
 			data = null;
 		} else {
@@ -38,13 +37,13 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 	 * @see net.sf.JRecord.IO.AbstractLineReader#read()
 	 */
 	@Override
-	public AbstractLine<ProtoLayoutDef> read() throws IOException {
+	public ProtoLine read() throws IOException {
 
 		ProtoLine ret =  data;
 		data = null;
 		return ret;
 	}
-	
+
 	/**
 	 * @see net.sf.JRecord.IO.AbstractLineReader#close()
 	 */
@@ -57,7 +56,7 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 //	private InputStream in;
 //	private ProtoLayoutDef layoutDef;
 //	private boolean eof = true;
-//	
+//
 //	/**
 //	 * @see net.sf.JRecord.IO.AbstractLineReader#close()
 //	 */
@@ -73,7 +72,7 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 //	@Override
 //	public void open(InputStream inputStream, ProtoLayoutDef layout)
 //			throws IOException, RecordException {
-//		in = new BufferedInputStream(inputStream, Consts.IO_BUFFER_SIZE);	
+//		in = new BufferedInputStream(inputStream, Consts.IO_BUFFER_SIZE);
 //		layoutDef = layout;
 //		//System.out.println("ProtoMessageReader available: " + in.available() );
 //		eof = in.available() <= 0;
@@ -83,7 +82,7 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 //	 * @see net.sf.JRecord.IO.AbstractLineReader#read()
 //	 */
 //	@Override
-//	public AbstractLine<ProtoLayoutDef> read() throws IOException {
+//	public AbstractLine read() throws IOException {
 //		if (eof) {
 //			return null;
 //		}
@@ -91,5 +90,5 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 //		return new ProtoLine(layoutDef, layoutDef.getPrimaryMsgBuilder().mergeFrom(in));
 //	}
 
-	
+
 }
