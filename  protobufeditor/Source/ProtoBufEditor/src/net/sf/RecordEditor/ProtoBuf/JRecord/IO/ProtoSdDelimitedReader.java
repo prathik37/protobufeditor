@@ -3,9 +3,6 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.IO;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
-import com.google.protobuf.Descriptors.DescriptorValidationException;
-
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
 import net.sf.JRecord.Details.AbstractLayoutDetails;
@@ -13,6 +10,9 @@ import net.sf.JRecord.IO.LineReaderWrapper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLineProvider;
+
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.Descriptors.DescriptorValidationException;
 
 public class ProtoSdDelimitedReader extends LineReaderWrapper
 implements ProtoSelfDescribingReader {

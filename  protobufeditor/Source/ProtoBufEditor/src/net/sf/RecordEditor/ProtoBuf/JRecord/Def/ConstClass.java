@@ -1,7 +1,7 @@
 package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
-import net.sf.RecordEditor.utils.common.Parameters;
+import net.sf.RecordEditor.utils.params.Parameters;
 import net.sf.RecordEditor.utils.swing.Combo.ComboOption;
 
 public class ConstClass {

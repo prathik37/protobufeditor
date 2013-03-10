@@ -2,8 +2,8 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.IO;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Details.LineProvider;
-import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.IO.AbstractLineIOProvider;
+import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.IO.AbstractLineWriter;
 import net.sf.JRecord.IO.LineIOProvider;
 import net.sf.JRecord.IO.LineReaderWrapper;
@@ -13,22 +13,29 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLineProvider;
 public class ProtoIOProvider implements AbstractLineIOProvider {
 
 	private static int[] keys = {
-		Constants.IO_PROTO_SINGLE_MESSAGE, Constants.IO_PROTO_DELIMITED, 
+		Constants.IO_PROTO_SINGLE_MESSAGE, Constants.IO_PROTO_DELIMITED,
 		Constants.IO_PROTO_SD_SINGLE_MESSAGE, Constants.IO_PROTO_SD_DELIMITED};
 	private static String[] names = {
 		"ProtoBuffer Single Message", "ProtoBuffer Delimited Messages",
 		"ProtoBuffer Self Describing Message", "ProtoBuffer Self Describing Delimited"
 	};
 	private static String[] externalNames = {
-		"ProtoBuf_Message", "ProtoBuf_Delimited", 
+		"ProtoBuf_Message", "ProtoBuf_Delimited",
 		"ProtoBuf_SD_Message",  "ProtoBuf_SD_Delimited"};
-	
+
 	private static ProtoLineProvider lineProvider = new ProtoLineProvider();
-	
+
 	private static  ProtoIOProvider instance = new ProtoIOProvider();
 	private static boolean toRegister = true;
 
-	
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.Common.AbstractManager#getManagerName()
+	 */
+	@Override
+	public String getManagerName() {
+		return "ProtoBuffers_IO_Provider";
+	}
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public LineProvider getLineProvider(int fileStructure) {
@@ -42,19 +49,19 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 			LineProvider provider) {
 		AbstractLineReader reader = null;
 		switch (fileStructure) {
-		case(Constants.IO_PROTO_DELIMITED): 
+		case(Constants.IO_PROTO_DELIMITED):
 			reader = new LineReaderWrapper(
-					provider, 
+					provider,
 					new ProtoDelimitedByteReader()
 			);
 		break;
-		case(Constants.IO_PROTO_SINGLE_MESSAGE): 
+		case(Constants.IO_PROTO_SINGLE_MESSAGE):
 			reader = new ProtoMessageReader();
 		break;
-		case(Constants.IO_PROTO_SD_DELIMITED): 
+		case(Constants.IO_PROTO_SD_DELIMITED):
 			reader = new ProtoSdDelimitedReader();
 		break;
-		case(Constants.IO_PROTO_SD_SINGLE_MESSAGE): 
+		case(Constants.IO_PROTO_SD_SINGLE_MESSAGE):
 			reader = new ProtoSdMessageReader();
 		break;
 		}
@@ -72,18 +79,18 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 	public AbstractLineWriter getLineWriter(int fileStructure) {
 		AbstractLineWriter writer = null;
 		switch (fileStructure) {
-		case(Constants.IO_PROTO_DELIMITED): 
+		case(Constants.IO_PROTO_DELIMITED):
 			writer = new LineWriterWrapper(
 					new ProtoDelimitedByteWriter()
 			);
 		break;
-		case(Constants.IO_PROTO_SINGLE_MESSAGE): 
+		case(Constants.IO_PROTO_SINGLE_MESSAGE):
 			writer = new ProtoMessageWriter();
 		break;
-		case(Constants.IO_PROTO_SD_DELIMITED): 
+		case(Constants.IO_PROTO_SD_DELIMITED):
 			writer = new ProtoSdDelimitedWriter();
 		break;
-		case(Constants.IO_PROTO_SD_SINGLE_MESSAGE): 
+		case(Constants.IO_PROTO_SD_SINGLE_MESSAGE):
 			//writer = new ProtoMessageWriter();
 		break;
 		}
@@ -102,7 +109,7 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
     	return "";
 	}
 
-	
+
 	@Override
 	public String getStructureNameForIndex(int index) {
 		return externalNames[index];
@@ -143,7 +150,7 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 	}
 
 	public static void register() {
-		
+
 		if (toRegister) {
 			LineIOProvider.getInstance().register(instance);
 			toRegister = false;

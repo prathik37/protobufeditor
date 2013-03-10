@@ -15,18 +15,21 @@ import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ConstClass;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.utils.common.Common;
-import net.sf.RecordEditor.utils.common.Parameters;
+import net.sf.RecordEditor.utils.lang.LangConversion;
+import net.sf.RecordEditor.utils.params.Parameters;
 
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.DescriptorValidationException;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.InvalidProtocolBufferException;
 
 public class Utils {
+	private static final String MESSAGES_COMPILING_PROTO_FILE = LangConversion.convert("Messages Compiling proto file");
+	private static final String ERROR_COMPILING_PROTO_FILE =  LangConversion.convert("Error Compiling proto file:");
 	private static final String PROTO_COMPILE_OUTPUT = "--descriptor_set_out=";
 
 	public static FileDescriptor getFileDescriptor() {
@@ -162,7 +165,7 @@ public class Utils {
 
 		if (s != null && !"".equals(s)) {
 			log.logMsg(AbsSSLogger.WARNING,
-					"Messages Compiling proto file \n\n" + cmd + "\n\n"+s);
+					MESSAGES_COMPILING_PROTO_FILE + "\n\n" + cmd + "\n\n"+s);
 //		} else {
 //			Common.logMsg(AbsSSLogger.WARNING, cmd, null);
 		}
@@ -170,9 +173,9 @@ public class Utils {
    		File file = new File(compiledFile);
    		if (! file.exists()) {
    			if (msgTxt != null) {
-   				msgTxt.setText("Error Compiling proto file:\n" + s);
+   				msgTxt.setText(ERROR_COMPILING_PROTO_FILE + "\n" + s);
    			}
-   			throw new RuntimeException("Error Compiling proto file: " + s);
+   			throw new RuntimeException(ERROR_COMPILING_PROTO_FILE + " " + s);
    		}
 
     	return getFileDescriptor(compiledFile);

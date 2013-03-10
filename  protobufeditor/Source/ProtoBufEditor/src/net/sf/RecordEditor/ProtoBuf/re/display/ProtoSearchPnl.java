@@ -14,25 +14,30 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
-import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
-
 import net.sf.JRecord.Log.TextLog;
 import net.sf.RecordEditor.ProtoBuf.common.Const;
 import net.sf.RecordEditor.ProtoBuf.common.Utils;
 import net.sf.RecordEditor.ProtoBuf.summary.FileDescriptionCallback;
 import net.sf.RecordEditor.ProtoBuf.summary.ProtoSummaryStore;
 import net.sf.RecordEditor.utils.common.Common;
+import net.sf.RecordEditor.utils.lang.LangConversion;
 import net.sf.RecordEditor.utils.screenManager.ReFrame;
 import net.sf.RecordEditor.utils.swing.BaseHelpPanel;
 import net.sf.RecordEditor.utils.swing.BasePanel;
 import net.sf.RecordEditor.utils.swing.FileChooser;
 import net.sf.RecordEditor.utils.swing.SwingUtils;
 
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+
 @SuppressWarnings("serial")
 public class ProtoSearchPnl extends BaseHelpPanel {
 
-    private static final String[] DIR_COL_HEADINGS = {"Proto Directory"};
-    private static final String[] PROTO_COL_HEADINGS = {"Proto Filename", "File Name", "Message Name"};
+    private static final String[] DIR_COL_HEADINGS = LangConversion.convertColHeading(
+			"ProtoSearch - Directories to be searched",
+			new String[] {"Proto Directory"});
+    private static final String[] PROTO_COL_HEADINGS = LangConversion.convertColHeading(
+			"ProtoSearch - Matching Proto definition files",
+			new String[] {"Proto Filename", "File Name", "Message Name"});
     private static final int MAX_TABLE_WIDTH = 70 * SwingUtils.ONE_CHAR_TABLE_CELL_WIDTH;
 
     private static final String PANEL_DESCRIPTION =
@@ -93,7 +98,8 @@ public class ProtoSearchPnl extends BaseHelpPanel {
 
         this.addComponent(1, 5, SwingUtils.TIP_HEIGHT, BasePanel.GAP1,
                 BasePanel.FULL, BasePanel.FULL,
-                new JScrollPane( new JEditorPane("text/html", PANEL_DESCRIPTION)));
+                new JEditorPane("text/html",
+                		LangConversion.convertId(LangConversion.ST_MESSAGE, "ProtoBuf_ProtoSearch",PANEL_DESCRIPTION)));
 
         addLine("Standard Directories:", null);
         addComponent(1, 5,

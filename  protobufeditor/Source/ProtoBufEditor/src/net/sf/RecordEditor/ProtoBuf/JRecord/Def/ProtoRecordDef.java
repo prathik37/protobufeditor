@@ -2,21 +2,25 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 import java.util.List;
 
-
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 
 import net.sf.JRecord.Common.Constants;
-import net.sf.JRecord.Details.AbstractLayoutDetails;
-import net.sf.JRecord.Details.AbstractRecordDetail;
+import net.sf.JRecord.Common.FieldDetail;
 import net.sf.JRecord.Details.BasicRecordDetail;
 import net.sf.JRecord.Types.Type;
 import net.sf.RecordEditor.re.jrecord.format.CellFormat;
+import net.sf.RecordEditor.utils.common.Common;
+import net.sf.RecordEditor.utils.swing.Combo.ComboModelSupplier;
+
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.EnumValueDescriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor.JavaType;
 
 public class ProtoRecordDef
-extends BasicRecordDetail<ProtoFieldDef, ProtoRecordDef, ProtoChildDefinition>
-implements AbstractRecordDetail<ProtoFieldDef> {
+extends BasicRecordDetail<ProtoRecordDef.ProtoFieldDef, ProtoRecordDef, ProtoChildDefinition>
+implements IProtoRecordDetails {
 
 	private Descriptor protoDesc;
 
@@ -64,10 +68,10 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		fieldCount = count;
 	}
 
-	@Override
-	public void addField(ProtoFieldDef field) {
-		throw new ProtoRecordException("Can not add fields");
-	}
+//	@Override
+//	public void addField(ProtoFieldDef field) {
+//		throw new ProtoRecordException("Can not add fields");
+//	}
 
 	@Override
 	public String getDelimiter() {
@@ -100,7 +104,7 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		return -1;
 	}
 
-	
+
 	@Override
 	public String getQuote() {
 		return null;
@@ -121,17 +125,17 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		return Constants.rtProtoRecord;
 	}
 
-	//TODO Remove this method
-	@Deprecated
-	//@Override
-	public ProtoFieldDef getSelectionField() {
-		return null;
-	}
+//	//TODO Remove this method
+//	@Deprecated
+//	//@Override
+//	public ProtoFieldDef getSelectionField() {
+//		return null;
+//	}
 
-	@Override
-	public String getSelectionValue() {
-		return null;
-	}
+//	@Override
+//	public String getSelectionValue() {
+//		return null;
+//	}
 
 	@Override
 	public int[] getWidths() {
@@ -143,10 +147,10 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		return false;
 	}
 
-	@Override
-	public void setSelectionField(ProtoFieldDef newSelectionField) {
-	}
-	
+//	@Override
+//	public void setSelectionField(ProtoFieldDef newSelectionField) {
+//	}
+
 	/**
 	 * @return the protoDesc
 	 */
@@ -154,7 +158,7 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 		return protoDesc;
 	}
 
-	protected void setChildRecords(AbstractLayoutDetails<ProtoFieldDef, ProtoRecordDef> layout) {
+	protected void setChildRecords(ProtoLayoutDef layout) {
 		List<FieldDescriptor> protoFields = protoDesc.getFields();
 		int i, j;
 		int count = 0;
@@ -193,8 +197,58 @@ implements AbstractRecordDetail<ProtoFieldDef> {
 			}
 		}
 	}
-	
+
 	private boolean isChild(FieldDescriptor fd) {
 		return fd.getJavaType().equals(JavaType.MESSAGE);
 	}
+
+	public class ProtoFieldDef extends FieldDetail implements  IProtoRecordDetails.FieldDetails, ComboModelSupplier {
+
+		private FieldDescriptor protoField;
+		private Object[] enumSymbols = null;
+
+		public ProtoFieldDef(int pPosition, int type,
+				String font, int format, String paramater,
+				FieldDescriptor protoFieldDef) {
+			super(protoFieldDef.getName(), protoFieldDef.getFullName(), type, 0, font, format, paramater);
+			setPosOnly(pPosition);
+			protoField = protoFieldDef;
+
+			if (protoField.getType()  == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
+				List<EnumValueDescriptor> list = protoField.getEnumType().getValues();
+				int inc = 0;
+				if (protoFieldDef.isOptional()) {
+					inc = 1;
+					enumSymbols = new Object[list.size() + 1];
+					enumSymbols[0] = Common.MISSING_VALUE;
+				} else {
+					enumSymbols = new String[list.size()];
+				}
+
+				for (int i = 0; i < list.size(); i++) {
+					enumSymbols[i + inc] = list.get(i).getName();
+				}
+			}
+
+		}
+
+		/* (non-Javadoc)
+		 * @see net.sf.RecordEditor.ProtoBuf.JRecord.Def.ComboModelSupplier#getComboModel()
+		 */
+		public final ComboBoxModel getComboModel() {
+			if (enumSymbols == null) {
+				return null;
+			}
+			return  new DefaultComboBoxModel(enumSymbols);
+		}
+
+		/**
+		 * @return the protoField
+		 */
+		public final FieldDescriptor getProtoField() {
+			return protoField;
+		}
+
+	}
+
 }

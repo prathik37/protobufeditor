@@ -2,24 +2,23 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 import java.awt.Color;
 
-import com.google.protobuf.DynamicMessage;
-import com.google.protobuf.Message;
-import com.google.protobuf.Descriptors.FieldDescriptor;
-
 import net.sf.JRecord.Common.AbstractFieldValue;
 import net.sf.JRecord.Common.Constants;
-import net.sf.JRecord.Common.FieldDetail;
+import net.sf.JRecord.Common.IFieldDetail;
 import net.sf.JRecord.Common.RecordException;
-
+import net.sf.JRecord.Common.RecordRunTimeException;
+import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.Details.AbstractTreeDetails;
-import net.sf.JRecord.Details.NullTreeDtls;
 import net.sf.JRecord.Details.FieldValue;
-
-import net.sf.JRecord.Details.LineProvider;
+import net.sf.JRecord.Details.NullTreeDtls;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.swing.Combo.ColorItem;
+
+import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.Message;
 
 
 
@@ -29,12 +28,12 @@ import net.sf.RecordEditor.utils.swing.Combo.ColorItem;
  * @author Bruce Martin
  *
  */
-public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
+public class ProtoLine implements AbstractLine {
 
 //	public final static byte[] EMPTY_BYTE_ARRAY = {};
-	private final static AbstractTreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine>
+	private final static AbstractTreeDetails<ProtoRecordDef.ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine>
 				NULL_TREE_DETAILS
-					= new NullTreeDtls<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoChildDefinition, ProtoLine>();
+					= new NullTreeDtls<ProtoRecordDef.ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoChildDefinition, ProtoLine>();
 	public static final Color DESCRIPTOR_COLOR = new Color(220, 220, 255);
 	public static final Color ENUM_COLOR = new Color(220, 255, 220);
 
@@ -122,7 +121,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public AbstractTreeDetails<ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine> getTreeDetails() {
+	public AbstractTreeDetails<ProtoRecordDef.ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine> getTreeDetails() {
 		if (treeDtls == null) {
 			return NULL_TREE_DETAILS;
 		}
@@ -169,7 +168,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 		return getField(layout.getField(recordIdx, fieldIdx));
 	}
 
-	private Object getFieldProto(FieldDescriptor field, ProtoFieldDef reField) {
+	private Object getFieldProto(FieldDescriptor field, ProtoRecordDef.ProtoFieldDef reField) {
 
 		try {
 			if (field.isRepeated()) {
@@ -200,18 +199,18 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 
 	@Override
-	public Object getField(FieldDetail field) {
+	public Object getField(IFieldDetail field) {
 		if (field == null ) {
 			//System.out.println("Null Field");
 			return null;
-		} else if (field instanceof ProtoFieldDef) {
-			return getField((ProtoFieldDef) field);
+		} else if (field instanceof ProtoRecordDef.ProtoFieldDef) {
+			return getField((ProtoRecordDef.ProtoFieldDef) field);
 		}
 
 		return null;
 	}
 
-	public Object getField(ProtoFieldDef field) {
+	public Object getField(ProtoRecordDef.ProtoFieldDef field) {
 		if (field == null) {
 			return null;
 		}
@@ -244,7 +243,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 
     @Override
-	public AbstractFieldValue getFieldValue(FieldDetail field) {
+	public AbstractFieldValue getFieldValue(IFieldDetail field) {
 		return new FieldValue(this, field);
 	}
 
@@ -345,15 +344,15 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	}
 
 	@Override
-	public void setField(FieldDetail field, Object value)
+	public void setField(IFieldDetail field, Object value)
 			throws RecordException {
-		if (field != null && field instanceof ProtoFieldDef) {
-			setField(((ProtoFieldDef) field).getProtoField(), value);
+		if (field != null && field instanceof ProtoRecordDef.ProtoFieldDef) {
+			setField(((ProtoRecordDef.ProtoFieldDef) field).getProtoField(), value);
 		}
 	}
 
 
-	public void setField(ProtoFieldDef field, Object value)
+	public void setField(ProtoRecordDef.ProtoFieldDef field, Object value)
 			throws RecordException {
 		if (field != null) {
 			setField(field.getProtoField(), value);
@@ -369,7 +368,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 	@Override
 	public void setFieldText(int recordIdx, int fieldIdx, String value)
 			throws RecordException {
-		ProtoFieldDef field = layout.getField(recordIdx, fieldIdx);
+		IProtoRecordDetails.FieldDetails field = layout.getField(recordIdx, fieldIdx);
 		if (field != null) {
 			setField(field.getProtoField(), value);
 		}
@@ -384,7 +383,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			if  (field.isOptional()) {
 				getBuilder().clearField(field);
 			} else {
-				throw new RuntimeException("Field: " + field.getName() + " must be enterd");
+				throw new RecordRunTimeException("Field: {0} must be entered", field.getName());
 			}
 		} else {
 //			if (newValue != null) {
@@ -407,7 +406,7 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 			} catch (Exception e) {
 				Common.logMsg(
 						AbsSSLogger.WARNING,
-						"Error updating Message in parent (missing required fields ???): " + e.getMessage(),
+						"Error updating Message in parent (missing required fields ???):", e.getMessage(),
 						null);
 				return;
 			}
@@ -441,21 +440,15 @@ public class ProtoLine implements AbstractLine<ProtoLayoutDef> {
 
 
 	@Override
-	public void setLayout(ProtoLayoutDef newLayout) {
+	public void setLayout(AbstractLayoutDetails newLayout) {
 //		System.out.print(" --> " + layoutIdx  + " " + layout.getRecord(layoutIdx).getRecordName());
 
 		layoutIdx = newLayout.getRecordIndex(getBuilder().getDescriptorForType().getName());
 //		System.out.println("  --> " + layoutIdx + " " + newLayout.getRecord(layoutIdx).getRecordName()
 //				+ " " + getBuilder().getDescriptorForType().getFullName());
-		layout = newLayout;
+		layout = (ProtoLayoutDef) newLayout;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void setLineProvider(LineProvider lineProvider) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void setWriteLayout(int writeLayout) {

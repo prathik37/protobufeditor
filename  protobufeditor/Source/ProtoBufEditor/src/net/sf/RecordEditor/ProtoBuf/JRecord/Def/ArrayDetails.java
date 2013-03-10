@@ -9,21 +9,22 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import net.sf.JRecord.Details.AbstractLine;
+import net.sf.RecordEditor.utils.lang.LangConversion;
 import net.sf.RecordEditor.utils.swing.CheckBoxTableRender;
 import net.sf.RecordEditor.utils.swing.SwingUtils;
 import net.sf.RecordEditor.utils.swing.Combo.ComboItemEditor;
 import net.sf.RecordEditor.utils.swing.Combo.ComboItemRender;
 import net.sf.RecordEditor.utils.swing.array.ArrayInterface;
 
-import com.google.protobuf.Message;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Message;
 
 public class ArrayDetails implements ArrayInterface {
 	@SuppressWarnings("rawtypes")
 	public List array;
 
 	private ProtoLine line;
-	private ProtoFieldDef fieldDef;
+	private ProtoRecordDef.ProtoFieldDef fieldDef;
 	private FieldDescriptor fieldDesc;
 
 	/**
@@ -31,7 +32,7 @@ public class ArrayDetails implements ArrayInterface {
 	 * @param line
 	 * @param fieldDefinition
 	 */
-	public ArrayDetails(ProtoLine line, ProtoFieldDef fieldDefinition) {
+	public ArrayDetails(ProtoLine line, ProtoRecordDef.ProtoFieldDef fieldDefinition) {
 		//this.array = line.getBuilder().getField(fieldDesc);
 		this.line = line;
 		this.fieldDef = fieldDefinition;
@@ -147,7 +148,7 @@ public class ArrayDetails implements ArrayInterface {
 			msg = ((Exception) temp).getMessage();
 	        o =  JOptionPane.showInputDialog(null,
 	        		msg,
-	                "Conversion Error",
+	                LangConversion.convert(LangConversion.ST_MESSAGE, "Conversion Error"),
 	                JOptionPane.ERROR_MESSAGE,
 	                null, null, o);
 
@@ -233,7 +234,7 @@ public class ArrayDetails implements ArrayInterface {
 	 * @see net.sf.RecordEditor.utils.swing.array.ArrayInterface#getLine()
 	 */
 	@Override
-	public AbstractLine<?> getLine() {
+	public AbstractLine getLine() {
 		return line;
 	}
 

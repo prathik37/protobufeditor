@@ -3,25 +3,22 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.IO;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.util.List;
-
-import com.google.protobuf.ByteString;
-import com.google.protobuf.DynamicMessage;
-
-import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.FileDescriptor;
-import com.google.protobuf.UnknownFieldSet.Field;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.RecordException;
-import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.common.Utils;
+
+import com.google.protobuf.ByteString;
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.UnknownFieldSet.Field;
 
 public class ProtoSdMessageReader extends AbstractLineReader<ProtoLayoutDef>
 implements ProtoSelfDescribingReader {
@@ -106,7 +103,7 @@ implements ProtoSelfDescribingReader {
 	 * @see net.sf.JRecord.IO.AbstractLineReader#read()
 	 */
 	@Override
-	public AbstractLine<ProtoLayoutDef> read() throws IOException {
+	public ProtoLine read() throws IOException {
 
 		ProtoLine ret =  data;
 		data = null;

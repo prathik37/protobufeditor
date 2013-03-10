@@ -8,7 +8,6 @@ public class ProtoRecordException extends RuntimeException {
 	 */
 	public ProtoRecordException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 }
