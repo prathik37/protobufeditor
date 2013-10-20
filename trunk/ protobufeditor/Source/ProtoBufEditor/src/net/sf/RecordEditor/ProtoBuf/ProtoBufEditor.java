@@ -44,6 +44,7 @@ import net.sf.RecordEditor.utils.lang.ReAbstractAction;
 import net.sf.RecordEditor.utils.params.Parameters;
 import net.sf.RecordEditor.utils.screenManager.ReFrame;
 import net.sf.RecordEditor.utils.swing.ComboBoxs.EnglishStrModel;
+import net.sf.RecordEditor.utils.swingx.TipsManager;
 
 
 
@@ -164,6 +165,11 @@ public class ProtoBufEditor extends EditRec {
         super.getViewMenu().addSeparator();
         super.getViewMenu().add(newAction(ReActionHandler.SHOW_INVALID_ACTIONS));
         super.getViewMenu().add(addAction(new ShowProtoAction()));
+
+        if (Common.OPTIONS.showRecordEditorTips.isSelected() && TipsManager.tipsModulePresent()) {
+        	TipsManager.startTips(this, Parameters.getSytemJarFileDirectory() + "/ProtoBufEditor_TipOfTheDay.properties",
+        					  Parameters.SHOW_RECORDEDITOR_TIPS);
+        }
     }
 
 
@@ -235,6 +241,10 @@ public class ProtoBufEditor extends EditRec {
 	 */
 	public static void main(final String[] pgmArgs) {
 
+		try {
+			Common.OPTIONS.loadPoScreens.set(false);
+		} catch (Exception e) {
+		}
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 

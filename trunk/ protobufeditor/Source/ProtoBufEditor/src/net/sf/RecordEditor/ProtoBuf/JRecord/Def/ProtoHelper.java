@@ -6,9 +6,9 @@ import java.util.List;
 
 import net.sf.JRecord.Common.Conversion;
 import net.sf.JRecord.Common.RecordRunTimeException;
-import net.sf.JRecord.CsvParser.BasicParser;
+import net.sf.JRecord.CsvParser.BasicCsvLineParser;
 import net.sf.JRecord.CsvParser.CsvDefinition;
-import net.sf.JRecord.CsvParser.StandardParser;
+import net.sf.JRecord.CsvParser.StandardCsvLineParser;
 import net.sf.RecordEditor.utils.common.Common;
 
 import com.google.protobuf.AbstractMessage;
@@ -101,7 +101,7 @@ public class ProtoHelper {
 				}
 
 				if (field.getType() == Type.STRING) {
-					StandardParser p = new StandardParser();
+					StandardCsvLineParser p = new StandardCsvLineParser();
 					ArrayList<String> nl = new ArrayList<String>();
 					int i =0;
 					CsvDefinition csvDef = new CsvDefinition(",", "'");
@@ -113,7 +113,7 @@ public class ProtoHelper {
 					element = new String[nl.size()];
 					element = nl.toArray(element);
 				} else {
-					String[] strElements = (BasicParser.getInstance()).split(s, new CsvDefinition(",", ""), 0);
+					String[] strElements = (BasicCsvLineParser.getInstance()).split(s, new CsvDefinition(",", ""), 0);
 
 					element = new Object[strElements.length];
 

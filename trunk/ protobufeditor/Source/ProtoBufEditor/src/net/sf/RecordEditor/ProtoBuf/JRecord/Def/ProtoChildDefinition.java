@@ -7,12 +7,12 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 public class ProtoChildDefinition implements AbstractChildDetails<ProtoRecordDef> {
 
 
-	private FieldDescriptor fieldDefinition; 
+	private FieldDescriptor fieldDefinition;
 	private ProtoRecordDef recordDefinition;
 	public final int recordIndex;
 	public int childIndex;
 
-	public ProtoChildDefinition(FieldDescriptor fieldDef, 
+	public ProtoChildDefinition(FieldDescriptor fieldDef,
 			ProtoRecordDef recordDef, int recordIdx, int childIdx) {
 
 		fieldDefinition = fieldDef;
@@ -20,7 +20,7 @@ public class ProtoChildDefinition implements AbstractChildDetails<ProtoRecordDef
 		recordIndex = recordIdx;
 		childIndex= childIdx;
 	}
-	
+
 	/**
 	 * @see net.sf.JRecord.Details.AbstractChildDetails#getChildRecord()
 	 */
@@ -42,7 +42,6 @@ public class ProtoChildDefinition implements AbstractChildDetails<ProtoRecordDef
 	 */
 	@Override
 	public boolean isRepeated() {
-		// TODO Auto-generated method stub
 		return fieldDefinition.isRepeated();
 	}
 
@@ -51,15 +50,14 @@ public class ProtoChildDefinition implements AbstractChildDetails<ProtoRecordDef
 	 */
 	@Override
 	public boolean isRequired() {
-		// TODO Auto-generated method stub
 		return fieldDefinition.isRequired();
 	}
-	
+
 	public FieldDescriptor getFieldDefinition() {
 		return fieldDefinition;
 	}
-	
-	
+
+
 	/**
 	 * @return the recordIndex
 	 */

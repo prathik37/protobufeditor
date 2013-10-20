@@ -15,6 +15,7 @@ import net.sf.RecordEditor.ProtoBuf.common.Utils;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.DescriptorProtos.FileDescriptorSet;
+import com.google.protobuf.DescriptorProtos.FileDescriptorSet.Builder;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.DynamicMessage;
@@ -53,6 +54,7 @@ implements ProtoSelfDescribingReader {
 				Descriptor desc = fileDesc.getMessageTypes().get(0);
 				DynamicMessage.Builder builder = DynamicMessage.newBuilder(desc);
 				builder.mergeFrom(in);
+
 				in.reset();
 
 				Field descField = null;
@@ -73,8 +75,9 @@ implements ProtoSelfDescribingReader {
 					} else {
 						ByteString byteStr = list.get(0);
 
-						FileDescriptorSet.Builder fsBuilder = FileDescriptorSet.newBuilder()
-																.mergeFrom(byteStr);
+						FileDescriptorSet.Builder fsBuilder;
+
+						fsBuilder = FileDescriptorSet.newBuilder().mergeFrom(byteStr);
 
 						fileset = fsBuilder.build();
 
@@ -90,10 +93,9 @@ implements ProtoSelfDescribingReader {
 				throw new IOException("Error getting file descriptor",e);
 			}
 
-			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in));
-		} else {
-			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in));
+//			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in, layout.getRegistry()));
 		}
+		data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in, layout.getRegistry()));
 
 		super.setLayout(layout);
 		in.close();

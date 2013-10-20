@@ -9,7 +9,7 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.Consts;
 
 import com.google.protobuf.CodedInputStream;
 
-public class ProtoDelimitedByteReader extends AbstractByteReader {
+public class ProtoDelimitedByteReader extends  AbstractByteReader {
 
 	private InputStream in;
 	private CodedInputStream coded;
@@ -36,6 +36,8 @@ public class ProtoDelimitedByteReader extends AbstractByteReader {
 		if (coded.isAtEnd()) {
 			return null;
 		}
+
+		coded.resetSizeCounter();
 		return coded.readBytes().toByteArray();
 	}
 }

@@ -7,10 +7,10 @@ import net.sf.JRecord.Details.AbstractLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoHelper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
-import net.sf.RecordEditor.edit.open.DisplayBuilderFactory;
+import net.sf.RecordEditor.re.display.AbstractFileDisplay;
+import net.sf.RecordEditor.re.display.DisplayBuilderFactory;
+import net.sf.RecordEditor.re.display.IDisplayFrame;
 import net.sf.RecordEditor.re.file.FileView;
-import net.sf.RecordEditor.re.script.AbstractFileDisplay;
-import net.sf.RecordEditor.re.script.IDisplayFrame;
 import net.sf.RecordEditor.re.tree.LineNodeChild;
 import net.sf.RecordEditor.utils.common.Common;
 import net.sf.RecordEditor.utils.fileStorage.DataStoreStd;
@@ -58,7 +58,7 @@ public class ShowProtoAction extends ReAbstractAction implements AbstractActiveS
 			displayProto(((AbstractFileDisplay) actionHandler).getFileView().getLayout());
 		} else if (actionHandler instanceof IDisplayFrame
 			&& (((IDisplayFrame) actionHandler).getActiveDisplay() instanceof AbstractFileDisplay)) {
-			displayProto(((AbstractFileDisplay) actionHandler).getFileView().getLayout());
+			displayProto(((IDisplayFrame) actionHandler).getActiveDisplay().getFileView().getLayout());
 		}
 	}
 

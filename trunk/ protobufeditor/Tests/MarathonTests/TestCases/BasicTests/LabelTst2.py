@@ -19,7 +19,8 @@ def test():
 		assert_p('Replace Find', 'Text', 'Replace Find')
 		assert_p('Replace All', 'Text', 'Replace All')
 		assert_p('ComboBox2', 'Content', '[[Forward, Backward]]')
-		assert_p('ComboBox1', 'Content', '[[Contains,  = , Doesn\'t Contain,  <> , >, >=, <, <= ,  = (Numeric), > (Text), >= (Text), < (Text), <= (Text)]]')
+##		assert_p('ComboBox1', 'Content', '[[Contains,  = , Doesn\'t Contain,  <> , >, >=, <, <= ,  = (Numeric), > (Text), >= (Text), < (Text), <= (Text)]]')
+		assert_p('ComboBox1', 'Content', '[[Contains,  = , Doesn\'t Contain,  <> , Starts With, >, >=, <, <= , = (Numeric), > (Text), >= (Text), < (Text), <= (Text)]]')
 		assert_p('ComboBox', 'Content', '[[, All Fields, Brand_Id, Loc_Nbr, Loc_Type, Loc_Name, Loc_Addr_Ln1, Loc_Addr_Ln2, Loc_Addr_Ln3, Loc_Postcode, Loc_State, Loc_Actv_Ind]]')
 #		assert_p('LayoutCombo', 'Content', '[Locations]]')
 

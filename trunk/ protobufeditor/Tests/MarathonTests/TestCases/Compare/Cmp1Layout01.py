@@ -6,7 +6,7 @@ def test():
 
 	if window('Protocol Buffer Editor'):
 ##		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3_Compare.bin')
-		select_menu('Edit>>Compare Menu')
+		select_menu('Utilities>>Compare Menu')
 		click('*1')
 ##		select('FileChooser', '/C:/Program Files/RecordEdit/ProtoBuf/SampleFiles/protoStoreSales3_Compare.bin')
 		select('FileChooser1', commonBits.sampleDir() + 'protoStoreSales3_Compare.bin')

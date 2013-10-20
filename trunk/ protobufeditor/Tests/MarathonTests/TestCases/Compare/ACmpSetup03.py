@@ -59,7 +59,7 @@ def test():
 		select('Table', 'Department: 170 a', 'Data,1')
 		select('Table', 'cell:Data,0(170)')
 		assert_p('Table', 'Content', '[[department, 1, , 170, 170], [name, 2, , Department: 170 a, Department: 170 a]]')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 		assert_p('Table', 'Content', '[[, Old, 1, 20, Store: 20, , ], [, New, 1, , Store: 20 a, , ], [, Old, 2, 170, Department: 170, , ], [, New, 2, , Department: 170 a, , ], [, Old, 3, 63604808, 40118, 1, 4870], [, New, 3, , 20040118, , ], [, Old, 4, 1, 4870, 1, ], [, New, 4, , , 11, ], [, Old, 7, 69684558, 40118, -1, -19000], [, New, 7, , , -10, -190000], [, Old, 9, 69694158, 40118, 1, 19000], [, New, 9, , 20040118, , ], [, Old, 70, 166, Store: 166, , ], [, New, 70, , Store: 166 a, , ], [, Old, 82, 170, Department: 170, , ], [, New, 82, , Department: 170 a, , ]]')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')
 		select_menu('Window>>protoStoreSales3.bin>>Record: ')
@@ -67,6 +67,6 @@ def test():
 		select_menu('Window>>protoStoreSales3.bin>>Tree View')
 		select_menu('File>>Export')
 		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3_Compare3.bin')
-		click('save file')
+		click('Save File')
 
 	close()

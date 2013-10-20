@@ -6,6 +6,7 @@ def test():
 
 	if window('Protocol Buffer Editor'):
 		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
+		select('FileChooser1',  commonBits.stdCopybookDir() + 'StoreSales3.protocomp')
 		click('Edit1')
 #		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,1')
@@ -29,7 +30,7 @@ def test():
 		select('Table', 'cell:Row 2,2(-11)')
 		assert_p('Table', 'Content', '[[61664713, 61664713, 61684613], [40118, 40118, 40118], [1, -11, 1], [17990, -117990, 12990]]')
 		select('Table', 'cell:Row 2,2(-11)')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 ##		select('Table1', 'cell:Row 2,2(-11)')
 		select('Table', 'cell:saleDate,0(40118)')
 		assert_p('Table', 'Content', '[[, Old, 36, 61664713, 40118, -1, -17990], [, New, 36, , , -11, -117990]]')
@@ -51,7 +52,7 @@ def test():
 		select('Table', 'cell:Row 2,1(40118)')
 		assert_p('Table', 'Content', '[[61664713, 61664713, 61684613], [40118, 40118, 40118], [1, -1, 1], [17990, -17990, 12990]]')
 		select('Table', 'cell:Row 2,1(40118)')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 		select('Table1', 'cell:Row 2,1(40118)')
 		assert_p('TextPane', 'Text', 'Files are Identical !!!')
 		click('BasicInternalFrameTitlePane$NoFocusButton2')

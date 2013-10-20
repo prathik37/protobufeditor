@@ -6,6 +6,7 @@ def test():
 
 	if window('Protocol Buffer Editor'):
 		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
+		select('FileChooser1',  commonBits.stdCopybookDir() + 'StoreSales3.protocomp')
 		click('Edit1')
 		click('Filter')
 		click('Uncheck Records')
