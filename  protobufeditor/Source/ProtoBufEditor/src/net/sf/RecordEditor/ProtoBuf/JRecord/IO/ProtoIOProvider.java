@@ -2,15 +2,15 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.IO;
 
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Details.LineProvider;
-import net.sf.JRecord.IO.AbstractLineIOProvider;
 import net.sf.JRecord.IO.AbstractLineReader;
 import net.sf.JRecord.IO.AbstractLineWriter;
+import net.sf.JRecord.IO.BasicIoProvider;
 import net.sf.JRecord.IO.LineIOProvider;
 import net.sf.JRecord.IO.LineReaderWrapper;
 import net.sf.JRecord.IO.LineWriterWrapper;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLineProvider;
 
-public class ProtoIOProvider implements AbstractLineIOProvider {
+public class ProtoIOProvider extends BasicIoProvider {
 
 	private static int[] keys = {
 		Constants.IO_PROTO_SINGLE_MESSAGE, Constants.IO_PROTO_DELIMITED,
@@ -39,7 +39,7 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public LineProvider getLineProvider(int fileStructure) {
-		return  lineProvider;
+		return lineProvider;
 	}
 
 
@@ -75,8 +75,19 @@ public class ProtoIOProvider implements AbstractLineIOProvider {
 		return getLineReader(fileStructure, lineProvider);
 	}
 
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.IO.AbstractLineIOProvider#getLineWriter(int)
+	 */
 	@Override
 	public AbstractLineWriter getLineWriter(int fileStructure) {
+		return getLineWriter(fileStructure, null);
+	}
+
+	/* (non-Javadoc)
+	 * @see net.sf.JRecord.IO.AbstractLineIOProvider#getLineWriter(int, java.lang.String)
+	 */
+	@Override
+	public AbstractLineWriter getLineWriter(int fileStructure, String charset) {
 		AbstractLineWriter writer = null;
 		switch (fileStructure) {
 		case(Constants.IO_PROTO_DELIMITED):

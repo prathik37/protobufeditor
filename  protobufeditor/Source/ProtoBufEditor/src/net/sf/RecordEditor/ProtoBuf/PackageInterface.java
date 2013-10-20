@@ -9,7 +9,7 @@ import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLayoutDef;
 import net.sf.RecordEditor.ProtoBuf.JRecord.Def.ProtoLine;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoDelimitedByteReader;
 import net.sf.RecordEditor.ProtoBuf.JRecord.IO.ProtoIOProvider;
-import net.sf.RecordEditor.edit.open.DisplayBuilderFactory;
+import net.sf.RecordEditor.re.display.DisplayBuilderFactory;
 import net.sf.RecordEditor.re.file.FileView;
 import net.sf.RecordEditor.re.tree.LineNodeChild;
 import net.sf.RecordEditor.re.tree.TreeParserXml;
@@ -58,7 +58,7 @@ public class PackageInterface {
 			    					Constants.IO_PROTO_SINGLE_MESSAGE);
 			    DataStoreStd<AbstractLine> lines
 			    		= DataStoreStd.newStore(layout, 1);
-				    int index = Math.max(0, layout.getRecordIndex(builder.getDescriptorForType().getName()));
+				int index = Math.max(0, layout.getRecordIndex(builder.getDescriptorForType().getName()));
 
 			    layout.setPrimaryMessageIndex(index);
 			    lines.add(new ProtoLine(layout, builder));
@@ -90,7 +90,7 @@ public class PackageInterface {
 					layout.setPrimaryMessageIndex(index);
 			        while ((bytes = reader.read()) != null) {
 			            lines.add(new ProtoLine(layout, index, bytes));
-			       }
+			        }
 
 			        in.close();
 

@@ -5,7 +5,7 @@ def test():
 	java_recorded_version = '1.6.0_0'
 
 	if window('Protocol Buffer Editor'):
-		select_menu('Edit>>Compare Menu')
+		select_menu('Utilities>>Compare Menu')
 		click('*2')
 		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
 		click('Right')

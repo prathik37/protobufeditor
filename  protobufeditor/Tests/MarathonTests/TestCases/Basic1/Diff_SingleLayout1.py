@@ -7,7 +7,7 @@ def test():
 	java_recorded_version = '1.6.0_03'
 
 	if window('Protocol Buffer Editor'):
-		select_menu('Edit>>Compare Menu')
+		select_menu('Utilities>>Compare Menu')
 		click('*1')
 		click('Choose File')
 
@@ -33,8 +33,8 @@ def test():
 		click('Choose File')
 
 		if window('Save'):
-			select(commonBits.selectPane(), 'Compare')
-			doubleclick(commonBits.selectPane(), '0')
+##			select(commonBits.selectPane(), 'Compare')
+##			doubleclick(commonBits.selectPane(), '0')
 			if commonBits.isWindowsLook():
 				select(commonBits.selectPane(), 'zzTest_asmLocation.Xml')
 			else:

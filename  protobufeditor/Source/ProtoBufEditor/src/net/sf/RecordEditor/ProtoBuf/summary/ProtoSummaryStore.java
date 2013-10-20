@@ -565,7 +565,7 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 		ProtoSummary.Msg msg = p.getFiles(fileNo).getMessages(msgNo);
 		int size = unknownFields.asMap().size();
 
-		System.out.println("Check Message: " + msgNo);
+//		System.out.println("Check Message: " + msgNo);
 		if (   size <  msg.getFieldsCount()
 		|| (   size >  msg.getFieldsCount() + msg.getOptionalFieldsCount()
 			&& msg.getOptionalFieldsCount() < NUMER_OF_FIELDS_TO_CHECK
@@ -580,8 +580,8 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 			fldDef = msg.getFields(k);
 			fld = unknownFields.getField(fldDef.getTag());
 			if (fld == null || ! check(fld, fldDef, false, couldBeRepeated)) {
-				System.out.println("Check Message 1> " + msgNo + " " + k + " " + fldDef.getTag()
-						+ " " + fldDef.getType());
+//				System.out.println("Check Message 1> " + msgNo + " " + k + " " + fldDef.getTag()
+//						+ " " + fldDef.getType());
 
 				return false;
 			}
@@ -591,12 +591,12 @@ public class ProtoSummaryStore implements AParameterChangeListner {
 			fld = unknownFields.getField(fldDef.getTag());
 			if (fld != null && ! check(fld, fldDef, true, true)) {
 
-				System.out.println("Check Message 2> " + msgNo + " " + k + " " + fldDef.getTag()
-						+ " " + fldDef.getType()
-						+ " " + (fld.getVarintList().size() > 0)
-						+ " " + (fld.getFixed32List().size() > 0)
-						+ " " + (fld.getFixed64List().size() > 0)
-						+ " " + (fld.getLengthDelimitedList().size() > 0));
+//				System.out.println("Check Message 2> " + msgNo + " " + k + " " + fldDef.getTag()
+//						+ " " + fldDef.getType()
+//						+ " " + (fld.getVarintList().size() > 0)
+//						+ " " + (fld.getFixed32List().size() > 0)
+//						+ " " + (fld.getFixed64List().size() > 0)
+//						+ " " + (fld.getLengthDelimitedList().size() > 0));
 //
 //				check(fld, fldDef, true, true);
 

@@ -224,16 +224,22 @@ public class Utils {
 				msgTypes = fileDescs[i].getMessageTypes();
 
 				for (Descriptor d : msgTypes ) {
-					List<FieldDescriptor> fldList = d.getFields();
-					for (FieldDescriptor field : fldList) {
-						if (field.getJavaType().equals(JavaType.MESSAGE)) {
-							usedRecords.add(field.getMessageType().getFullName());
-						}
-					}
+					addFields(usedRecords, d.getFields());
+					addFields(usedRecords, d.getExtensions());
 				}
+
+				addFields(usedRecords, fileDescs[i].getExtensions());
 			} catch (Exception e) {
 			}
 		}
     }
 
+    private static void addFields(HashSet<String> usedRecords, List<FieldDescriptor> fldList) {
+
+		for (FieldDescriptor field : fldList) {
+			if (field.getJavaType().equals(JavaType.MESSAGE)) {
+				usedRecords.add(field.getMessageType().getFullName());
+			}
+		}
+    }
 }

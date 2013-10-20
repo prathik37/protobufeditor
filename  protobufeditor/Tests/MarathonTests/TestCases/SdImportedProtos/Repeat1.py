@@ -71,7 +71,7 @@ def test():
 		click('Right')
 		select('Table', 'cell:Data,1(8990)')
 		assert_p('Table', 'Content', '[[quantity, 1, , 1, 1], [price, 2, , 8990, 8990], [count, 3, , 1, 1]]')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 		select('Table', 'cell:Line No,0(410)')
 ##		assert_p('Table', 'Content', '[[, Deleted, 42, 410, Department: 410, , ], [, , , , , , ], [, Deleted, 43, 68634752, 40118, 1, 8990], [, , , , , , ], [, Deleted, 44, 1, 8990, 1, ], [, , , , , , ]]')
 		assert_p('Table', 'Content', '[[, , , , , , ], [, Inserted, 42, 410, Department: 410, , ], [, , , , , , ], [, Inserted, 43, 68634752, 40118, 1, 8990], [, , , , , , ], [, Inserted, 44, 1, 8990, 1, ]]')

@@ -28,7 +28,7 @@ public class ProtoMessageReader extends AbstractLineReader<ProtoLayoutDef>{
 		if (in.available() <= 0) {
 			data = null;
 		} else {
-			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in));
+			data = new ProtoLine(layout, layout.getPrimaryMsgBuilder().mergeFrom(in, layout.getRegistry()));
 		}
 		in.close();
 	}

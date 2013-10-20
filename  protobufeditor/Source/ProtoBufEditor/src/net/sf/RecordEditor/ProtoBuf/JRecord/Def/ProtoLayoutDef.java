@@ -12,12 +12,16 @@ import net.sf.JRecord.Common.IFieldDetail;
 import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.Details.AbstractRecordDetail.FieldDetails;
 import net.sf.JRecord.Details.BasicLayout;
-import net.sf.JRecord.Details.IAttribute;
+import net.sf.JRecord.Details.Options;
 import net.sf.JRecord.Details.RecordDecider;
 
 import com.google.protobuf.AbstractMessage;
+import com.google.protobuf.DynamicMessage;
+import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DynamicMessage.Builder;
 
 
 /**
@@ -37,8 +41,11 @@ extends BasicLayout<ProtoRecordDef> {
 
 	private boolean protoDefinition = false;
 
+	private final ExtensionRegistry registry = ExtensionRegistry.newInstance();
+
+
 	private  ProtoLayoutDef(FileDescriptor fileDescription, int fileFormat,
-			ArrayList<ProtoRecordDef> recordList) {
+			List<ProtoRecordDef> recordList) {
 		fileDesc = fileDescription;
 		fileStructure = fileFormat;
 
@@ -370,6 +377,8 @@ extends BasicLayout<ProtoRecordDef> {
 	 * set Child records
 	 */
 	private void setupChildRecords() {
+
+		addExtensions(fileDesc.getExtensions());
 		for (int i = 0; i < records.length; i++) {
 			records[i].setChildRecords(this);
 		}
@@ -430,31 +439,57 @@ extends BasicLayout<ProtoRecordDef> {
 
 	/**
 	 *
-	 * @return
+	 * @return wether there is a proto deffinition
 	 */
 	public boolean isProtoDefinition() {
 		return protoDefinition;
 	}
 
 
-
 	/* (non-Javadoc)
-	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#getAttribute(net.sf.JRecord.Details.IAttribute)
+	 * @see net.sf.JRecord.Details.BasicLayout#getOption(int)
 	 */
 	@Override
-	public Object getAttribute(IAttribute attr) {
-
-		return null;
+	public int getOption(int option) {
+		int ret;
+		if (option == Options.OPT_SINGLE_RECORD_FILE) {
+			ret = Options.NO;
+			if (fileStructure == Constants.IO_PROTO_SD_SINGLE_MESSAGE
+			||  fileStructure == Constants.IO_PROTO_SINGLE_MESSAGE) {
+				ret = Options.YES;
+			}
+		} else {
+			ret = super.getOption(option);
+		}
+		return ret;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see net.sf.JRecord.Details.AbstractLayoutDetails#setAttribute(net.sf.JRecord.Details.IAttribute, java.lang.Object)
+	/**
+	 * @return the registry
 	 */
-	@Override
-	public void setAttribute(IAttribute attr, Object value) {
-		// TODO Auto-generated method stub
-
+	public final ExtensionRegistry getRegistry() {
+		return registry;
 	}
 
+	public final void addExtensions(List<FieldDescriptor> externalFields) {
+		for (FieldDescriptor field : externalFields) {
+			int recIdx = getRecordIndex(field.getContainingType().getName());
+
+			if (recIdx >= 0) {
+				ProtoRecordDef rec = getRecord(recIdx);
+				if (ProtoRecordDef.isChild(field)) {
+					Builder newBuilder = DynamicMessage.newBuilder(field.getMessageType());
+					ProtoHelper.initBuilder(newBuilder, field.getMessageType());
+					registry.add(field, newBuilder.build());
+
+					rec.addChildRecord(this, field);
+				} else {
+					registry.add(field);
+
+					rec.addField(field);
+				}
+			}
+		}
+
+	}
 }

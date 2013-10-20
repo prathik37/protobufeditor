@@ -5,11 +5,11 @@ def test():
 
 	if window('Protocol Buffer Editor'):
 		#click('MetalInternalFrameTitlePane', 172, 16)
-		assert_p('Label1', 'Text', 'File')
-		assert_p('Label2', 'Text', 'File Structure')
-		assert_p('Label3', 'Text', 'Type of Definition')
-		assert_p('Label4', 'Text', 'Proto Definition')
-		assert_p('Label6', 'Text', 'Proto File')
+		assert_p('Label', 'Text', 'File')
+		assert_p('Label1', 'Text', 'File Structure')
+		assert_p('Label2', 'Text', 'Type of Definition')
+		assert_p('Label3', 'Text', 'Proto Definition')
+		assert_p('Label5', 'Text', 'Proto File')
 		assert_p('ComboBox', 'Text', 'Single Message')
 		#assert_p('ComboBox', 'Content', '[[Single Message, ]]')
 		assert_p('ComboBox1', 'Text', 'Proto Definition')

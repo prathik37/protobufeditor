@@ -34,7 +34,6 @@ implements ProtoSelfDescribingReader {
 
 
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void open(InputStream inputStream, AbstractLayoutDetails pLayout)
 			throws IOException, RecordException {
@@ -64,7 +63,4 @@ implements ProtoSelfDescribingReader {
 	public FileDescriptorSet getFileDescriptorSet() {
 		return fileDescriptorSet;
 	}
-
-
-
 }

@@ -19,6 +19,9 @@ def isVersion81():
 	return 1
 
 
+def isVersion806():
+	return 1
+
 def isJRecord():
 	return not isRecordEditor()
 
@@ -164,7 +167,8 @@ def utilDir():
 def paramDir():
 	if windows():
 		if isVersion80():
-			return 'C:\\Users\\Mum\\.RecordEditor\\ProtoBuf\\'
+##			return 'C:\\Users\\Mum\\.RecordEditor\\ProtoBuf\\'
+			return 'C:\\Users\\BruceTst\\.RecordEditor\\ProtoBuf\\'
 		else:
 			return 'C:\\JavaPrograms\\RecordEdit\\'
 
@@ -191,6 +195,8 @@ def selectOldFilemenu(select_menu, menu, text):
 	else:
 		select_menu('File>>' + text)
 
+def fl(str):
+	return str
 
 def firstField():
 ##	return 'store'

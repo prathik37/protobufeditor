@@ -6,6 +6,7 @@ def test():
 
 	if window('Protocol Buffer Editor'):
 		select('FileChooser', commonBits.sampleDir() + 'protoStoreSales3.bin')
+		select('FileChooser1',  commonBits.stdCopybookDir() + 'StoreSales3.protocomp')
 		click('Edit1')
 ##		select('JTreeTable', '')
 		rightclick('JTreeTable', 'Tree,1')
@@ -34,7 +35,7 @@ def test():
 		select_menu('Window>>protoStoreSales3.bin>>Tree View')
 		select('JTreeTable', 'cell:saleDate,5(40118)')
 		assert_p('JTreeTable', 'Content', '[[, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , 61664713, 40118, 1, 17990], [, , 61664713, 40118, -11, -1117990], [, , 61684613, 40118, 1, 12990], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ], [, , , , , ]]')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 		select('Table', 'cell:saleDate,0(40118)')
 		assert_p('Table', 'Content', '[[, Old, 36, 61664713, 40118, -1, -17990], [, New, 36, , , -11, -1117990]]')
 		select('Table', 'cell:saleDate,0(40118)')
@@ -43,10 +44,10 @@ def test():
 		select('JTreeTable', '-1', 'quantity,6')
 		select('JTreeTable', '-17990', 'price,6')
 ##		select('JTreeTable', '')
-		select_menu('Window>>protoStoreSales3.bin>>Record: ')
+		select_menu('Window>>protoStoreSales3.bin>>Record:')
 		select('Table', 'cell:Data,1(40118)')
 		assert_p('Table', 'Content', '[[keycode, 1, , 61664713, 61664713], [saleDate, 2, , 40118, 40118], [quantity, 3, , -1, -1], [price, 4, , -17990, -17990]]')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 		assert_p('TextPane', 'Text', 'Files are Identical !!!')
 
 #		if window('Save Changes to file: ' + commonBits.sampleDir() + 'protoStoreSales3b.bin'):

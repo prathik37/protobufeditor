@@ -21,7 +21,7 @@ def test():
 		select('Table', '22', '5|Loc_Addr_Ln1,1')
 		select('Table', '33', '6|Loc_Addr_Ln2,2')
 		select('Table', 'cell:7|Loc_Addr_Ln3,2()')
-		select_menu('Edit>>Compare with Disk')
+		select_menu('Utilities>>Compare with Disk')
 ##		select('Table1', 'cell:7|Loc_Addr_Ln3,2()')
 		select('Table', 'cell:Loc_Name,0(DC - Taras Ave)')
 		assert_p('Table', 'Text', 'DC - Taras Ave', 'Loc_Name,0')

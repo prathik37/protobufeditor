@@ -321,7 +321,7 @@ implements ProtoLayoutActionInterface {
 					}
 				}
 			} finally {
-				System.out.println("Read ProtoFile");
+//				System.out.println("Read ProtoFile");
 				try {
 					r.close();
 				} catch (Exception e) {
@@ -341,7 +341,7 @@ implements ProtoLayoutActionInterface {
 				} else if (type == Constants.IO_PROTO_DELIMITED) {
 					if (fileStruc != Constants.IO_PROTO_DELIMITED
 					   &&  fileStruc != Constants.IO_PROTO_SD_DELIMITED) {
-					fileStructure.setSelectedIndex(ConstClass.getFileStructureIndex(type));
+						fileStructure.setSelectedIndex(ConstClass.getFileStructureIndex(type));
 					}
 				} else {
 					fileStructure.setSelectedIndex(ConstClass.getFileStructureIndex(type));
@@ -388,7 +388,8 @@ implements ProtoLayoutActionInterface {
 
     	String lName = protoDefinitionFile.getText();
     	File f;
-    	if ("".equals(lName) || (!(f = new File(lName)).exists()) || f.isDirectory()) {
+    	if (("".equals(lName) || (!(f = new File(lName)).exists()) || f.isDirectory())
+    	&& (! isSelfDescribing()))  {
     		return;
     	}
     	protoFile.removeActionListener(msgListner);
@@ -453,7 +454,7 @@ implements ProtoLayoutActionInterface {
      	try {
   	    	FileDescriptor fd = ProtoHelper.getFileDescriptor(dp, idx);
 			List<Descriptor> msgTypes = fd.getMessageTypes();
-			int index =0;
+			int index = 0;
 
 
 			HashSet<String> usedRecords = new HashSet<String>();
@@ -624,7 +625,6 @@ implements ProtoLayoutActionInterface {
 	private AbstractLineReader getReader(int fileStruc, String fileName)
 	throws IOException, RecordException {
 
-
 	   AbstractLineReader ret = null;
 
 //	   System.out.println(" FileStructure --> " + fileStruc);
@@ -637,6 +637,17 @@ implements ProtoLayoutActionInterface {
 	   }
 
  	   return ret;
+	}
+
+	private boolean isSelfDescribing() {
+		boolean ret = false;
+		int fileStruc = ((ComboOption) fileStructure.getSelectedItem()).index;
+		switch (fileStruc) {
+		case Constants.IO_PROTO_SD_DELIMITED:
+		case Constants.IO_PROTO_SD_SINGLE_MESSAGE:
+			ret = true;
+		}
+		return ret;
 	}
 
 	/**

@@ -2,7 +2,6 @@ package net.sf.RecordEditor.ProtoBuf.JRecord.Def;
 
 import java.awt.Color;
 
-import net.sf.JRecord.Common.AbstractFieldValue;
 import net.sf.JRecord.Common.Constants;
 import net.sf.JRecord.Common.IFieldDetail;
 import net.sf.JRecord.Common.RecordException;
@@ -10,7 +9,7 @@ import net.sf.JRecord.Common.RecordRunTimeException;
 import net.sf.JRecord.Details.AbstractLayoutDetails;
 import net.sf.JRecord.Details.AbstractLine;
 import net.sf.JRecord.Details.AbstractTreeDetails;
-import net.sf.JRecord.Details.FieldValue;
+import net.sf.JRecord.Details.BaseLine;
 import net.sf.JRecord.Details.NullTreeDtls;
 import net.sf.JRecord.Log.AbsSSLogger;
 import net.sf.RecordEditor.utils.common.Common;
@@ -28,7 +27,7 @@ import com.google.protobuf.Message;
  * @author Bruce Martin
  *
  */
-public class ProtoLine implements AbstractLine {
+public class ProtoLine extends BaseLine<ProtoLayoutDef> implements AbstractLine {
 
 //	public final static byte[] EMPTY_BYTE_ARRAY = {};
 	private final static AbstractTreeDetails<ProtoRecordDef.ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine>
@@ -38,7 +37,6 @@ public class ProtoLine implements AbstractLine {
 	public static final Color ENUM_COLOR = new Color(220, 255, 220);
 
 	private Message.Builder bld;
-	private ProtoLayoutDef layout;
 	private int layoutIdx;
 
 	private ProtoTreeDetails treeDtls = null;
@@ -56,10 +54,11 @@ public class ProtoLine implements AbstractLine {
 			int index,
 			int layoutIndex,
 			Message msg) {
-		this(parent,
+		this(	parent,
 				childDefinition,
 				index,
-				layoutIndex, msg.newBuilderForType().mergeFrom(msg));
+				layoutIndex,
+				msg.newBuilderForType().mergeFrom(msg));
 	}
 
 	public ProtoLine(
@@ -91,8 +90,9 @@ public class ProtoLine implements AbstractLine {
 	}
 
 	private ProtoLine(ProtoLayoutDef layoutDescription, int layoutIndex, ProtoChildDefinition childDefinition) {
+		super(layoutDescription);
 		//System.out.println("--## 6");
-		layout = layoutDescription;
+		//layout = layoutDescription;
 		layoutIdx = layoutIndex;
 
 		if (layout.hasChildren()) {
@@ -101,8 +101,9 @@ public class ProtoLine implements AbstractLine {
 	}
 
 	public ProtoLine(ProtoLayoutDef layoutDescription, Message.Builder builder) {
+		super(layoutDescription);
 		//System.out.println("--## 7");
-		layout = layoutDescription;
+		//layout = layoutDescription;
 		bld = builder;
 		layoutIdx = 0;
 
@@ -119,7 +120,6 @@ public class ProtoLine implements AbstractLine {
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public AbstractTreeDetails<ProtoRecordDef.ProtoFieldDef, ProtoRecordDef, ProtoLayoutDef, ProtoLine> getTreeDetails() {
 		if (treeDtls == null) {
@@ -242,24 +242,6 @@ public class ProtoLine implements AbstractLine {
 	}
 
 
-    @Override
-	public AbstractFieldValue getFieldValue(IFieldDetail field) {
-		return new FieldValue(this, field);
-	}
-
-
-
-	@Override
-	public AbstractFieldValue getFieldValue(int recordIdx, int fieldIdx) {
-		return new FieldValue(this, recordIdx, fieldIdx);
-	}
-
-
-
-	@Override
-	public AbstractFieldValue getFieldValue(String fieldName) {
-		return  getFieldValue(layout.getFieldFromName(fieldName));
-	}
 
 	@Override
 	public String getFullLine() {
@@ -296,10 +278,6 @@ public class ProtoLine implements AbstractLine {
 		return b.toString();
 	}
 
-	@Override
-	public ProtoLayoutDef getLayout() {
-		return layout;
-	}
 
 	@Override
 	public int getPreferredLayoutIdx() {
@@ -329,11 +307,6 @@ public class ProtoLine implements AbstractLine {
 
 	}
 
-	@Override
-	public void setField(String fieldName, Object value) throws RecordException {
-
-		setField(layout.getFieldFromName(fieldName), value);
-	}
 
 	@Override
 	public void setField(int recordIdx, int fieldIdx, Object val)
@@ -474,19 +447,21 @@ public class ProtoLine implements AbstractLine {
 	public final Message.Builder getBuilder() {
 		if (data != null || bld == null) {
 			synchronized (data) {
-				try {
-					bld = DynamicMessage.newBuilder(layout.getRecord(layoutIdx).getProtoDesc());
+				if (data != null || bld == null) {
+					try {
+						bld = DynamicMessage.newBuilder(layout.getRecord(layoutIdx).getProtoDesc());
 
-					if (data != null) {
-						bld.mergeFrom(data);
-						data = null;
-					} else {
-						ProtoHelper.initBuilder(bld, layout.getRecord(layoutIdx).getProtoDesc());
+						if (data != null) {
+							bld.mergeFrom(data, layout.getRegistry());
+							data = null;
+						} else {
+							ProtoHelper.initBuilder(bld, layout.getRecord(layoutIdx).getProtoDesc());
+						}
+					} catch (Exception e) {
+						String s ="Error with data: " + e.getMessage();
+						Common.logMsg(AbsSSLogger.WARNING, s, null);
+						System.out.println(s);
 					}
-				} catch (Exception e) {
-					String s ="Error with data: " + e.getMessage();
-					Common.logMsg(AbsSSLogger.WARNING, s, null);
-					System.out.println(s);
 				}
 			}
 		}

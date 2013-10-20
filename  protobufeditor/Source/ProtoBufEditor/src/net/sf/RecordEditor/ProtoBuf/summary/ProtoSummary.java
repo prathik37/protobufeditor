@@ -10,117 +10,264 @@ public final class ProtoSummary {
   }
   public interface ProtoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required string filename = 1;
+    /**
+     * <code>required string filename = 1;</code>
+     */
     boolean hasFilename();
-    String getFilename();
-    
+    /**
+     * <code>required string filename = 1;</code>
+     */
+    java.lang.String getFilename();
+    /**
+     * <code>required string filename = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getFilenameBytes();
+
     // required int64 changeDate = 2;
+    /**
+     * <code>required int64 changeDate = 2;</code>
+     */
     boolean hasChangeDate();
+    /**
+     * <code>required int64 changeDate = 2;</code>
+     */
     long getChangeDate();
-    
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File> 
         getFilesList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File getFiles(int index);
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     int getFilesCount();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder> 
         getFilesOrBuilderList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder getFilesOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.Proto}
+   */
   public static final class Proto extends
       com.google.protobuf.GeneratedMessage
       implements ProtoOrBuilder {
     // Use Proto.newBuilder() to construct.
-    private Proto(Builder builder) {
+    private Proto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Proto(boolean noInit) {}
-    
+    private Proto(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Proto defaultInstance;
     public static Proto getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Proto getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Proto(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              filename_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              changeDate_ = input.readInt64();
+              break;
+            }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                files_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              files_.add(input.readMessage(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          files_ = java.util.Collections.unmodifiableList(files_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_fieldAccessorTable;
+      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Proto> PARSER =
+        new com.google.protobuf.AbstractParser<Proto>() {
+      public Proto parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Proto(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Proto> getParserForType() {
+      return PARSER;
+    }
+
     private int bitField0_;
     // required string filename = 1;
     public static final int FILENAME_FIELD_NUMBER = 1;
     private java.lang.Object filename_;
+    /**
+     * <code>required string filename = 1;</code>
+     */
     public boolean hasFilename() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public String getFilename() {
+    /**
+     * <code>required string filename = 1;</code>
+     */
+    public java.lang.String getFilename() {
       java.lang.Object ref = filename_;
-      if (ref instanceof String) {
-        return (String) ref;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
           filename_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getFilenameBytes() {
+    /**
+     * <code>required string filename = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFilenameBytes() {
       java.lang.Object ref = filename_;
-      if (ref instanceof String) {
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         filename_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
-    
+
     // required int64 changeDate = 2;
     public static final int CHANGEDATE_FIELD_NUMBER = 2;
     private long changeDate_;
+    /**
+     * <code>required int64 changeDate = 2;</code>
+     */
     public boolean hasChangeDate() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
+    /**
+     * <code>required int64 changeDate = 2;</code>
+     */
     public long getChangeDate() {
       return changeDate_;
     }
-    
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;
     public static final int FILES_FIELD_NUMBER = 9;
     private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File> files_;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File> getFilesList() {
       return files_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder> 
         getFilesOrBuilderList() {
       return files_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     public int getFilesCount() {
       return files_.size();
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File getFiles(int index) {
       return files_.get(index);
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder getFilesOrBuilder(
         int index) {
       return files_.get(index);
     }
-    
+
     private void initFields() {
       filename_ = "";
       changeDate_ = 0L;
@@ -130,7 +277,7 @@ public final class ProtoSummary {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       if (!hasFilename()) {
         memoizedIsInitialized = 0;
         return false;
@@ -148,7 +295,7 @@ public final class ProtoSummary {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -163,12 +310,12 @@ public final class ProtoSummary {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -186,94 +333,83 @@ public final class ProtoSummary {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.Proto}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.ProtoOrBuilder {
@@ -281,18 +417,21 @@ public final class ProtoSummary {
           getDescriptor() {
         return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_fieldAccessorTable;
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.Builder.class);
       }
-      
+
       // Construct using net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -304,7 +443,7 @@ public final class ProtoSummary {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         filename_ = "";
@@ -319,20 +458,20 @@ public final class ProtoSummary {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.getDescriptor();
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_descriptor;
       }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto getDefaultInstanceForType() {
         return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.getDefaultInstance();
       }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto build() {
         net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto result = buildPartial();
         if (!result.isInitialized()) {
@@ -340,17 +479,7 @@ public final class ProtoSummary {
         }
         return result;
       }
-      
-      private net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto buildPartial() {
         net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto result = new net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto(this);
         int from_bitField0_ = bitField0_;
@@ -376,7 +505,7 @@ public final class ProtoSummary {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto) {
           return mergeFrom((net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto)other);
@@ -385,11 +514,13 @@ public final class ProtoSummary {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto other) {
         if (other == net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.getDefaultInstance()) return this;
         if (other.hasFilename()) {
-          setFilename(other.getFilename());
+          bitField0_ |= 0x00000001;
+          filename_ = other.filename_;
+          onChanged();
         }
         if (other.hasChangeDate()) {
           setChangeDate(other.getChangeDate());
@@ -423,7 +554,7 @@ public final class ProtoSummary {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         if (!hasFilename()) {
           
@@ -441,68 +572,69 @@ public final class ProtoSummary {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              filename_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              changeDate_ = input.readInt64();
-              break;
-            }
-            case 74: {
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder subBuilder = net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addFiles(subBuilder.buildPartial());
-              break;
-            }
+        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // required string filename = 1;
       private java.lang.Object filename_ = "";
+      /**
+       * <code>required string filename = 1;</code>
+       */
       public boolean hasFilename() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public String getFilename() {
+      /**
+       * <code>required string filename = 1;</code>
+       */
+      public java.lang.String getFilename() {
         java.lang.Object ref = filename_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
           filename_ = s;
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
-      public Builder setFilename(String value) {
+      /**
+       * <code>required string filename = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFilenameBytes() {
+        java.lang.Object ref = filename_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          filename_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string filename = 1;</code>
+       */
+      public Builder setFilename(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -511,39 +643,62 @@ public final class ProtoSummary {
         onChanged();
         return this;
       }
+      /**
+       * <code>required string filename = 1;</code>
+       */
       public Builder clearFilename() {
         bitField0_ = (bitField0_ & ~0x00000001);
         filename_ = getDefaultInstance().getFilename();
         onChanged();
         return this;
       }
-      void setFilename(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000001;
+      /**
+       * <code>required string filename = 1;</code>
+       */
+      public Builder setFilenameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
         filename_ = value;
         onChanged();
+        return this;
       }
-      
+
       // required int64 changeDate = 2;
       private long changeDate_ ;
+      /**
+       * <code>required int64 changeDate = 2;</code>
+       */
       public boolean hasChangeDate() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>required int64 changeDate = 2;</code>
+       */
       public long getChangeDate() {
         return changeDate_;
       }
+      /**
+       * <code>required int64 changeDate = 2;</code>
+       */
       public Builder setChangeDate(long value) {
         bitField0_ |= 0x00000002;
         changeDate_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int64 changeDate = 2;</code>
+       */
       public Builder clearChangeDate() {
         bitField0_ = (bitField0_ & ~0x00000002);
         changeDate_ = 0L;
         onChanged();
         return this;
       }
-      
+
       // repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;
       private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File> files_ =
         java.util.Collections.emptyList();
@@ -553,10 +708,13 @@ public final class ProtoSummary {
           bitField0_ |= 0x00000004;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder> filesBuilder_;
-      
+
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File> getFilesList() {
         if (filesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(files_);
@@ -564,6 +722,9 @@ public final class ProtoSummary {
           return filesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public int getFilesCount() {
         if (filesBuilder_ == null) {
           return files_.size();
@@ -571,6 +732,9 @@ public final class ProtoSummary {
           return filesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File getFiles(int index) {
         if (filesBuilder_ == null) {
           return files_.get(index);
@@ -578,6 +742,9 @@ public final class ProtoSummary {
           return filesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder setFiles(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File value) {
         if (filesBuilder_ == null) {
@@ -592,6 +759,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder setFiles(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder builderForValue) {
         if (filesBuilder_ == null) {
@@ -603,6 +773,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder addFiles(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File value) {
         if (filesBuilder_ == null) {
           if (value == null) {
@@ -616,6 +789,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder addFiles(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File value) {
         if (filesBuilder_ == null) {
@@ -630,6 +806,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder addFiles(
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder builderForValue) {
         if (filesBuilder_ == null) {
@@ -641,6 +820,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder addFiles(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder builderForValue) {
         if (filesBuilder_ == null) {
@@ -652,6 +834,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder addAllFiles(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File> values) {
         if (filesBuilder_ == null) {
@@ -663,6 +848,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder clearFiles() {
         if (filesBuilder_ == null) {
           files_ = java.util.Collections.emptyList();
@@ -673,6 +861,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public Builder removeFiles(int index) {
         if (filesBuilder_ == null) {
           ensureFilesIsMutable();
@@ -683,10 +874,16 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder getFilesBuilder(
           int index) {
         return getFilesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder getFilesOrBuilder(
           int index) {
         if (filesBuilder_ == null) {
@@ -694,6 +891,9 @@ public final class ProtoSummary {
           return filesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder> 
            getFilesOrBuilderList() {
         if (filesBuilder_ != null) {
@@ -702,15 +902,24 @@ public final class ProtoSummary {
           return java.util.Collections.unmodifiableList(files_);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder addFilesBuilder() {
         return getFilesFieldBuilder().addBuilder(
             net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder addFilesBuilder(
           int index) {
         return getFilesFieldBuilder().addBuilder(
             index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.File files = 9;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder> 
            getFilesBuilderList() {
         return getFilesFieldBuilder().getBuilderList();
@@ -729,108 +938,253 @@ public final class ProtoSummary {
         }
         return filesBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.summary.Proto)
     }
-    
+
     static {
       defaultInstance = new Proto(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.summary.Proto)
   }
-  
+
   public interface FileOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg> 
         getMessagesList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg getMessages(int index);
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     int getMessagesCount();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder> 
         getMessagesOrBuilderList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder getMessagesOrBuilder(
         int index);
-    
+
     // repeated int32 messagesToCheck = 2;
+    /**
+     * <code>repeated int32 messagesToCheck = 2;</code>
+     */
     java.util.List<java.lang.Integer> getMessagesToCheckList();
+    /**
+     * <code>repeated int32 messagesToCheck = 2;</code>
+     */
     int getMessagesToCheckCount();
+    /**
+     * <code>repeated int32 messagesToCheck = 2;</code>
+     */
     int getMessagesToCheck(int index);
   }
+  /**
+   * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.File}
+   */
   public static final class File extends
       com.google.protobuf.GeneratedMessage
       implements FileOrBuilder {
     // Use File.newBuilder() to construct.
-    private File(Builder builder) {
+    private File(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private File(boolean noInit) {}
-    
+    private File(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final File defaultInstance;
     public static File getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public File getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private File(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                messages_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              messages_.add(input.readMessage(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.PARSER, extensionRegistry));
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                messagesToCheck_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              messagesToCheck_.add(input.readInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
+                messagesToCheck_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                messagesToCheck_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          messages_ = java.util.Collections.unmodifiableList(messages_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          messagesToCheck_ = java.util.Collections.unmodifiableList(messagesToCheck_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_fieldAccessorTable;
+      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<File> PARSER =
+        new com.google.protobuf.AbstractParser<File>() {
+      public File parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new File(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<File> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;
     public static final int MESSAGES_FIELD_NUMBER = 1;
     private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg> messages_;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg> getMessagesList() {
       return messages_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder> 
         getMessagesOrBuilderList() {
       return messages_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     public int getMessagesCount() {
       return messages_.size();
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg getMessages(int index) {
       return messages_.get(index);
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder getMessagesOrBuilder(
         int index) {
       return messages_.get(index);
     }
-    
+
     // repeated int32 messagesToCheck = 2;
     public static final int MESSAGESTOCHECK_FIELD_NUMBER = 2;
     private java.util.List<java.lang.Integer> messagesToCheck_;
+    /**
+     * <code>repeated int32 messagesToCheck = 2;</code>
+     */
     public java.util.List<java.lang.Integer>
         getMessagesToCheckList() {
       return messagesToCheck_;
     }
+    /**
+     * <code>repeated int32 messagesToCheck = 2;</code>
+     */
     public int getMessagesToCheckCount() {
       return messagesToCheck_.size();
     }
+    /**
+     * <code>repeated int32 messagesToCheck = 2;</code>
+     */
     public int getMessagesToCheck(int index) {
       return messagesToCheck_.get(index);
     }
-    
+
     private void initFields() {
       messages_ = java.util.Collections.emptyList();
-      messagesToCheck_ = java.util.Collections.emptyList();;
+      messagesToCheck_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       for (int i = 0; i < getMessagesCount(); i++) {
         if (!getMessages(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -840,7 +1194,7 @@ public final class ProtoSummary {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -852,12 +1206,12 @@ public final class ProtoSummary {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < messages_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -876,94 +1230,83 @@ public final class ProtoSummary {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.File}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FileOrBuilder {
@@ -971,18 +1314,21 @@ public final class ProtoSummary {
           getDescriptor() {
         return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_fieldAccessorTable;
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder.class);
       }
-      
+
       // Construct using net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -994,7 +1340,7 @@ public final class ProtoSummary {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (messagesBuilder_ == null) {
@@ -1003,24 +1349,24 @@ public final class ProtoSummary {
         } else {
           messagesBuilder_.clear();
         }
-        messagesToCheck_ = java.util.Collections.emptyList();;
+        messagesToCheck_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.getDescriptor();
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_descriptor;
       }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File getDefaultInstanceForType() {
         return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.getDefaultInstance();
       }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File build() {
         net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File result = buildPartial();
         if (!result.isInitialized()) {
@@ -1028,17 +1374,7 @@ public final class ProtoSummary {
         }
         return result;
       }
-      
-      private net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File buildPartial() {
         net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File result = new net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File(this);
         int from_bitField0_ = bitField0_;
@@ -1059,7 +1395,7 @@ public final class ProtoSummary {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File) {
           return mergeFrom((net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File)other);
@@ -1068,7 +1404,7 @@ public final class ProtoSummary {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File other) {
         if (other == net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.getDefaultInstance()) return this;
         if (messagesBuilder_ == null) {
@@ -1110,7 +1446,7 @@ public final class ProtoSummary {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         for (int i = 0; i < getMessagesCount(); i++) {
           if (!getMessages(i).isInitialized()) {
@@ -1120,56 +1456,26 @@ public final class ProtoSummary {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder subBuilder = net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addMessages(subBuilder.buildPartial());
-              break;
-            }
-            case 16: {
-              ensureMessagesToCheckIsMutable();
-              messagesToCheck_.add(input.readInt32());
-              break;
-            }
-            case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              while (input.getBytesUntilLimit() > 0) {
-                addMessagesToCheck(input.readInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
+        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;
       private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg> messages_ =
         java.util.Collections.emptyList();
@@ -1179,10 +1485,13 @@ public final class ProtoSummary {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder> messagesBuilder_;
-      
+
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg> getMessagesList() {
         if (messagesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(messages_);
@@ -1190,6 +1499,9 @@ public final class ProtoSummary {
           return messagesBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public int getMessagesCount() {
         if (messagesBuilder_ == null) {
           return messages_.size();
@@ -1197,6 +1509,9 @@ public final class ProtoSummary {
           return messagesBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg getMessages(int index) {
         if (messagesBuilder_ == null) {
           return messages_.get(index);
@@ -1204,6 +1519,9 @@ public final class ProtoSummary {
           return messagesBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder setMessages(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg value) {
         if (messagesBuilder_ == null) {
@@ -1218,6 +1536,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder setMessages(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder builderForValue) {
         if (messagesBuilder_ == null) {
@@ -1229,6 +1550,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder addMessages(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg value) {
         if (messagesBuilder_ == null) {
           if (value == null) {
@@ -1242,6 +1566,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder addMessages(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg value) {
         if (messagesBuilder_ == null) {
@@ -1256,6 +1583,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder addMessages(
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder builderForValue) {
         if (messagesBuilder_ == null) {
@@ -1267,6 +1597,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder addMessages(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder builderForValue) {
         if (messagesBuilder_ == null) {
@@ -1278,6 +1611,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder addAllMessages(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg> values) {
         if (messagesBuilder_ == null) {
@@ -1289,6 +1625,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder clearMessages() {
         if (messagesBuilder_ == null) {
           messages_ = java.util.Collections.emptyList();
@@ -1299,6 +1638,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public Builder removeMessages(int index) {
         if (messagesBuilder_ == null) {
           ensureMessagesIsMutable();
@@ -1309,10 +1651,16 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder getMessagesBuilder(
           int index) {
         return getMessagesFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder getMessagesOrBuilder(
           int index) {
         if (messagesBuilder_ == null) {
@@ -1320,6 +1668,9 @@ public final class ProtoSummary {
           return messagesBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder> 
            getMessagesOrBuilderList() {
         if (messagesBuilder_ != null) {
@@ -1328,15 +1679,24 @@ public final class ProtoSummary {
           return java.util.Collections.unmodifiableList(messages_);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder addMessagesBuilder() {
         return getMessagesFieldBuilder().addBuilder(
             net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder addMessagesBuilder(
           int index) {
         return getMessagesFieldBuilder().addBuilder(
             index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Msg messages = 1;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder> 
            getMessagesBuilderList() {
         return getMessagesFieldBuilder().getBuilderList();
@@ -1355,25 +1715,37 @@ public final class ProtoSummary {
         }
         return messagesBuilder_;
       }
-      
+
       // repeated int32 messagesToCheck = 2;
-      private java.util.List<java.lang.Integer> messagesToCheck_ = java.util.Collections.emptyList();;
+      private java.util.List<java.lang.Integer> messagesToCheck_ = java.util.Collections.emptyList();
       private void ensureMessagesToCheckIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           messagesToCheck_ = new java.util.ArrayList<java.lang.Integer>(messagesToCheck_);
           bitField0_ |= 0x00000002;
          }
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public java.util.List<java.lang.Integer>
           getMessagesToCheckList() {
         return java.util.Collections.unmodifiableList(messagesToCheck_);
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public int getMessagesToCheckCount() {
         return messagesToCheck_.size();
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public int getMessagesToCheck(int index) {
         return messagesToCheck_.get(index);
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public Builder setMessagesToCheck(
           int index, int value) {
         ensureMessagesToCheckIsMutable();
@@ -1381,12 +1753,18 @@ public final class ProtoSummary {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public Builder addMessagesToCheck(int value) {
         ensureMessagesToCheckIsMutable();
         messagesToCheck_.add(value);
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public Builder addAllMessagesToCheck(
           java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureMessagesToCheckIsMutable();
@@ -1394,117 +1772,264 @@ public final class ProtoSummary {
         onChanged();
         return this;
       }
+      /**
+       * <code>repeated int32 messagesToCheck = 2;</code>
+       */
       public Builder clearMessagesToCheck() {
-        messagesToCheck_ = java.util.Collections.emptyList();;
+        messagesToCheck_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.summary.File)
     }
-    
+
     static {
       defaultInstance = new File(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.summary.File)
   }
-  
+
   public interface MsgOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> 
         getFieldsList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getFields(int index);
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     int getFieldsCount();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> 
         getFieldsOrBuilderList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder getFieldsOrBuilder(
         int index);
-    
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> 
         getOptionalFieldsList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getOptionalFields(int index);
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     int getOptionalFieldsCount();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> 
         getOptionalFieldsOrBuilderList();
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder getOptionalFieldsOrBuilder(
         int index);
   }
+  /**
+   * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.Msg}
+   */
   public static final class Msg extends
       com.google.protobuf.GeneratedMessage
       implements MsgOrBuilder {
     // Use Msg.newBuilder() to construct.
-    private Msg(Builder builder) {
+    private Msg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Msg(boolean noInit) {}
-    
+    private Msg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Msg defaultInstance;
     public static Msg getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Msg getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Msg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                fields_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              fields_.add(input.readMessage(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.PARSER, extensionRegistry));
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                optionalFields_ = new java.util.ArrayList<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              optionalFields_.add(input.readMessage(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          fields_ = java.util.Collections.unmodifiableList(fields_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          optionalFields_ = java.util.Collections.unmodifiableList(optionalFields_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_descriptor;
     }
-    
+
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_fieldAccessorTable;
+      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder.class);
     }
-    
+
+    public static com.google.protobuf.Parser<Msg> PARSER =
+        new com.google.protobuf.AbstractParser<Msg>() {
+      public Msg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Msg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Msg> getParserForType() {
+      return PARSER;
+    }
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;
     public static final int FIELDS_FIELD_NUMBER = 1;
     private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> fields_;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> getFieldsList() {
       return fields_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> 
         getFieldsOrBuilderList() {
       return fields_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     public int getFieldsCount() {
       return fields_.size();
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getFields(int index) {
       return fields_.get(index);
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder getFieldsOrBuilder(
         int index) {
       return fields_.get(index);
     }
-    
+
     // repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;
     public static final int OPTIONALFIELDS_FIELD_NUMBER = 2;
     private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> optionalFields_;
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> getOptionalFieldsList() {
       return optionalFields_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> 
         getOptionalFieldsOrBuilderList() {
       return optionalFields_;
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     public int getOptionalFieldsCount() {
       return optionalFields_.size();
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getOptionalFields(int index) {
       return optionalFields_.get(index);
     }
+    /**
+     * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+     */
     public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder getOptionalFieldsOrBuilder(
         int index) {
       return optionalFields_.get(index);
     }
-    
+
     private void initFields() {
       fields_ = java.util.Collections.emptyList();
       optionalFields_ = java.util.Collections.emptyList();
@@ -1513,7 +2038,7 @@ public final class ProtoSummary {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-      
+
       for (int i = 0; i < getFieldsCount(); i++) {
         if (!getFields(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -1529,7 +2054,7 @@ public final class ProtoSummary {
       memoizedIsInitialized = 1;
       return true;
     }
-    
+
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1541,12 +2066,12 @@ public final class ProtoSummary {
       }
       getUnknownFields().writeTo(output);
     }
-    
+
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-    
+
       size = 0;
       for (int i = 0; i < fields_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -1560,94 +2085,83 @@ public final class ProtoSummary {
       memoizedSerializedSize = size;
       return size;
     }
-    
+
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-    
+
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
+      return PARSER.parseFrom(data);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
+      return PARSER.parseFrom(input);
     }
     public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
+      return PARSER.parseFrom(input, extensionRegistry);
     }
-    
+
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-    
+
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
+    /**
+     * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.Msg}
+     */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
        implements net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.MsgOrBuilder {
@@ -1655,18 +2169,21 @@ public final class ProtoSummary {
           getDescriptor() {
         return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_descriptor;
       }
-      
+
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_fieldAccessorTable;
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder.class);
       }
-      
+
       // Construct using net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-      
-      private Builder(BuilderParent parent) {
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1679,7 +2196,7 @@ public final class ProtoSummary {
       private static Builder create() {
         return new Builder();
       }
-      
+
       public Builder clear() {
         super.clear();
         if (fieldsBuilder_ == null) {
@@ -1696,20 +2213,20 @@ public final class ProtoSummary {
         }
         return this;
       }
-      
+
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-      
+
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.getDescriptor();
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_descriptor;
       }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg getDefaultInstanceForType() {
         return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.getDefaultInstance();
       }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg build() {
         net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg result = buildPartial();
         if (!result.isInitialized()) {
@@ -1717,17 +2234,7 @@ public final class ProtoSummary {
         }
         return result;
       }
-      
-      private net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
+
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg buildPartial() {
         net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg result = new net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg(this);
         int from_bitField0_ = bitField0_;
@@ -1752,7 +2259,7 @@ public final class ProtoSummary {
         onBuilt();
         return result;
       }
-      
+
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg) {
           return mergeFrom((net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg)other);
@@ -1761,7 +2268,7 @@ public final class ProtoSummary {
           return this;
         }
       }
-      
+
       public Builder mergeFrom(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg other) {
         if (other == net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.getDefaultInstance()) return this;
         if (fieldsBuilder_ == null) {
@@ -1819,7 +2326,7 @@ public final class ProtoSummary {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-      
+
       public final boolean isInitialized() {
         for (int i = 0; i < getFieldsCount(); i++) {
           if (!getFields(i).isInitialized()) {
@@ -1835,48 +2342,26 @@ public final class ProtoSummary {
         }
         return true;
       }
-      
+
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 10: {
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder subBuilder = net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addFields(subBuilder.buildPartial());
-              break;
-            }
-            case 18: {
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder subBuilder = net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.newBuilder();
-              input.readMessage(subBuilder, extensionRegistry);
-              addOptionalFields(subBuilder.buildPartial());
-              break;
-            }
+        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
           }
         }
+        return this;
       }
-      
       private int bitField0_;
-      
+
       // repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;
       private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> fields_ =
         java.util.Collections.emptyList();
@@ -1886,10 +2371,13 @@ public final class ProtoSummary {
           bitField0_ |= 0x00000001;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> fieldsBuilder_;
-      
+
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> getFieldsList() {
         if (fieldsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(fields_);
@@ -1897,6 +2385,9 @@ public final class ProtoSummary {
           return fieldsBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public int getFieldsCount() {
         if (fieldsBuilder_ == null) {
           return fields_.size();
@@ -1904,6 +2395,9 @@ public final class ProtoSummary {
           return fieldsBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getFields(int index) {
         if (fieldsBuilder_ == null) {
           return fields_.get(index);
@@ -1911,6 +2405,9 @@ public final class ProtoSummary {
           return fieldsBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder setFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field value) {
         if (fieldsBuilder_ == null) {
@@ -1925,6 +2422,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder setFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder builderForValue) {
         if (fieldsBuilder_ == null) {
@@ -1936,6 +2436,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder addFields(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field value) {
         if (fieldsBuilder_ == null) {
           if (value == null) {
@@ -1949,6 +2452,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder addFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field value) {
         if (fieldsBuilder_ == null) {
@@ -1963,6 +2469,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder addFields(
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder builderForValue) {
         if (fieldsBuilder_ == null) {
@@ -1974,6 +2483,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder addFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder builderForValue) {
         if (fieldsBuilder_ == null) {
@@ -1985,6 +2497,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder addAllFields(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> values) {
         if (fieldsBuilder_ == null) {
@@ -1996,6 +2511,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder clearFields() {
         if (fieldsBuilder_ == null) {
           fields_ = java.util.Collections.emptyList();
@@ -2006,6 +2524,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public Builder removeFields(int index) {
         if (fieldsBuilder_ == null) {
           ensureFieldsIsMutable();
@@ -2016,10 +2537,16 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder getFieldsBuilder(
           int index) {
         return getFieldsFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder getFieldsOrBuilder(
           int index) {
         if (fieldsBuilder_ == null) {
@@ -2027,6 +2554,9 @@ public final class ProtoSummary {
           return fieldsBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> 
            getFieldsOrBuilderList() {
         if (fieldsBuilder_ != null) {
@@ -2035,15 +2565,24 @@ public final class ProtoSummary {
           return java.util.Collections.unmodifiableList(fields_);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder addFieldsBuilder() {
         return getFieldsFieldBuilder().addBuilder(
             net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder addFieldsBuilder(
           int index) {
         return getFieldsFieldBuilder().addBuilder(
             index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field fields = 1;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder> 
            getFieldsBuilderList() {
         return getFieldsFieldBuilder().getBuilderList();
@@ -2062,7 +2601,7 @@ public final class ProtoSummary {
         }
         return fieldsBuilder_;
       }
-      
+
       // repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;
       private java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> optionalFields_ =
         java.util.Collections.emptyList();
@@ -2072,10 +2611,13 @@ public final class ProtoSummary {
           bitField0_ |= 0x00000002;
          }
       }
-      
+
       private com.google.protobuf.RepeatedFieldBuilder<
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> optionalFieldsBuilder_;
-      
+
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> getOptionalFieldsList() {
         if (optionalFieldsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(optionalFields_);
@@ -2083,6 +2625,9 @@ public final class ProtoSummary {
           return optionalFieldsBuilder_.getMessageList();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public int getOptionalFieldsCount() {
         if (optionalFieldsBuilder_ == null) {
           return optionalFields_.size();
@@ -2090,6 +2635,9 @@ public final class ProtoSummary {
           return optionalFieldsBuilder_.getCount();
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getOptionalFields(int index) {
         if (optionalFieldsBuilder_ == null) {
           return optionalFields_.get(index);
@@ -2097,6 +2645,9 @@ public final class ProtoSummary {
           return optionalFieldsBuilder_.getMessage(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder setOptionalFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field value) {
         if (optionalFieldsBuilder_ == null) {
@@ -2111,6 +2662,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder setOptionalFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder builderForValue) {
         if (optionalFieldsBuilder_ == null) {
@@ -2122,6 +2676,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder addOptionalFields(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field value) {
         if (optionalFieldsBuilder_ == null) {
           if (value == null) {
@@ -2135,6 +2692,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder addOptionalFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field value) {
         if (optionalFieldsBuilder_ == null) {
@@ -2149,6 +2709,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder addOptionalFields(
           net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder builderForValue) {
         if (optionalFieldsBuilder_ == null) {
@@ -2160,6 +2723,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder addOptionalFields(
           int index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder builderForValue) {
         if (optionalFieldsBuilder_ == null) {
@@ -2171,6 +2737,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder addAllOptionalFields(
           java.lang.Iterable<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field> values) {
         if (optionalFieldsBuilder_ == null) {
@@ -2182,6 +2751,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder clearOptionalFields() {
         if (optionalFieldsBuilder_ == null) {
           optionalFields_ = java.util.Collections.emptyList();
@@ -2192,6 +2764,9 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public Builder removeOptionalFields(int index) {
         if (optionalFieldsBuilder_ == null) {
           ensureOptionalFieldsIsMutable();
@@ -2202,10 +2777,16 @@ public final class ProtoSummary {
         }
         return this;
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder getOptionalFieldsBuilder(
           int index) {
         return getOptionalFieldsFieldBuilder().getBuilder(index);
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder getOptionalFieldsOrBuilder(
           int index) {
         if (optionalFieldsBuilder_ == null) {
@@ -2213,6 +2794,9 @@ public final class ProtoSummary {
           return optionalFieldsBuilder_.getMessageOrBuilder(index);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public java.util.List<? extends net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder> 
            getOptionalFieldsOrBuilderList() {
         if (optionalFieldsBuilder_ != null) {
@@ -2221,15 +2805,24 @@ public final class ProtoSummary {
           return java.util.Collections.unmodifiableList(optionalFields_);
         }
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder addOptionalFieldsBuilder() {
         return getOptionalFieldsFieldBuilder().addBuilder(
             net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder addOptionalFieldsBuilder(
           int index) {
         return getOptionalFieldsFieldBuilder().addBuilder(
             index, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance());
       }
+      /**
+       * <code>repeated .net.sf.RecordEditor.ProtoBuf.summary.Field optionalFields = 2;</code>
+       */
       public java.util.List<net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder> 
            getOptionalFieldsBuilderList() {
         return getOptionalFieldsFieldBuilder().getBuilderList();
@@ -2248,419 +2841,109 @@ public final class ProtoSummary {
         }
         return optionalFieldsBuilder_;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.summary.Msg)
     }
-    
+
     static {
       defaultInstance = new Msg(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.summary.Msg)
   }
-  
+
   public interface FieldOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
-    
+
     // required int32 tag = 1;
+    /**
+     * <code>required int32 tag = 1;</code>
+     */
     boolean hasTag();
+    /**
+     * <code>required int32 tag = 1;</code>
+     */
     int getTag();
-    
+
     // required int32 type = 2;
+    /**
+     * <code>required int32 type = 2;</code>
+     */
     boolean hasType();
+    /**
+     * <code>required int32 type = 2;</code>
+     */
     int getType();
-    
+
     // optional int32 fileNo = 3;
+    /**
+     * <code>optional int32 fileNo = 3;</code>
+     */
     boolean hasFileNo();
+    /**
+     * <code>optional int32 fileNo = 3;</code>
+     */
     int getFileNo();
-    
+
     // optional int32 msgNo = 4;
+    /**
+     * <code>optional int32 msgNo = 4;</code>
+     */
     boolean hasMsgNo();
+    /**
+     * <code>optional int32 msgNo = 4;</code>
+     */
     int getMsgNo();
   }
+  /**
+   * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.Field}
+   */
   public static final class Field extends
       com.google.protobuf.GeneratedMessage
       implements FieldOrBuilder {
     // Use Field.newBuilder() to construct.
-    private Field(Builder builder) {
+    private Field(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Field(boolean noInit) {}
-    
+    private Field(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
     private static final Field defaultInstance;
     public static Field getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public Field getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required int32 tag = 1;
-    public static final int TAG_FIELD_NUMBER = 1;
-    private int tag_;
-    public boolean hasTag() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getTag() {
-      return tag_;
-    }
-    
-    // required int32 type = 2;
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private int type_;
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public int getType() {
-      return type_;
-    }
-    
-    // optional int32 fileNo = 3;
-    public static final int FILENO_FIELD_NUMBER = 3;
-    private int fileNo_;
-    public boolean hasFileNo() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getFileNo() {
-      return fileNo_;
-    }
-    
-    // optional int32 msgNo = 4;
-    public static final int MSGNO_FIELD_NUMBER = 4;
-    private int msgNo_;
-    public boolean hasMsgNo() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public int getMsgNo() {
-      return msgNo_;
-    }
-    
-    private void initFields() {
-      tag_ = 0;
-      type_ = 0;
-      fileNo_ = 0;
-      msgNo_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasTag()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, tag_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, type_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, fileNo_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, msgNo_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, tag_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, type_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, fileNo_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, msgNo_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
     }
-    
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+    private Field(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_fieldAccessorTable;
-      }
-      
-      // Construct using net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        tag_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        fileNo_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        msgNo_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDescriptor();
-      }
-      
-      public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getDefaultInstanceForType() {
-        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance();
-      }
-      
-      public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field build() {
-        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field buildPartial() {
-        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field result = new net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.tag_ = tag_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.fileNo_ = fileNo_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.msgNo_ = msgNo_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field) {
-          return mergeFrom((net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field other) {
-        if (other == net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance()) return this;
-        if (other.hasTag()) {
-          setTag(other.getTag());
-        }
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasFileNo()) {
-          setFileNo(other.getFileNo());
-        }
-        if (other.hasMsgNo()) {
-          setMsgNo(other.getMsgNo());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasTag()) {
-          
-          return false;
-        }
-        if (!hasType()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
+                done = true;
               }
               break;
             }
@@ -2686,105 +2969,545 @@ public final class ProtoSummary {
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Field> PARSER =
+        new com.google.protobuf.AbstractParser<Field>() {
+      public Field parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Field(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Field> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int32 tag = 1;
+    public static final int TAG_FIELD_NUMBER = 1;
+    private int tag_;
+    /**
+     * <code>required int32 tag = 1;</code>
+     */
+    public boolean hasTag() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 tag = 1;</code>
+     */
+    public int getTag() {
+      return tag_;
+    }
+
+    // required int32 type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>required int32 type = 2;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 type = 2;</code>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // optional int32 fileNo = 3;
+    public static final int FILENO_FIELD_NUMBER = 3;
+    private int fileNo_;
+    /**
+     * <code>optional int32 fileNo = 3;</code>
+     */
+    public boolean hasFileNo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 fileNo = 3;</code>
+     */
+    public int getFileNo() {
+      return fileNo_;
+    }
+
+    // optional int32 msgNo = 4;
+    public static final int MSGNO_FIELD_NUMBER = 4;
+    private int msgNo_;
+    /**
+     * <code>optional int32 msgNo = 4;</code>
+     */
+    public boolean hasMsgNo() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 msgNo = 4;</code>
+     */
+    public int getMsgNo() {
+      return msgNo_;
+    }
+
+    private void initFields() {
+      tag_ = 0;
+      type_ = 0;
+      fileNo_ = 0;
+      msgNo_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasTag()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, tag_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, fileNo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, msgNo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, tag_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, fileNo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, msgNo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code net.sf.RecordEditor.ProtoBuf.summary.Field}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.FieldOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.class, net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder.class);
+      }
+
+      // Construct using net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        tag_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        fileNo_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        msgNo_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor;
+      }
+
+      public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field getDefaultInstanceForType() {
+        return net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance();
+      }
+
+      public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field build() {
+        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field buildPartial() {
+        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field result = new net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.tag_ = tag_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.fileNo_ = fileNo_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.msgNo_ = msgNo_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field) {
+          return mergeFrom((net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field other) {
+        if (other == net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.getDefaultInstance()) return this;
+        if (other.hasTag()) {
+          setTag(other.getTag());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasFileNo()) {
+          setFileNo(other.getFileNo());
+        }
+        if (other.hasMsgNo()) {
+          setMsgNo(other.getMsgNo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTag()) {
+          
+          return false;
+        }
+        if (!hasType()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // required int32 tag = 1;
       private int tag_ ;
+      /**
+       * <code>required int32 tag = 1;</code>
+       */
       public boolean hasTag() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>required int32 tag = 1;</code>
+       */
       public int getTag() {
         return tag_;
       }
+      /**
+       * <code>required int32 tag = 1;</code>
+       */
       public Builder setTag(int value) {
         bitField0_ |= 0x00000001;
         tag_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int32 tag = 1;</code>
+       */
       public Builder clearTag() {
         bitField0_ = (bitField0_ & ~0x00000001);
         tag_ = 0;
         onChanged();
         return this;
       }
-      
+
       // required int32 type = 2;
       private int type_ ;
+      /**
+       * <code>required int32 type = 2;</code>
+       */
       public boolean hasType() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>required int32 type = 2;</code>
+       */
       public int getType() {
         return type_;
       }
+      /**
+       * <code>required int32 type = 2;</code>
+       */
       public Builder setType(int value) {
         bitField0_ |= 0x00000002;
         type_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>required int32 type = 2;</code>
+       */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000002);
         type_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional int32 fileNo = 3;
       private int fileNo_ ;
+      /**
+       * <code>optional int32 fileNo = 3;</code>
+       */
       public boolean hasFileNo() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional int32 fileNo = 3;</code>
+       */
       public int getFileNo() {
         return fileNo_;
       }
+      /**
+       * <code>optional int32 fileNo = 3;</code>
+       */
       public Builder setFileNo(int value) {
         bitField0_ |= 0x00000004;
         fileNo_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 fileNo = 3;</code>
+       */
       public Builder clearFileNo() {
         bitField0_ = (bitField0_ & ~0x00000004);
         fileNo_ = 0;
         onChanged();
         return this;
       }
-      
+
       // optional int32 msgNo = 4;
       private int msgNo_ ;
+      /**
+       * <code>optional int32 msgNo = 4;</code>
+       */
       public boolean hasMsgNo() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional int32 msgNo = 4;</code>
+       */
       public int getMsgNo() {
         return msgNo_;
       }
+      /**
+       * <code>optional int32 msgNo = 4;</code>
+       */
       public Builder setMsgNo(int value) {
         bitField0_ |= 0x00000008;
         msgNo_ = value;
         onChanged();
         return this;
       }
+      /**
+       * <code>optional int32 msgNo = 4;</code>
+       */
       public Builder clearMsgNo() {
         bitField0_ = (bitField0_ & ~0x00000008);
         msgNo_ = 0;
         onChanged();
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:net.sf.RecordEditor.ProtoBuf.summary.Field)
     }
-    
+
     static {
       defaultInstance = new Field(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:net.sf.RecordEditor.ProtoBuf.summary.Field)
   }
-  
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_descriptor;
   private static
@@ -2805,7 +3528,7 @@ public final class ProtoSummary {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_fieldAccessorTable;
-  
+
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -2837,33 +3560,25 @@ public final class ProtoSummary {
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_sf_RecordEditor_ProtoBuf_summary_Proto_descriptor,
-              new java.lang.String[] { "Filename", "ChangeDate", "Files", },
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.class,
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Proto.Builder.class);
+              new java.lang.String[] { "Filename", "ChangeDate", "Files", });
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_sf_RecordEditor_ProtoBuf_summary_File_descriptor,
-              new java.lang.String[] { "Messages", "MessagesToCheck", },
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.class,
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.File.Builder.class);
+              new java.lang.String[] { "Messages", "MessagesToCheck", });
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_sf_RecordEditor_ProtoBuf_summary_Msg_descriptor,
-              new java.lang.String[] { "Fields", "OptionalFields", },
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.class,
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Msg.Builder.class);
+              new java.lang.String[] { "Fields", "OptionalFields", });
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_sf_RecordEditor_ProtoBuf_summary_Field_descriptor,
-              new java.lang.String[] { "Tag", "Type", "FileNo", "MsgNo", },
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.class,
-              net.sf.RecordEditor.ProtoBuf.summary.ProtoSummary.Field.Builder.class);
+              new java.lang.String[] { "Tag", "Type", "FileNo", "MsgNo", });
           return null;
         }
       };
@@ -2872,6 +3587,6 @@ public final class ProtoSummary {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }
